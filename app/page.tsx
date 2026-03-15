@@ -400,37 +400,41 @@ export default function BrutalismPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "#B2BDA0",
-                  color: "#000000",
-                  border: "3px solid #000000",
-                  boxShadow: "3px 3px 0px #000000",
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  padding: "6px 14px",
-                }}
-              >
-                <Wrench size={14} /> Services
-              </span>
-              <h2
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-                  lineHeight: 1,
-                  textTransform: "uppercase",
-                  color: "#000000",
-                  marginTop: "1rem",
-                }}
-              >
-                Comment puis-je vous aider ?
-              </h2>
+              <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "stretch" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
+                    background: "#B2BDA0",
+                    color: "#000000",
+                    border: "3px solid #000000",
+                    boxShadow: "3px 3px 0px #000000",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "0.7rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    padding: "6px 14px",
+                  }}
+                >
+                  <Wrench size={14} /> Services
+                </span>
+                <h2
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+                    lineHeight: 1,
+                    textTransform: "uppercase",
+                    color: "#000000",
+                    marginTop: "0.5rem",
+                    display: "block",
+                  }}
+                >
+                  Comment puis-je vous aider ?
+                </h2>
+              </div>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -543,37 +547,41 @@ export default function BrutalismPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "#B2BDA0",
-                  color: "#000000",
-                  border: "3px solid #000000",
-                  boxShadow: "3px 3px 0px #000000",
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  padding: "6px 14px",
-                }}
-              >
-                <Briefcase size={14} /> Experience
-              </span>
-              <h2
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-                  lineHeight: 1,
-                  textTransform: "uppercase",
-                  color: "#000000",
-                  marginTop: "1rem",
-                }}
-              >
-                Parcours professionnel
-              </h2>
+              <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "stretch" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
+                    background: "#B2BDA0",
+                    color: "#000000",
+                    border: "3px solid #000000",
+                    boxShadow: "3px 3px 0px #000000",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "0.7rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    padding: "6px 14px",
+                  }}
+                >
+                  <Briefcase size={14} /> Experience
+                </span>
+                <h2
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+                    lineHeight: 1,
+                    textTransform: "uppercase",
+                    color: "#000000",
+                    marginTop: "0.5rem",
+                    display: "block",
+                  }}
+                >
+                  Parcours professionnel
+                </h2>
+              </div>
             </motion.div>
 
             {/* Timeline */}
@@ -809,37 +817,41 @@ export default function BrutalismPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "#B2BDA0",
-                  color: "#000000",
-                  border: "3px solid #000000",
-                  boxShadow: "3px 3px 0px #000000",
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  padding: "6px 14px",
-                }}
-              >
-                <FolderOpen size={14} /> Projets
-              </span>
-              <h2
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-                  lineHeight: 1,
-                  textTransform: "uppercase",
-                  color: "#000000",
-                  marginTop: "1rem",
-                }}
-              >
-                Realisations
-              </h2>
+              <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "stretch" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
+                    background: "#B2BDA0",
+                    color: "#000000",
+                    border: "3px solid #000000",
+                    boxShadow: "3px 3px 0px #000000",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "0.7rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    padding: "6px 14px",
+                  }}
+                >
+                  <FolderOpen size={14} /> Projets
+                </span>
+                <h2
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+                    lineHeight: 1,
+                    textTransform: "uppercase",
+                    color: "#000000",
+                    marginTop: "0.5rem",
+                    display: "block",
+                  }}
+                >
+                  Realisations
+                </h2>
+              </div>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -1052,37 +1064,41 @@ export default function BrutalismPage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <span
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: 8,
-                  background: "#B2BDA0",
-                  color: "#000000",
-                  border: "3px solid #000000",
-                  boxShadow: "3px 3px 0px #000000",
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontWeight: 700,
-                  fontSize: "0.7rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  padding: "6px 14px",
-                }}
-              >
-                <Wrench size={14} /> Competences
-              </span>
-              <h2
-                style={{
-                  fontFamily: "'Bebas Neue', sans-serif",
-                  fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
-                  lineHeight: 1,
-                  textTransform: "uppercase",
-                  color: "#000000",
-                  marginTop: "1rem",
-                }}
-              >
-                Technologies & Outils
-              </h2>
+              <div style={{ display: "inline-flex", flexDirection: "column", alignItems: "stretch" }}>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 8,
+                    background: "#B2BDA0",
+                    color: "#000000",
+                    border: "3px solid #000000",
+                    boxShadow: "3px 3px 0px #000000",
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    fontWeight: 700,
+                    fontSize: "0.7rem",
+                    textTransform: "uppercase",
+                    letterSpacing: "0.1em",
+                    padding: "6px 14px",
+                  }}
+                >
+                  <Wrench size={14} /> Competences
+                </span>
+                <h2
+                  style={{
+                    fontFamily: "'Bebas Neue', sans-serif",
+                    fontSize: "clamp(2.5rem, 5vw, 3.5rem)",
+                    lineHeight: 1,
+                    textTransform: "uppercase",
+                    color: "#000000",
+                    marginTop: "0.5rem",
+                    display: "block",
+                  }}
+                >
+                  Technologies & Outils
+                </h2>
+              </div>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-4">
