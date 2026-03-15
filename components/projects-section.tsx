@@ -51,7 +51,7 @@ export const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <motion.div
-            key={index}
+            key={project.name}
             className="group relative rounded-2xl border border-border bg-card backdrop-blur-sm transition-all hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5 overflow-hidden flex flex-col"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -83,6 +83,7 @@ export const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
                         src={imageList[0]}
                         alt={project.name}
                         fill
+                        sizes="(max-width: 768px) 100vw, 50vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-card/80 via-card/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
@@ -94,11 +95,12 @@ export const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
                   <Carousel className="w-full h-full" opts={{ loop: true }}>
                     <CarouselContent className="h-48">
                       {imageList.map((img, idx) => (
-                        <CarouselItem key={idx} className="relative h-48">
+                        <CarouselItem key={img} className="relative h-48">
                           <Image
                             src={img}
-                            alt={`${project.name} - Preview ${idx + 1}`}
+                            alt={`${project.name} - Preview`}
                             fill
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             className="object-cover"
                           />
                         </CarouselItem>
@@ -159,7 +161,7 @@ export const ProjectsSection = ({ projects }: ProjectsSectionProps) => {
               {project.highlights.length > 0 && (
                 <ul className="space-y-1.5 text-xs text-muted-foreground flex-1">
                   {project.highlights.slice(0, 2).map((highlight, idx) => (
-                    <li key={idx} className="flex gap-2">
+                    <li key={highlight} className="flex gap-2">
                       <span className="text-primary mt-0.5">•</span>
                       <span className="line-clamp-2">{highlight}</span>
                     </li>

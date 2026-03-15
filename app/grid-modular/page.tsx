@@ -387,7 +387,7 @@ export default function GridModularPage() {
             <div style={{ display: "flex", flexDirection: "column", gap: 0 }}>
               {services.map((service, i) => (
                 <motion.div
-                  key={i}
+                  key={service.title}
                   {...fadeUp}
                   transition={{ duration: 0.4, delay: i * 0.06 }}
                   style={{
@@ -472,7 +472,7 @@ export default function GridModularPage() {
             <div style={{ display: "flex", flexDirection: "column" }}>
               {work.map((job, i) => (
                 <motion.div
-                  key={i}
+                  key={job.name}
                   {...fadeUp}
                   transition={{ duration: 0.4, delay: i * 0.08 }}
                   style={{
@@ -707,7 +707,7 @@ export default function GridModularPage() {
                   project.images.length > 0;
                 return (
                   <motion.div
-                    key={i}
+                    key={project.name}
                     {...fadeUp}
                     transition={{ duration: 0.4, delay: i * 0.06 }}
                     style={{
@@ -942,7 +942,7 @@ export default function GridModularPage() {
             >
               {skills.map((skill, i) => (
                 <motion.span
-                  key={i}
+                  key={skill.name}
                   whileHover={{
                     backgroundColor: "#1A1A1A",
                     color: "#F5F2EE",
@@ -1037,9 +1037,9 @@ export default function GridModularPage() {
                 marginBottom: "2rem",
               }}
             >
-              {basics.profiles.map((profile, i) => (
+              {basics.profiles.map((profile) => (
                 <Link
-                  key={i}
+                  key={profile.network}
                   href={profile.url}
                   target="_blank"
                   rel="noopener noreferrer"

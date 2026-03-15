@@ -46,7 +46,7 @@ export const WorkSection = ({ experiences }: WorkSectionProps) => {
       <div className="space-y-12">
         {experiences.map((work, index) => (
           <motion.div 
-            key={index} 
+            key={`${work.name}-${work.position}`}
             className="group relative"
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -67,8 +67,8 @@ export const WorkSection = ({ experiences }: WorkSectionProps) => {
                   <div className="font-medium">{formatDate(work.startDate)} - {work.endDate ? formatDate(work.endDate) : "Présent"}</div>
                   <motion.div 
                     className="absolute -right-4 top-2 w-2 h-2 rounded-full bg-primary ring-4 ring-background hidden md:block"
-                    initial={{ scale: 0 }}
-                    whileInView={{ scale: 1 }}
+                    initial={{ scale: 0.95, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: index * 0.2 + 0.5, type: "spring", stiffness: 200 }}
                   />
@@ -109,7 +109,7 @@ export const WorkSection = ({ experiences }: WorkSectionProps) => {
                     <h4 className="text-sm font-medium mb-2">Responsabilités</h4>
                     <ul className="space-y-1 text-sm text-muted-foreground">
                       {work.responsibilities.map((resp, idx) => (
-                        <li key={idx} className="flex gap-2">
+                        <li key={resp} className="flex gap-2">
                           <span className="text-foreground/50">•</span>
                           <span>{resp}</span>
                         </li>

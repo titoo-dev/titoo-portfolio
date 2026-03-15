@@ -129,8 +129,8 @@ export function ThemeSwitcher() {
         <div
           style={{
             background: "rgba(10, 10, 10, 0.92)",
-            backdropFilter: "blur(20px) saturate(180%)",
-            WebkitBackdropFilter: "blur(20px) saturate(180%)",
+            backdropFilter: "blur(8px) saturate(180%)",
+            WebkitBackdropFilter: "blur(8px) saturate(180%)",
             border: "1px solid rgba(255,255,255,0.1)",
             borderRadius: "1rem",
             padding: "1rem",
@@ -296,8 +296,8 @@ export function ThemeSwitcher() {
           gap: "0.5rem",
           padding: "0.5rem 1rem 0.5rem 0.65rem",
           background: "rgba(10, 10, 10, 0.88)",
-          backdropFilter: "blur(20px) saturate(180%)",
-          WebkitBackdropFilter: "blur(20px) saturate(180%)",
+          backdropFilter: "blur(8px) saturate(180%)",
+          WebkitBackdropFilter: "blur(8px) saturate(180%)",
           border: "1px solid rgba(255,255,255,0.12)",
           borderRadius: "2rem",
           cursor: "pointer",

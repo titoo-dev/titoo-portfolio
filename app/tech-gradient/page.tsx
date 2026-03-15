@@ -223,7 +223,7 @@ export default function TechGradientPage() {
                   style={{
                     background:
                       "linear-gradient(135deg, rgba(0,212,255,0.35), rgba(123,47,255,0.35), rgba(255,45,155,0.2))",
-                    filter: "blur(12px)",
+                    filter: "blur(8px)",
                     animation: "glow-pulse 3s ease-in-out infinite",
                   }}
                 />
@@ -333,11 +333,11 @@ export default function TechGradientPage() {
                   { value: `${skills.length}`, label: "Skills" },
                 ].map((stat, i) => (
                   <div
-                    key={i}
+                    key={stat.label}
                     className="px-6 py-3 rounded-xl text-center"
                     style={{
                       background: "rgba(15,15,45,0.55)",
-                      backdropFilter: "blur(12px)",
+                      backdropFilter: "blur(8px)",
                       border: "1px solid rgba(0,212,255,0.12)",
                     }}
                   >
@@ -501,12 +501,12 @@ export default function TechGradientPage() {
                   const Icon = service.icon;
                   return (
                     <motion.div
-                      key={index}
+                      key={service.title}
                       className="group relative rounded-2xl p-8 overflow-hidden transition-all"
                       style={{
                         background: "rgba(15,15,45,0.45)",
                         border: "1px solid rgba(0,212,255,0.08)",
-                        backdropFilter: "blur(12px)",
+                        backdropFilter: "blur(8px)",
                       }}
                       initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -566,9 +566,9 @@ export default function TechGradientPage() {
                         </div>
 
                         <ul className="space-y-2">
-                          {service.features.map((feature, idx) => (
+                          {service.features.map((feature) => (
                             <li
-                              key={idx}
+                              key={feature}
                               className="flex items-center gap-2 text-sm"
                               style={{ color: "#8892b0" }}
                             >
@@ -650,7 +650,7 @@ export default function TechGradientPage() {
               <div className="space-y-12">
                 {work.map((job, index) => (
                   <motion.div
-                    key={index}
+                    key={job.name}
                     className="group relative"
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -706,8 +706,8 @@ export default function TechGradientPage() {
                               boxShadow:
                                 "0 0 8px #00d4ff, 0 0 16px rgba(0,212,255,0.3)",
                             }}
-                            initial={{ scale: 0 }}
-                            whileInView={{ scale: 1 }}
+                            initial={{ scale: 0.95, opacity: 0 }}
+                            whileInView={{ scale: 1, opacity: 1 }}
                             viewport={{ once: true }}
                             transition={{
                               delay: index * 0.2 + 0.5,
@@ -724,7 +724,7 @@ export default function TechGradientPage() {
                         style={{
                           background: "rgba(15,15,45,0.45)",
                           border: "1px solid rgba(0,212,255,0.08)",
-                          backdropFilter: "blur(12px)",
+                          backdropFilter: "blur(8px)",
                         }}
                       >
                         <div>
@@ -780,9 +780,9 @@ export default function TechGradientPage() {
                               Responsabilites
                             </h4>
                             <ul className="space-y-1 text-sm">
-                              {job.responsibilities.map((resp, idx) => (
+                              {job.responsibilities.map((resp) => (
                                 <li
-                                  key={idx}
+                                  key={resp}
                                   className="flex gap-2"
                                   style={{ color: "#8892b0" }}
                                 >
@@ -893,7 +893,7 @@ export default function TechGradientPage() {
 
                   return (
                     <motion.div
-                      key={index}
+                      key={project.name}
                       className="group relative rounded-2xl overflow-hidden flex flex-col transition-all"
                       style={{
                         background: "rgba(15,15,45,0.45)",
@@ -951,6 +951,7 @@ export default function TechGradientPage() {
                               src={imageList[0]}
                               alt={project.name}
                               fill
+                              sizes="(max-width: 768px) 100vw, 50vw"
                               className="object-cover transition-transform duration-500 group-hover:scale-110"
                             />
                             {/* Dark overlay on hover */}
@@ -1030,9 +1031,9 @@ export default function TechGradientPage() {
                           <ul className="space-y-1.5 text-xs flex-1">
                             {project.highlights
                               .slice(0, 2)
-                              .map((highlight, idx) => (
+                              .map((highlight) => (
                                 <li
-                                  key={idx}
+                                  key={highlight}
                                   className="flex gap-2"
                                   style={{ color: "#8892b0" }}
                                 >
@@ -1152,7 +1153,7 @@ export default function TechGradientPage() {
 
                   return (
                     <motion.div
-                      key={index}
+                      key={skill.name}
                       className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-full transition-all cursor-default"
                       style={{
                         background: "rgba(15,15,45,0.35)",

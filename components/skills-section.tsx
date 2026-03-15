@@ -71,7 +71,7 @@ export const SkillsSection = ({ skills }: SkillsSectionProps) => {
           
           return (
             <motion.div
-              key={index}
+              key={skill.name}
               className="group relative inline-flex items-center gap-2 px-4 py-2.5 rounded-full border border-border bg-card/50 backdrop-blur-sm transition-all hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5 hover:bg-card"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

@@ -60,7 +60,7 @@ export const ServicesSection = () => {
           const Icon = service.icon;
           return (
             <motion.div
-              key={index}
+              key={service.title}
               className="group relative rounded-2xl border border-border bg-card/50 backdrop-blur-sm p-8 transition-all hover:border-foreground/20 hover:shadow-xl overflow-hidden"
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +92,7 @@ export const ServicesSection = () => {
                 
                 <ul className="space-y-2">
                   {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <li key={feature} className="flex items-center gap-2 text-sm text-muted-foreground">
                       <span className="w-1.5 h-1.5 rounded-full bg-primary" />
                       {feature}
                     </li>

@@ -439,7 +439,7 @@ export default function BrutalismPage() {
                 const rotation = index % 2 === 0 ? -0.5 : 0.5;
                 return (
                   <motion.div
-                    key={index}
+                    key={service.title}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -501,9 +501,9 @@ export default function BrutalismPage() {
                     </p>
 
                     <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                      {service.features.map((f, idx) => (
+                      {service.features.map((f) => (
                         <li
-                          key={idx}
+                          key={f}
                           style={{
                             display: "flex",
                             alignItems: "center",
@@ -594,7 +594,7 @@ export default function BrutalismPage() {
                 const rotation = index % 2 === 0 ? -0.3 : 0.3;
                 return (
                   <motion.div
-                    key={index}
+                    key={job.name}
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -717,9 +717,9 @@ export default function BrutalismPage() {
                       {/* Responsibilities */}
                       {job.responsibilities && job.responsibilities.length > 0 && (
                         <ul style={{ listStyle: "none", padding: 0, margin: "0 0 1rem 0" }}>
-                          {job.responsibilities.map((r, idx) => (
+                          {job.responsibilities.map((r) => (
                             <li
-                              key={idx}
+                              key={r}
                               style={{
                                 display: "flex",
                                 alignItems: "flex-start",
@@ -852,7 +852,7 @@ export default function BrutalismPage() {
 
                 return (
                   <motion.div
-                    key={index}
+                    key={project.name}
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -898,6 +898,7 @@ export default function BrutalismPage() {
                           src={firstImage}
                           alt={project.name}
                           fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover"
                         />
                       ) : (
@@ -1007,9 +1008,9 @@ export default function BrutalismPage() {
                               margin: 0,
                             }}
                           >
-                            {project.highlights.slice(0, 3).map((h, idx) => (
+                            {project.highlights.slice(0, 3).map((h) => (
                               <li
-                                key={idx}
+                                key={h}
                                 style={{
                                   display: "flex",
                                   alignItems: "flex-start",

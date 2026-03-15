@@ -371,7 +371,7 @@ export default function MinimalPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10">
             {services.map((service, i) => (
-              <Fade key={i} delay={0.08 * i}>
+              <Fade key={service.title} delay={0.08 * i}>
                 <div className="flex items-start gap-4">
                   <span
                     className="mt-0.5 flex-shrink-0"
@@ -446,7 +446,7 @@ export default function MinimalPage() {
 
             <div className="flex flex-col gap-0">
               {work.map((job, i) => (
-                <Fade key={i} delay={0.08 * i}>
+                <Fade key={`${job.name}-${job.position}`} delay={0.08 * i}>
                   <div
                     className="flex gap-8 relative"
                     style={{
@@ -618,7 +618,7 @@ export default function MinimalPage() {
                   (p.images && p.images.length > 0) || p.url
               )
               .map((project, i) => (
-                <Fade key={i} delay={0.08 * i}>
+                <Fade key={project.name} delay={0.08 * i}>
                   <div className="group">
                     {/* Image */}
                     {project.images && project.images.length > 0 && (
@@ -750,7 +750,7 @@ export default function MinimalPage() {
               }}
             >
               {skills.map((skill, i) => (
-                <span key={i}>
+                <span key={skill.name}>
                   {skill.name}
                   {i < skills.length - 1 && (
                     <span

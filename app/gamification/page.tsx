@@ -663,7 +663,7 @@ export default function GamificationPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {services.map((service, index) => (
                 <motion.div
-                  key={index}
+                  key={service.title}
                   className="game-card game-card-glow p-6"
                   style={{ borderLeft: "3px solid #00ff88" }}
                   initial={{ opacity: 0, y: 30 }}
@@ -698,7 +698,7 @@ export default function GamificationPage() {
                   <ul className="space-y-1.5">
                     {service.features.map((feature, idx) => (
                       <li
-                        key={idx}
+                        key={feature}
                         className="flex items-center gap-2 text-sm"
                         style={{
                           color: "#8b949e",
@@ -745,7 +745,7 @@ export default function GamificationPage() {
             <div className="space-y-10">
               {cvData.work.map((work, index) => (
                 <motion.div
-                  key={index}
+                  key={work.name}
                   className="relative flex gap-6"
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -880,7 +880,7 @@ export default function GamificationPage() {
                           <ul className="space-y-1">
                             {work.responsibilities.map((resp, idx) => (
                               <li
-                                key={idx}
+                                key={resp}
                                 className="flex gap-2 text-sm"
                                 style={{
                                   color: "#8b949e",
@@ -950,7 +950,7 @@ export default function GamificationPage() {
 
                 return (
                   <motion.div
-                    key={index}
+                    key={project.name}
                     className="game-project-card flex flex-col"
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -969,6 +969,7 @@ export default function GamificationPage() {
                           src={firstImage}
                           alt={project.name}
                           fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
                           className="object-cover"
                         />
                         <div
@@ -1015,7 +1016,7 @@ export default function GamificationPage() {
                         <ul className="space-y-1 flex-1">
                           {project.highlights.slice(0, 2).map((h, idx) => (
                             <li
-                              key={idx}
+                              key={h}
                               className="flex gap-2 text-xs"
                               style={{
                                 color: "#8b949e",
@@ -1047,7 +1048,7 @@ export default function GamificationPage() {
                               padding: ".3rem .7rem",
                               borderRadius: 2,
                               textTransform: "uppercase",
-                              transition: "all .2s ease",
+                              transition: "color .2s ease, border-color .2s ease",
                             }}
                           >
                             Demo &nearr;
@@ -1067,7 +1068,7 @@ export default function GamificationPage() {
                               padding: ".3rem .7rem",
                               borderRadius: 2,
                               textTransform: "uppercase",
-                              transition: "all .2s ease",
+                              transition: "color .2s ease, border-color .2s ease",
                             }}
                           >
                             GitHub &nearr;
@@ -1108,7 +1109,7 @@ export default function GamificationPage() {
             <div className="flex flex-wrap gap-3">
               {cvData.skills.map((skill, index) => (
                 <motion.span
-                  key={index}
+                  key={skill.name}
                   className="game-skill-tag"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
@@ -1182,7 +1183,7 @@ export default function GamificationPage() {
                     padding: ".5rem 1.25rem",
                     borderRadius: 2,
                     boxShadow: "0 0 12px rgba(0,255,136,.3)",
-                    transition: "all .2s ease",
+                    transition: "background .2s ease, box-shadow .2s ease",
                   }}
                 >
                   Contacter
@@ -1222,7 +1223,7 @@ export default function GamificationPage() {
                         fontFamily: "'Orbitron', monospace",
                         fontSize: ".65rem",
                         letterSpacing: ".08em",
-                        transition: "all .2s ease",
+                        transition: "color .2s ease, filter .2s ease",
                         filter: "drop-shadow(0 0 4px rgba(0,255,136,.3))",
                       }}
                     >
