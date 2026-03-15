@@ -6,7 +6,7 @@
     "email": "dev.titosy@gmail.com",
     "phone": "+261 38 80 322 74",
     "url": "https://titosy.dev",
-    "summary": "Développeur front-end et mobile avec plus de 3 ans d'expérience sur React, TypeScript, Flutter et Dart. Passionné par la création d'interfaces intuitives et accessibles, je m'épanouis dans des environnements agiles et collaboratifs.",
+    "summary": "Plus qu'un développeur, je suis un partenaire technique impliqué dans la réussite de votre produit. Avec plus de 4 années d'expérience dans le développement d'applications web et mobiles, j'ai acquis une méthodologie efficace pour transformer vos idées en produits concrets. Je maîtrise la chaîne de production complète : analyse, conception, développement et mise en production.",
     "theme": "default",
     "location": {
       "address": "",
@@ -30,12 +30,44 @@
   },
   "work": [
     {
+      "name": "Fluentech",
+      "position": "Développeur Javascript / Flutter / Kotlin",
+      "location_type": "Hybride",
+      "location": "Antananarivo, Madagascar",
+      "startDate": "2025-10-01",
+      "endDate": null,
+      "summary": "Mise en place d'une solution SaaS pour la gestion de financement.",
+      "highlights": [],
+      "responsibilities": [
+        "Intégration de plusieurs modules micro-frontend avec Next.js.",
+        "Intégration des designs / tokens Figma avec un Storybook pour tester et avoir un visuel des composants réutilisables.",
+        "Configuration du serveur de déploiement avec Dockploy.",
+        "Gestion des workflows avec Inngest.",
+        "Développement d'API backend avec Nest.js.",
+        "Développement agentic avec Claude Code.",
+        "Gestion et optimisation du contexte avec Byterover, GSD.",
+        "Mise en place d'un système RAG pour guider les utilisateurs dans l'utilisation de la plateforme."
+      ],
+      "achievements": [],
+      "skills": [
+        "Next.js",
+        "Nest.js",
+        "PostgreSQL",
+        "Inngest",
+        "Langchain",
+        "LangGraph",
+        "Claude Code",
+        "GSD",
+        "Spec Driven Development"
+      ]
+    },
+    {
       "name": "PUSH-IT",
       "position": "Développeur Fullstack Javascript",
       "location_type": "Hybride",
       "location": "Antananarivo, Madagascar",
-      "startDate": "2025-08-01",
-      "endDate": null,
+      "startDate": "2025-07-01",
+      "endDate": "2025-10-01",
       "summary": "Développement d'une application de gestion de licences logicielles",
       "highlights": [],
       "responsibilities": [
@@ -72,7 +104,7 @@
         "Contributed to a major project that streamlined internal workflows, improving efficiency by 30%"
       ],
       "responsibilities": [
-        "Développement et maintenance des interfaces utilisateurs en utilisant React et ExtJS.",
+        "Développement et maintenance des interfaces utilisateurs en utilisant React, ExtJS et Flutter pour une version mobile.",
         "Intégration des fonctionnalités front-end avec les données du serveur via GraphQL.",
         "Participation aux réunions quotidiennes (Daily meeting) et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet."
       ],
@@ -83,6 +115,7 @@
       "skills": [
         "ExtJS",
         "ReactJS",
+        "Flutter",
         "PostgreSQL",
         "GraphQL",
         "Gitlab CI/CD"
@@ -97,9 +130,7 @@
       "startDate": "2022-03-14",
       "endDate": "2022-06-23",
       "summary": "Membre d'une équipe chargée des intégrations et des outils pour développeurs. Mission principale : améliorer et simplifier l'expérience des développeurs en optimisant les outils et les processus, en assurant leur accessibilité et en répondant aux besoins spécifiques des équipes techniques.",
-      "highlights": [
-        "Improved mobile app performance by optimizing code"
-      ],
+      "highlights": ["Improved mobile app performance by optimizing code"],
       "responsibilities": [
         "Intégration d’un paiement Mvola dans une application de partage de voiture et chauffeur de taxi.",
         "Création d’un générateur de code en Dart pour faciliter le développement",
@@ -108,13 +139,7 @@
       "achievements": [
         "Développement et maintenance d'applications mobiles en utilisant Flutter, Dart et Node.js. Collaboration avec l'équipe pour implémenter de nouvelles fonctionnalités et corriger les bugs"
       ],
-      "skills": [
-        "Flutter",
-        "Dart",
-        "Javascript",
-        "Github Actions",
-        "Firebase"
-      ]
+      "skills": ["Flutter", "Dart", "Javascript", "Github Actions", "Firebase"]
     }
   ],
   "volunteer": [],
@@ -135,46 +160,27 @@
     {
       "name": "Figma",
       "level": "Expert",
-      "keywords": [
-        "Design",
-        "UI"
-      ]
+      "keywords": ["Design", "UI"]
     },
     {
       "name": "Gitlab",
       "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code"]
     },
     {
       "name": "HTML",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend"
-      ]
+      "keywords": ["Web Development", "Frontend"]
     },
     {
       "name": "CSS",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Responsive Design"
-      ]
+      "keywords": ["Web Development", "Frontend", "Responsive Design"]
     },
     {
       "name": "JavaScript",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Front-end",
-        "Back-end",
-        "Fullstack"
-      ]
+      "keywords": ["Web Development", "Front-end", "Back-end", "Fullstack"]
     },
     {
       "name": "Tailwind",
@@ -199,41 +205,22 @@
     {
       "name": "Node",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "JavaScript",
-        "Server"
-      ]
+      "keywords": ["Web Development", "Backend", "JavaScript", "Server"]
     },
     {
       "name": "MySQL",
       "level": "Intermediate",
-      "keywords": [
-        "Databases",
-        "SQL",
-        "Data Storage",
-        "Backend"
-      ]
+      "keywords": ["Databases", "SQL", "Data Storage", "Backend"]
     },
     {
       "name": "Git",
       "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code"]
     },
     {
       "name": "GitHub",
       "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code",
-        "Git"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code", "Git"]
     },
     {
       "name": "Next.js",
@@ -249,12 +236,52 @@
     {
       "name": "React",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
-      ]
+      "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
+    },
+    {
+      "name": "Flutter",
+      "level": "Intermediate",
+      "keywords": ["Mobile Development", "Cross-platform", "Dart"]
+    },
+    {
+      "name": "Dart",
+      "level": "Intermediate",
+      "keywords": ["Mobile Development", "Flutter"]
+    },
+    {
+      "name": "React Native",
+      "level": "Beginner",
+      "keywords": ["Mobile Development", "Cross-platform", "JavaScript"]
+    },
+    {
+      "name": "Nest.js",
+      "level": "Beginner",
+      "keywords": ["Backend", "Node.js", "TypeScript"]
+    },
+    {
+      "name": "Android Jetpack",
+      "level": "Beginner",
+      "keywords": ["Android", "Mobile Development", "Kotlin"]
+    },
+    {
+      "name": "Kotlin",
+      "level": "Beginner",
+      "keywords": ["Android", "Mobile Development"]
+    },
+    {
+      "name": "n8n",
+      "level": "Beginner",
+      "keywords": ["Workflow Automation", "No-code"]
+    },
+    {
+      "name": "AWS Lambda",
+      "level": "Beginner",
+      "keywords": ["Cloud", "Serverless", "AWS"]
+    },
+    {
+      "name": "Cloudflare Workers",
+      "level": "Beginner",
+      "keywords": ["Cloud", "Serverless", "Edge Computing"]
     }
   ],
   "languages": [
@@ -270,10 +297,19 @@
   "interests": [
     {
       "name": "Technology",
-      "keywords": [
-        "AI",
-        "Blockchain"
-      ]
+      "keywords": ["AI", "Blockchain"]
+    },
+    {
+      "name": "Cuisine",
+      "keywords": []
+    },
+    {
+      "name": "Jeux vidéo",
+      "keywords": []
+    },
+    {
+      "name": "Guitare",
+      "keywords": []
     }
   ],
   "references": [
@@ -381,12 +417,26 @@
     {
       "name": "MID",
       "isActive": false,
-      "description": "Développement de l'interface mobile d'une application de gestion des ordres d'achat et de vente de devises",
+      "description": "Développement de l'interface web et mobile d'une application de gestion des ordres d'achat et de vente de devises. (Freelance, 2023 - 2024)",
       "highlights": [
         "Développement de l'interface mobile avec Flutter pour permettre aux clients de passer et gérer leurs ordres en toute mobilité.",
         "Intégration des fonctionnalités de saisie, validation et suivi des ordres en fonction des profils utilisateurs définis.",
         "Collaboration avec l'équipe backend utilisant Laravel pour l'intégration des API.",
         "Mise en place de notifications push via Firebase pour informer les utilisateurs en temps réel des mises à jour sur leurs ordres."
+      ],
+      "url": null,
+      "github": null,
+      "image": null
+    },
+    {
+      "name": "Phototech",
+      "isActive": false,
+      "description": "Développement d'une plateforme pour le suivi des documents pour les agents de terrain. (Freelance, 2025)",
+      "highlights": [
+        "Mise en place d'un système de gestion des rôles (agent, rédacteur, admin, owner).",
+        "Création d'une version mobile qui fonctionne en offline et synchronise automatiquement les données lorsque l'agent est connecté à internet.",
+        "Mise en place du frontend et le backoffice avec Next.js et Next API.",
+        "Gestion des photos prises par l'agent de terrain en utilisant Vercel Blob."
       ],
       "url": null,
       "github": null,
