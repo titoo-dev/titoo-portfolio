@@ -1,0 +1,683 @@
+/* ===================================================================
+   MINIMAL THEME — Barely-There UI
+   Inspired by: paco.me, linear.app, craft.do
+   Philosophy: typography does all the work. content floats in space.
+   =================================================================== */
+
+
+/* ------------------------------------------------------------------ */
+/* CSS VARIABLE OVERRIDES                                               */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] {
+  --background: oklch(0.995 0 0);
+  --foreground: oklch(0.08 0 0);
+  --card: transparent;
+  --card-foreground: oklch(0.08 0 0);
+  --popover: oklch(0.995 0 0);
+  --popover-foreground: oklch(0.08 0 0);
+  --primary: oklch(0.2 0 0);
+  --primary-foreground: oklch(0.995 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.2 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.55 0 0);
+  --accent: oklch(0.95 0 0);
+  --accent-foreground: oklch(0.2 0 0);
+  --border: oklch(0.9 0 0 / 0.4);
+  --input: oklch(0.92 0 0 / 0.5);
+  --ring: oklch(0.7 0 0 / 0.3);
+  --radius: 0px;
+  --destructive: oklch(0.45 0.12 27);
+
+  /* Custom font tokens */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+}
+
+/* ------------------------------------------------------------------ */
+/* BODY & GLOBAL RESETS                                                 */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] body {
+  font-family: var(--font-body);
+  font-weight: 300;
+  letter-spacing: 0.01em;
+  background-color: oklch(0.995 0 0);
+  color: oklch(0.08 0 0);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove all box-shadows globally */
+html[data-theme="minimal"] *,
+html[data-theme="minimal"] *:hover,
+html[data-theme="minimal"] *:focus {
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Ultra-thin borders everywhere */
+html[data-theme="minimal"] * {
+  border-color: oklch(0.9 0 0 / 0.35) !important;
+}
+
+/* Remove all border-radius globally */
+html[data-theme="minimal"] *:not(img):not(span.rounded-full):not(.animate-ping):not(.relative.inline-flex) {
+  border-radius: 0 !important;
+}
+
+/* Slow, opacity-only transitions — scoped to non-interactive elements */
+html[data-theme="minimal"] section *,
+html[data-theme="minimal"] footer * {
+  transition-duration: 0.6s !important;
+  transition-timing-function: ease !important;
+}
+
+/* Allow fast transitions only for critical interactive elements */
+html[data-theme="minimal"] button:active,
+html[data-theme="minimal"] a:active {
+  transition-duration: 0.1s !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* TYPOGRAPHY — HEADINGS (Cormorant Garamond)                           */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] h1,
+html[data-theme="minimal"] h2,
+html[data-theme="minimal"] h3,
+html[data-theme="minimal"] h4 {
+  font-family: var(--font-display);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: oklch(0.08 0 0);
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+}
+
+html[data-theme="minimal"] h1 {
+  font-size: clamp(2.8rem, 8vw, 5rem);
+  font-weight: 300;
+}
+
+html[data-theme="minimal"] h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+}
+
+html[data-theme="minimal"] h3 {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 400;
+}
+
+/* ------------------------------------------------------------------ */
+/* HERO BACKGROUND — REMOVE BLOBS & GRID PATTERNS                       */
+/* ------------------------------------------------------------------ */
+
+/* The fixed background overlay in HeroBackground */
+html[data-theme="minimal"] .fixed.inset-0.-z-10 {
+  display: none !important;
+}
+
+/* Background pattern inside sections */
+html[data-theme="minimal"] .absolute.inset-0.pointer-events-none {
+  display: none !important;
+}
+
+/* Decorative blobs in sections */
+html[data-theme="minimal"] .absolute.top-0.-right-20,
+html[data-theme="minimal"] .absolute.bottom-0.-left-20,
+html[data-theme="minimal"] .absolute.top-0\.-right-20,
+html[data-theme="minimal"] .absolute.top-1\/4.-right-16,
+html[data-theme="minimal"] .absolute.bottom-1\/4.-left-16 {
+  display: none !important;
+}
+
+/* Service section decorative circles */
+html[data-theme="minimal"] .absolute.-top-24.-right-24,
+html[data-theme="minimal"] .absolute.-bottom-12.-left-12 {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* HERO SECTION                                                          */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] section.relative.py-20,
+html[data-theme="minimal"] section.relative.py-32 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Hero image — small, circular, decorative */
+html[data-theme="minimal"] .relative.group .relative.w-32.h-32,
+html[data-theme="minimal"] .relative.group .relative.w-40.h-40,
+html[data-theme="minimal"] .relative.group .relative.md\:w-40.md\:h-40 {
+  width: 4rem !important;
+  height: 4rem !important;
+  border: 1px solid oklch(0.85 0 0 / 0.5) !important;
+  border-radius: 50% !important;
+  overflow: hidden;
+}
+
+/* Remove the glow ring behind avatar */
+html[data-theme="minimal"] .absolute.-inset-1.bg-gradient-to-r {
+  display: none !important;
+}
+
+/* Hero availability badge */
+html[data-theme="minimal"] .inline-flex.items-center.gap-2.text-sm.font-medium.text-muted-foreground {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: oklch(0.55 0 0);
+  gap: 0.5rem;
+}
+
+/* Hero title gradient override */
+html[data-theme="minimal"] h1.bg-clip-text.text-transparent {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  background-clip: unset !important;
+  -webkit-text-fill-color: oklch(0.08 0 0) !important;
+  color: oklch(0.08 0 0) !important;
+}
+
+/* Hero subtitle */
+html[data-theme="minimal"] .text-xl.md\:text-2xl.text-muted-foreground.font-medium,
+html[data-theme="minimal"] .text-xl.text-muted-foreground.font-medium {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: oklch(0.55 0 0);
+}
+
+/* Hero summary paragraph */
+html[data-theme="minimal"] .text-base.md\:text-lg.text-muted-foreground.max-w-2xl,
+html[data-theme="minimal"] .text-base.text-muted-foreground.max-w-2xl {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: oklch(0.45 0 0);
+  max-width: 52ch;
+}
+
+/* ------------------------------------------------------------------ */
+/* BUTTONS                                                               */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] button,
+html[data-theme="minimal"] [role="button"],
+html[data-theme="minimal"] .btn,
+html[data-theme="minimal"] a[class*="inline-flex"][class*="items-center"][class*="rounded"] {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Primary button */
+html[data-theme="minimal"] button[class*="bg-primary"],
+html[data-theme="minimal"] [class*="variant-default"] {
+  background: oklch(0.08 0 0) !important;
+  color: oklch(0.995 0 0) !important;
+  border: 1px solid oklch(0.08 0 0) !important;
+  padding: 0.6rem 1.5rem !important;
+}
+
+html[data-theme="minimal"] button[class*="bg-primary"]:hover,
+html[data-theme="minimal"] [class*="variant-default"]:hover {
+  background: transparent !important;
+  color: oklch(0.08 0 0) !important;
+}
+
+/* Outline button */
+html[data-theme="minimal"] button[class*="variant-outline"],
+html[data-theme="minimal"] a[class*="variant-outline"],
+html[data-theme="minimal"] [class*="variant-outline"] {
+  background: transparent !important;
+  color: oklch(0.08 0 0) !important;
+  border: 1px solid oklch(0.8 0 0 / 0.6) !important;
+  padding: 0.6rem 1.5rem !important;
+}
+
+html[data-theme="minimal"] [class*="variant-outline"]:hover {
+  background: oklch(0.08 0 0) !important;
+  color: oklch(0.995 0 0) !important;
+  border-color: oklch(0.08 0 0) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* SECTION BADGES (pill with colored dot)                               */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] .inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10 {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 0 0.75rem 0 !important;
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: oklch(0.55 0 0) !important;
+}
+
+/* Hide the colored dot in badges */
+html[data-theme="minimal"] .inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10 .w-2.h-2.rounded-full {
+  display: none !important;
+}
+
+/* Section headings */
+html[data-theme="minimal"] section h2.text-3xl,
+html[data-theme="minimal"] section h2.text-4xl,
+html[data-theme="minimal"] section h2.md\:text-4xl,
+html[data-theme="minimal"] section h2.text-3xl.md\:text-4xl {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+}
+
+/* Section subtitle */
+html[data-theme="minimal"] section .text-muted-foreground:not(h2 ~ p) {
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+
+/* Section borders — ultra-thin horizontal lines */
+html[data-theme="minimal"] section.border-t {
+  border-top: 1px solid oklch(0.9 0 0 / 0.35) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* SERVICES SECTION                                                      */
+/* ------------------------------------------------------------------ */
+
+/* Service cards — remove all visual chrome */
+html[data-theme="minimal"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *[class*="rounded-2xl"][class*="border"],
+html[data-theme="minimal"] section .group.relative.rounded-2xl.border.border-border.bg-card\/50 {
+  background: transparent !important;
+  border: none !important;
+  border-top: 1px solid oklch(0.88 0 0 / 0.5) !important;
+  border-radius: 0 !important;
+  padding: 2rem 0 !important;
+  backdrop-filter: none !important;
+}
+
+html[data-theme="minimal"] section .group.relative.rounded-2xl.border.border-border.bg-card\/50:hover {
+  transform: none !important;
+  border-top-color: oklch(0.3 0 0 / 0.6) !important;
+}
+
+/* Service icon container */
+html[data-theme="minimal"] .w-12.h-12.rounded-xl.bg-primary\/10 {
+  background: transparent !important;
+  border: 1px solid oklch(0.85 0 0 / 0.5) !important;
+  border-radius: 0 !important;
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+html[data-theme="minimal"] .w-12.h-12.rounded-xl.bg-primary\/10 svg {
+  width: 1rem !important;
+  height: 1rem !important;
+  color: oklch(0.3 0 0) !important;
+}
+
+/* Service feature list bullets */
+html[data-theme="minimal"] ul.space-y-2 .w-1\.5.h-1\.5.rounded-full.bg-primary {
+  background: oklch(0.6 0 0) !important;
+  width: 3px !important;
+  height: 3px !important;
+  border-radius: 50% !important;
+}
+
+/* Service section decorative gradient overlay */
+html[data-theme="minimal"] .absolute.top-0.right-0.w-32.h-32.bg-gradient-to-br {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* WORK / TIMELINE SECTION                                               */
+/* ------------------------------------------------------------------ */
+
+/* Timeline vertical line — barely visible */
+html[data-theme="minimal"] .absolute.left-0.top-0.bottom-0.w-px,
+html[data-theme="minimal"] .absolute.left-0.top-0.w-px {
+  background: oklch(0.88 0 0 / 0.4) !important;
+  width: 0.5px !important;
+}
+
+html[data-theme="minimal"] .absolute.left-0.top-0.w-px.bg-gradient-to-b.from-primary {
+  background: oklch(0.5 0 0 / 0.3) !important;
+}
+
+/* Timeline dot */
+html[data-theme="minimal"] .absolute.-right-4.top-2.w-2.h-2.rounded-full.bg-primary {
+  background: oklch(0.08 0 0) !important;
+  ring: none !important;
+  box-shadow: none !important;
+  width: 5px !important;
+  height: 5px !important;
+  border-radius: 50% !important;
+}
+
+/* Work cards — remove backgrounds, borders, just padding + top line */
+html[data-theme="minimal"] .flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6 {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  border: none !important;
+  border-top: 1px solid oklch(0.88 0 0 / 0.4) !important;
+  border-radius: 0 !important;
+  padding: 1.5rem 0 !important;
+}
+
+html[data-theme="minimal"] .flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6:hover {
+  border-top-color: oklch(0.3 0 0 / 0.5) !important;
+}
+
+/* Work card position title */
+html[data-theme="minimal"] .flex-1.space-y-4 h3.text-xl.font-semibold {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.3rem;
+  letter-spacing: -0.01em;
+}
+
+/* Skill tags inside work cards */
+html[data-theme="minimal"] .flex.flex-wrap.gap-2 span.px-3.py-1.text-xs.rounded-full.bg-secondary {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  color: oklch(0.55 0 0) !important;
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+}
+
+/* Add dot separator between skill tags */
+html[data-theme="minimal"] .flex.flex-wrap.gap-2 span.px-3.py-1.text-xs.rounded-full.bg-secondary::after {
+  content: ' ·';
+  color: oklch(0.75 0 0);
+  margin-left: 0.25rem;
+}
+
+html[data-theme="minimal"] .flex.flex-wrap.gap-2 span.px-3.py-1.text-xs.rounded-full.bg-secondary:last-child::after {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* PROJECTS SECTION                                                      */
+/* ------------------------------------------------------------------ */
+
+/* Project cards — minimal, border only on hover */
+html[data-theme="minimal"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 .group.relative.rounded-2xl.border.border-border.bg-card,
+html[data-theme="minimal"] section#projects .group.relative.rounded-2xl {
+  background: transparent !important;
+  border: 1px solid transparent !important;
+  border-radius: 0 !important;
+  backdrop-filter: none !important;
+  overflow: visible !important;
+}
+
+html[data-theme="minimal"] section#projects .group.relative.rounded-2xl:hover {
+  border-color: oklch(0.85 0 0 / 0.5) !important;
+}
+
+/* Project image container */
+html[data-theme="minimal"] section#projects .relative.w-full.h-48.bg-muted {
+  border-radius: 0 !important;
+  filter: grayscale(30%) !important;
+}
+
+/* Hide gradient overlay on project images */
+html[data-theme="minimal"] section#projects .absolute.top-0.left-0.w-full.h-1.bg-gradient-to-r {
+  display: none !important;
+}
+
+/* Project card content area */
+html[data-theme="minimal"] section#projects .p-6.flex.flex-col.gap-3 {
+  padding: 1rem 0 !important;
+}
+
+/* Project title */
+html[data-theme="minimal"] section#projects h3.text-xl.font-semibold {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.2rem;
+  letter-spacing: -0.01em;
+  color: oklch(0.08 0 0) !important;
+  transition-property: color !important;
+}
+
+html[data-theme="minimal"] section#projects h3.text-xl.font-semibold:hover {
+  color: oklch(0.35 0 0) !important;
+}
+
+/* Active badge on projects */
+html[data-theme="minimal"] .inline-flex.items-center.gap-1\.5.px-3.py-1\.5.text-xs.font-medium.rounded-full.bg-green-500\/90 {
+  background: transparent !important;
+  color: oklch(0.45 0 0) !important;
+  border: 1px solid oklch(0.8 0 0 / 0.4) !important;
+  border-radius: 0 !important;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+html[data-theme="minimal"] .inline-flex.items-center.gap-1\.5.px-3.py-1\.5 .w-1\.5.h-1\.5.rounded-full.bg-white.animate-pulse {
+  display: none !important;
+}
+
+/* Project action buttons */
+html[data-theme="minimal"] section#projects .p-2.rounded-full.bg-background\/90 {
+  background: oklch(0.995 0 0) !important;
+  border-radius: 0 !important;
+  border: 1px solid oklch(0.85 0 0 / 0.5) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* SKILLS SECTION                                                        */
+/* ------------------------------------------------------------------ */
+
+/* Remove section background effects */
+html[data-theme="minimal"] section#skills .absolute.inset-0.bg-\[radial-gradient\(circle_at_30\%_50\%\,rgba\(var\(--primary-rgb\,0\,0\,0\)\,0\.05\)\,transparent_50\%\)\] {
+  display: none !important;
+}
+
+/* Skill pills — strip all styling, plain text */
+html[data-theme="minimal"] section#skills .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5.rounded-full.border.border-border {
+  background: transparent !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0.1rem 0 !important;
+  backdrop-filter: none !important;
+}
+
+html[data-theme="minimal"] section#skills .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5.rounded-full.border.border-border:hover {
+  border: none !important;
+}
+
+/* Hide skill icons */
+html[data-theme="minimal"] section#skills .group svg.w-4.h-4.text-primary {
+  display: none !important;
+}
+
+/* Hide gradient overlay in skill pills */
+html[data-theme="minimal"] section#skills .absolute.inset-0.rounded-full.bg-gradient-to-br {
+  display: none !important;
+}
+
+/* Skill name — plain text */
+html[data-theme="minimal"] section#skills .font-medium.text-sm.relative {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.85rem;
+  color: oklch(0.4 0 0) !important;
+  letter-spacing: 0.02em;
+}
+
+/* Skills container — plain text flow with dot separators */
+html[data-theme="minimal"] section#skills .flex.flex-wrap.gap-3 {
+  gap: 0 !important;
+  column-gap: 0 !important;
+}
+
+html[data-theme="minimal"] section#skills .group.relative.inline-flex::after {
+  content: ' · ';
+  color: oklch(0.75 0 0);
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.85rem;
+  padding: 0 0.35rem;
+  white-space: pre;
+}
+
+html[data-theme="minimal"] section#skills .group.relative.inline-flex:last-child::after {
+  display: none;
+}
+
+/* ------------------------------------------------------------------ */
+/* FOOTER                                                                */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] footer {
+  border-top: 1px solid oklch(0.88 0 0 / 0.35) !important;
+  padding: 3rem 0 !important;
+}
+
+html[data-theme="minimal"] footer h3.font-semibold.text-lg {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.6rem;
+  letter-spacing: -0.01em;
+}
+
+html[data-theme="minimal"] footer .border-t.border-border {
+  border-top: 1px solid oklch(0.9 0 0 / 0.25) !important;
+}
+
+html[data-theme="minimal"] footer .text-sm.text-muted-foreground {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: oklch(0.65 0 0) !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* MOTION — OVERRIDE ANIMATION BEHAVIOUR                                 */
+/* ------------------------------------------------------------------ */
+
+/* Allow motion/react to still animate — only remap transitions to
+   opacity-focused fades, DO NOT kill transforms (breaks framer-motion) */
+html[data-theme="minimal"] [style*="transform"] {
+  transition-property: opacity, transform !important;
+  transition-duration: 0.4s !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* LINKS                                                                 */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] a {
+  color: oklch(0.2 0 0);
+  text-decoration: none;
+  font-weight: 400;
+}
+
+html[data-theme="minimal"] a:hover {
+  color: oklch(0.08 0 0);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 0.5px;
+}
+
+/* Profile links in hero */
+html[data-theme="minimal"] a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground {
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: oklch(0.55 0 0) !important;
+  gap: 0.3rem;
+}
+
+html[data-theme="minimal"] a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground:hover {
+  color: oklch(0.08 0 0) !important;
+  text-decoration: none;
+}
+
+/* Arrow icon on profile links */
+html[data-theme="minimal"] a.inline-flex.items-center.gap-2.text-sm .w-4.h-4 {
+  width: 0.65rem !important;
+  height: 0.65rem !important;
+}
+
+/* ------------------------------------------------------------------ */
+/* DROPDOWN / POPOVER                                                    */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] [data-radix-popper-content-wrapper] > div,
+html[data-theme="minimal"] [role="menu"],
+html[data-theme="minimal"] .dropdown-content {
+  background: oklch(0.995 0 0) !important;
+  border: 1px solid oklch(0.88 0 0 / 0.4) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="minimal"] [role="menuitem"] {
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+/* ------------------------------------------------------------------ */
+/* SCROLLBAR                                                             */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] ::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+html[data-theme="minimal"] ::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html[data-theme="minimal"] ::-webkit-scrollbar-thumb {
+  background: oklch(0.85 0 0 / 0.5);
+  border-radius: 0;
+}
+
+html[data-theme="minimal"] ::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.7 0 0 / 0.6);
+}
+
+/* ------------------------------------------------------------------ */
+/* SELECTION                                                             */
+/* ------------------------------------------------------------------ */
+
+html[data-theme="minimal"] ::selection {
+  background: oklch(0.08 0 0);
+  color: oklch(0.995 0 0);
+}

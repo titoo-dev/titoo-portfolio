@@ -1,0 +1,1057 @@
+/* ==========================================================================
+   GAMIFICATION UI THEME — RPG Character Profile / Game HUD
+   Portfolio: Titosy Manankasina — Fullstack JavaScript & Flutter Developer
+   References: Steam, Duolingo, League of Legends, Xbox Achievements, RPG Stat Sheets
+   ========================================================================== */
+
+/* ==========================================================================
+   1. FONT IMPORTS
+   ========================================================================== */
+
+
+/* ==========================================================================
+   2. KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+@keyframes game-pulse {
+  0%, 100% {
+    box-shadow: 0 0 5px #00ff88, 0 0 10px #00ff88;
+  }
+  50% {
+    box-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 30px #00ff88;
+  }
+}
+
+@keyframes game-pulse-gold {
+  0%, 100% {
+    box-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700;
+  }
+  50% {
+    box-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 35px #FFD700;
+  }
+}
+
+@keyframes game-pulse-cyan {
+  0%, 100% {
+    box-shadow: 0 0 5px #00BFFF, 0 0 10px #00BFFF;
+  }
+  50% {
+    box-shadow: 0 0 10px #00BFFF, 0 0 20px #00BFFF, 0 0 30px #00BFFF;
+  }
+}
+
+@keyframes game-scanline {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 4px;
+  }
+}
+
+@keyframes game-xp-fill {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 75%;
+  }
+}
+
+@keyframes game-ping {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes game-flicker {
+  0%, 95%, 100% {
+    opacity: 1;
+  }
+  96% {
+    opacity: 0.85;
+  }
+  97% {
+    opacity: 1;
+  }
+  98% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes game-border-glow {
+  0%, 100% {
+    border-color: rgba(0, 255, 136, 0.3);
+    box-shadow: 0 0 8px rgba(0, 255, 136, 0.1);
+  }
+  50% {
+    border-color: rgba(0, 255, 136, 0.7);
+    box-shadow: 0 0 16px rgba(0, 255, 136, 0.3);
+  }
+}
+
+@keyframes game-particles {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+@keyframes game-hud-slide-in {
+  0% {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes game-level-glow {
+  0%, 100% {
+    text-shadow: 0 0 8px #FFD700, 0 0 16px #FFD700;
+  }
+  50% {
+    text-shadow: 0 0 12px #FFD700, 0 0 24px #FFD700, 0 0 40px #FFD700;
+  }
+}
+
+@keyframes game-hp-bar {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes game-stamp-in {
+  0% {
+    opacity: 0;
+    transform: scale(2) rotate(-20deg);
+  }
+  60% {
+    opacity: 0.8;
+    transform: scale(0.9) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-5deg);
+  }
+}
+
+@keyframes game-grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+@keyframes game-neon-text {
+  0%, 100% {
+    text-shadow: 0 0 6px #00ff88, 0 0 12px #00ff88;
+  }
+  50% {
+    text-shadow: 0 0 10px #00ff88, 0 0 20px #00ff88, 0 0 35px #00ff88;
+  }
+}
+
+@keyframes game-profile-ring {
+  0% {
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.6), 0 0 20px rgba(0, 255, 136, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(0, 255, 136, 0.9), 0 0 35px rgba(0, 255, 136, 0.5), 0 0 60px rgba(0, 255, 136, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.6), 0 0 20px rgba(0, 255, 136, 0.3);
+  }
+}
+
+/* ==========================================================================
+   3. CSS VARIABLE OVERRIDES
+   ========================================================================== */
+
+html[data-theme="gamification"] {
+  --background: #0d1117;
+  --foreground: #e6edf3;
+  --card: #161b22;
+  --card-foreground: #e6edf3;
+  --popover: #161b22;
+  --popover-foreground: #e6edf3;
+  --primary: #00ff88;
+  --primary-foreground: #0d1117;
+  --secondary: #21262d;
+  --secondary-foreground: #8b949e;
+  --muted: #161b22;
+  --muted-foreground: #8b949e;
+  --accent: #FFD700;
+  --accent-foreground: #0d1117;
+  --destructive: #ff4444;
+  --destructive-foreground: #e6edf3;
+  --border: rgba(0, 255, 136, 0.2);
+  --input: #21262d;
+  --ring: #00ff88;
+  --radius: 0.25rem;
+
+  /* Game-specific custom properties */
+  --game-green: #00ff88;
+  --game-gold: #FFD700;
+  --game-purple: #9B59B6;
+  --game-cyan: #00BFFF;
+  --game-red: #ff4444;
+  --game-dark: #0d1117;
+  --game-card: #161b22;
+  --game-card-elevated: #1c2128;
+  --game-border: rgba(0, 255, 136, 0.2);
+  --game-border-gold: rgba(255, 215, 0, 0.3);
+  --game-glow-green: 0 0 10px rgba(0, 255, 136, 0.4);
+  --game-glow-gold: 0 0 10px rgba(255, 215, 0, 0.4);
+  --game-glow-purple: 0 0 10px rgba(155, 89, 182, 0.4);
+  --game-font-heading: 'Orbitron', 'Courier New', monospace;
+  --game-font-body: 'Rajdhani', 'Segoe UI', sans-serif;
+}
+
+/* ==========================================================================
+   4. BASE STYLES — BODY & TYPOGRAPHY
+   ========================================================================== */
+
+html[data-theme="gamification"] body {
+  background-color: var(--game-dark);
+  color: var(--foreground);
+  font-family: var(--game-font-body);
+  font-weight: 500;
+  line-height: 1.6;
+  animation: game-flicker 8s infinite;
+}
+
+/* Main wrapper */
+html[data-theme="gamification"] div.min-h-screen.relative.overflow-x-hidden {
+  background-color: var(--game-dark);
+  background-image:
+    linear-gradient(rgba(0, 255, 136, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: game-grid-move 20s linear infinite;
+  position: relative;
+}
+
+/* Scanlines overlay */
+html[data-theme="gamification"] div.min-h-screen.relative.overflow-x-hidden::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+  pointer-events: none;
+  z-index: 50;
+  animation: game-scanline 0.1s linear infinite;
+}
+
+/* Content container */
+html[data-theme="gamification"] div.max-w-5xl.mx-auto.px-6 {
+  position: relative;
+  z-index: 1;
+}
+
+/* Headings — Orbitron for all h1–h4 */
+html[data-theme="gamification"] h1,
+html[data-theme="gamification"] h2,
+html[data-theme="gamification"] h3,
+html[data-theme="gamification"] h4 {
+  font-family: var(--game-font-heading);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+html[data-theme="gamification"] h2 {
+  color: var(--game-gold);
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+html[data-theme="gamification"] h3 {
+  color: var(--game-green);
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+}
+
+html[data-theme="gamification"] p,
+html[data-theme="gamification"] span,
+html[data-theme="gamification"] li,
+html[data-theme="gamification"] a {
+  font-family: var(--game-font-body);
+}
+
+/* Links */
+html[data-theme="gamification"] a {
+  color: var(--game-green);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+html[data-theme="gamification"] a:hover {
+  color: var(--game-gold);
+  text-shadow: 0 0 8px var(--game-gold);
+}
+
+/* Borders */
+html[data-theme="gamification"] .border,
+html[data-theme="gamification"] .border-border {
+  border-color: var(--game-border) !important;
+}
+
+/* Muted text */
+html[data-theme="gamification"] .text-muted-foreground {
+  color: #8b949e !important;
+  font-family: var(--game-font-body);
+}
+
+/* ==========================================================================
+   5. HERO SECTION — CHARACTER PROFILE
+   ========================================================================== */
+
+html[data-theme="gamification"] section.relative.py-20 {
+  position: relative;
+  padding-bottom: 5rem;
+}
+
+/* Hero background — dark radial with color hints */
+html[data-theme="gamification"] div.fixed.inset-0.pointer-events-none.-z-10 {
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0, 255, 136, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 80%, rgba(0, 191, 255, 0.04) 0%, transparent 50%),
+    radial-gradient(ellipse 40% 30% at 20% 60%, rgba(155, 89, 182, 0.04) 0%, transparent 50%),
+    linear-gradient(180deg, #0d1117 0%, #0a0e14 50%, #0d1117 100%) !important;
+}
+
+/* Profile image — octagonal clip with animated glow ring */
+html[data-theme="gamification"] div.relative.w-32.h-32.rounded-full.overflow-hidden.border-4 {
+  border: 3px solid var(--game-green) !important;
+  border-radius: 0 !important;
+  clip-path: polygon(50% 0%, 85% 15%, 100% 50%, 85% 85%, 50% 100%, 15% 85%, 0% 50%, 15% 15%);
+  animation: game-profile-ring 2.5s ease-in-out infinite;
+  position: relative;
+  overflow: visible !important;
+}
+
+html[data-theme="gamification"] div.relative.w-32.h-32.rounded-full.overflow-hidden.border-4 img {
+  clip-path: polygon(50% 0%, 85% 15%, 100% 50%, 85% 85%, 50% 100%, 15% 85%, 0% 50%, 15% 15%);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(1.2) contrast(1.1);
+}
+
+/* Profile image outer glow shell */
+html[data-theme="gamification"] div.relative.w-32.h-32.rounded-full.overflow-hidden.border-4::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  clip-path: polygon(50% 0%, 85% 15%, 100% 50%, 85% 85%, 50% 100%, 15% 85%, 0% 50%, 15% 15%);
+  background: linear-gradient(135deg, rgba(0, 255, 136, 0.4), rgba(0, 191, 255, 0.2), rgba(0, 255, 136, 0.4));
+  z-index: -1;
+  animation: game-pulse 2s ease-in-out infinite;
+}
+
+/* XP bar below profile image */
+html[data-theme="gamification"] div.relative.w-32.h-32.rounded-full.overflow-hidden.border-4::after {
+  content: 'XP ████████████░░░';
+  display: block;
+  position: absolute;
+  bottom: -2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 9rem;
+  height: 1.2rem;
+  font-family: var(--game-font-heading);
+  font-size: 0.45rem;
+  letter-spacing: 0.05em;
+  color: var(--game-green);
+  text-align: center;
+  line-height: 1.2rem;
+  background: linear-gradient(90deg, rgba(0, 255, 136, 0.15) 0%, rgba(0, 255, 136, 0.05) 100%);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  border-radius: 2px;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.2);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Hero name h1 */
+html[data-theme="gamification"] h1.text-4xl,
+html[data-theme="gamification"] section.relative.py-20 h1 {
+  font-family: var(--game-font-heading) !important;
+  color: #e6edf3 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 30px rgba(0, 255, 136, 0.15);
+  position: relative;
+  display: inline-block;
+  animation: game-hud-slide-in 0.6s ease-out forwards;
+}
+
+/* Level badge appended after the name */
+html[data-theme="gamification"] h1.text-4xl::after,
+html[data-theme="gamification"] section.relative.py-20 h1::after {
+  content: '[ LVL 10 ]';
+  display: inline-block;
+  margin-left: 0.75rem;
+  font-family: var(--game-font-heading);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--game-gold);
+  background: rgba(255, 215, 0, 0.1);
+  border: 1px solid rgba(255, 215, 0, 0.4);
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  vertical-align: middle;
+  letter-spacing: 0.12em;
+  animation: game-level-glow 2s ease-in-out infinite;
+  text-shadow: 0 0 8px var(--game-gold);
+}
+
+/* Hero label — CLASS designation */
+html[data-theme="gamification"] p.text-xl,
+html[data-theme="gamification"] p.text-2xl {
+  font-family: var(--game-font-body) !important;
+  font-weight: 600 !important;
+  color: var(--game-green) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.95rem !important;
+  position: relative;
+}
+
+html[data-theme="gamification"] p.text-xl::before,
+html[data-theme="gamification"] p.text-2xl::before {
+  content: 'CLASS: ';
+  font-family: var(--game-font-heading);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--game-gold);
+  letter-spacing: 0.1em;
+  margin-right: 0.25rem;
+}
+
+/* Hero summary paragraph */
+html[data-theme="gamification"] p.text-base,
+html[data-theme="gamification"] p.text-lg {
+  font-family: var(--game-font-body) !important;
+  font-size: 0.95rem !important;
+  color: #8b949e !important;
+  line-height: 1.7;
+  border-left: 2px solid rgba(0, 255, 136, 0.3);
+  padding-left: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* "Available for projects" badge → ONLINE status indicator */
+html[data-theme="gamification"] div.inline-flex.items-center.gap-2.text-sm.font-medium.text-muted-foreground {
+  background: rgba(0, 255, 136, 0.08) !important;
+  border: 1px solid rgba(0, 255, 136, 0.4) !important;
+  border-radius: 2px !important;
+  padding: 0.35rem 0.85rem !important;
+  font-family: var(--game-font-heading) !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase;
+  color: var(--game-green) !important;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.1), inset 0 0 8px rgba(0, 255, 136, 0.05);
+  position: relative;
+}
+
+html[data-theme="gamification"] div.inline-flex.items-center.gap-2.text-sm.font-medium.text-muted-foreground::before {
+  content: '● ONLINE — ';
+  color: var(--game-green);
+  font-size: 0.65rem;
+  animation: game-ping 1.5s ease-in-out infinite;
+}
+
+/* Ping animation dot override */
+html[data-theme="gamification"] .animate-ping {
+  background: var(--game-green) !important;
+  animation: game-ping 1.5s ease-in-out infinite !important;
+}
+
+html[data-theme="gamification"] .bg-green-500 {
+  background: var(--game-green) !important;
+  box-shadow: 0 0 6px var(--game-green), 0 0 12px rgba(0, 255, 136, 0.4) !important;
+}
+
+/* Timeline dots → game waypoints / diamond markers */
+html[data-theme="gamification"] .w-2.h-2.rounded-full.bg-primary {
+  background: var(--game-green) !important;
+  box-shadow: 0 0 8px var(--game-green), 0 0 16px rgba(0, 255, 136, 0.4);
+  border-radius: 0 !important;
+  transform: rotate(45deg);
+  animation: game-pulse 2s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   6. SECTION BADGES — GAME HUD ARROW MARKERS
+   ========================================================================== */
+
+html[data-theme="gamification"] div.inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10 {
+  background: var(--game-green) !important;
+  color: #0d1117 !important;
+  border-radius: 0 !important;
+  clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 50%, calc(100% - 8px) 100%, 0 100%) !important;
+  font-family: var(--game-font-heading) !important;
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase;
+  padding: 0.4rem 1.25rem 0.4rem 0.85rem !important;
+  box-shadow: 4px 0 12px rgba(0, 255, 136, 0.3);
+  border: none !important;
+  animation: game-hud-slide-in 0.4s ease-out forwards;
+}
+
+html[data-theme="gamification"] div.inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10 span,
+html[data-theme="gamification"] div.inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10 svg {
+  color: #0d1117 !important;
+  fill: #0d1117 !important;
+}
+
+/* ==========================================================================
+   7. WORK EXPERIENCE SECTION — QUEST LOG / ACHIEVEMENT SYSTEM
+   ========================================================================== */
+
+/* Timeline vertical line — neon green */
+html[data-theme="gamification"] .border-l {
+  border-color: var(--game-green) !important;
+  border-left-width: 2px !important;
+  box-shadow: 2px 0 8px rgba(0, 255, 136, 0.3);
+  position: relative;
+}
+
+/* Work experience cards */
+html[data-theme="gamification"] div.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6 {
+  background: linear-gradient(135deg, #161b22 0%, #1c2128 100%) !important;
+  border: 1px solid rgba(0, 255, 136, 0.2) !important;
+  border-left: 3px solid var(--game-green) !important;
+  border-radius: 2px !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 136, 0.05),
+    0 4px 24px rgba(0, 0, 0, 0.4),
+    -4px 0 16px rgba(0, 255, 136, 0.08);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  animation: game-border-glow 3s ease-in-out infinite;
+}
+
+/* Top accent line on work cards */
+html[data-theme="gamification"] div.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, var(--game-green), transparent 60%);
+  opacity: 0.6;
+}
+
+/* COMPLETED stamp on work cards */
+html[data-theme="gamification"] div.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6::after {
+  content: '✓ COMPLETED';
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--game-font-heading);
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--game-green);
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  animation: game-stamp-in 0.5s ease-out forwards;
+}
+
+html[data-theme="gamification"] div.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6:hover {
+  border-color: rgba(0, 255, 136, 0.5) !important;
+  border-left-color: var(--game-green) !important;
+  box-shadow:
+    0 0 0 1px rgba(0, 255, 136, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    -6px 0 24px rgba(0, 255, 136, 0.15),
+    0 0 40px rgba(0, 255, 136, 0.05);
+}
+
+/* Work card headings */
+html[data-theme="gamification"] div.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6 h3 {
+  color: var(--game-gold) !important;
+  font-family: var(--game-font-heading) !important;
+  font-size: 0.85rem !important;
+  text-shadow: 0 0 8px rgba(255, 215, 0, 0.3);
+}
+
+html[data-theme="gamification"] div.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6 h4 {
+  color: var(--game-green) !important;
+  font-family: var(--game-font-heading) !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.12em;
+}
+
+/* Company name — quest giver */
+html[data-theme="gamification"] div.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border.p-6 p.text-sm {
+  font-family: var(--game-font-body);
+  color: #8b949e;
+  font-size: 0.85rem;
+}
+
+/* Work skill tags — LOOT DROPS base style (common/gray) */
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full.bg-secondary {
+  font-family: var(--game-font-heading) !important;
+  font-size: 0.6rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: 2px !important;
+  padding: 0.2rem 0.6rem !important;
+  transition: all 0.2s ease;
+  position: relative;
+  /* Common rarity default */
+  background: rgba(33, 38, 45, 0.9) !important;
+  color: #8b949e !important;
+  border: 1px solid rgba(139, 148, 158, 0.25) !important;
+}
+
+/* Rare rarity — blue glow (every 3n+2 tag) */
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full.bg-secondary:nth-child(3n+2) {
+  background: rgba(0, 191, 255, 0.1) !important;
+  color: var(--game-cyan) !important;
+  border: 1px solid rgba(0, 191, 255, 0.35) !important;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.15);
+}
+
+/* Epic rarity — purple glow (every 3n+3 tag) */
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full.bg-secondary:nth-child(3n+3) {
+  background: rgba(155, 89, 182, 0.12) !important;
+  color: #c47cff !important;
+  border: 1px solid rgba(155, 89, 182, 0.4) !important;
+  box-shadow: 0 0 8px rgba(155, 89, 182, 0.2);
+}
+
+/* Legendary rarity — gold glow (first tag) */
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full.bg-secondary:first-child {
+  background: rgba(255, 215, 0, 0.1) !important;
+  color: var(--game-gold) !important;
+  border: 1px solid rgba(255, 215, 0, 0.35) !important;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+}
+
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full.bg-secondary:hover {
+  filter: brightness(1.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ==========================================================================
+   8. PROJECTS SECTION — QUEST BOARD
+   ========================================================================== */
+
+/* Project cards */
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card {
+  background: linear-gradient(135deg, #161b22 0%, #1c2128 100%) !important;
+  border: 1px solid rgba(255, 215, 0, 0.2) !important;
+  border-left: 3px solid var(--game-gold) !important;
+  border-radius: 2px !important;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    -4px 0 16px rgba(255, 215, 0, 0.06);
+}
+
+/* Top accent line on project cards */
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--game-gold), rgba(255, 215, 0, 0.3), transparent);
+  opacity: 0.7;
+  z-index: 1;
+}
+
+/* QUEST COMPLETE stamp on project cards */
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card::after {
+  content: '★ QUEST COMPLETE';
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  font-family: var(--game-font-heading);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--game-gold);
+  background: rgba(255, 215, 0, 0.08);
+  border: 1px solid rgba(255, 215, 0, 0.25);
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  opacity: 0.85;
+  animation: game-stamp-in 0.6s ease-out forwards;
+}
+
+/* Project card hover — gold glow effect */
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card:hover {
+  border-color: rgba(255, 215, 0, 0.5) !important;
+  border-left-color: var(--game-gold) !important;
+  box-shadow:
+    0 0 0 1px rgba(255, 215, 0, 0.15),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    -6px 0 24px rgba(255, 215, 0, 0.12),
+    0 0 50px rgba(255, 215, 0, 0.06);
+  transform: translateY(-2px);
+}
+
+/* Project card title */
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card h3 {
+  font-family: var(--game-font-heading) !important;
+  color: var(--game-gold) !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 0.08em;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.25);
+  text-transform: uppercase;
+}
+
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card p {
+  font-family: var(--game-font-body);
+  color: #8b949e;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+/* Project card action links */
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card a {
+  font-family: var(--game-font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  color: var(--game-green);
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  padding: 0.3rem 0.7rem;
+  border-radius: 2px;
+  transition: all 0.2s ease;
+  text-transform: uppercase;
+}
+
+html[data-theme="gamification"] div.group.relative.rounded-2xl.border.border-border.bg-card a:hover {
+  background: rgba(0, 255, 136, 0.1);
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.2);
+  color: var(--game-green);
+  text-shadow: 0 0 8px var(--game-green);
+}
+
+/* ==========================================================================
+   9. SKILLS SECTION — ABILITY STATS / STAT TREE
+   ========================================================================== */
+
+/* Skills section span tags — stat pills */
+html[data-theme="gamification"] .skills-section span,
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 136, 0.15) 0%,
+    rgba(0, 255, 136, 0.05) 100%
+  ) !important;
+  border: 1px solid rgba(0, 255, 136, 0.3) !important;
+  color: var(--game-green) !important;
+  font-family: var(--game-font-heading) !important;
+  font-size: 0.62rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem !important;
+  border-radius: 2px !important;
+  position: relative;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+html[data-theme="gamification"] .skills-section span::before,
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full::before {
+  content: '▲';
+  font-size: 0.45rem;
+  color: var(--game-green);
+  opacity: 0.7;
+}
+
+html[data-theme="gamification"] .skills-section span:hover,
+html[data-theme="gamification"] span.px-3.py-1.text-xs.rounded-full:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 136, 0.25) 0%,
+    rgba(0, 255, 136, 0.1) 100%
+  ) !important;
+  border-color: rgba(0, 255, 136, 0.6) !important;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.25), inset 0 0 8px rgba(0, 255, 136, 0.05);
+  transform: translateY(-2px);
+  color: #e6edf3 !important;
+}
+
+/* Card/panel backgrounds */
+html[data-theme="gamification"] .bg-card\/50,
+html[data-theme="gamification"] .bg-card {
+  background-color: #161b22 !important;
+}
+
+/* ==========================================================================
+   10. FOOTER — GAME CREDITS / HUD FOOTER BAR
+   ========================================================================== */
+
+html[data-theme="gamification"] footer {
+  background: #0a0e14 !important;
+  border-top: 1px solid rgba(0, 255, 136, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+  font-family: var(--game-font-body);
+}
+
+/* Animated rainbow HP-bar line across top of footer */
+html[data-theme="gamification"] footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--game-green) 25%,
+    var(--game-gold) 50%,
+    var(--game-cyan) 75%,
+    transparent 100%
+  );
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.4);
+  animation: game-hp-bar 3s ease-in-out infinite alternate;
+}
+
+html[data-theme="gamification"] footer p {
+  font-family: var(--game-font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8b949e;
+}
+
+html[data-theme="gamification"] footer a {
+  color: var(--game-green);
+  font-family: var(--game-font-heading);
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+}
+
+html[data-theme="gamification"] footer a:hover {
+  color: var(--game-gold);
+  text-shadow: 0 0 8px var(--game-gold);
+}
+
+/* Social icons in footer */
+html[data-theme="gamification"] footer svg {
+  color: var(--game-green);
+  transition: all 0.2s ease;
+  filter: drop-shadow(0 0 4px rgba(0, 255, 136, 0.3));
+}
+
+html[data-theme="gamification"] footer svg:hover {
+  color: var(--game-gold);
+  filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+  transform: scale(1.1);
+}
+
+/* ==========================================================================
+   11. SPECIAL GAME ELEMENTS — GLOBAL HUD OVERRIDES
+   ========================================================================== */
+
+/* Animated HP bar section dividers */
+html[data-theme="gamification"] hr,
+html[data-theme="gamification"] .border-t {
+  border-color: transparent !important;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 255, 136, 0.4) 20%,
+    rgba(0, 255, 136, 0.7) 50%,
+    rgba(0, 255, 136, 0.4) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.2);
+}
+
+/* Buttons — game action style */
+html[data-theme="gamification"] button,
+html[data-theme="gamification"] [role="button"] {
+  font-family: var(--game-font-heading) !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 2px !important;
+  transition: all 0.2s ease;
+}
+
+html[data-theme="gamification"] button:hover,
+html[data-theme="gamification"] [role="button"]:hover {
+  box-shadow: 0 0 16px rgba(0, 255, 136, 0.3);
+}
+
+/* Primary action button */
+html[data-theme="gamification"] .bg-primary {
+  background: var(--game-green) !important;
+  color: #0d1117 !important;
+  box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+}
+
+html[data-theme="gamification"] .bg-primary:hover {
+  background: #00cc6e !important;
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+
+/* Outlined elements */
+html[data-theme="gamification"] .border-primary {
+  border-color: var(--game-green) !important;
+  color: var(--game-green) !important;
+}
+
+html[data-theme="gamification"] .text-primary {
+  color: var(--game-green) !important;
+}
+
+/* Rounded corners — squared off for game aesthetic */
+html[data-theme="gamification"] .rounded-xl,
+html[data-theme="gamification"] .rounded-2xl,
+html[data-theme="gamification"] .rounded-lg {
+  border-radius: 2px !important;
+}
+
+/* Backdrop blur panels */
+html[data-theme="gamification"] .backdrop-blur-sm {
+  backdrop-filter: blur(12px) brightness(0.95) !important;
+}
+
+/* Focus rings */
+html[data-theme="gamification"] *:focus-visible {
+  outline: 1px solid var(--game-green) !important;
+  outline-offset: 2px;
+  box-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+}
+
+/* Scrollbar — HUD style */
+html[data-theme="gamification"] ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+html[data-theme="gamification"] ::-webkit-scrollbar-track {
+  background: #0d1117;
+  border-left: 1px solid rgba(0, 255, 136, 0.1);
+}
+
+html[data-theme="gamification"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--game-green), var(--game-cyan));
+  border-radius: 0;
+  box-shadow: 0 0 6px rgba(0, 255, 136, 0.4);
+}
+
+html[data-theme="gamification"] ::-webkit-scrollbar-thumb:hover {
+  background: var(--game-gold);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Text selection */
+html[data-theme="gamification"] ::selection {
+  background: rgba(0, 255, 136, 0.25);
+  color: #e6edf3;
+}
+
+/* ==========================================================================
+   12. BACKGROUND PARTICLES & HUD CORNER DECORATIONS
+   ========================================================================== */
+
+/* Floating particles layer on hero background */
+html[data-theme="gamification"] div.fixed.inset-0.pointer-events-none.-z-10::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, rgba(0, 255, 136, 0.6) 0%, transparent 100%),
+    radial-gradient(1px 1px at 80% 20%, rgba(0, 191, 255, 0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 60% 70%, rgba(255, 215, 0, 0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 10% 80%, rgba(0, 255, 136, 0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 90% 60%, rgba(155, 89, 182, 0.5) 0%, transparent 100%),
+    radial-gradient(1px 1px at 40% 10%, rgba(0, 191, 255, 0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 70% 85%, rgba(0, 255, 136, 0.4) 0%, transparent 100%),
+    radial-gradient(1px 1px at 25% 55%, rgba(255, 215, 0, 0.35) 0%, transparent 100%),
+    radial-gradient(1px 1px at 55% 45%, rgba(0, 255, 136, 0.3) 0%, transparent 100%),
+    radial-gradient(1px 1px at 85% 40%, rgba(0, 191, 255, 0.3) 0%, transparent 100%);
+  animation: game-particles 15s linear infinite;
+  pointer-events: none;
+}
+
+/* Top-left HUD corner bracket */
+html[data-theme="gamification"] div.max-w-5xl.mx-auto.px-6::before {
+  content: '';
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-top: 2px solid rgba(0, 255, 136, 0.5);
+  border-left: 2px solid rgba(0, 255, 136, 0.5);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Bottom-right HUD corner bracket */
+html[data-theme="gamification"] div.max-w-5xl.mx-auto.px-6::after {
+  content: '';
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  border-bottom: 2px solid rgba(0, 255, 136, 0.5);
+  border-right: 2px solid rgba(0, 255, 136, 0.5);
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* ==========================================================================
+   END OF GAMIFICATION THEME
+   ========================================================================== */
