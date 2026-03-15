@@ -430,6 +430,7 @@ export default function BrutalismPage() {
                     color: "#000000",
                     marginTop: "0.5rem",
                     display: "block",
+                    position: "relative",
                   }}
                 >
                   Comment puis-je vous aider ?
@@ -484,6 +485,7 @@ export default function BrutalismPage() {
                       style={{
                         fontFamily: "'Bebas Neue', sans-serif",
                         fontSize: "1.5rem",
+                        fontWeight: 700,
                         textTransform: "uppercase",
                         color: "#000000",
                         marginBottom: "0.5rem",
@@ -577,6 +579,7 @@ export default function BrutalismPage() {
                     color: "#000000",
                     marginTop: "0.5rem",
                     display: "block",
+                    position: "relative",
                   }}
                 >
                   Parcours professionnel
@@ -647,15 +650,16 @@ export default function BrutalismPage() {
                       whileHover={{
                         x: 3,
                         y: 3,
-                        boxShadow: "2px 2px 0px #000000",
+                        boxShadow: "3px 3px 0px #000000",
                       }}
                       style={{
                         background: "#F9FAF7",
                         border: "4px solid #000000",
-                        boxShadow: "5px 5px 0px #000000",
+                        boxShadow: "6px 6px 0px #000000",
                         padding: "1.5rem",
                         transform: `rotate(${rotation}deg)`,
                         transition: "box-shadow 0.1s ease, transform 0.1s ease",
+                        position: "relative",
                       }}
                     >
                       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2 mb-3">
@@ -664,6 +668,7 @@ export default function BrutalismPage() {
                             style={{
                               fontFamily: "'Bebas Neue', sans-serif",
                               fontSize: "1.5rem",
+                              fontWeight: 700,
                               textTransform: "uppercase",
                               color: "#000000",
                               lineHeight: 1.1,
@@ -847,6 +852,7 @@ export default function BrutalismPage() {
                     color: "#000000",
                     marginTop: "0.5rem",
                     display: "block",
+                    position: "relative",
                   }}
                 >
                   Realisations
@@ -861,6 +867,7 @@ export default function BrutalismPage() {
                   project.images &&
                   project.images.length > 0;
                 const firstImage = hasImages ? project.images![0] : null;
+                const rotation = index % 2 === 0 ? -0.5 : 0.5;
 
                 return (
                   <motion.div
@@ -883,6 +890,7 @@ export default function BrutalismPage() {
                       transition: "box-shadow 0.1s ease, transform 0.1s ease",
                       position: "relative",
                       cursor: "default",
+                      transform: `rotate(${rotation}deg)`,
                     }}
                   >
                     {/* Red accent bar on top */}
@@ -988,6 +996,7 @@ export default function BrutalismPage() {
                         style={{
                           fontFamily: "'Bebas Neue', sans-serif",
                           fontSize: "1.5rem",
+                          fontWeight: 700,
                           textTransform: "uppercase",
                           color: "#000000",
                           lineHeight: 1.1,
@@ -1094,6 +1103,7 @@ export default function BrutalismPage() {
                     color: "#000000",
                     marginTop: "0.5rem",
                     display: "block",
+                    position: "relative",
                   }}
                 >
                   Technologies & Outils
@@ -1176,8 +1186,9 @@ export default function BrutalismPage() {
                 </p>
               </div>
 
-              <Link
+              <motion.a
                 href={`mailto:${basics.email}`}
+                whileHover={{ x: 2, y: 2, boxShadow: "2px 2px 0px #000000" }}
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -1193,12 +1204,12 @@ export default function BrutalismPage() {
                   letterSpacing: "0.08em",
                   padding: "12px 24px",
                   textDecoration: "none",
+                  cursor: "pointer",
                   transition: "box-shadow 0.1s ease, transform 0.1s ease",
                 }}
-                className="hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-[2px_2px_0px_#000000]"
               >
                 <Mail size={16} /> Contactez-moi
-              </Link>
+              </motion.a>
             </motion.div>
 
             <div
