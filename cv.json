@@ -1,0 +1,396 @@
+{
+  "basics": {
+    "name": "Titosy Manankasina",
+    "label": "Développeur Fullstack Javascript & Flutter",
+    "image": "/photo.jpg",
+    "email": "dev.titosy@gmail.com",
+    "phone": "+261 38 80 322 74",
+    "url": "https://titosy.dev",
+    "summary": "Développeur front-end et mobile avec plus de 3 ans d'expérience sur React, TypeScript, Flutter et Dart. Passionné par la création d'interfaces intuitives et accessibles, je m'épanouis dans des environnements agiles et collaboratifs.",
+    "theme": "default",
+    "location": {
+      "address": "",
+      "postalCode": "101",
+      "city": "Antananarivo",
+      "countryCode": "MG",
+      "region": "Madagascar"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "titosy-manankasina",
+        "url": "https://www.linkedin.com/in/titosy-manankasina"
+      },
+      {
+        "network": "GitHub",
+        "username": "titoo-dev",
+        "url": "https://github.com/titoo-dev"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "PUSH-IT",
+      "position": "Développeur Fullstack Javascript",
+      "location_type": "Hybride",
+      "location": "Antananarivo, Madagascar",
+      "startDate": "2025-08-01",
+      "endDate": null,
+      "summary": "Développement d'une application de gestion de licences logicielles",
+      "highlights": [],
+      "responsibilities": [
+        "Intégration de Cryptolens pour la gestion et la sécurisation des licences",
+        "Mise en place de la gestion des mises à jour logicielles avec Mender.io",
+        "Intégration de la facturation et des paiements via Zoho Book.",
+        "Développement du frontend avec Next.js",
+        "Conception du backend avec Express, PostgreSQL TypeORM et GraphQL",
+        "Organisation du projet en monorepo pour faciliter la maintenance et la collaboration"
+      ],
+      "achievements": [],
+      "skills": [
+        "Mender.io",
+        "Next.js",
+        "Express",
+        "PostgreSQL",
+        "TypeORM",
+        "GraphQL",
+        "Zoho Book",
+        "Cryptolens",
+        "Gitlab CI/CD"
+      ]
+    },
+    {
+      "name": "Bocasay",
+      "position": "Développeur Javascript",
+      "location_type": "Hybride",
+      "location": "Antananarivo, Madagascar",
+      "url": "https://www.bocasay.com/",
+      "startDate": "2022-07-23",
+      "endDate": "2025-07-28",
+      "summary": "Participation au développement et à la maintenance d'une application de gestion de la conformité réglementaire des produits chimiques, cosmétiques, biocides et dispositifs médicaux. Collaboration avec des équipes interfonctionnelles pour assurer la qualité, la performance et la livraison rapide des solutions.",
+      "highlights": [
+        "Contributed to a major project that streamlined internal workflows, improving efficiency by 30%"
+      ],
+      "responsibilities": [
+        "Développement et maintenance des interfaces utilisateurs en utilisant React et ExtJS.",
+        "Intégration des fonctionnalités front-end avec les données du serveur via GraphQL.",
+        "Participation aux réunions quotidiennes (Daily meeting) et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet."
+      ],
+      "achievements": [
+        "Implémentation réussie d'une fonctionnalité améliorant l'interface utilisateur pour une gestion plus efficace des données réglementaires.",
+        "Formation des nouveaux membres de l'équipe sur les technologies utilisées dans le projet."
+      ],
+      "skills": [
+        "ExtJS",
+        "ReactJS",
+        "PostgreSQL",
+        "GraphQL",
+        "Gitlab CI/CD"
+      ]
+    },
+    {
+      "name": "Flit Soft",
+      "position": "Stage Développeur Javascript & Flutter",
+      "location_type": "À distance",
+      "location": "Antananarivo, Madagascar",
+      "url": "https://www.flitsoft.com/",
+      "startDate": "2022-03-14",
+      "endDate": "2022-06-23",
+      "summary": "Membre d'une équipe chargée des intégrations et des outils pour développeurs. Mission principale : améliorer et simplifier l'expérience des développeurs en optimisant les outils et les processus, en assurant leur accessibilité et en répondant aux besoins spécifiques des équipes techniques.",
+      "highlights": [
+        "Improved mobile app performance by optimizing code"
+      ],
+      "responsibilities": [
+        "Intégration d’un paiement Mvola dans une application de partage de voiture et chauffeur de taxi.",
+        "Création d’un générateur de code en Dart pour faciliter le développement",
+        "Participation active dans des réunions régulières et la présentation de propositions à travers l'entreprise."
+      ],
+      "achievements": [
+        "Développement et maintenance d'applications mobiles en utilisant Flutter, Dart et Node.js. Collaboration avec l'équipe pour implémenter de nouvelles fonctionnalités et corriger les bugs"
+      ],
+      "skills": [
+        "Flutter",
+        "Dart",
+        "Javascript",
+        "Github Actions",
+        "Firebase"
+      ]
+    }
+  ],
+  "volunteer": [],
+  "education": [
+    {
+      "institution": "Institut Supérieur Polytechnique de Madagascar (ISPM)",
+      "url": "https://ispm-edu.com",
+      "area": "Ingénierie logicielle",
+      "studyType": "Bachelor",
+      "startDate": "2018-09-01",
+      "endDate": "2022-05-01",
+      "score": "3.8",
+      "courses": []
+    }
+  ],
+  "certificates": [],
+  "skills": [
+    {
+      "name": "Figma",
+      "level": "Expert",
+      "keywords": [
+        "Design",
+        "UI"
+      ]
+    },
+    {
+      "name": "Gitlab",
+      "level": "Intermediate",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
+    },
+    {
+      "name": "HTML",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend"
+      ]
+    },
+    {
+      "name": "CSS",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Front-end",
+        "Back-end",
+        "Fullstack"
+      ]
+    },
+    {
+      "name": "Tailwind",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "CSS Framework",
+        "Responsive Design"
+      ]
+    },
+    {
+      "name": "TypeScript",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Backend",
+        "JavaScript Superset"
+      ]
+    },
+    {
+      "name": "Node",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
+    },
+    {
+      "name": "MySQL",
+      "level": "Intermediate",
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
+    },
+    {
+      "name": "Git",
+      "level": "Intermediate",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
+    },
+    {
+      "name": "GitHub",
+      "level": "Intermediate",
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code",
+        "Git"
+      ]
+    },
+    {
+      "name": "Next.js",
+      "level": "Beginner",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "React Framework",
+        "SSR",
+        "Static Generation"
+      ]
+    },
+    {
+      "name": "React",
+      "level": "Intermediate",
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Anglais",
+      "fluency": "Technique"
+    },
+    {
+      "language": "Français",
+      "fluency": "Conversationnel"
+    }
+  ],
+  "interests": [
+    {
+      "name": "Technology",
+      "keywords": [
+        "AI",
+        "Blockchain"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "name": "Jane Smith",
+      "reference": "Reference…"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Tononkira",
+      "isActive": false,
+      "description": "Application web et mobile dédiée à la découverte et l'exploration des paroles de chansons malgaches. Plateforme complète offrant un accès à plus de 15 000 chansons de 2 300 artistes malgaches avec des fonctionnalités de recherche intelligente, personnalisation et accès hors ligne.",
+      "highlights": [
+        "Développement d'une application mobile Android avec Flutter offrant un accès hors ligne aux paroles.",
+        "Implémentation d'un moteur de recherche performant permettant de trouver des chansons par paroles, artiste ou titre.",
+        "Création d'un système de favoris et de playlists personnalisées pour une expérience utilisateur optimale.",
+        "Optimisation des performances pour garantir une application légère et rapide sur tous les appareils Android.",
+        "Gestion d'une base de données de plus de 15 000 chansons et 2 300 artistes malgaches."
+      ],
+      "url": "https://tononkira.titosy.dev/",
+      "github": null,
+      "image": null,
+      "images": [
+        "/images/tononkira/tononkira_1.png",
+        "/images/tononkira/tononkira_2.png",
+        "/images/tononkira/tononkira_3.png",
+        "/images/tononkira/tononkira_4.png"
+      ]
+    },
+    {
+      "name": "Chantastik",
+      "isActive": false,
+      "description": "Une application qui permet aux utilisateurs de créer de superbes vidéos de paroles à partir de fichiers audio, avec de magnifiques animations et des effets visuels personnalisables.",
+      "highlights": [
+        "Utilisation de Remotion pour le rendu vidéo des paroles animées.",
+        "Intégration de Web Audio API pour synchroniser précisément l'audio avec les animations.",
+        "Système d'annotation des lyrics avec interface intuitive pour le timing.",
+        "Génération automatique de fichiers LRC (Lyric) pour la compatibilité avec d'autres lecteurs."
+      ],
+      "url": "https://chantastik.titosy.dev/",
+      "github": "https://github.com/titoo-dev/chantastik",
+      "image": null,
+      "images": [
+        "/images/chantastik/chantastik_1.png",
+        "/images/chantastik/chantastik_2.png",
+        "/images/chantastik/chantastik_3.png",
+        "/images/chantastik/chantastik_4.png"
+      ]
+    },
+    {
+      "name": "MAGAPE",
+      "isActive": false,
+      "description": "Plateforme web dédiée à rassembler la communauté chrétienne francophone. Mission Agapè (M pour Mission, Agapè pour l'amour inconditionnel de Dieu) crée des ponts d'unité entre les chrétiens à travers des ressources enrichissantes, des contenus audiovisuels et des produits inspirants.",
+      "highlights": [
+        "Développement d'une plateforme complète avec Next.js et TypeScript pour rassembler la francophonie chrétienne.",
+        "Création d'un système de gestion de contenu pour les podcasts, émissions et enseignements bibliques.",
+        "Intégration d'une boutique en ligne pour les produits MAGAPE (maillots, cahiers ECODIM, ebooks).",
+        "Mise en place d'une interface moderne et responsive avec Tailwind CSS pour une expérience utilisateur optimale.",
+        "Développement de fonctionnalités pour le Cahier Magape Kids, un outil éducatif centré sur la Bible pour les enfants."
+      ],
+      "url": "https://megape.vercel.app/",
+      "github": null,
+      "image": null,
+      "images": [
+        "/images/magape/magape_1.png",
+        "/images/magape/magape_2.png",
+        "/images/magape/magape_3.png",
+        "/images/magape/magape_4.png"
+      ]
+    },
+    {
+      "name": "Okani Survey",
+      "isActive": false,
+      "description": "Plateforme de sondage gouvernementale officielle pour évaluer la satisfaction des usagers du service public foncier au Gabon, mandatée par la Direction Générale du Contrôle Budgétaire et Financier (DGCBF). Initiative s'inscrivant dans la vision du Chef de l'État pour moderniser l'administration publique.",
+      "highlights": [
+        "Développement d'une plateforme web interactive avec Next.js et TypeScript pour recueillir les retours d'expérience des usagers.",
+        "Création d'une application mobile cross-platform disponible sur App Store et Google Play pour faciliter l'accès au sondage.",
+        "Mise en place d'un processus de sondage simplifié en 6 étapes couvrant l'ensemble du parcours foncier (ANUTTC).",
+        "Implémentation d'un système de collecte de données anonyme et sécurisé garantissant la confidentialité des participants.",
+        "Conception d'une interface moderne et responsive avec Tailwind CSS optimisée pour une durée de participation de 5-10 minutes.",
+        "Déploiement ciblé sur les principales villes : Libreville, Lambaréné et Mouila."
+      ],
+      "url": "https://okani-survey.vercel.app/",
+      "github": null,
+      "image": null,
+      "images": [
+        "/images/okani-survey/okani_1.png",
+        "/images/okani-survey/okani_2.png",
+        "/images/okani-survey/okani_3.png"
+      ]
+    },
+    {
+      "name": "TMvola",
+      "isActive": false,
+      "description": "Conception d'une application en ligne de commande avec Node.js pour récupérer les transactions depuis Mvola Selfcare.",
+      "highlights": [
+        "Exploitation des techniques de Reverse Engineering et utilisation d'outils comme Chrome DevTools et Charles Proxy pour analyser et déboguer les requêtes.",
+        "Automatisation des tâches via un workflow GitHub Actions.",
+        "Conversion et structuration des données CSV en JSON pour une meilleure exploitation."
+      ],
+      "url": null,
+      "image": null
+    },
+    {
+      "name": "MID",
+      "isActive": false,
+      "description": "Développement de l'interface mobile d'une application de gestion des ordres d'achat et de vente de devises",
+      "highlights": [
+        "Développement de l'interface mobile avec Flutter pour permettre aux clients de passer et gérer leurs ordres en toute mobilité.",
+        "Intégration des fonctionnalités de saisie, validation et suivi des ordres en fonction des profils utilisateurs définis.",
+        "Collaboration avec l'équipe backend utilisant Laravel pour l'intégration des API.",
+        "Mise en place de notifications push via Firebase pour informer les utilisateurs en temps réel des mises à jour sur leurs ordres."
+      ],
+      "url": null,
+      "github": null,
+      "image": null
+    }
+  ]
+}
