@@ -40,33 +40,33 @@
    ============================================ */
 
 html[data-theme="brutalism"] {
-  --background: #ffffff;
-  --foreground: #000000;
-  --card: #ffffff;
-  --card-foreground: #000000;
-  --popover: #ffffff;
-  --popover-foreground: #000000;
-  --primary: #000000;
-  --primary-foreground: #FFE600;
-  --secondary: #FFE600;
-  --secondary-foreground: #000000;
-  --muted: #F5F5F5;
-  --muted-foreground: #333333;
-  --accent: #FF2D20;
-  --accent-foreground: #ffffff;
-  --destructive: #FF2D20;
-  --border: #000000;
-  --input: #000000;
-  --ring: #000000;
+  --background: #F9FAF7;
+  --foreground: #161616;
+  --card: #F9FAF7;
+  --card-foreground: #161616;
+  --popover: #F9FAF7;
+  --popover-foreground: #161616;
+  --primary: #161616;
+  --primary-foreground: #B2BDA0;
+  --secondary: #B2BDA0;
+  --secondary-foreground: #161616;
+  --muted: #EDEFEA;
+  --muted-foreground: #5A5A5A;
+  --accent: #2C2C2C;
+  --accent-foreground: #F9FAF7;
+  --destructive: #2C2C2C;
+  --border: #161616;
+  --input: #161616;
+  --ring: #161616;
   --radius: 0rem;
-  --sidebar: #FFE600;
-  --sidebar-foreground: #000000;
-  --sidebar-primary: #000000;
-  --sidebar-primary-foreground: #FFE600;
-  --sidebar-accent: #FF2D20;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #000000;
-  --sidebar-ring: #000000;
+  --sidebar: #B2BDA0;
+  --sidebar-foreground: #161616;
+  --sidebar-primary: #161616;
+  --sidebar-primary-foreground: #B2BDA0;
+  --sidebar-accent: #2C2C2C;
+  --sidebar-accent-foreground: #F9FAF7;
+  --sidebar-border: #161616;
+  --sidebar-ring: #161616;
 }
 
 /* ============================================
@@ -85,7 +85,7 @@ html[data-theme="brutalism"] *::after {
    ============================================ */
 
 html[data-theme="brutalism"] body {
-  background-color: #FFE600;
+  background-color: #B2BDA0;
   font-family: 'Space Grotesk', sans-serif;
   color: #000000;
   position: relative;
@@ -146,7 +146,7 @@ html[data-theme="brutalism"] .fixed.inset-0.pointer-events-none.-z-10 {
    ============================================ */
 
 html[data-theme="brutalism"] .max-w-5xl {
-  background: #ffffff;
+  background: #F9FAF7;
   border: 4px solid #000000;
   box-shadow: 8px 8px 0px #000000;
   margin-top: 2rem !important;
@@ -198,7 +198,7 @@ html[data-theme="brutalism"] h2::after {
   left: 0;
   width: 100%;
   height: 6px;
-  background-color: #FFE600;
+  background-color: #B2BDA0;
   border: 2px solid #000000;
 }
 
@@ -225,7 +225,7 @@ html[data-theme="brutalism"] a {
 }
 
 html[data-theme="brutalism"] .text-muted-foreground {
-  color: #333333 !important;
+  color: #5A5A5A !important;
 }
 
 /* ============================================
@@ -247,7 +247,7 @@ html[data-theme="brutalism"] .relative.w-32.h-32.md\:w-40.md\:h-40 {
   border: 5px solid #000000 !important;
   box-shadow: 6px 6px 0px #000000;
   overflow: hidden;
-  background: #ffffff;
+  background: #F9FAF7;
 }
 
 /* Remove gradient glow behind profile image */
@@ -258,10 +258,10 @@ html[data-theme="brutalism"] .absolute.-inset-1.bg-gradient-to-r {
 /* Available indicator — bold stamp style */
 html[data-theme="brutalism"] .inline-flex.items-center.gap-2.text-sm.font-medium.text-muted-foreground {
   background-color: #000000 !important;
-  color: #FFE600 !important;
+  color: #B2BDA0 !important;
   padding: 6px 14px !important;
   border: 3px solid #000000 !important;
-  box-shadow: 3px 3px 0px #FFE600 !important;
+  box-shadow: 3px 3px 0px #B2BDA0 !important;
   font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 700 !important;
   font-size: 0.75rem !important;
@@ -280,7 +280,7 @@ html[data-theme="brutalism"] .animate-ping {
 
 html[data-theme="brutalism"] .relative.inline-flex.rounded-full.h-2.w-2.bg-green-500,
 html[data-theme="brutalism"] .relative.flex.h-2.w-2 {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   width: 10px !important;
   height: 10px !important;
   display: inline-block;
@@ -290,11 +290,11 @@ html[data-theme="brutalism"] .relative.flex.h-2.w-2 {
 html[data-theme="brutalism"] .text-xl.md\:text-2xl.text-muted-foreground.font-medium {
   font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 700 !important;
-  color: #FF2D20 !important;
+  color: #2C2C2C !important;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-size: 1.1rem !important;
-  border-left: 5px solid #FF2D20;
+  border-left: 5px solid #2C2C2C;
   padding-left: 12px;
   margin-top: 0.5rem;
 }
@@ -303,7 +303,7 @@ html[data-theme="brutalism"] .text-xl.md\:text-2xl.text-muted-foreground.font-me
 html[data-theme="brutalism"] .text-base.md\:text-lg.text-muted-foreground {
   font-family: 'Space Grotesk', sans-serif !important;
   font-size: 1rem !important;
-  color: #333333 !important;
+  color: #5A5A5A !important;
   line-height: 1.7 !important;
   border-left: 3px solid #000000;
   padding-left: 1rem;
@@ -324,7 +324,7 @@ html[data-theme="brutalism"] a.inline-flex.items-center.gap-2.text-sm.text-muted
 }
 
 html[data-theme="brutalism"] a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground:hover {
-  color: #ffffff !important;
+  color: #F9FAF7 !important;
   background-color: #000000;
   padding: 2px 6px;
   border-bottom: 3px solid #000000;
@@ -336,7 +336,7 @@ html[data-theme="brutalism"] a.inline-flex.items-center.gap-2.text-sm.text-muted
 
 html[data-theme="brutalism"] .inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10,
 html[data-theme="brutalism"] div.inline-flex.items-center.gap-2.px-4.py-2 {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   color: #000000 !important;
   border: 3px solid #000000 !important;
   box-shadow: 3px 3px 0px #000000 !important;
@@ -417,20 +417,20 @@ html[data-theme="brutalism"] [data-slot="button"]:active {
 html[data-theme="brutalism"] [data-slot="button"].bg-primary,
 html[data-theme="brutalism"] button.bg-primary {
   background-color: #000000 !important;
-  color: #FFE600 !important;
+  color: #B2BDA0 !important;
 }
 
 /* Outline button */
 html[data-theme="brutalism"] [data-slot="button"].border.bg-background,
 html[data-theme="brutalism"] button[class*="outline"] {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   color: #000000 !important;
   border: 3px solid #000000 !important;
 }
 
 html[data-theme="brutalism"] [data-slot="button"].border.bg-background:hover {
-  background-color: #FF2D20 !important;
-  color: #ffffff !important;
+  background-color: #2C2C2C !important;
+  color: #F9FAF7 !important;
 }
 
 /* ============================================
@@ -439,7 +439,7 @@ html[data-theme="brutalism"] [data-slot="button"].border.bg-background:hover {
 
 /* Services cards */
 html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card\/50.backdrop-blur-sm.p-8 {
-  background-color: #ffffff !important;
+  background-color: #F9FAF7 !important;
   border: 4px solid #000000 !important;
   box-shadow: 6px 6px 0px #000000 !important;
   backdrop-filter: none !important;
@@ -476,7 +476,7 @@ html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *:nth-chi
 
 /* Service icon box */
 html[data-theme="brutalism"] .w-12.h-12.rounded-xl.bg-primary\/10 {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   border: 3px solid #000000 !important;
   box-shadow: 2px 2px 0px #000000 !important;
   display: flex;
@@ -490,7 +490,7 @@ html[data-theme="brutalism"] .w-12.h-12.rounded-xl.bg-primary\/10 svg {
 
 /* Service feature list bullets */
 html[data-theme="brutalism"] ul.space-y-2 li .w-1\.5.h-1\.5.rounded-full.bg-primary {
-  background-color: #FF2D20 !important;
+  background-color: #2C2C2C !important;
   width: 8px !important;
   height: 8px !important;
   flex-shrink: 0;
@@ -503,7 +503,7 @@ html[data-theme="brutalism"] ul.space-y-2 li .w-1\.5.h-1\.5.rounded-full.bg-prim
 /* Work cards */
 html[data-theme="brutalism"] .flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border,
 html[data-theme="brutalism"] .flex-1.space-y-4.bg-card\/50 {
-  background-color: #ffffff !important;
+  background-color: #F9FAF7 !important;
   border: 4px solid #000000 !important;
   box-shadow: 5px 5px 0px #000000 !important;
   backdrop-filter: none !important;
@@ -547,7 +547,7 @@ html[data-theme="brutalism"] .absolute.left-0.top-0.w-px.bg-gradient-to-b {
 
 /* Timeline dot */
 html[data-theme="brutalism"] .absolute.-right-4.top-2.w-2.h-2.rounded-full.bg-primary {
-  background-color: #FF2D20 !important;
+  background-color: #2C2C2C !important;
   width: 12px !important;
   height: 12px !important;
   border: 3px solid #000000 !important;
@@ -568,7 +568,7 @@ html[data-theme="brutalism"] .flex-shrink-0.md\:w-48 .font-medium {
 html[data-theme="brutalism"] span.px-3.py-1.text-xs.rounded-full.bg-secondary,
 html[data-theme="brutalism"] .flex.flex-wrap.gap-2 span {
   background-color: #000000 !important;
-  color: #FFE600 !important;
+  color: #B2BDA0 !important;
   border: 2px solid #000000 !important;
   font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 700 !important;
@@ -580,14 +580,14 @@ html[data-theme="brutalism"] .flex.flex-wrap.gap-2 span {
 }
 
 html[data-theme="brutalism"] span.px-3.py-1.text-xs.rounded-full.bg-secondary:hover {
-  background-color: #FF2D20 !important;
-  border-color: #FF2D20 !important;
-  color: #ffffff !important;
+  background-color: #2C2C2C !important;
+  border-color: #2C2C2C !important;
+  color: #F9FAF7 !important;
 }
 
 /* Responsibility bullet points */
 html[data-theme="brutalism"] .space-y-1 li .text-foreground\/50 {
-  color: #FF2D20 !important;
+  color: #2C2C2C !important;
   font-weight: 900;
 }
 
@@ -598,7 +598,7 @@ html[data-theme="brutalism"] .space-y-1 li .text-foreground\/50 {
 /* Project card */
 html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card,
 html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card.backdrop-blur-sm {
-  background-color: #ffffff !important;
+  background-color: #F9FAF7 !important;
   border: 4px solid #000000 !important;
   box-shadow: 6px 6px 0px #000000 !important;
   backdrop-filter: none !important;
@@ -609,12 +609,12 @@ html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg
 html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card:hover {
   box-shadow: 3px 3px 0px #000000 !important;
   transform: translate(3px, 3px) !important;
-  border-color: #FF2D20 !important;
+  border-color: #2C2C2C !important;
 }
 
 /* Top gradient line on project card — replaced with red accent bar */
 html[data-theme="brutalism"] .absolute.top-0.left-0.w-full.h-1.bg-gradient-to-r {
-  background: #FF2D20 !important;
+  background: #2C2C2C !important;
   background-image: none !important;
   height: 4px !important;
   opacity: 1 !important;
@@ -637,23 +637,23 @@ html[data-theme="brutalism"] .group:hover .absolute.inset-0.bg-gradient-to-t.fro
 
 /* Project link icons inside image */
 html[data-theme="brutalism"] .p-2.rounded-full.bg-background\/90 {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   border: 2px solid #000000 !important;
   box-shadow: 2px 2px 0px #000000;
   color: #000000 !important;
 }
 
 html[data-theme="brutalism"] .p-2.rounded-full.bg-background\/90:hover {
-  background-color: #FF2D20 !important;
-  color: #ffffff !important;
+  background-color: #2C2C2C !important;
+  color: #F9FAF7 !important;
 }
 
 /* "Actif" badge on project */
 html[data-theme="brutalism"] .inline-flex.items-center.gap-1\.5.px-3.py-1\.5.text-xs.font-medium.rounded-full.bg-green-500\/90 {
   background-color: #000000 !important;
-  color: #FFE600 !important;
-  border: 2px solid #FFE600 !important;
-  box-shadow: 2px 2px 0px #FFE600 !important;
+  color: #B2BDA0 !important;
+  border: 2px solid #B2BDA0 !important;
+  box-shadow: 2px 2px 0px #B2BDA0 !important;
   font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
@@ -662,18 +662,18 @@ html[data-theme="brutalism"] .inline-flex.items-center.gap-1\.5.px-3.py-1\.5.tex
 }
 
 html[data-theme="brutalism"] .inline-flex.items-center.gap-1\.5 .w-1\.5.h-1\.5.rounded-full.bg-white.animate-pulse {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   animation: none !important;
 }
 
 /* Project name hover color */
 html[data-theme="brutalism"] .group:hover h3 {
-  color: #FF2D20 !important;
+  color: #2C2C2C !important;
 }
 
 /* Project highlight bullets */
 html[data-theme="brutalism"] .space-y-1\.5 li .text-primary {
-  color: #FF2D20 !important;
+  color: #2C2C2C !important;
   font-weight: 900;
 }
 
@@ -683,7 +683,7 @@ html[data-theme="brutalism"] .space-y-1\.5 li .text-primary {
 
 /* Skill pill → sticker style */
 html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5.rounded-full.border.border-border.bg-card\/50 {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   border: 3px solid #000000 !important;
   box-shadow: 3px 3px 0px #000000 !important;
   backdrop-filter: none !important;
@@ -696,15 +696,15 @@ html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4
   transform: translate(2px, 2px) !important;
   background-color: #000000 !important;
   border-color: #000000 !important;
-  color: #FFE600 !important;
+  color: #B2BDA0 !important;
 }
 
 html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5:hover span {
-  color: #FFE600 !important;
+  color: #B2BDA0 !important;
 }
 
 html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5:hover svg {
-  color: #FFE600 !important;
+  color: #B2BDA0 !important;
 }
 
 /* Skill icons */
@@ -722,15 +722,15 @@ html[data-theme="brutalism"] .absolute.inset-0.rounded-full.bg-gradient-to-br {
    ============================================ */
 
 html[data-theme="brutalism"] .bg-background\/80.hover\:bg-background.border-border {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   border: 2px solid #000000 !important;
   color: #000000 !important;
   box-shadow: 2px 2px 0px #000000 !important;
 }
 
 html[data-theme="brutalism"] .bg-background\/80.hover\:bg-background.border-border:hover {
-  background-color: #FF2D20 !important;
-  color: #ffffff !important;
+  background-color: #2C2C2C !important;
+  color: #F9FAF7 !important;
 }
 
 /* ============================================
@@ -739,7 +739,7 @@ html[data-theme="brutalism"] .bg-background\/80.hover\:bg-background.border-bord
 
 html[data-theme="brutalism"] footer {
   border-top: 4px solid #000000 !important;
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   color: #000000 !important;
   padding: 2rem 1.5rem;
 }
@@ -758,7 +758,7 @@ html[data-theme="brutalism"] footer p {
 }
 
 html[data-theme="brutalism"] footer .text-muted-foreground {
-  color: #333333 !important;
+  color: #5A5A5A !important;
 }
 
 html[data-theme="brutalism"] footer .border-t.border-border {
@@ -767,8 +767,8 @@ html[data-theme="brutalism"] footer .border-t.border-border {
 
 /* Heart icon in footer */
 html[data-theme="brutalism"] footer .text-red-500.fill-red-500 {
-  color: #FF2D20 !important;
-  fill: #FF2D20 !important;
+  color: #2C2C2C !important;
+  fill: #2C2C2C !important;
 }
 
 /* ============================================
@@ -777,7 +777,7 @@ html[data-theme="brutalism"] footer .text-red-500.fill-red-500 {
 
 html[data-theme="brutalism"] [data-radix-popper-content-wrapper],
 html[data-theme="brutalism"] [role="menu"] {
-  background-color: #ffffff !important;
+  background-color: #F9FAF7 !important;
   border: 3px solid #000000 !important;
   box-shadow: 5px 5px 0px #000000 !important;
   padding: 4px 0 !important;
@@ -793,7 +793,7 @@ html[data-theme="brutalism"] [role="menuitem"] {
 }
 
 html[data-theme="brutalism"] [role="menuitem"]:hover {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
   color: #000000 !important;
 }
 
@@ -810,8 +810,8 @@ html[data-theme="brutalism"] a.text-muted-foreground.hover\:text-foreground {
 }
 
 html[data-theme="brutalism"] a.text-muted-foreground.hover\:text-foreground:hover {
-  color: #FF2D20 !important;
-  text-decoration-color: #FF2D20;
+  color: #2C2C2C !important;
+  text-decoration-color: #2C2C2C;
 }
 
 /* ============================================
@@ -822,7 +822,7 @@ html[data-theme="brutalism"] input,
 html[data-theme="brutalism"] textarea,
 html[data-theme="brutalism"] select {
   border: 3px solid #000000 !important;
-  background-color: #ffffff !important;
+  background-color: #F9FAF7 !important;
   font-family: 'Space Grotesk', sans-serif !important;
   font-weight: 500;
   box-shadow: 3px 3px 0px #000000 !important;
@@ -832,8 +832,8 @@ html[data-theme="brutalism"] input:focus,
 html[data-theme="brutalism"] textarea:focus,
 html[data-theme="brutalism"] select:focus {
   outline: none !important;
-  border-color: #FF2D20 !important;
-  box-shadow: 3px 3px 0px #FF2D20 !important;
+  border-color: #2C2C2C !important;
+  box-shadow: 3px 3px 0px #2C2C2C !important;
 }
 
 /* ============================================
@@ -852,7 +852,7 @@ html[data-theme="brutalism"] [data-orientation="horizontal"] {
    ============================================ */
 
 html[data-theme="brutalism"] .w-full.h-full.flex.items-center.justify-center.bg-gradient-to-br.from-muted.to-muted\/50 {
-  background: #F5F5F5 !important;
+  background: #EDEFEA !important;
   background-image: none !important;
   border-bottom: 3px solid #000000;
 }
@@ -871,17 +871,17 @@ html[data-theme="brutalism"] ::-webkit-scrollbar {
 }
 
 html[data-theme="brutalism"] ::-webkit-scrollbar-track {
-  background: #FFE600;
+  background: #B2BDA0;
   border-left: 2px solid #000000;
 }
 
 html[data-theme="brutalism"] ::-webkit-scrollbar-thumb {
   background: #000000;
-  border: 2px solid #FFE600;
+  border: 2px solid #B2BDA0;
 }
 
 html[data-theme="brutalism"] ::-webkit-scrollbar-thumb:hover {
-  background: #FF2D20;
+  background: #2C2C2C;
 }
 
 /* ============================================
@@ -889,7 +889,7 @@ html[data-theme="brutalism"] ::-webkit-scrollbar-thumb:hover {
    ============================================ */
 
 html[data-theme="brutalism"] ::selection {
-  background-color: #FFE600;
+  background-color: #B2BDA0;
   color: #000000;
 }
 
@@ -898,7 +898,7 @@ html[data-theme="brutalism"] ::selection {
    ============================================ */
 
 html[data-theme="brutalism"] *:focus-visible {
-  outline: 3px solid #FF2D20 !important;
+  outline: 3px solid #2C2C2C !important;
   outline-offset: 2px !important;
   box-shadow: 3px 3px 0px #000000 !important;
 }
@@ -916,8 +916,8 @@ html[data-theme="brutalism"] .group.relative:hover {
    ============================================ */
 
 html[data-theme="brutalism"] section#education .inline-flex.items-center.gap-2.px-4.py-2 {
-  background-color: #FF2D20 !important;
-  color: #ffffff !important;
+  background-color: #2C2C2C !important;
+  color: #F9FAF7 !important;
   border: 3px solid #000000 !important;
   box-shadow: 3px 3px 0px #000000 !important;
 }
@@ -951,12 +951,12 @@ html[data-theme="brutalism"] .bg-gradient-to-r.from-blue-500\/5 {
 
 /* bg-card/50 → solid white */
 html[data-theme="brutalism"] [class*="bg-card\/"] {
-  background-color: #ffffff !important;
+  background-color: #F9FAF7 !important;
 }
 
 /* bg-primary/10 and similar → yellow */
 html[data-theme="brutalism"] [class*="bg-primary\/"] {
-  background-color: #FFE600 !important;
+  background-color: #B2BDA0 !important;
 }
 
 /* Override Tailwind shadow utilities to brutalist flat shadows */
