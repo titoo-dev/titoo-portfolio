@@ -114,7 +114,7 @@ export default function BrutalismPage() {
       <style>{`
         /* Diagonal stripe pattern on body */
         body {
-          background-color: #FFE600 !important;
+          background-color: #B2BDA0 !important;
           position: relative;
         }
         body::before {
@@ -151,15 +151,15 @@ export default function BrutalismPage() {
 
         /* Selection */
         ::selection {
-          background-color: #FFE600;
+          background-color: #B2BDA0;
           color: #000;
         }
 
         /* Scrollbar */
         ::-webkit-scrollbar { width: 10px; height: 10px; }
-        ::-webkit-scrollbar-track { background: #FFE600; border-left: 2px solid #000; }
-        ::-webkit-scrollbar-thumb { background: #000; border: 2px solid #FFE600; }
-        ::-webkit-scrollbar-thumb:hover { background: #FF2D20; }
+        ::-webkit-scrollbar-track { background: #B2BDA0; border-left: 2px solid #000; }
+        ::-webkit-scrollbar-thumb { background: #000; border: 2px solid #B2BDA0; }
+        ::-webkit-scrollbar-thumb:hover { background: #2C2C2C; }
 
         @media (max-width: 768px) {
           body::after { display: none; }
@@ -174,7 +174,7 @@ export default function BrutalismPage() {
         <div
           className="max-w-5xl mx-auto px-6 md:px-8"
           style={{
-            background: "#ffffff",
+            background: "#F9FAF7",
             border: "4px solid #000000",
             boxShadow: "8px 8px 0px #000000",
             marginTop: "2rem",
@@ -205,7 +205,7 @@ export default function BrutalismPage() {
                     border: "5px solid #000000",
                     boxShadow: "6px 6px 0px #000000",
                     overflow: "hidden",
-                    background: "#ffffff",
+                    background: "#F9FAF7",
                   }}
                 >
                   <Image
@@ -230,10 +230,10 @@ export default function BrutalismPage() {
                     alignItems: "center",
                     gap: 8,
                     background: "#000000",
-                    color: "#FFE600",
+                    color: "#B2BDA0",
                     padding: "6px 14px",
                     border: "3px solid #000000",
-                    boxShadow: "3px 3px 0px #FFE600",
+                    boxShadow: "3px 3px 0px #B2BDA0",
                     fontWeight: 700,
                     fontSize: "0.75rem",
                     textTransform: "uppercase",
@@ -246,7 +246,7 @@ export default function BrutalismPage() {
                     style={{
                       width: 10,
                       height: 10,
-                      background: "#FFE600",
+                      background: "#B2BDA0",
                       display: "inline-block",
                     }}
                   />
@@ -279,11 +279,11 @@ export default function BrutalismPage() {
                   style={{
                     fontFamily: "'Space Grotesk', sans-serif",
                     fontWeight: 700,
-                    color: "#FF2D20",
+                    color: "#2C2C2C",
                     textTransform: "uppercase",
                     letterSpacing: "0.04em",
                     fontSize: "1.1rem",
-                    borderLeft: "5px solid #FF2D20",
+                    borderLeft: "5px solid #2C2C2C",
                     paddingLeft: 12,
                     marginTop: "0.5rem",
                     marginBottom: "1rem",
@@ -300,7 +300,7 @@ export default function BrutalismPage() {
                   style={{
                     fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "1rem",
-                    color: "#333333",
+                    color: "#5A5A5A",
                     lineHeight: 1.7,
                     borderLeft: "3px solid #000000",
                     paddingLeft: "1rem",
@@ -405,7 +405,7 @@ export default function BrutalismPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 8,
-                  background: "#FFE600",
+                  background: "#B2BDA0",
                   color: "#000000",
                   border: "3px solid #000000",
                   boxShadow: "3px 3px 0px #000000",
@@ -450,7 +450,7 @@ export default function BrutalismPage() {
                       boxShadow: "3px 3px 0px #000000",
                     }}
                     style={{
-                      background: "#ffffff",
+                      background: "#F9FAF7",
                       border: "4px solid #000000",
                       boxShadow: "6px 6px 0px #000000",
                       padding: "2rem",
@@ -464,7 +464,7 @@ export default function BrutalismPage() {
                       style={{
                         width: 48,
                         height: 48,
-                        background: "#FFE600",
+                        background: "#B2BDA0",
                         border: "3px solid #000000",
                         boxShadow: "2px 2px 0px #000000",
                         display: "flex",
@@ -491,7 +491,7 @@ export default function BrutalismPage() {
                     <p
                       style={{
                         fontFamily: "'Space Grotesk', sans-serif",
-                        color: "#333333",
+                        color: "#5A5A5A",
                         lineHeight: 1.6,
                         marginBottom: "1rem",
                         fontSize: "0.9rem",
@@ -510,7 +510,7 @@ export default function BrutalismPage() {
                             gap: 8,
                             fontFamily: "'Space Grotesk', sans-serif",
                             fontSize: "0.85rem",
-                            color: "#333333",
+                            color: "#5A5A5A",
                             marginBottom: 6,
                           }}
                         >
@@ -518,7 +518,7 @@ export default function BrutalismPage() {
                             style={{
                               width: 8,
                               height: 8,
-                              background: "#FF2D20",
+                              background: "#2C2C2C",
                               flexShrink: 0,
                             }}
                           />
@@ -548,7 +548,7 @@ export default function BrutalismPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 8,
-                  background: "#FFE600",
+                  background: "#B2BDA0",
                   color: "#000000",
                   border: "3px solid #000000",
                   boxShadow: "3px 3px 0px #000000",
@@ -612,7 +612,7 @@ export default function BrutalismPage() {
                         top: 12,
                         width: 16,
                         height: 16,
-                        background: "#FF2D20",
+                        background: "#2C2C2C",
                         border: "3px solid #000000",
                         boxShadow: "2px 2px 0px #000000",
                         transform: "rotate(45deg)",
@@ -642,7 +642,7 @@ export default function BrutalismPage() {
                         boxShadow: "2px 2px 0px #000000",
                       }}
                       style={{
-                        background: "#ffffff",
+                        background: "#F9FAF7",
                         border: "4px solid #000000",
                         boxShadow: "5px 5px 0px #000000",
                         padding: "1.5rem",
@@ -668,7 +668,7 @@ export default function BrutalismPage() {
                               fontFamily: "'Space Grotesk', sans-serif",
                               fontWeight: 700,
                               fontSize: "0.9rem",
-                              color: "#FF2D20",
+                              color: "#2C2C2C",
                             }}
                           >
                             {job.name}
@@ -677,7 +677,7 @@ export default function BrutalismPage() {
                                 href={job.url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ marginLeft: 6, color: "#FF2D20" }}
+                                style={{ marginLeft: 6, color: "#2C2C2C" }}
                               >
                                 <ExternalLink
                                   size={14}
@@ -692,7 +692,7 @@ export default function BrutalismPage() {
                             fontFamily: "'Space Grotesk', sans-serif",
                             fontSize: "0.75rem",
                             fontWeight: 700,
-                            color: "#333",
+                            color: "#5A5A5A",
                             textTransform: "uppercase",
                             letterSpacing: "0.05em",
                             whiteSpace: "nowrap",
@@ -706,7 +706,7 @@ export default function BrutalismPage() {
                         style={{
                           fontFamily: "'Space Grotesk', sans-serif",
                           fontSize: "0.9rem",
-                          color: "#333333",
+                          color: "#5A5A5A",
                           lineHeight: 1.6,
                           marginBottom: "1rem",
                         }}
@@ -726,14 +726,14 @@ export default function BrutalismPage() {
                                 gap: 8,
                                 fontFamily: "'Space Grotesk', sans-serif",
                                 fontSize: "0.85rem",
-                                color: "#333",
+                                color: "#5A5A5A",
                                 marginBottom: 4,
                               }}
                             >
                               <ChevronRight
                                 size={14}
                                 style={{
-                                  color: "#FF2D20",
+                                  color: "#2C2C2C",
                                   flexShrink: 0,
                                   marginTop: 3,
                                 }}
@@ -752,7 +752,7 @@ export default function BrutalismPage() {
                               key={skill}
                               style={{
                                 background: "#000000",
-                                color: "#FFE600",
+                                color: "#B2BDA0",
                                 border: "2px solid #000000",
                                 fontFamily: "'Space Grotesk', sans-serif",
                                 fontWeight: 700,
@@ -778,8 +778,8 @@ export default function BrutalismPage() {
                             right: 12,
                             fontFamily: "'Bebas Neue', sans-serif",
                             fontSize: "0.7rem",
-                            color: "#FF2D20",
-                            border: "2px solid #FF2D20",
+                            color: "#2C2C2C",
+                            border: "2px solid #2C2C2C",
                             padding: "2px 8px",
                             transform: "rotate(6deg)",
                             opacity: 0.5,
@@ -814,7 +814,7 @@ export default function BrutalismPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 8,
-                  background: "#FFE600",
+                  background: "#B2BDA0",
                   color: "#000000",
                   border: "3px solid #000000",
                   boxShadow: "3px 3px 0px #000000",
@@ -864,7 +864,7 @@ export default function BrutalismPage() {
                     }}
                     className="group"
                     style={{
-                      background: "#ffffff",
+                      background: "#F9FAF7",
                       border: "4px solid #000000",
                       boxShadow: "6px 6px 0px #000000",
                       overflow: "hidden",
@@ -877,7 +877,7 @@ export default function BrutalismPage() {
                     <div
                       style={{
                         height: 4,
-                        background: "#FF2D20",
+                        background: "#2C2C2C",
                         width: "100%",
                       }}
                     />
@@ -888,7 +888,7 @@ export default function BrutalismPage() {
                         position: "relative",
                         width: "100%",
                         height: 192,
-                        background: "#F5F5F5",
+                        background: "#EDEFEA",
                         borderBottom: "3px solid #000000",
                         overflow: "hidden",
                       }}
@@ -909,7 +909,7 @@ export default function BrutalismPage() {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            background: "#F5F5F5",
+                            background: "#EDEFEA",
                           }}
                         >
                           <FolderOpen size={48} color="#cccccc" />
@@ -938,7 +938,7 @@ export default function BrutalismPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{
-                              background: "#FFE600",
+                              background: "#B2BDA0",
                               border: "2px solid #000000",
                               boxShadow: "2px 2px 0px #000000",
                               padding: 6,
@@ -955,7 +955,7 @@ export default function BrutalismPage() {
                             target="_blank"
                             rel="noopener noreferrer"
                             style={{
-                              background: "#FFE600",
+                              background: "#B2BDA0",
                               border: "2px solid #000000",
                               boxShadow: "2px 2px 0px #000000",
                               padding: 6,
@@ -972,7 +972,7 @@ export default function BrutalismPage() {
                     {/* Card body */}
                     <div style={{ padding: "1.25rem" }}>
                       <h3
-                        className="group-hover:!text-[#FF2D20]"
+                        className="group-hover:!text-[#2C2C2C]"
                         style={{
                           fontFamily: "'Bebas Neue', sans-serif",
                           fontSize: "1.5rem",
@@ -989,7 +989,7 @@ export default function BrutalismPage() {
                         style={{
                           fontFamily: "'Space Grotesk', sans-serif",
                           fontSize: "0.85rem",
-                          color: "#333333",
+                          color: "#5A5A5A",
                           lineHeight: 1.6,
                           marginBottom: "0.75rem",
                         }}
@@ -1017,14 +1017,14 @@ export default function BrutalismPage() {
                                   gap: 6,
                                   fontFamily: "'Space Grotesk', sans-serif",
                                   fontSize: "0.8rem",
-                                  color: "#333",
+                                  color: "#5A5A5A",
                                   marginBottom: 4,
                                 }}
                               >
                                 <ChevronRight
                                   size={12}
                                   style={{
-                                    color: "#FF2D20",
+                                    color: "#2C2C2C",
                                     flexShrink: 0,
                                     marginTop: 3,
                                   }}
@@ -1057,7 +1057,7 @@ export default function BrutalismPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: 8,
-                  background: "#FFE600",
+                  background: "#B2BDA0",
                   color: "#000000",
                   border: "3px solid #000000",
                   boxShadow: "3px 3px 0px #000000",
@@ -1098,10 +1098,10 @@ export default function BrutalismPage() {
                     y: 2,
                     boxShadow: "1px 1px 0px #000000",
                     backgroundColor: "#000000",
-                    color: "#FFE600",
+                    color: "#B2BDA0",
                   }}
                   style={{
-                    background: "#FFE600",
+                    background: "#B2BDA0",
                     border: "3px solid #000000",
                     boxShadow: "3px 3px 0px #000000",
                     fontFamily: "'Space Grotesk', sans-serif",
@@ -1126,7 +1126,7 @@ export default function BrutalismPage() {
           {/* ============================================================= */}
           <footer
             style={{
-              background: "#FFE600",
+              background: "#B2BDA0",
               borderTop: "4px solid #000000",
               padding: "2rem 1.5rem",
             }}
@@ -1167,7 +1167,7 @@ export default function BrutalismPage() {
                   alignItems: "center",
                   gap: 8,
                   background: "#000000",
-                  color: "#FFE600",
+                  color: "#B2BDA0",
                   border: "3px solid #000000",
                   boxShadow: "4px 4px 0px #000000",
                   fontFamily: "'Space Grotesk', sans-serif",
@@ -1217,8 +1217,8 @@ export default function BrutalismPage() {
                 Concu avec{" "}
                 <Heart
                   size={16}
-                  fill="#FF2D20"
-                  color="#FF2D20"
+                  fill="#2C2C2C"
+                  color="#2C2C2C"
                 />{" "}
                 a Madagascar
               </p>
