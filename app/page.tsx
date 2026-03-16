@@ -326,7 +326,6 @@ export default function BrutalismPage() {
                       style={{
                         fontFamily: "'Space Grotesk', sans-serif",
                         fontWeight: 700,
-                        color: "#000000",
                         textTransform: "uppercase",
                         letterSpacing: "0.06em",
                         borderBottom: "3px solid #000000",
@@ -335,7 +334,7 @@ export default function BrutalismPage() {
                         textDecoration: "none",
                         transition: "color 0.1s, background 0.1s",
                       }}
-                      className="hover:bg-black hover:text-yellow-400 hover:px-1"
+                      className="text-black hover:bg-black hover:text-[#B2BDA0] hover:px-1"
                     >
                       {networkIcon[p.network] || p.network} / {p.username}
                     </Link>
@@ -347,7 +346,6 @@ export default function BrutalismPage() {
                     style={{
                       fontFamily: "'Space Grotesk', sans-serif",
                       fontWeight: 700,
-                      color: "#000000",
                       textTransform: "uppercase",
                       letterSpacing: "0.06em",
                       borderBottom: "3px solid #000000",
@@ -358,7 +356,7 @@ export default function BrutalismPage() {
                       alignItems: "center",
                       gap: 4,
                     }}
-                    className="hover:bg-black hover:text-yellow-400 hover:px-1"
+                    className="text-black hover:bg-black hover:text-[#B2BDA0] hover:px-1"
                   >
                     <Mail size={14} /> Email
                   </Link>
@@ -369,7 +367,6 @@ export default function BrutalismPage() {
                     style={{
                       fontFamily: "'Space Grotesk', sans-serif",
                       fontWeight: 700,
-                      color: "#000000",
                       textTransform: "uppercase",
                       letterSpacing: "0.06em",
                       borderBottom: "3px solid #000000",
@@ -380,7 +377,7 @@ export default function BrutalismPage() {
                       alignItems: "center",
                       gap: 4,
                     }}
-                    className="hover:bg-black hover:text-yellow-400 hover:px-1"
+                    className="text-black hover:bg-black hover:text-[#B2BDA0] hover:px-1"
                   >
                     <Phone size={14} /> Tel
                   </Link>
