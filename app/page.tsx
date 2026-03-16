@@ -935,7 +935,7 @@ export default function BrutalismPage() {
 
                       {/* Overlay with links on hover */}
                       <div
-                        className="opacity-0 group-hover:opacity-100"
+                        className="opacity-100 md:opacity-0 md:group-hover:opacity-100"
                         style={{
                           position: "absolute",
                           inset: 0,
