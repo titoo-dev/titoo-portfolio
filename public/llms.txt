@@ -1,0 +1,61 @@
+# Titosy Manankasina — Développeur Fullstack JavaScript & Flutter
+
+> Portfolio professionnel de Titosy Manankasina, développeur Fullstack spécialisé en JavaScript et Flutter, basé à Antananarivo, Madagascar.
+
+## À propos
+
+Titosy Manankasina est un développeur Fullstack JavaScript & Flutter avec plus de 4 ans d'expérience dans le développement d'applications web et mobiles. Il est capable de gérer la chaîne de production complète : analyse, conception, développement et mise en production.
+
+- **Localisation** : Antananarivo, Madagascar
+- **Disponibilité** : Remote / Freelance
+- **Email** : dev.titosy@gmail.com
+- **Site web** : https://titosy.dev
+- **LinkedIn** : https://www.linkedin.com/in/titosy-manankasina
+- **GitHub** : https://github.com/titoo-dev
+
+## Compétences techniques
+
+### Frontend
+- React, Next.js, TypeScript, JavaScript, HTML, CSS, Tailwind CSS
+
+### Mobile
+- Flutter, Dart, React Native, Android Jetpack, Kotlin
+
+### Backend
+- Node.js, Nest.js, MySQL, AWS Lambda, Cloudflare Workers
+
+### Outils & DevOps
+- Git, GitHub, GitLab, Figma, n8n, Firebase
+
+## Services
+
+- **Développement Web** : Sites web responsive, PWA, intégration API (React/Next.js)
+- **Applications Mobile** : Applications iOS & Android cross-platform (Flutter)
+- **Design UI/UX** : Maquettes Figma, Design Systems, interfaces accessibles
+- **Consulting & Formation** : Audit technique, formation, revue de code
+
+## Expérience professionnelle
+
+- **Fluentech** (Oct 2025 – Présent) — Développeur Javascript / Flutter / Kotlin
+- **PUSH-IT** (Juil 2025 – Oct 2025) — Développeur Fullstack Javascript
+- **Bocasay** (Juil 2022 – Juil 2025) — Développeur Javascript
+- **Flit Soft** (Mar 2022 – Juin 2022) — Stage Développeur Javascript & Flutter
+
+## Projets notables
+
+- **Tononkira** — Application web/mobile de découverte de paroles de chansons malgaches (15 000+ chansons, 2 300+ artistes)
+- **Chantastik** — Application de création de vidéos lyrics (Remotion, Web Audio API)
+- **MAGAPE** — Plateforme communautaire chrétienne (gestion podcast, boutique en ligne)
+- **Okani Survey** — Plateforme d'enquête gouvernementale pour le Gabon (web & mobile)
+- **Phototech** — Plateforme de suivi de documents terrain avec synchronisation offline
+- **MID** — Application de gestion d'ordres de trading de devises (web & mobile)
+- **TMvola** — CLI de récupération de transactions Mvola
+
+## Formation
+
+- **Licence en Ingénierie Logicielle** — Institut Supérieur Polytechnique de Madagascar (ISPM), 2018–2022
+
+## Langues
+
+- Français (conversationnel)
+- Anglais (technique)
