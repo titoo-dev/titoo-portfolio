@@ -173,7 +173,7 @@ export default async function OgImage() {
 							alignItems: "center",
 						}}
 					>
-						📍 Antananarivo, Madagascar
+						Antananarivo, Madagascar
 					</div>
 					<div
 						style={{

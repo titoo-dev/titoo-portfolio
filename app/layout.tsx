@@ -68,22 +68,12 @@ export const metadata: Metadata = {
     title: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
     description:
       "Développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience. React, Next.js, TypeScript, Flutter, Node.js. Disponible en remote.",
-    images: [
-      {
-        url: "/opengraph-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
-        type: "image/png",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
     description:
       "Développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience. React, Next.js, TypeScript, Flutter. Disponible en remote.",
-    images: ["/opengraph-image.png"],
   },
 };
 
