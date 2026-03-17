@@ -187,6 +187,7 @@ export default function BrutalismPage() {
           {/* HERO SECTION                                                   */}
           {/* ============================================================= */}
           <section
+            id="a-propos"
             style={{ borderBottom: "4px solid #000000" }}
             className="py-12 md:py-16"
           >
@@ -389,7 +390,7 @@ export default function BrutalismPage() {
           {/* ============================================================= */}
           {/* SERVICES SECTION                                               */}
           {/* ============================================================= */}
-          <section style={{ borderBottom: "4px solid #000000" }} className="py-12">
+          <section id="services" style={{ borderBottom: "4px solid #000000" }} className="py-12">
             {/* Section badge */}
             <motion.div
               className="text-center mb-12"
@@ -538,7 +539,7 @@ export default function BrutalismPage() {
           {/* ============================================================= */}
           {/* EXPERIENCE SECTION                                             */}
           {/* ============================================================= */}
-          <section style={{ borderBottom: "4px solid #000000" }} className="py-12">
+          <section id="experience" style={{ borderBottom: "4px solid #000000" }} className="py-12">
             {/* Section badge */}
             <motion.div
               className="text-center mb-12"
@@ -811,7 +812,7 @@ export default function BrutalismPage() {
           {/* ============================================================= */}
           {/* PROJECTS SECTION                                               */}
           {/* ============================================================= */}
-          <section style={{ borderBottom: "4px solid #000000" }} className="py-12">
+          <section id="projets" style={{ borderBottom: "4px solid #000000" }} className="py-12">
             {/* Section badge */}
             <motion.div
               className="text-center mb-12"
@@ -1062,7 +1063,7 @@ export default function BrutalismPage() {
           {/* ============================================================= */}
           {/* SKILLS SECTION                                                 */}
           {/* ============================================================= */}
-          <section style={{ borderBottom: "4px solid #000000" }} className="py-12">
+          <section id="competences" style={{ borderBottom: "4px solid #000000" }} className="py-12">
             {/* Section badge */}
             <motion.div
               className="text-center mb-12"

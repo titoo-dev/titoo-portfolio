@@ -140,9 +140,28 @@ const jsonLd = {
       name: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#person` },
+      mainEntity: { "@id": `${siteUrl}/#person` },
       description:
         "Portfolio professionnel de Titosy Manankasina — Développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience.",
       inLanguage: "fr",
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": `${siteUrl}/#navigation`,
+      name: [
+        "À propos",
+        "Services",
+        "Expérience",
+        "Projets",
+        "Compétences",
+      ],
+      url: [
+        `${siteUrl}/#a-propos`,
+        `${siteUrl}/#services`,
+        `${siteUrl}/#experience`,
+        `${siteUrl}/#projets`,
+        `${siteUrl}/#competences`,
+      ],
     },
   ],
 };
