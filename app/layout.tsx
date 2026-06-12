@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -12,6 +13,16 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const departureMono = localFont({
+  src: "./fonts/DepartureMono-Regular.woff2",
+  variable: "--font-departure",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  themeColor: "#b2b1b1",
+};
 
 const siteUrl = "https://titosy.dev";
 
@@ -144,6 +155,7 @@ const jsonLd = {
         "Expérience",
         "Projets",
         "Compétences",
+        "Formation",
       ],
       url: [
         `${siteUrl}/#a-propos`,
@@ -151,6 +163,7 @@ const jsonLd = {
         `${siteUrl}/#experience`,
         `${siteUrl}/#projets`,
         `${siteUrl}/#competences`,
+        `${siteUrl}/#formation`,
       ],
     },
   ],
@@ -162,7 +175,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth" data-theme="brutalism">
+    <html lang="fr" className="scroll-smooth">
       <head>
         <script
           type="application/ld+json"
@@ -171,7 +184,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+        className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} antialiased overflow-x-hidden`}
       >
         {children}
         <Analytics />
