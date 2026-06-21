@@ -6,10 +6,29 @@ export const alt =
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
+// Fetch a Google font as TTF (satori can't parse woff2) by requesting the CSS
+// with a UA that doesn't advertise woff2 support.
+async function loadGoogleFont(family: string, weight: number) {
+  const url = `https://fonts.googleapis.com/css2?family=${family}:wght@${weight}`;
+  const css = await fetch(url, {
+    headers: {
+      "User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1)",
+    },
+  }).then((r) => r.text());
+  const src = css.match(/src: url\((.+?)\) format\('(truetype|opentype)'\)/);
+  if (!src) throw new Error(`font not found: ${family}`);
+  return fetch(src[1]).then((r) => r.arrayBuffer());
+}
+
 export default async function OgImage() {
-  const departureMono = await fetch(
-    new URL("./fonts/DepartureMono-Regular.otf", import.meta.url),
-  ).then((res) => res.arrayBuffer());
+  const [schibsted, spaceMono] = await Promise.all([
+    loadGoogleFont("Schibsted+Grotesk", 800),
+    loadGoogleFont("Space+Mono", 400),
+  ]);
+
+  const SANS = "Schibsted Grotesk";
+  const MONO = "Space Mono";
+  const ACCENT = "#f2611a";
 
   return new ImageResponse(
     <div
@@ -18,76 +37,105 @@ export default async function OgImage() {
         height: "630px",
         display: "flex",
         flexDirection: "column",
-        background: "#b2b1b1",
-        color: "#1f1e1c",
-        padding: "80px 90px",
-        fontFamily: "monospace",
+        background: "#f1f0ec",
+        color: "#1c1c1c",
+        padding: "70px 80px",
+        fontFamily: SANS,
         position: "relative",
       }}
     >
-      {/* Top meta row */}
+      {/* Top row — logo + meta */}
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          fontFamily: "DepartureMono",
-          fontSize: "22px",
-          letterSpacing: "0.08em",
-          color: "#56554f",
         }}
       >
-        <span style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-          <svg width="27" height="27" viewBox="0 0 9 9" aria-hidden="true">
-            <path
-              d="M4 0h1v3H4zM4 6h1v3H4zM0 4h3v1H0zM6 4h3v1H6zM1 1h1v1H1zM7 1h1v1H7zM1 7h1v1H1zM7 7h1v1H7zM2 2h1v1H2zM6 2h1v1H6zM2 6h1v1H2zM6 6h1v1H6z"
-              fill="#1d5a57"
+        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
+          <div
+            style={{
+              position: "relative",
+              width: "58px",
+              height: "58px",
+              borderRadius: "17px",
+              background: "#1c1c1c",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              boxShadow: "0 7px 20px rgba(0,0,0,.24)",
+            }}
+          >
+            <span
+              style={{
+                fontFamily: SANS,
+                fontWeight: 800,
+                fontSize: "30px",
+                color: "#fff",
+                lineHeight: 1,
+              }}
+            >
+              T
+            </span>
+            <div
+              style={{
+                position: "absolute",
+                right: "8px",
+                bottom: "8px",
+                width: "9px",
+                height: "9px",
+                borderRadius: "50%",
+                background: ACCENT,
+                display: "flex",
+              }}
             />
-          </svg>
-          TITOSY.DEV
+          </div>
+          <span
+            style={{
+              fontFamily: SANS,
+              fontWeight: 700,
+              fontSize: "24px",
+              color: "#1c1c1c",
+            }}
+          >
+            Titosy Manankasina
+          </span>
+        </div>
+        <span
+          style={{
+            fontFamily: MONO,
+            fontSize: "20px",
+            letterSpacing: "0.06em",
+            color: "#9a978d",
+          }}
+        >
+          ANTANANARIVO, MG
         </span>
-        <span>ANTANANARIVO, MG — GMT+3</span>
       </div>
 
-      {/* Name */}
+      {/* Headline */}
       <div
         style={{
-          marginTop: "110px",
-          fontFamily: "DepartureMono",
-          fontSize: "66px",
-          lineHeight: 1.1,
+          marginTop: "auto",
           display: "flex",
+          flexDirection: "column",
+          fontFamily: SANS,
+          fontWeight: 800,
+          fontSize: "76px",
+          lineHeight: 1.04,
+          letterSpacing: "-0.025em",
         }}
       >
-        Titosy Manankasina
-      </div>
-
-      {/* Square-wave underline */}
-      <svg
-        width="452"
-        height="36"
-        viewBox="0 0 113 9"
-        style={{ marginTop: "28px" }}
-        aria-hidden="true"
-      >
-        <path
-          d="M0.5 7.5h14v-5h14v5h14v-5h14v5h14v-5h14v5h14v-5h14"
-          stroke="#1d5a57"
-          strokeWidth="1.5"
-          fill="none"
-        />
-      </svg>
-
-      {/* Role */}
-      <div
-        style={{
-          marginTop: "30px",
-          fontSize: "30px",
-          color: "#45443f",
-          display: "flex",
-        }}
-      >
-        Développeur Fullstack — JavaScript & Flutter
+        <div style={{ display: "flex", color: "#1c1c1c" }}>
+          Hi, I&apos;m Titosy.
+        </div>
+        <div style={{ display: "flex" }}>
+          <span style={{ color: "#bdbab1" }}>I build</span>
+          <span style={{ color: "#1c1c1c" }}>&nbsp;web &amp; mobile</span>
+        </div>
+        <div style={{ display: "flex", color: ACCENT }}>
+          JavaScript &amp; Flutter.
+        </div>
       </div>
 
       {/* Bottom row */}
@@ -97,35 +145,34 @@ export default async function OgImage() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          fontFamily: "DepartureMono",
-          fontSize: "22px",
-          letterSpacing: "0.08em",
-          color: "#56554f",
+          fontFamily: MONO,
+          fontSize: "20px",
+          letterSpacing: "0.04em",
+          color: "#6b6860",
         }}
       >
-        <span style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+        <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
           <span
             style={{
-              width: "14px",
-              height: "14px",
-              background: "#256b68",
+              width: "12px",
+              height: "12px",
+              borderRadius: "50%",
+              background: "#2bcc63",
               display: "flex",
             }}
           />
-          DISPONIBLE — REMOTE
+          Disponible — remote ou hybride
         </span>
-        <span>REACT · NEXT.JS · TYPESCRIPT · FLUTTER</span>
+        <span style={{ display: "flex" }}>
+          React · Next.js · TypeScript · Flutter
+        </span>
       </div>
     </div>,
     {
       ...size,
       fonts: [
-        {
-          name: "DepartureMono",
-          data: departureMono,
-          style: "normal",
-          weight: 400,
-        },
+        { name: SANS, data: schibsted, style: "normal", weight: 800 },
+        { name: MONO, data: spaceMono, style: "normal", weight: 400 },
       ],
     },
   );

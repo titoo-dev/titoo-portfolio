@@ -1,27 +1,24 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import localFont from "next/font/local";
+import { Schibsted_Grotesk, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
   subsets: ["latin"],
-});
-
-const departureMono = localFont({
-  src: "./fonts/DepartureMono-Regular.woff2",
-  variable: "--font-departure",
+  weight: ["400", "700"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#b2b1b1",
+  themeColor: "#dcdad3",
 };
 
 const siteUrl = "https://titosy.dev";
@@ -146,26 +143,6 @@ const jsonLd = {
         "Portfolio professionnel de Titosy Manankasina — Développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience.",
       inLanguage: "fr",
     },
-    {
-      "@type": "SiteNavigationElement",
-      "@id": `${siteUrl}/#navigation`,
-      name: [
-        "À propos",
-        "Services",
-        "Expérience",
-        "Projets",
-        "Compétences",
-        "Formation",
-      ],
-      url: [
-        `${siteUrl}/#a-propos`,
-        `${siteUrl}/#services`,
-        `${siteUrl}/#experience`,
-        `${siteUrl}/#projets`,
-        `${siteUrl}/#competences`,
-        `${siteUrl}/#formation`,
-      ],
-    },
   ],
 };
 
@@ -184,7 +161,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${departureMono.variable} antialiased overflow-x-hidden`}
+        className={`${schibstedGrotesk.variable} ${spaceMono.variable} antialiased overflow-x-hidden`}
       >
         {children}
         <Analytics />
