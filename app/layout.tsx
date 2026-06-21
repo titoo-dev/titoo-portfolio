@@ -155,6 +155,12 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth">
       <head>
         <script
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: disable the browser's reload scroll restoration before it fires, so reloading this single-page portfolio returns to the top instead of jumping ~100px down
+          dangerouslySetInnerHTML={{
+            __html: 'history.scrollRestoration="manual"',
+          }}
+        />
+        <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structured data
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
