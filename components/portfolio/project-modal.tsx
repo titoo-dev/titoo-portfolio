@@ -101,7 +101,7 @@ export function ProjectModal({
             borderRadius: 30,
           }}
         >
-          View Project
+          Voir le projet
           <ExternalCircleIcon size={22} />
         </a>
       )}

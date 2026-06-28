@@ -127,10 +127,10 @@ export default async function OgImage() {
         }}
       >
         <div style={{ display: "flex", color: "#1c1c1c" }}>
-          Hi, I&apos;m Titosy.
+          Salut, moi c&apos;est Titosy.
         </div>
         <div style={{ display: "flex" }}>
-          <span style={{ color: "#bdbab1" }}>I build</span>
+          <span style={{ color: "#bdbab1" }}>Je crée des apps</span>
           <span style={{ color: "#1c1c1c" }}>&nbsp;web &amp; mobile</span>
         </div>
         <div style={{ display: "flex", color: ACCENT }}>

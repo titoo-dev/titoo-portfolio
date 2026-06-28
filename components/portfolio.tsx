@@ -336,7 +336,7 @@ export function Portfolio() {
               style={{ "--d": "0.24s", margin: 0 } as React.CSSProperties}
             >
               <span className="text-[42px] md:text-[60px]" style={heroWord}>
-                Hi, I&apos;m
+                Salut, moi c&apos;est
               </span>
               {/* biome-ignore lint/performance/noImgElement: hero portrait with object-position fine-tuning */}
               <img
@@ -372,9 +372,9 @@ export function Portfolio() {
                   lineHeight: 1.08,
                 }}
               >
-                <span style={{ color: "#bdbab1" }}>I build </span>
+                <span style={{ color: "#bdbab1" }}>Je crée des apps </span>
                 <span style={{ color: "#1c1c1c" }}>web &amp; mobile</span>
-                <span style={{ color: "#bdbab1" }}> with</span>
+                <span style={{ color: "#bdbab1" }}> avec</span>
               </div>
             </div>
             <div
@@ -420,9 +420,9 @@ export function Portfolio() {
                 } as React.CSSProperties
               }
             >
-              <span style={{ color: "#bdbab1" }}>I build </span>
+              <span style={{ color: "#bdbab1" }}>Je crée des apps </span>
               <span style={{ color: "#1c1c1c" }}>web &amp; mobile</span>
-              <span style={{ color: "#bdbab1" }}> with </span>
+              <span style={{ color: "#bdbab1" }}> avec </span>
               <span style={{ color: "var(--accent)" }}>
                 JavaScript &amp; Flutter.
               </span>
@@ -1000,7 +1000,7 @@ export function Portfolio() {
                 <div
                   style={{ fontSize: 19, fontWeight: 700, color: "#1c1c1c" }}
                 >
-                  Titosy&apos;s Playlist
+                  Playlist de Titosy
                 </div>
                 <a
                   href={PROFILE.spotify}
@@ -1038,7 +1038,7 @@ export function Portfolio() {
                   <span
                     style={{ fontSize: 14, color: "#6b6860", fontWeight: 500 }}
                   >
-                    Play on Spotify
+                    Écouter sur Spotify
                   </span>
                 </a>
               </div>

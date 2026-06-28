@@ -290,7 +290,7 @@ export const projects: Project[] = [
       "Génération automatique de fichiers LRC pour la compatibilité avec d'autres lecteurs.",
     ],
     stats: [
-      { k: "Frame", v: "Perfect sync" },
+      { k: "Frame", v: "Sync parfaite" },
       { k: "LRC", v: "Export" },
       { k: "OSS", v: "Open source" },
     ],
