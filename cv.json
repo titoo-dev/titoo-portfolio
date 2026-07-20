@@ -334,10 +334,10 @@
       "github": null,
       "image": null,
       "images": [
-        "/images/tononkira/tononkira_1.png",
-        "/images/tononkira/tononkira_2.png",
-        "/images/tononkira/tononkira_3.png",
-        "/images/tononkira/tononkira_4.png"
+        "/images/tononkira/tononkira_1.webp",
+        "/images/tononkira/tononkira_2.webp",
+        "/images/tononkira/tononkira_3.webp",
+        "/images/tononkira/tononkira_4.webp"
       ]
     },
     {
@@ -354,10 +354,10 @@
       "github": "https://github.com/titoo-dev/chantastik",
       "image": null,
       "images": [
-        "/images/chantastik/chantastik_1.png",
-        "/images/chantastik/chantastik_2.png",
-        "/images/chantastik/chantastik_3.png",
-        "/images/chantastik/chantastik_4.png"
+        "/images/chantastik/chantastik_1.webp",
+        "/images/chantastik/chantastik_2.webp",
+        "/images/chantastik/chantastik_3.webp",
+        "/images/chantastik/chantastik_4.webp"
       ]
     },
     {
@@ -375,10 +375,10 @@
       "github": null,
       "image": null,
       "images": [
-        "/images/magape/magape_1.png",
-        "/images/magape/magape_2.png",
-        "/images/magape/magape_3.png",
-        "/images/magape/magape_4.png"
+        "/images/magape/magape_1.webp",
+        "/images/magape/magape_2.webp",
+        "/images/magape/magape_3.webp",
+        "/images/magape/magape_4.webp"
       ]
     },
     {
@@ -397,9 +397,9 @@
       "github": null,
       "image": null,
       "images": [
-        "/images/okani-survey/okani_1.png",
-        "/images/okani-survey/okani_2.png",
-        "/images/okani-survey/okani_3.png"
+        "/images/okani-survey/okani_1.webp",
+        "/images/okani-survey/okani_2.webp",
+        "/images/okani-survey/okani_3.webp"
       ]
     },
     {

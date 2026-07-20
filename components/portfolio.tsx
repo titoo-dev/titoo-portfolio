@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import {
   careers,
@@ -338,10 +339,13 @@ export function Portfolio() {
               <span className="text-[42px] md:text-[60px]" style={heroWord}>
                 Salut, moi c&apos;est
               </span>
-              {/* biome-ignore lint/performance/noImgElement: hero portrait with object-position fine-tuning */}
-              <img
+              <Image
                 src={PROFILE.photo}
                 alt={PROFILE.name}
+                width={90}
+                height={74}
+                sizes="90px"
+                priority
                 className="h-[54px] w-[64px] rounded-[16px] md:h-[74px] md:w-[90px] md:rounded-[20px]"
                 style={{
                   objectFit: "cover",
@@ -599,7 +603,7 @@ export function Portfolio() {
                 }}
               >
                 <div style={cardLabel}>Projets sélectionnés</div>
-                <div style={{ display: "flex", gap: 7 }}>
+                <div style={{ display: "flex" }}>
                   {projects.map((p, i) => (
                     <button
                       type="button"
@@ -607,17 +611,30 @@ export function Portfolio() {
                       aria-label={p.name}
                       onClick={() => changeProj(i)}
                       style={{
-                        width: i === projHead ? 22 : 8,
-                        height: 8,
-                        borderRadius: 5,
+                        // 24px min tap target (a11y); the visual dot is the inner span
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: i === projHead ? 38 : 24,
+                        height: 24,
                         border: "none",
+                        background: "transparent",
                         cursor: "pointer",
                         padding: 0,
-                        transition: "all .3s ease",
-                        background:
-                          i === projHead ? "var(--accent)" : "#cfccc2",
                       }}
-                    />
+                    >
+                      <span
+                        style={{
+                          display: "block",
+                          width: i === projHead ? 22 : 8,
+                          height: 8,
+                          borderRadius: 5,
+                          transition: "all .3s ease",
+                          background:
+                            i === projHead ? "var(--accent)" : "#cfccc2",
+                        }}
+                      />
+                    </button>
                   ))}
                 </div>
               </div>
@@ -639,16 +656,12 @@ export function Portfolio() {
                     opacity: previewOpacity,
                   }}
                 >
-                  {/* biome-ignore lint/performance/noImgElement: dynamic showcase image */}
-                  <img
+                  <Image
                     src={cp.img}
                     alt={cp.name}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      display: "block",
-                    }}
+                    fill
+                    sizes="(max-width: 767px) 100vw, 340px"
+                    style={{ objectFit: "cover" }}
                   />
                   <div
                     className="case-overlay"
@@ -761,10 +774,12 @@ export function Portfolio() {
                           opacity: i === projHead ? 1 : 0.62,
                         }}
                       >
-                        {/* biome-ignore lint/performance/noImgElement: dynamic project thumbnail */}
-                        <img
+                        <Image
                           src={p.thumb}
                           alt=""
+                          width={52}
+                          height={38}
+                          sizes="52px"
                           style={{
                             width: "100%",
                             height: "100%",
@@ -1142,7 +1157,8 @@ export function Portfolio() {
                           }
                         : {
                             background: "transparent",
-                            color: "#8c897f",
+                            // 4.6:1 on white (a11y); #8c897f was 3.5:1
+                            color: "#6e6b62",
                             fontWeight: 500,
                           }),
                     }}

@@ -1,13 +1,12 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
 export const alt =
   "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-// Fetch a Google font as TTF (satori can't parse woff2) by requesting the CSS
-// with a UA that doesn't advertise woff2 support.
+// Fetch a Google font as TTF/WOFF (satori can't parse woff2) by requesting the
+// CSS with a UA that doesn't advertise woff2 support.
 async function loadGoogleFont(family: string, weight: number) {
   const url = `https://fonts.googleapis.com/css2?family=${family}:wght@${weight}`;
   const css = await fetch(url, {
@@ -15,7 +14,9 @@ async function loadGoogleFont(family: string, weight: number) {
       "User-Agent": "Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1)",
     },
   }).then((r) => r.text());
-  const src = css.match(/src: url\((.+?)\) format\('(truetype|opentype)'\)/);
+  const src = css.match(
+    /src: url\((.+?)\) format\('(truetype|opentype|woff)'\)/,
+  );
   if (!src) throw new Error(`font not found: ${family}`);
   return fetch(src[1]).then((r) => r.arrayBuffer());
 }

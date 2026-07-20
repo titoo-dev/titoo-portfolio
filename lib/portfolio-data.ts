@@ -235,8 +235,8 @@ export const projects: Project[] = [
   {
     name: "Tononkira",
     tag: "Flutter · Web · Search",
-    img: "/images/tononkira/tononkira_1.png",
-    thumb: "/images/tononkira/tononkira_2.png",
+    img: "/images/tononkira/tononkira_1.webp",
+    thumb: "/images/tononkira/tononkira_2.webp",
     url: "https://tononkira.titosy.dev/",
     github: null,
     year: "2024",
@@ -245,10 +245,10 @@ export const projects: Project[] = [
     overview:
       "Plateforme complète dédiée à la découverte et l'exploration des paroles de chansons malgaches, offrant un accès à plus de 15 000 chansons de 2 300 artistes avec recherche intelligente, personnalisation et accès hors ligne.",
     gallery: [
-      "/images/tononkira/tononkira_1.png",
-      "/images/tononkira/tononkira_2.png",
-      "/images/tononkira/tononkira_3.png",
-      "/images/tononkira/tononkira_4.png",
+      "/images/tononkira/tononkira_1.webp",
+      "/images/tononkira/tononkira_2.webp",
+      "/images/tononkira/tononkira_3.webp",
+      "/images/tononkira/tononkira_4.webp",
     ],
     tech: ["Flutter", "Dart", "Next.js", "Search Engine", "Offline-first"],
     highlights: [
@@ -267,8 +267,8 @@ export const projects: Project[] = [
   {
     name: "Chantastik",
     tag: "Remotion · Web Audio API",
-    img: "/images/chantastik/chantastik_1.png",
-    thumb: "/images/chantastik/chantastik_2.png",
+    img: "/images/chantastik/chantastik_1.webp",
+    thumb: "/images/chantastik/chantastik_2.webp",
     url: "https://chantastik.titosy.dev/",
     github: "https://github.com/titoo-dev/chantastik",
     year: "2024",
@@ -277,10 +277,10 @@ export const projects: Project[] = [
     overview:
       "Une application qui permet de créer de superbes vidéos de paroles à partir de fichiers audio, avec de magnifiques animations et des effets visuels personnalisables.",
     gallery: [
-      "/images/chantastik/chantastik_1.png",
-      "/images/chantastik/chantastik_2.png",
-      "/images/chantastik/chantastik_3.png",
-      "/images/chantastik/chantastik_4.png",
+      "/images/chantastik/chantastik_1.webp",
+      "/images/chantastik/chantastik_2.webp",
+      "/images/chantastik/chantastik_3.webp",
+      "/images/chantastik/chantastik_4.webp",
     ],
     tech: ["Remotion", "Web Audio API", "React", "TypeScript", "LRC"],
     highlights: [
@@ -298,8 +298,8 @@ export const projects: Project[] = [
   {
     name: "MAGAPE",
     tag: "Next.js · TypeScript · Tailwind",
-    img: "/images/magape/magape_1.png",
-    thumb: "/images/magape/magape_2.png",
+    img: "/images/magape/magape_1.webp",
+    thumb: "/images/magape/magape_2.webp",
     url: "https://megape.vercel.app/",
     github: null,
     year: "2024",
@@ -308,10 +308,10 @@ export const projects: Project[] = [
     overview:
       "Plateforme dédiée à rassembler la communauté chrétienne francophone à travers des ressources enrichissantes, des contenus audiovisuels et des produits inspirants, créant des ponts d'unité entre les chrétiens.",
     gallery: [
-      "/images/magape/magape_1.png",
-      "/images/magape/magape_2.png",
-      "/images/magape/magape_3.png",
-      "/images/magape/magape_4.png",
+      "/images/magape/magape_1.webp",
+      "/images/magape/magape_2.webp",
+      "/images/magape/magape_3.webp",
+      "/images/magape/magape_4.webp",
     ],
     tech: ["Next.js", "TypeScript", "Tailwind CSS", "CMS", "E-commerce"],
     highlights: [
@@ -330,8 +330,8 @@ export const projects: Project[] = [
   {
     name: "Okani Survey",
     tag: "Next.js · Mobile · Gov",
-    img: "/images/okani-survey/okani_1.png",
-    thumb: "/images/okani-survey/okani_2.png",
+    img: "/images/okani-survey/okani_1.webp",
+    thumb: "/images/okani-survey/okani_2.webp",
     url: "https://okani-survey.vercel.app/",
     github: null,
     year: "2025",
@@ -340,9 +340,9 @@ export const projects: Project[] = [
     overview:
       "Plateforme de sondage gouvernementale officielle évaluant la satisfaction des usagers du service public foncier au Gabon, mandatée par la DGCBF dans le cadre de la modernisation de l'administration publique.",
     gallery: [
-      "/images/okani-survey/okani_1.png",
-      "/images/okani-survey/okani_2.png",
-      "/images/okani-survey/okani_3.png",
+      "/images/okani-survey/okani_1.webp",
+      "/images/okani-survey/okani_2.webp",
+      "/images/okani-survey/okani_3.webp",
     ],
     tech: ["Next.js", "TypeScript", "Cross-platform", "Tailwind CSS", "Mobile"],
     highlights: [
