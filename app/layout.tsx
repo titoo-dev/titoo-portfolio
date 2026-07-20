@@ -1,15 +1,16 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next"
+import { Bebas_Neue, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const bebasNeue = Bebas_Neue({
+  variable: "--font-bebas",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const spaceGrotesk = Space_Grotesk({
+  variable: "--font-grotesk",
   subsets: ["latin"],
 });
 
@@ -138,13 +139,7 @@ const jsonLd = {
     {
       "@type": "SiteNavigationElement",
       "@id": `${siteUrl}/#navigation`,
-      name: [
-        "À propos",
-        "Services",
-        "Expérience",
-        "Projets",
-        "Compétences",
-      ],
+      name: ["À propos", "Services", "Expérience", "Projets", "Compétences"],
       url: [
         `${siteUrl}/#a-propos`,
         `${siteUrl}/#services`,
@@ -171,7 +166,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
+        className={`${bebasNeue.variable} ${spaceGrotesk.variable} antialiased overflow-x-hidden`}
       >
         {children}
         <Analytics />

@@ -4,35 +4,63 @@
    By Titosy Manankasina — Portfolio
    ============================================ */
 
-
 /* ============================================
    KEYFRAME ANIMATIONS
    ============================================ */
 
 @keyframes brutalism-shake {
-  0%, 100% { transform: rotate(0deg); }
-  25% { transform: rotate(-0.5deg); }
-  75% { transform: rotate(0.5deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-0.5deg);
+  }
+  75% {
+    transform: rotate(0.5deg);
+  }
 }
 
 @keyframes brutalism-stamp {
-  0% { transform: scale(1.2) rotate(-2deg); opacity: 0; }
-  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  0% {
+    transform: scale(1.2) rotate(-2deg);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 @keyframes brutalism-hover {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 
 @keyframes brutalism-pulse-border {
-  0%, 100% { box-shadow: 4px 4px 0px #000000; }
-  50% { box-shadow: 6px 6px 0px #000000; }
+  0%,
+  100% {
+    box-shadow: 4px 4px 0px #000000;
+  }
+  50% {
+    box-shadow: 6px 6px 0px #000000;
+  }
 }
 
 @keyframes brutalism-slide-in {
-  0% { transform: translateX(-8px); opacity: 0; }
-  100% { transform: translateX(0); opacity: 1; }
+  0% {
+    transform: translateX(-8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 
 /* ============================================
@@ -40,31 +68,31 @@
    ============================================ */
 
 html[data-theme="brutalism"] {
-  --background: #F9FAF7;
+  --background: #f9faf7;
   --foreground: #161616;
-  --card: #F9FAF7;
+  --card: #f9faf7;
   --card-foreground: #161616;
-  --popover: #F9FAF7;
+  --popover: #f9faf7;
   --popover-foreground: #161616;
   --primary: #161616;
-  --primary-foreground: #B2BDA0;
-  --secondary: #B2BDA0;
+  --primary-foreground: #b2bda0;
+  --secondary: #b2bda0;
   --secondary-foreground: #161616;
-  --muted: #EDEFEA;
-  --muted-foreground: #5A5A5A;
-  --accent: #2C2C2C;
-  --accent-foreground: #F9FAF7;
-  --destructive: #2C2C2C;
+  --muted: #edefea;
+  --muted-foreground: #5a5a5a;
+  --accent: #2c2c2c;
+  --accent-foreground: #f9faf7;
+  --destructive: #2c2c2c;
   --border: #161616;
   --input: #161616;
   --ring: #161616;
   --radius: 0rem;
-  --sidebar: #B2BDA0;
+  --sidebar: #b2bda0;
   --sidebar-foreground: #161616;
   --sidebar-primary: #161616;
-  --sidebar-primary-foreground: #B2BDA0;
-  --sidebar-accent: #2C2C2C;
-  --sidebar-accent-foreground: #F9FAF7;
+  --sidebar-primary-foreground: #b2bda0;
+  --sidebar-accent: #2c2c2c;
+  --sidebar-accent-foreground: #f9faf7;
   --sidebar-border: #161616;
   --sidebar-ring: #161616;
 }
@@ -77,7 +105,7 @@ html[data-theme="brutalism"] *,
 html[data-theme="brutalism"] *::before,
 html[data-theme="brutalism"] *::after {
   border-radius: 0 !important;
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-grotesk), sans-serif;
 }
 
 /* ============================================
@@ -85,15 +113,15 @@ html[data-theme="brutalism"] *::after {
    ============================================ */
 
 html[data-theme="brutalism"] body {
-  background-color: #B2BDA0;
-  font-family: 'Space Grotesk', sans-serif;
+  background-color: #b2bda0;
+  font-family: var(--font-grotesk), sans-serif;
   color: #000000;
   position: relative;
 }
 
 /* Diagonal stripe pattern on body */
 html[data-theme="brutalism"] body::before {
-  content: '';
+  content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
@@ -109,11 +137,11 @@ html[data-theme="brutalism"] body::before {
 
 /* Bold "PORTFOLIO" watermark */
 html[data-theme="brutalism"] body::after {
-  content: 'PORTFOLIO';
+  content: "PORTFOLIO";
   position: fixed;
   bottom: 3rem;
   right: -3rem;
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-bebas), sans-serif;
   font-size: 8rem;
   color: rgba(0, 0, 0, 0.04);
   transform: rotate(-90deg);
@@ -146,7 +174,7 @@ html[data-theme="brutalism"] .fixed.inset-0.pointer-events-none.-z-10 {
    ============================================ */
 
 html[data-theme="brutalism"] .max-w-5xl {
-  background: #F9FAF7;
+  background: #f9faf7;
   border: 4px solid #000000;
   box-shadow: 8px 8px 0px #000000;
   margin-top: 2rem !important;
@@ -165,7 +193,7 @@ html[data-theme="brutalism"] h3,
 html[data-theme="brutalism"] h4,
 html[data-theme="brutalism"] h5,
 html[data-theme="brutalism"] h6 {
-  font-family: 'Bebas Neue', sans-serif !important;
+  font-family: var(--font-bebas), sans-serif !important;
   text-transform: uppercase;
   letter-spacing: 0.02em;
   color: #000000;
@@ -192,13 +220,13 @@ html[data-theme="brutalism"] h2 {
 
 /* Yellow highlight underline on h2 */
 html[data-theme="brutalism"] h2::after {
-  content: '';
+  content: "";
   position: absolute;
   bottom: -6px;
   left: 0;
   width: 100%;
   height: 6px;
-  background-color: #B2BDA0;
+  background-color: #b2bda0;
   border: 2px solid #000000;
 }
 
@@ -222,11 +250,11 @@ html[data-theme="brutalism"] p,
 html[data-theme="brutalism"] span,
 html[data-theme="brutalism"] li,
 html[data-theme="brutalism"] a {
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-grotesk), sans-serif !important;
 }
 
 html[data-theme="brutalism"] .text-muted-foreground {
-  color: #5A5A5A !important;
+  color: #5a5a5a !important;
 }
 
 /* ============================================
@@ -241,14 +269,15 @@ html[data-theme="brutalism"] section.relative.py-20.md\:py-32 {
 }
 
 /* Profile image — Square, not circle */
-html[data-theme="brutalism"] .relative.w-32.h-32.rounded-full.overflow-hidden.border-4,
+html[data-theme="brutalism"]
+.relative.w-32.h-32.rounded-full.overflow-hidden.border-4,
 html[data-theme="brutalism"] .relative.w-32.h-32,
 html[data-theme="brutalism"] .relative.w-40.h-40,
 html[data-theme="brutalism"] .relative.w-32.h-32.md\:w-40.md\:h-40 {
   border: 5px solid #000000 !important;
   box-shadow: 6px 6px 0px #000000;
   overflow: hidden;
-  background: #F9FAF7;
+  background: #f9faf7;
 }
 
 /* Remove gradient glow behind profile image */
@@ -257,13 +286,14 @@ html[data-theme="brutalism"] .absolute.-inset-1.bg-gradient-to-r {
 }
 
 /* Available indicator — bold stamp style */
-html[data-theme="brutalism"] .inline-flex.items-center.gap-2.text-sm.font-medium.text-muted-foreground {
+html[data-theme="brutalism"]
+.inline-flex.items-center.gap-2.text-sm.font-medium.text-muted-foreground {
   background-color: #000000 !important;
-  color: #B2BDA0 !important;
+  color: #b2bda0 !important;
   padding: 6px 14px !important;
   border: 3px solid #000000 !important;
-  box-shadow: 3px 3px 0px #B2BDA0 !important;
-  font-family: 'Space Grotesk', sans-serif !important;
+  box-shadow: 3px 3px 0px #b2bda0 !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
   font-size: 0.75rem !important;
   text-transform: uppercase !important;
@@ -279,32 +309,34 @@ html[data-theme="brutalism"] .animate-ping {
   display: none !important;
 }
 
-html[data-theme="brutalism"] .relative.inline-flex.rounded-full.h-2.w-2.bg-green-500,
+html[data-theme="brutalism"]
+  .relative.inline-flex.rounded-full.h-2.w-2.bg-green-500,
 html[data-theme="brutalism"] .relative.flex.h-2.w-2 {
-  background-color: #B2BDA0 !important;
+  background-color: #b2bda0 !important;
   width: 10px !important;
   height: 10px !important;
   display: inline-block;
 }
 
 /* Hero label / subtitle */
-html[data-theme="brutalism"] .text-xl.md\:text-2xl.text-muted-foreground.font-medium {
-  font-family: 'Space Grotesk', sans-serif !important;
+html[data-theme="brutalism"]
+.text-xl.md\:text-2xl.text-muted-foreground.font-medium {
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
-  color: #2C2C2C !important;
+  color: #2c2c2c !important;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   font-size: 1.1rem !important;
-  border-left: 5px solid #2C2C2C;
+  border-left: 5px solid #2c2c2c;
   padding-left: 12px;
   margin-top: 0.5rem;
 }
 
 /* Hero summary paragraph */
 html[data-theme="brutalism"] .text-base.md\:text-lg.text-muted-foreground {
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-size: 1rem !important;
-  color: #5A5A5A !important;
+  color: #5a5a5a !important;
   line-height: 1.7 !important;
   border-left: 3px solid #000000;
   padding-left: 1rem;
@@ -312,8 +344,9 @@ html[data-theme="brutalism"] .text-base.md\:text-lg.text-muted-foreground {
 }
 
 /* Social profile links */
-html[data-theme="brutalism"] a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground {
-  font-family: 'Space Grotesk', sans-serif !important;
+html[data-theme="brutalism"]
+a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground {
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
   color: #000000 !important;
   text-decoration: none;
@@ -321,11 +354,14 @@ html[data-theme="brutalism"] a.inline-flex.items-center.gap-2.text-sm.text-muted
   letter-spacing: 0.06em;
   border-bottom: 3px solid #000000;
   padding-bottom: 2px;
-  transition: color 0.1s, background 0.1s;
+  transition:
+    color 0.1s,
+    background 0.1s;
 }
 
-html[data-theme="brutalism"] a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground:hover {
-  color: #F9FAF7 !important;
+html[data-theme="brutalism"]
+  a.inline-flex.items-center.gap-2.text-sm.text-muted-foreground:hover {
+  color: #f9faf7 !important;
   background-color: #000000;
   padding: 2px 6px;
   border-bottom: 3px solid #000000;
@@ -335,13 +371,14 @@ html[data-theme="brutalism"] a.inline-flex.items-center.gap-2.text-sm.text-muted
    SECTION BADGES / PILLS → RUBBER STAMPS
    ============================================ */
 
-html[data-theme="brutalism"] .inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10,
+html[data-theme="brutalism"]
+.inline-flex.items-center.gap-2.px-4.py-2.rounded-full.bg-primary\/10,
 html[data-theme="brutalism"] div.inline-flex.items-center.gap-2.px-4.py-2 {
-  background-color: #B2BDA0 !important;
+  background-color: #b2bda0 !important;
   color: #000000 !important;
   border: 3px solid #000000 !important;
   box-shadow: 3px 3px 0px #000000 !important;
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
   font-size: 0.7rem !important;
   text-transform: uppercase !important;
@@ -354,7 +391,8 @@ html[data-theme="brutalism"] div.inline-flex.items-center.gap-2.px-4.py-2 {
 }
 
 /* Small dot inside badge */
-html[data-theme="brutalism"] .inline-flex.items-center.gap-2.px-4.py-2 span.w-2.h-2.rounded-full,
+html[data-theme="brutalism"] .inline-flex.items-center.gap-2.px-4.py-2
+  span.w-2.h-2.rounded-full,
 html[data-theme="brutalism"] .w-2.h-2.rounded-full.bg-primary {
   background-color: #000000 !important;
   width: 8px !important;
@@ -390,20 +428,24 @@ html[data-theme="brutalism"] .absolute.bottom-1\/4.-left-16 {
 
 html[data-theme="brutalism"] button,
 html[data-theme="brutalism"] [data-slot="button"],
-html[data-theme="brutalism"] a[class*="inline-flex"][class*="items-center"][class*="justify-center"] {
-  font-family: 'Space Grotesk', sans-serif !important;
+html[data-theme="brutalism"]
+  a[class*="inline-flex"][class*="items-center"][class*="justify-center"] {
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
   border: 3px solid #000000 !important;
   box-shadow: 4px 4px 0px #000000 !important;
-  transition: box-shadow 0.1s ease, transform 0.1s ease !important;
+  transition:
+    box-shadow 0.1s ease,
+    transform 0.1s ease !important;
   cursor: pointer;
 }
 
 html[data-theme="brutalism"] button:hover,
 html[data-theme="brutalism"] [data-slot="button"]:hover,
-html[data-theme="brutalism"] a[class*="inline-flex"][class*="items-center"][class*="justify-center"]:hover {
+html[data-theme="brutalism"]
+  a[class*="inline-flex"][class*="items-center"][class*="justify-center"]:hover {
   box-shadow: 2px 2px 0px #000000 !important;
   transform: translate(2px, 2px) !important;
 }
@@ -418,20 +460,20 @@ html[data-theme="brutalism"] [data-slot="button"]:active {
 html[data-theme="brutalism"] [data-slot="button"].bg-primary,
 html[data-theme="brutalism"] button.bg-primary {
   background-color: #000000 !important;
-  color: #B2BDA0 !important;
+  color: #b2bda0 !important;
 }
 
 /* Outline button */
 html[data-theme="brutalism"] [data-slot="button"].border.bg-background,
 html[data-theme="brutalism"] button[class*="outline"] {
-  background-color: #B2BDA0 !important;
+  background-color: #b2bda0 !important;
   color: #000000 !important;
   border: 3px solid #000000 !important;
 }
 
 html[data-theme="brutalism"] [data-slot="button"].border.bg-background:hover {
-  background-color: #2C2C2C !important;
-  color: #F9FAF7 !important;
+  background-color: #2c2c2c !important;
+  color: #f9faf7 !important;
 }
 
 /* ============================================
@@ -439,16 +481,20 @@ html[data-theme="brutalism"] [data-slot="button"].border.bg-background:hover {
    ============================================ */
 
 /* Services cards */
-html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card\/50.backdrop-blur-sm.p-8 {
-  background-color: #F9FAF7 !important;
+html[data-theme="brutalism"]
+.group.relative.rounded-2xl.border.border-border.bg-card\/50.backdrop-blur-sm.p-8 {
+  background-color: #f9faf7 !important;
   border: 4px solid #000000 !important;
   box-shadow: 6px 6px 0px #000000 !important;
   backdrop-filter: none !important;
-  transition: box-shadow 0.1s ease, transform 0.1s ease !important;
+  transition:
+    box-shadow 0.1s ease,
+    transform 0.1s ease !important;
   position: relative;
 }
 
-html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card\/50.backdrop-blur-sm.p-8:hover {
+html[data-theme="brutalism"]
+  .group.relative.rounded-2xl.border.border-border.bg-card\/50.backdrop-blur-sm.p-8:hover {
   box-shadow: 3px 3px 0px #000000 !important;
   transform: translate(3px, 3px) !important;
 }
@@ -459,25 +505,32 @@ html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 {
 }
 
 /* Alternating service card slight rotation for chaotic energy */
-html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *:nth-child(odd) {
+html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6
+  > *:nth-child(odd) {
   transform: rotate(-0.5deg);
 }
 
-html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *:nth-child(even) {
+html[data-theme="brutalism"]
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6
+  > *:nth-child(even) {
   transform: rotate(0.5deg);
 }
 
-html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *:nth-child(odd):hover {
+html[data-theme="brutalism"]
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6
+  > *:nth-child(odd):hover {
   transform: rotate(-0.5deg) translate(3px, 3px) !important;
 }
 
-html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *:nth-child(even):hover {
+html[data-theme="brutalism"]
+  .grid.grid-cols-1.md\:grid-cols-2.gap-6
+  > *:nth-child(even):hover {
   transform: rotate(0.5deg) translate(3px, 3px) !important;
 }
 
 /* Service icon box */
 html[data-theme="brutalism"] .w-12.h-12.rounded-xl.bg-primary\/10 {
-  background-color: #B2BDA0 !important;
+  background-color: #b2bda0 !important;
   border: 3px solid #000000 !important;
   box-shadow: 2px 2px 0px #000000 !important;
   display: flex;
@@ -490,8 +543,10 @@ html[data-theme="brutalism"] .w-12.h-12.rounded-xl.bg-primary\/10 svg {
 }
 
 /* Service feature list bullets */
-html[data-theme="brutalism"] ul.space-y-2 li .w-1\.5.h-1\.5.rounded-full.bg-primary {
-  background-color: #2C2C2C !important;
+html[data-theme="brutalism"] ul.space-y-2
+  li
+  .w-1\.5.h-1\.5.rounded-full.bg-primary {
+  background-color: #2c2c2c !important;
   width: 8px !important;
   height: 8px !important;
   flex-shrink: 0;
@@ -502,13 +557,16 @@ html[data-theme="brutalism"] ul.space-y-2 li .w-1\.5.h-1\.5.rounded-full.bg-prim
    ============================================ */
 
 /* Work cards */
-html[data-theme="brutalism"] .flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border,
+html[data-theme="brutalism"]
+.flex-1.space-y-4.bg-card\/50.backdrop-blur-sm.rounded-2xl.border.border-border,
 html[data-theme="brutalism"] .flex-1.space-y-4.bg-card\/50 {
-  background-color: #F9FAF7 !important;
+  background-color: #f9faf7 !important;
   border: 4px solid #000000 !important;
   box-shadow: 5px 5px 0px #000000 !important;
   backdrop-filter: none !important;
-  transition: box-shadow 0.1s ease, transform 0.1s ease !important;
+  transition:
+    box-shadow 0.1s ease,
+    transform 0.1s ease !important;
 }
 
 html[data-theme="brutalism"] .flex-1.space-y-4.bg-card\/50:hover {
@@ -523,11 +581,16 @@ html[data-theme="brutalism"] .space-y-12 > * + * {
 }
 
 /* Alternating work cards slight rotation */
-html[data-theme="brutalism"] .space-y-12 > div:nth-child(odd) .flex-1.space-y-4 {
+html[data-theme="brutalism"] .space-y-12
+  > div:nth-child(odd)
+  .flex-1.space-y-4 {
   transform: rotate(-0.3deg);
 }
 
-html[data-theme="brutalism"] .space-y-12 > div:nth-child(even) .flex-1.space-y-4 {
+html[data-theme="brutalism"]
+  .space-y-12
+  > div:nth-child(even)
+  .flex-1.space-y-4 {
   transform: rotate(0.3deg);
 }
 
@@ -539,7 +602,8 @@ html[data-theme="brutalism"] div.absolute.left-0.top-0.w-px {
   background-image: none !important;
 }
 
-html[data-theme="brutalism"] .absolute.left-0.top-0.bottom-0.w-px.bg-gradient-to-b,
+html[data-theme="brutalism"]
+  .absolute.left-0.top-0.bottom-0.w-px.bg-gradient-to-b,
 html[data-theme="brutalism"] .absolute.left-0.top-0.w-px.bg-gradient-to-b {
   background: #000000 !important;
   background-image: none !important;
@@ -547,8 +611,9 @@ html[data-theme="brutalism"] .absolute.left-0.top-0.w-px.bg-gradient-to-b {
 }
 
 /* Timeline dot */
-html[data-theme="brutalism"] .absolute.-right-4.top-2.w-2.h-2.rounded-full.bg-primary {
-  background-color: #2C2C2C !important;
+html[data-theme="brutalism"]
+.absolute.-right-4.top-2.w-2.h-2.rounded-full.bg-primary {
+  background-color: #2c2c2c !important;
   width: 12px !important;
   height: 12px !important;
   border: 3px solid #000000 !important;
@@ -557,7 +622,7 @@ html[data-theme="brutalism"] .absolute.-right-4.top-2.w-2.h-2.rounded-full.bg-pr
 
 /* Work date label */
 html[data-theme="brutalism"] .flex-shrink-0.md\:w-48 .font-medium {
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
   color: #000000 !important;
   font-size: 0.8rem;
@@ -569,9 +634,9 @@ html[data-theme="brutalism"] .flex-shrink-0.md\:w-48 .font-medium {
 html[data-theme="brutalism"] span.px-3.py-1.text-xs.rounded-full.bg-secondary,
 html[data-theme="brutalism"] .flex.flex-wrap.gap-2 span {
   background-color: #000000 !important;
-  color: #B2BDA0 !important;
+  color: #b2bda0 !important;
   border: 2px solid #000000 !important;
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
   font-size: 0.65rem !important;
   text-transform: uppercase !important;
@@ -580,15 +645,16 @@ html[data-theme="brutalism"] .flex.flex-wrap.gap-2 span {
   display: inline-block;
 }
 
-html[data-theme="brutalism"] span.px-3.py-1.text-xs.rounded-full.bg-secondary:hover {
-  background-color: #2C2C2C !important;
-  border-color: #2C2C2C !important;
-  color: #F9FAF7 !important;
+html[data-theme="brutalism"]
+  span.px-3.py-1.text-xs.rounded-full.bg-secondary:hover {
+  background-color: #2c2c2c !important;
+  border-color: #2c2c2c !important;
+  color: #f9faf7 !important;
 }
 
 /* Responsibility bullet points */
 html[data-theme="brutalism"] .space-y-1 li .text-foreground\/50 {
-  color: #2C2C2C !important;
+  color: #2c2c2c !important;
   font-weight: 900;
 }
 
@@ -597,25 +663,32 @@ html[data-theme="brutalism"] .space-y-1 li .text-foreground\/50 {
    ============================================ */
 
 /* Project card */
-html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card,
-html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card.backdrop-blur-sm {
-  background-color: #F9FAF7 !important;
+html[data-theme="brutalism"]
+.group.relative.rounded-2xl.border.border-border.bg-card,
+html[data-theme="brutalism"]
+  .group.relative.rounded-2xl.border.border-border.bg-card.backdrop-blur-sm {
+  background-color: #f9faf7 !important;
   border: 4px solid #000000 !important;
   box-shadow: 6px 6px 0px #000000 !important;
   backdrop-filter: none !important;
-  transition: box-shadow 0.1s ease, transform 0.1s ease, border-color 0.1s ease !important;
+  transition:
+    box-shadow 0.1s ease,
+    transform 0.1s ease,
+    border-color 0.1s ease !important;
   overflow: hidden;
 }
 
-html[data-theme="brutalism"] .group.relative.rounded-2xl.border.border-border.bg-card:hover {
+html[data-theme="brutalism"]
+  .group.relative.rounded-2xl.border.border-border.bg-card:hover {
   box-shadow: 3px 3px 0px #000000 !important;
   transform: translate(3px, 3px) !important;
-  border-color: #2C2C2C !important;
+  border-color: #2c2c2c !important;
 }
 
 /* Top gradient line on project card — replaced with red accent bar */
-html[data-theme="brutalism"] .absolute.top-0.left-0.w-full.h-1.bg-gradient-to-r {
-  background: #2C2C2C !important;
+html[data-theme="brutalism"]
+.absolute.top-0.left-0.w-full.h-1.bg-gradient-to-r {
+  background: #2c2c2c !important;
   background-image: none !important;
   height: 4px !important;
   opacity: 1 !important;
@@ -628,53 +701,58 @@ html[data-theme="brutalism"] .relative.w-full.h-48.bg-muted {
 
 /* Project image overlay */
 html[data-theme="brutalism"] .absolute.inset-0.bg-gradient-to-t.from-card\/80 {
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent) !important;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent) !important;
   opacity: 0;
 }
 
-html[data-theme="brutalism"] .group:hover .absolute.inset-0.bg-gradient-to-t.from-card\/80 {
+html[data-theme="brutalism"]
+  .group:hover
+  .absolute.inset-0.bg-gradient-to-t.from-card\/80 {
   opacity: 1 !important;
 }
 
 /* Project link icons inside image */
 html[data-theme="brutalism"] .p-2.rounded-full.bg-background\/90 {
-  background-color: #B2BDA0 !important;
+  background-color: #b2bda0 !important;
   border: 2px solid #000000 !important;
   box-shadow: 2px 2px 0px #000000;
   color: #000000 !important;
 }
 
 html[data-theme="brutalism"] .p-2.rounded-full.bg-background\/90:hover {
-  background-color: #2C2C2C !important;
-  color: #F9FAF7 !important;
+  background-color: #2c2c2c !important;
+  color: #f9faf7 !important;
 }
 
 /* "Actif" badge on project */
-html[data-theme="brutalism"] .inline-flex.items-center.gap-1\.5.px-3.py-1\.5.text-xs.font-medium.rounded-full.bg-green-500\/90 {
+html[data-theme="brutalism"]
+.inline-flex.items-center.gap-1\.5.px-3.py-1\.5.text-xs.font-medium.rounded-full.bg-green-500\/90 {
   background-color: #000000 !important;
-  color: #B2BDA0 !important;
-  border: 2px solid #B2BDA0 !important;
-  box-shadow: 2px 2px 0px #B2BDA0 !important;
-  font-family: 'Space Grotesk', sans-serif !important;
+  color: #b2bda0 !important;
+  border: 2px solid #b2bda0 !important;
+  box-shadow: 2px 2px 0px #b2bda0 !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 700 !important;
   text-transform: uppercase !important;
   letter-spacing: 0.08em !important;
   backdrop-filter: none !important;
 }
 
-html[data-theme="brutalism"] .inline-flex.items-center.gap-1\.5 .w-1\.5.h-1\.5.rounded-full.bg-white.animate-pulse {
-  background-color: #B2BDA0 !important;
+html[data-theme="brutalism"]
+  .inline-flex.items-center.gap-1\.5
+  .w-1\.5.h-1\.5.rounded-full.bg-white.animate-pulse {
+  background-color: #b2bda0 !important;
   animation: none !important;
 }
 
 /* Project name hover color */
 html[data-theme="brutalism"] .group:hover h3 {
-  color: #2C2C2C !important;
+  color: #2c2c2c !important;
 }
 
 /* Project highlight bullets */
 html[data-theme="brutalism"] .space-y-1\.5 li .text-primary {
-  color: #2C2C2C !important;
+  color: #2c2c2c !important;
   font-weight: 900;
 }
 
@@ -683,29 +761,38 @@ html[data-theme="brutalism"] .space-y-1\.5 li .text-primary {
    ============================================ */
 
 /* Skill pill → sticker style */
-html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5.rounded-full.border.border-border.bg-card\/50 {
-  background-color: #B2BDA0 !important;
+html[data-theme="brutalism"]
+.group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5.rounded-full.border.border-border.bg-card\/50 {
+  background-color: #b2bda0 !important;
   border: 3px solid #000000 !important;
   box-shadow: 3px 3px 0px #000000 !important;
   backdrop-filter: none !important;
-  transition: box-shadow 0.1s ease, transform 0.1s ease, background-color 0.1s ease !important;
+  transition:
+    box-shadow 0.1s ease,
+    transform 0.1s ease,
+    background-color 0.1s ease !important;
   font-weight: 700 !important;
 }
 
-html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5.rounded-full.border.border-border.bg-card\/50:hover {
+html[data-theme="brutalism"]
+  .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5.rounded-full.border.border-border.bg-card\/50:hover {
   box-shadow: 1px 1px 0px #000000 !important;
   transform: translate(2px, 2px) !important;
   background-color: #000000 !important;
   border-color: #000000 !important;
-  color: #B2BDA0 !important;
+  color: #b2bda0 !important;
 }
 
-html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5:hover span {
-  color: #B2BDA0 !important;
+html[data-theme="brutalism"]
+  .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5:hover
+  span {
+  color: #b2bda0 !important;
 }
 
-html[data-theme="brutalism"] .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5:hover svg {
-  color: #B2BDA0 !important;
+html[data-theme="brutalism"]
+  .group.relative.inline-flex.items-center.gap-2.px-4.py-2\.5:hover
+  svg {
+  color: #b2bda0 !important;
 }
 
 /* Skill icons */
@@ -722,16 +809,18 @@ html[data-theme="brutalism"] .absolute.inset-0.rounded-full.bg-gradient-to-br {
    CAROUSEL (Project Images)
    ============================================ */
 
-html[data-theme="brutalism"] .bg-background\/80.hover\:bg-background.border-border {
-  background-color: #B2BDA0 !important;
+html[data-theme="brutalism"]
+.bg-background\/80.hover\:bg-background.border-border {
+  background-color: #b2bda0 !important;
   border: 2px solid #000000 !important;
   color: #000000 !important;
   box-shadow: 2px 2px 0px #000000 !important;
 }
 
-html[data-theme="brutalism"] .bg-background\/80.hover\:bg-background.border-border:hover {
-  background-color: #2C2C2C !important;
-  color: #F9FAF7 !important;
+html[data-theme="brutalism"]
+  .bg-background\/80.hover\:bg-background.border-border:hover {
+  background-color: #2c2c2c !important;
+  color: #f9faf7 !important;
 }
 
 /* ============================================
@@ -740,26 +829,26 @@ html[data-theme="brutalism"] .bg-background\/80.hover\:bg-background.border-bord
 
 html[data-theme="brutalism"] footer {
   border-top: 4px solid #000000 !important;
-  background-color: #B2BDA0 !important;
+  background-color: #b2bda0 !important;
   color: #000000 !important;
   padding: 2rem 1.5rem;
 }
 
 html[data-theme="brutalism"] footer h3 {
-  font-family: 'Bebas Neue', sans-serif !important;
+  font-family: var(--font-bebas), sans-serif !important;
   font-size: 2rem !important;
   text-transform: uppercase;
   -webkit-text-fill-color: #000000 !important;
 }
 
 html[data-theme="brutalism"] footer p {
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   color: #000000 !important;
   font-weight: 500;
 }
 
 html[data-theme="brutalism"] footer .text-muted-foreground {
-  color: #5A5A5A !important;
+  color: #5a5a5a !important;
 }
 
 html[data-theme="brutalism"] footer .border-t.border-border {
@@ -768,8 +857,8 @@ html[data-theme="brutalism"] footer .border-t.border-border {
 
 /* Heart icon in footer */
 html[data-theme="brutalism"] footer .text-red-500.fill-red-500 {
-  color: #2C2C2C !important;
-  fill: #2C2C2C !important;
+  color: #2c2c2c !important;
+  fill: #2c2c2c !important;
 }
 
 /* ============================================
@@ -778,14 +867,14 @@ html[data-theme="brutalism"] footer .text-red-500.fill-red-500 {
 
 html[data-theme="brutalism"] [data-radix-popper-content-wrapper],
 html[data-theme="brutalism"] [role="menu"] {
-  background-color: #F9FAF7 !important;
+  background-color: #f9faf7 !important;
   border: 3px solid #000000 !important;
   box-shadow: 5px 5px 0px #000000 !important;
   padding: 4px 0 !important;
 }
 
 html[data-theme="brutalism"] [role="menuitem"] {
-  font-family: 'Space Grotesk', sans-serif !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 600 !important;
   color: #000000 !important;
   text-transform: uppercase;
@@ -794,7 +883,7 @@ html[data-theme="brutalism"] [role="menuitem"] {
 }
 
 html[data-theme="brutalism"] [role="menuitem"]:hover {
-  background-color: #B2BDA0 !important;
+  background-color: #b2bda0 !important;
   color: #000000 !important;
 }
 
@@ -810,9 +899,10 @@ html[data-theme="brutalism"] a.text-muted-foreground.hover\:text-foreground {
   text-underline-offset: 3px;
 }
 
-html[data-theme="brutalism"] a.text-muted-foreground.hover\:text-foreground:hover {
-  color: #2C2C2C !important;
-  text-decoration-color: #2C2C2C;
+html[data-theme="brutalism"]
+  a.text-muted-foreground.hover\:text-foreground:hover {
+  color: #2c2c2c !important;
+  text-decoration-color: #2c2c2c;
 }
 
 /* ============================================
@@ -823,8 +913,8 @@ html[data-theme="brutalism"] input,
 html[data-theme="brutalism"] textarea,
 html[data-theme="brutalism"] select {
   border: 3px solid #000000 !important;
-  background-color: #F9FAF7 !important;
-  font-family: 'Space Grotesk', sans-serif !important;
+  background-color: #f9faf7 !important;
+  font-family: var(--font-grotesk), sans-serif !important;
   font-weight: 500;
   box-shadow: 3px 3px 0px #000000 !important;
 }
@@ -833,8 +923,8 @@ html[data-theme="brutalism"] input:focus,
 html[data-theme="brutalism"] textarea:focus,
 html[data-theme="brutalism"] select:focus {
   outline: none !important;
-  border-color: #2C2C2C !important;
-  box-shadow: 3px 3px 0px #2C2C2C !important;
+  border-color: #2c2c2c !important;
+  box-shadow: 3px 3px 0px #2c2c2c !important;
 }
 
 /* ============================================
@@ -852,8 +942,9 @@ html[data-theme="brutalism"] [data-orientation="horizontal"] {
    EMPTY IMAGE PLACEHOLDER
    ============================================ */
 
-html[data-theme="brutalism"] .w-full.h-full.flex.items-center.justify-center.bg-gradient-to-br.from-muted.to-muted\/50 {
-  background: #EDEFEA !important;
+html[data-theme="brutalism"]
+.w-full.h-full.flex.items-center.justify-center.bg-gradient-to-br.from-muted.to-muted\/50 {
+  background: #edefea !important;
   background-image: none !important;
   border-bottom: 3px solid #000000;
 }
@@ -872,17 +963,17 @@ html[data-theme="brutalism"] ::-webkit-scrollbar {
 }
 
 html[data-theme="brutalism"] ::-webkit-scrollbar-track {
-  background: #B2BDA0;
+  background: #b2bda0;
   border-left: 2px solid #000000;
 }
 
 html[data-theme="brutalism"] ::-webkit-scrollbar-thumb {
   background: #000000;
-  border: 2px solid #B2BDA0;
+  border: 2px solid #b2bda0;
 }
 
 html[data-theme="brutalism"] ::-webkit-scrollbar-thumb:hover {
-  background: #2C2C2C;
+  background: #2c2c2c;
 }
 
 /* ============================================
@@ -890,7 +981,7 @@ html[data-theme="brutalism"] ::-webkit-scrollbar-thumb:hover {
    ============================================ */
 
 html[data-theme="brutalism"] ::selection {
-  background-color: #B2BDA0;
+  background-color: #b2bda0;
   color: #000000;
 }
 
@@ -899,7 +990,7 @@ html[data-theme="brutalism"] ::selection {
    ============================================ */
 
 html[data-theme="brutalism"] *:focus-visible {
-  outline: 3px solid #2C2C2C !important;
+  outline: 3px solid #2c2c2c !important;
   outline-offset: 2px !important;
   box-shadow: 3px 3px 0px #000000 !important;
 }
@@ -916,9 +1007,10 @@ html[data-theme="brutalism"] .group.relative:hover {
    EDUCATION SECTION (if present)
    ============================================ */
 
-html[data-theme="brutalism"] section#education .inline-flex.items-center.gap-2.px-4.py-2 {
-  background-color: #2C2C2C !important;
-  color: #F9FAF7 !important;
+html[data-theme="brutalism"] section#education
+  .inline-flex.items-center.gap-2.px-4.py-2 {
+  background-color: #2c2c2c !important;
+  color: #f9faf7 !important;
   border: 3px solid #000000 !important;
   box-shadow: 3px 3px 0px #000000 !important;
 }
@@ -951,13 +1043,13 @@ html[data-theme="brutalism"] .bg-gradient-to-r.from-blue-500\/5 {
 }
 
 /* bg-card/50 → solid white */
-html[data-theme="brutalism"] [class*="bg-card\/"] {
-  background-color: #F9FAF7 !important;
+html[data-theme="brutalism"] [class*="bg-card/"] {
+  background-color: #f9faf7 !important;
 }
 
 /* bg-primary/10 and similar → yellow */
-html[data-theme="brutalism"] [class*="bg-primary\/"] {
-  background-color: #B2BDA0 !important;
+html[data-theme="brutalism"] [class*="bg-primary/"] {
+  background-color: #b2bda0 !important;
 }
 
 /* Override Tailwind shadow utilities to brutalist flat shadows */
@@ -993,8 +1085,12 @@ html[data-theme="brutalism"] .shadow-sm {
     display: none;
   }
 
-  html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *:nth-child(odd),
-  html[data-theme="brutalism"] .grid.grid-cols-1.md\:grid-cols-2.gap-6 > *:nth-child(even) {
+  html[data-theme="brutalism"]
+    .grid.grid-cols-1.md\:grid-cols-2.gap-6
+    > *:nth-child(odd),
+  html[data-theme="brutalism"]
+    .grid.grid-cols-1.md\:grid-cols-2.gap-6
+    > *:nth-child(even) {
     transform: none;
   }
 }

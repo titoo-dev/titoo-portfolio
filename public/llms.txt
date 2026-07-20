@@ -9,9 +9,9 @@ Titosy Manankasina est un développeur Fullstack JavaScript & Flutter avec plus 
 - **Localisation** : Antananarivo, Madagascar
 - **Disponibilité** : Remote / Freelance
 - **Email** : dev.titosy@gmail.com
-- **Site web** : https://titosy.dev
-- **LinkedIn** : https://www.linkedin.com/in/titosy-manankasina
-- **GitHub** : https://github.com/titoo-dev
+- **Site web** : [titosy.dev](https://titosy.dev)
+- **LinkedIn** : [linkedin.com/in/titosy-manankasina](https://www.linkedin.com/in/titosy-manankasina)
+- **GitHub** : [github.com/titoo-dev](https://github.com/titoo-dev)
 
 ## Compétences techniques
 
@@ -43,10 +43,10 @@ Titosy Manankasina est un développeur Fullstack JavaScript & Flutter avec plus 
 
 ## Projets notables
 
-- **Tononkira** — Application web/mobile de découverte de paroles de chansons malgaches (15 000+ chansons, 2 300+ artistes)
-- **Chantastik** — Application de création de vidéos lyrics (Remotion, Web Audio API)
-- **MAGAPE** — Plateforme communautaire chrétienne (gestion podcast, boutique en ligne)
-- **Okani Survey** — Plateforme d'enquête gouvernementale pour le Gabon (web & mobile)
+- [Tononkira](https://tononkira.titosy.dev/) — Application web/mobile de découverte de paroles de chansons malgaches (15 000+ chansons, 2 300+ artistes)
+- [Chantastik](https://chantastik.titosy.dev/) — Application de création de vidéos lyrics (Remotion, Web Audio API)
+- [MAGAPE](https://megape.vercel.app/) — Plateforme communautaire chrétienne (gestion podcast, boutique en ligne)
+- [Okani Survey](https://okani-survey.vercel.app/) — Plateforme d'enquête gouvernementale pour le Gabon (web & mobile)
 - **Phototech** — Plateforme de suivi de documents terrain avec synchronisation offline
 - **MID** — Application de gestion d'ordres de trading de devises (web & mobile)
 - **TMvola** — CLI de récupération de transactions Mvola
