@@ -9,6 +9,7 @@ import { StatusDot } from "@/components/site/footer";
 import {
   ArrowRight,
   ArrowUpRight,
+  DownloadIcon,
   GithubIcon,
   LinkedinIcon,
 } from "@/components/site/icons";
@@ -66,6 +67,7 @@ function Hero() {
           >
             Me contacter
           </Link>
+          <CvButton />
         </div>
       </div>
 
@@ -258,6 +260,7 @@ function Contact() {
             >
               <GithubIcon />
             </a>
+            <CvButton />
           </div>
           <p className="mt-10 font-mono text-faint text-xs">
             {PROFILE.languages
@@ -273,5 +276,22 @@ function Contact() {
         </div>
       </div>
     </Section>
+  );
+}
+
+function CvButton() {
+  return (
+    <a
+      href={PROFILE.cv}
+      download
+      className="group inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
+    >
+      <DownloadIcon
+        width={15}
+        height={15}
+        className="transition-transform group-hover:translate-y-0.5"
+      />
+      Télécharger le CV
+    </a>
   );
 }

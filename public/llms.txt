@@ -14,6 +14,7 @@ Titosy Manankasina est un développeur Fullstack JavaScript / Flutter avec plus 
 - **Site web** : [titosy.dev](https://titosy.dev)
 - **LinkedIn** : [linkedin.com/in/titosy-manankasina](https://www.linkedin.com/in/titosy-manankasina)
 - **GitHub** : [github.com/titoo-dev](https://github.com/titoo-dev)
+- **CV (PDF)** : [titosy.dev/cv-titosy-manankasina.pdf](https://titosy.dev/cv-titosy-manankasina.pdf)
 
 ## Compétences techniques
 
