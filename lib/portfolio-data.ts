@@ -1,14 +1,6 @@
 // ---------------------------------------------------------------------------
-// Portfolio data — ported verbatim from the "Portfolio Animated v3" design
-// prototype. Asset paths are mapped from the prototype's `assets/` folder to
-// the project's `public/` directory.
+// Portfolio data — single source of truth for every page of the site.
 // ---------------------------------------------------------------------------
-
-export type ExperienceItem = {
-  role: string;
-  company: string;
-  meta: string;
-};
 
 export type Career = {
   company: string;
@@ -26,6 +18,7 @@ export type Career = {
 };
 
 export type Project = {
+  slug: string;
   name: string;
   tag: string;
   img: string;
@@ -49,87 +42,68 @@ export type Service = {
   features: string[];
 };
 
-export type StackItem = { name: string; logo: string };
+export type StackGroup = { label: string; items: string[] };
 
 export const PROFILE = {
   name: "Titosy Manankasina",
+  headline: "Développeur Fullstack JavaScript / Flutter",
   email: "dev.titosy@gmail.com",
   photo: "/photo.jpg",
   github: "https://github.com/titoo-dev",
   linkedin: "https://www.linkedin.com/in/titosy-manankasina",
-  spotify: "https://open.spotify.com/",
+  summary:
+    "Spécialisé dans le développement logiciel, j'interviens à toutes les étapes d'un projet, de l'analyse des besoins à la réalisation des solutions. J'accompagne les clients dans le cadrage de leurs projets afin de bien comprendre leurs attentes et de proposer des solutions adaptées, simples et efficaces.",
+  languages: [
+    { name: "Français", level: "Professionnel complet" },
+    { name: "Anglais", level: "Professionnel limité" },
+  ],
   location: {
     city: "ANTANANARIVO",
     country: "MADAGASCAR",
     coords: "18.8792° S, 47.5079° E",
   },
   now: {
-    title: "SaaS de gestion de financement",
+    title: "SaaS tout-en-un pour les professionnels",
     company: "@ Fluentech",
-    desc: "Micro-frontends Next.js, système RAG & développement agentic avec Claude Code.",
+    desc: "Micro-frontends Next.js Multi-Zones, GitOps sur Kubernetes & solutions agentic avec Convex AI et Mastra AI.",
   },
 } as const;
-
-export const experience: ExperienceItem[] = [
-  {
-    role: "Développeur JS / Flutter / Kotlin",
-    company: "Fluentech",
-    meta: "2025 — Aujourd'hui · Hybride",
-  },
-  {
-    role: "Développeur Fullstack Javascript",
-    company: "PUSH-IT",
-    meta: "2025 · Hybride",
-  },
-  {
-    role: "Développeur Javascript",
-    company: "Bocasay",
-    meta: "2022 — 2025 · Hybride",
-  },
-  {
-    role: "Stage Dev JS & Flutter",
-    company: "Flit Soft",
-    meta: "2022 · À distance",
-  },
-];
 
 export const careers: Career[] = [
   {
     company: "Fluentech",
-    role: "Développeur JS / Flutter / Kotlin",
+    role: "Développeur confirmé JavaScript / Flutter / Kotlin",
     initial: "F",
     period: "Oct. 2025 — Aujourd'hui",
     type: "Hybride",
     location: "Antananarivo, Madagascar",
     current: true,
     summary:
-      "Mise en place d'une solution SaaS pour la gestion de financement.",
+      "Mise en place d'une solution SaaS tout-en-un pour l'accompagnement des professionnels, incluant plusieurs fonctionnalités métier : gestion de projet, automatisation de la création de business plans, analyse prévisionnelle et bilan, gestion de la facturation, etc.",
     responsibilities: [
-      "Intégration de plusieurs modules micro-frontend avec Next.js.",
-      "Intégration des designs / tokens Figma avec un Storybook pour tester les composants réutilisables.",
-      "Configuration du serveur de déploiement avec Dokploy.",
-      "Gestion des workflows avec Inngest.",
-      "Développement d'API backend avec Nest.js.",
-      "Développement agentic avec Claude Code.",
-      "Gestion et optimisation du contexte avec Byterover, GSD.",
-      "Mise en place d'un système RAG pour guider les utilisateurs sur la plateforme.",
+      "Mise en place d'une architecture micro-frontend avec Next.js Multi-Zones pour accélérer la livraison et améliorer l'expérience de développement.",
+      "Pilotage du workflow complet, du développement à la livraison, avec des méthodes déclaratives (Terraform, Kubernetes, ArgoCD, Prometheus, Grafana).",
+      "Mise en place de solutions agentic avec Convex AI et Mastra AI.",
+      "Mise en place des workflows avec Inngest.",
     ],
     achievements: [],
     skills: [
-      "Next.js",
-      "Nest.js",
-      "PostgreSQL",
+      "Next.js Multi-Zones",
+      "Flutter",
+      "Kotlin",
+      "Terraform",
+      "Kubernetes",
+      "ArgoCD",
+      "Prometheus",
+      "Grafana",
+      "Convex AI",
+      "Mastra AI",
       "Inngest",
-      "Langchain",
-      "LangGraph",
-      "Claude Code",
-      "GSD",
-      "Spec Driven Dev",
     ],
   },
   {
     company: "PUSH-IT",
-    role: "Développeur Fullstack Javascript",
+    role: "Développeur Fullstack JavaScript",
     initial: "P",
     period: "Juil. 2025 — Oct. 2025",
     type: "Hybride",
@@ -139,11 +113,11 @@ export const careers: Career[] = [
       "Développement d'une application de gestion de licences logicielles.",
     responsibilities: [
       "Intégration de Cryptolens pour la gestion et la sécurisation des licences.",
-      "Gestion des mises à jour logicielles avec Mender.io.",
+      "Mise en place de la gestion des mises à jour logicielles avec Mender.io.",
       "Intégration de la facturation et des paiements via Zoho Book.",
       "Développement du frontend avec Next.js.",
       "Conception du backend avec Express, PostgreSQL, TypeORM et GraphQL.",
-      "Organisation du projet en monorepo pour faciliter la maintenance.",
+      "Organisation du projet en monorepo pour faciliter la maintenance et la collaboration.",
     ],
     achievements: [],
     skills: [
@@ -155,84 +129,64 @@ export const careers: Career[] = [
       "Mender.io",
       "Zoho Book",
       "Cryptolens",
-      "GitLab CI/CD",
+      "Monorepo",
     ],
   },
   {
     company: "Bocasay",
-    role: "Développeur Javascript",
+    role: "Développeur JavaScript",
     initial: "B",
     period: "Juil. 2022 — Juil. 2025",
     type: "Hybride",
     location: "Antananarivo, Madagascar",
     current: false,
     summary:
-      "Développement et maintenance d'une application de gestion de la conformité réglementaire des produits chimiques, cosmétiques, biocides et dispositifs médicaux, en collaboration avec des équipes interfonctionnelles.",
+      "Participation au développement et à la maintenance d'une application de gestion de la conformité réglementaire des produits chimiques, cosmétiques, biocides et dispositifs médicaux. Collaboration avec des équipes interfonctionnelles pour assurer la qualité, la performance et la livraison rapide des solutions.",
     responsibilities: [
-      "Développement des interfaces utilisateurs avec React, ExtJS et Flutter (version mobile).",
-      "Intégration des fonctionnalités front-end avec les données serveur via GraphQL.",
-      "Participation aux daily meetings et plannings de sprint pour aligner les objectifs.",
+      "Développement et maintenance des interfaces utilisateurs avec React et ExtJS.",
+      "Intégration des fonctionnalités front-end avec les données du serveur via GraphQL.",
+      "Participation aux daily meetings et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet.",
     ],
-    achievements: [
-      "Amélioration de l'efficacité des workflows internes de +30 %.",
-      "Implémentation réussie d'une fonctionnalité de gestion des données réglementaires.",
-      "Formation des nouveaux membres de l'équipe sur les technologies du projet.",
-    ],
-    skills: [
-      "ReactJS",
-      "ExtJS",
-      "Flutter",
-      "PostgreSQL",
-      "GraphQL",
-      "GitLab CI/CD",
-    ],
+    achievements: [],
+    skills: ["React", "ExtJS", "GraphQL", "Scrum"],
   },
   {
     company: "Flit Soft",
-    role: "Stage — Développeur JS & Flutter",
+    role: "Stage — Développeur JavaScript & Flutter",
     initial: "FS",
-    period: "Mars 2022 — Juin 2022",
+    period: "Mars 2022 — Juil. 2022",
     type: "À distance",
     location: "Antananarivo, Madagascar",
     current: false,
     summary:
-      "Membre d'une équipe chargée des intégrations et outils pour développeurs, avec pour mission d'améliorer et de simplifier l'expérience des équipes techniques.",
+      "Membre d'une équipe chargée des intégrations et des outils pour développeurs. Mission principale : améliorer et simplifier l'expérience des développeurs en optimisant les outils et les processus, en assurant leur accessibilité et en répondant aux besoins spécifiques des équipes techniques.",
     responsibilities: [
-      "Intégration d'un paiement Mvola dans une application de partage de voiture / taxi.",
+      "Intégration d'un paiement Mvola dans une application de partage de voiture et de chauffeurs de taxi.",
       "Création d'un générateur de code en Dart pour faciliter le développement.",
-      "Participation aux réunions et présentation de propositions à l'entreprise.",
+      "Participation active aux réunions régulières et présentation de propositions à travers l'entreprise.",
     ],
-    achievements: [
-      "Optimisation des performances d'une application mobile.",
-      "Développement et maintenance d'apps mobiles avec Flutter, Dart et Node.js.",
-    ],
-    skills: ["Flutter", "Dart", "Javascript", "GitHub Actions", "Firebase"],
+    achievements: [],
+    skills: ["JavaScript", "Flutter", "Dart", "Mvola"],
   },
   {
     company: "ISPM",
-    role: "Bachelor — Ingénierie logicielle",
+    role: "Licence — Ingénierie logicielle",
     initial: "🎓",
-    period: "2018 — 2022",
+    period: "Oct. 2018 — Oct. 2022",
     type: "Formation",
     location: "Antananarivo, Madagascar",
     current: false,
     isEdu: true,
-    summary:
-      "Institut Supérieur Polytechnique de Madagascar. Diplôme d'ingénierie logicielle, moyenne de 3.8 / 4.",
+    summary: "Institut Supérieur Polytechnique de Madagascar.",
     responsibilities: [],
     achievements: [],
-    skills: [
-      "Algorithmique",
-      "Génie logiciel",
-      "Bases de données",
-      "Réseaux",
-      "Web",
-    ],
+    skills: [],
   },
 ];
 
 export const projects: Project[] = [
   {
+    slug: "tononkira",
     name: "Tononkira",
     tag: "Flutter · Web · Search",
     img: "/images/tononkira/tononkira_1.webp",
@@ -265,6 +219,7 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "chantastik",
     name: "Chantastik",
     tag: "Remotion · Web Audio API",
     img: "/images/chantastik/chantastik_1.webp",
@@ -296,6 +251,7 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "magape",
     name: "MAGAPE",
     tag: "Next.js · TypeScript · Tailwind",
     img: "/images/magape/magape_1.webp",
@@ -328,6 +284,7 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "okani-survey",
     name: "Okani Survey",
     tag: "Next.js · Mobile · Gov",
     img: "/images/okani-survey/okani_1.webp",
@@ -407,55 +364,51 @@ export const services: Service[] = [
   },
 ];
 
-export const stackA: StackItem[] = [
-  { name: "Next.js", logo: "https://cdn.simpleicons.org/nextdotjs/1c1c1c" },
-  { name: "React", logo: "https://cdn.simpleicons.org/react/61DAFB" },
-  { name: "TypeScript", logo: "https://cdn.simpleicons.org/typescript/3178C6" },
-  { name: "Node.js", logo: "https://cdn.simpleicons.org/nodedotjs/5FA04E" },
-  { name: "Nest.js", logo: "https://cdn.simpleicons.org/nestjs/E0234E" },
-  { name: "GraphQL", logo: "https://cdn.simpleicons.org/graphql/E10098" },
-  { name: "PostgreSQL", logo: "https://cdn.simpleicons.org/postgresql/4169E1" },
-  { name: "Tailwind", logo: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
-  { name: "Express", logo: "https://cdn.simpleicons.org/express/1c1c1c" },
-  { name: "TypeORM", logo: "https://cdn.simpleicons.org/typeorm/FE0803" },
+export const stack: StackGroup[] = [
+  {
+    label: "Frontend",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "ExtJS"],
+  },
+  {
+    label: "Backend",
+    items: [
+      "Node.js",
+      "Nest.js",
+      "Express",
+      "GraphQL",
+      "PostgreSQL",
+      "TypeORM",
+    ],
+  },
+  {
+    label: "Mobile",
+    items: ["Flutter", "Dart", "Kotlin", "Firebase"],
+  },
+  {
+    label: "DevOps",
+    items: [
+      "Terraform",
+      "Kubernetes",
+      "ArgoCD",
+      "Prometheus",
+      "Grafana",
+      "Docker",
+    ],
+  },
+  {
+    label: "IA & Outils",
+    items: [
+      "Convex AI",
+      "Mastra AI",
+      "Inngest",
+      "Claude Code",
+      "LangGraph",
+      "Langchain",
+      "Figma",
+    ],
+  },
 ];
 
-export const stackB: StackItem[] = [
-  { name: "Flutter", logo: "https://cdn.simpleicons.org/flutter/02569B" },
-  { name: "Dart", logo: "https://cdn.simpleicons.org/dart/0175C2" },
-  { name: "Kotlin", logo: "https://cdn.simpleicons.org/kotlin/7F52FF" },
-  { name: "React Native", logo: "https://cdn.simpleicons.org/react/61DAFB" },
-  { name: "Firebase", logo: "https://cdn.simpleicons.org/firebase/DD2C00" },
-  { name: "Figma", logo: "https://cdn.simpleicons.org/figma/F24E1E" },
-  { name: "Docker", logo: "https://cdn.simpleicons.org/docker/2496ED" },
-  { name: "LangGraph", logo: "https://cdn.simpleicons.org/langchain/1C3C3C" },
-  { name: "Claude Code", logo: "https://cdn.simpleicons.org/claude/D97757" },
-  { name: "Vercel", logo: "https://cdn.simpleicons.org/vercel/1c1c1c" },
-];
-
-export const interests: string[] = [
-  "🎸 Guitare",
-  "🎮 Jeux vidéo",
-  "🍳 Cuisine",
-  "🤖 IA",
-  "⛓ Blockchain",
-];
-
-// Coverflow album art for the music card (deterministic placeholder seeds,
-// matching the prototype).
-export const albums: string[] = [
-  "https://picsum.photos/seed/titoo-cover-1/260/260",
-  "https://picsum.photos/seed/titoo-cover-2/260/260",
-  "https://picsum.photos/seed/titoo-cover-3/260/260",
-  "https://picsum.photos/seed/titoo-cover-4/260/260",
-  "https://picsum.photos/seed/titoo-cover-5/260/260",
-];
-
-// Coverflow slot transforms (5 positions, centre is index 2).
-export const slots = [
-  { x: -116, y: 28, deg: -28, scale: 0.8, z: 1, op: 0.9 },
-  { x: -56, y: 10, deg: -14, scale: 0.92, z: 3, op: 1 },
-  { x: 0, y: -8, deg: 0, scale: 1.0, z: 6, op: 1 },
-  { x: 56, y: 10, deg: 14, scale: 0.92, z: 3, op: 1 },
-  { x: 116, y: 28, deg: 28, scale: 0.8, z: 1, op: 0.9 },
-] as const;
+export function getProject(slug: string): Project | undefined {
+  return projects.find((p) => p.slug === slug);
+}

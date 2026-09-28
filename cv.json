@@ -1,12 +1,12 @@
 {
   "basics": {
     "name": "Titosy Manankasina",
-    "label": "Développeur Fullstack Javascript & Flutter",
+    "label": "Développeur Fullstack JavaScript / Flutter",
     "image": "/photo.jpg",
     "email": "dev.titosy@gmail.com",
     "phone": "+261 38 80 322 74",
     "url": "https://titosy.dev",
-    "summary": "Plus qu'un développeur, je suis un partenaire technique impliqué dans la réussite de votre produit. Avec plus de 4 années d'expérience dans le développement d'applications web et mobiles, j'ai acquis une méthodologie efficace pour transformer vos idées en produits concrets. Je maîtrise la chaîne de production complète : analyse, conception, développement et mise en production.",
+    "summary": "Spécialisé dans le développement logiciel, j'interviens à toutes les étapes d'un projet, de l'analyse des besoins à la réalisation des solutions. J'accompagne les clients dans le cadrage de leurs projets afin de bien comprendre leurs attentes et de proposer des solutions adaptées, simples et efficaces.",
     "theme": "default",
     "location": {
       "address": "",
@@ -31,39 +31,37 @@
   "work": [
     {
       "name": "Fluentech",
-      "position": "Développeur Javascript / Flutter / Kotlin",
+      "position": "Développeur confirmé JavaScript / Flutter / Kotlin",
       "location_type": "Hybride",
       "location": "Antananarivo, Madagascar",
       "startDate": "2025-10-01",
       "endDate": null,
-      "summary": "Mise en place d'une solution SaaS pour la gestion de financement.",
+      "summary": "Mise en place d'une solution SaaS tout-en-un pour l'accompagnement des professionnels, incluant plusieurs fonctionnalités métier : gestion de projet, automatisation de la création de business plans, analyse prévisionnelle et bilan, gestion de la facturation, etc.",
       "highlights": [],
       "responsibilities": [
-        "Intégration de plusieurs modules micro-frontend avec Next.js.",
-        "Intégration des designs / tokens Figma avec un Storybook pour tester et avoir un visuel des composants réutilisables.",
-        "Configuration du serveur de déploiement avec Dockploy.",
-        "Gestion des workflows avec Inngest.",
-        "Développement d'API backend avec Nest.js.",
-        "Développement agentic avec Claude Code.",
-        "Gestion et optimisation du contexte avec Byterover, GSD.",
-        "Mise en place d'un système RAG pour guider les utilisateurs dans l'utilisation de la plateforme."
+        "Mise en place d'une architecture micro-frontend avec Next.js Multi-Zones pour accélérer la livraison et améliorer l'expérience de développement.",
+        "Pilotage du workflow complet, du développement à la livraison, avec des méthodes déclaratives (Terraform, Kubernetes, ArgoCD, Prometheus, Grafana).",
+        "Mise en place de solutions agentic avec Convex AI et Mastra AI.",
+        "Mise en place des workflows avec Inngest."
       ],
       "achievements": [],
       "skills": [
-        "Next.js",
-        "Nest.js",
-        "PostgreSQL",
-        "Inngest",
-        "Langchain",
-        "LangGraph",
-        "Claude Code",
-        "GSD",
-        "Spec Driven Development"
+        "Next.js Multi-Zones",
+        "Flutter",
+        "Kotlin",
+        "Terraform",
+        "Kubernetes",
+        "ArgoCD",
+        "Prometheus",
+        "Grafana",
+        "Convex AI",
+        "Mastra AI",
+        "Inngest"
       ]
     },
     {
       "name": "PUSH-IT",
-      "position": "Développeur Fullstack Javascript",
+      "position": "Développeur Fullstack JavaScript",
       "location_type": "Hybride",
       "location": "Antananarivo, Madagascar",
       "startDate": "2025-07-01",
@@ -80,66 +78,52 @@
       ],
       "achievements": [],
       "skills": [
-        "Mender.io",
         "Next.js",
         "Express",
         "PostgreSQL",
         "TypeORM",
         "GraphQL",
+        "Mender.io",
         "Zoho Book",
         "Cryptolens",
-        "Gitlab CI/CD"
+        "Monorepo"
       ]
     },
     {
       "name": "Bocasay",
-      "position": "Développeur Javascript",
+      "position": "Développeur JavaScript",
       "location_type": "Hybride",
       "location": "Antananarivo, Madagascar",
       "url": "https://www.bocasay.com/",
       "startDate": "2022-07-23",
       "endDate": "2025-07-28",
       "summary": "Participation au développement et à la maintenance d'une application de gestion de la conformité réglementaire des produits chimiques, cosmétiques, biocides et dispositifs médicaux. Collaboration avec des équipes interfonctionnelles pour assurer la qualité, la performance et la livraison rapide des solutions.",
-      "highlights": [
-        "Contributed to a major project that streamlined internal workflows, improving efficiency by 30%"
-      ],
+      "highlights": [],
       "responsibilities": [
-        "Développement et maintenance des interfaces utilisateurs en utilisant React, ExtJS et Flutter pour une version mobile.",
+        "Développement et maintenance des interfaces utilisateurs en utilisant React et ExtJS.",
         "Intégration des fonctionnalités front-end avec les données du serveur via GraphQL.",
         "Participation aux réunions quotidiennes (Daily meeting) et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet."
       ],
-      "achievements": [
-        "Implémentation réussie d'une fonctionnalité améliorant l'interface utilisateur pour une gestion plus efficace des données réglementaires.",
-        "Formation des nouveaux membres de l'équipe sur les technologies utilisées dans le projet."
-      ],
-      "skills": [
-        "ExtJS",
-        "ReactJS",
-        "Flutter",
-        "PostgreSQL",
-        "GraphQL",
-        "Gitlab CI/CD"
-      ]
+      "achievements": [],
+      "skills": ["React", "ExtJS", "GraphQL", "Scrum"]
     },
     {
       "name": "Flit Soft",
-      "position": "Stage Développeur Javascript & Flutter",
+      "position": "Stage Développeur JavaScript & Flutter",
       "location_type": "À distance",
       "location": "Antananarivo, Madagascar",
       "url": "https://www.flitsoft.com/",
       "startDate": "2022-03-14",
-      "endDate": "2022-06-23",
+      "endDate": "2022-07-31",
       "summary": "Membre d'une équipe chargée des intégrations et des outils pour développeurs. Mission principale : améliorer et simplifier l'expérience des développeurs en optimisant les outils et les processus, en assurant leur accessibilité et en répondant aux besoins spécifiques des équipes techniques.",
-      "highlights": ["Improved mobile app performance by optimizing code"],
+      "highlights": [],
       "responsibilities": [
         "Intégration d’un paiement Mvola dans une application de partage de voiture et chauffeur de taxi.",
         "Création d’un générateur de code en Dart pour faciliter le développement",
         "Participation active dans des réunions régulières et la présentation de propositions à travers l'entreprise."
       ],
-      "achievements": [
-        "Développement et maintenance d'applications mobiles en utilisant Flutter, Dart et Node.js. Collaboration avec l'équipe pour implémenter de nouvelles fonctionnalités et corriger les bugs"
-      ],
-      "skills": ["Flutter", "Dart", "Javascript", "Github Actions", "Firebase"]
+      "achievements": [],
+      "skills": ["JavaScript", "Flutter", "Dart", "Mvola"]
     }
   ],
   "volunteer": [],
@@ -148,10 +132,9 @@
       "institution": "Institut Supérieur Polytechnique de Madagascar (ISPM)",
       "url": "https://ispm-edu.com",
       "area": "Ingénierie logicielle",
-      "studyType": "Bachelor",
-      "startDate": "2018-09-01",
-      "endDate": "2022-05-01",
-      "score": "3.8",
+      "studyType": "Licence",
+      "startDate": "2018-10-01",
+      "endDate": "2022-10-01",
       "courses": []
     }
   ],
@@ -286,12 +269,12 @@
   ],
   "languages": [
     {
-      "language": "Anglais",
-      "fluency": "Technique"
+      "language": "Français",
+      "fluency": "Professionnel complet"
     },
     {
-      "language": "Français",
-      "fluency": "Conversationnel"
+      "language": "Anglais",
+      "fluency": "Professionnel limité"
     }
   ],
   "interests": [

@@ -1,25 +1,31 @@
 import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
-import { Schibsted_Grotesk, Space_Mono } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
+import { Footer } from "@/components/site/footer";
+import { Header } from "@/components/site/header";
 import "./globals.css";
 
-const schibstedGrotesk = Schibsted_Grotesk({
-  variable: "--font-schibsted",
+const geist = Geist({
+  variable: "--font-geist",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
 });
 
-const spaceMono = Space_Mono({
-  variable: "--font-space-mono",
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
   subsets: ["latin"],
-  weight: ["400", "700"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#dcdad3",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
 };
+
+// Applies the stored theme before first paint so there is no flash.
+const themeScript = `history.scrollRestoration="manual";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
 
 const siteUrl = "https://titosy.dev";
 
@@ -116,7 +122,12 @@ const jsonLd = {
         "Dart",
         "Node.js",
         "Tailwind CSS",
-        "MySQL",
+        "PostgreSQL",
+        "SQL",
+        "GraphQL",
+        "DevOps",
+        "Kubernetes",
+        "Terraform",
         "Figma",
       ],
       knowsLanguage: ["fr", "en"],
@@ -152,13 +163,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr" className="scroll-smooth">
+    <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: disable the browser's reload scroll restoration before it fires, so reloading this single-page portfolio returns to the top instead of jumping ~100px down
-          dangerouslySetInnerHTML={{
-            __html: 'history.scrollRestoration="manual"',
-          }}
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before paint — restores the saved theme and disables reload scroll restoration (which jumped the page ~100px down)
+          dangerouslySetInnerHTML={{ __html: themeScript }}
         />
         <script
           type="application/ld+json"
@@ -167,9 +176,11 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${schibstedGrotesk.variable} ${spaceMono.variable} antialiased overflow-x-hidden`}
+        className={`${geist.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
+        <Header />
         {children}
+        <Footer />
         <Analytics />
       </body>
     </html>

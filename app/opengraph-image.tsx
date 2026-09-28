@@ -21,15 +21,16 @@ async function loadGoogleFont(family: string, weight: number) {
   return fetch(src[1]).then((r) => r.arrayBuffer());
 }
 
-export default async function OgImage() {
-  const [schibsted, spaceMono] = await Promise.all([
-    loadGoogleFont("Schibsted+Grotesk", 800),
-    loadGoogleFont("Space+Mono", 400),
-  ]);
+const BG = "#0a0a0a";
+const FG = "#ededed";
+const MUTED = "#a1a1a1";
+const LINE = "#262626";
 
-  const SANS = "Schibsted Grotesk";
-  const MONO = "Space Mono";
-  const ACCENT = "#f2611a";
+export default async function OgImage() {
+  const [geist, geistMono] = await Promise.all([
+    loadGoogleFont("Geist", 600),
+    loadGoogleFont("Geist+Mono", 400),
+  ]);
 
   return new ImageResponse(
     <div
@@ -37,143 +38,90 @@ export default async function OgImage() {
         width: "1200px",
         height: "630px",
         display: "flex",
-        flexDirection: "column",
-        background: "#f1f0ec",
-        color: "#1c1c1c",
-        padding: "70px 80px",
-        fontFamily: SANS,
-        position: "relative",
+        background: BG,
+        color: FG,
+        fontFamily: "Geist",
+        padding: "48px",
       }}
     >
-      {/* Top row — logo + meta */}
       <div
         style={{
+          flex: 1,
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
+          flexDirection: "column",
+          border: `1px solid ${LINE}`,
+          padding: "56px 64px",
+          backgroundImage: `radial-gradient(${LINE} 1px, transparent 1px)`,
+          backgroundSize: "24px 24px",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: "18px" }}>
-          <div
-            style={{
-              position: "relative",
-              width: "58px",
-              height: "58px",
-              borderRadius: "17px",
-              background: "#1c1c1c",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              boxShadow: "0 7px 20px rgba(0,0,0,.24)",
-            }}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <svg width="44" height="44" viewBox="0 0 24 24" aria-hidden="true">
+              <rect width="24" height="24" rx="6" fill={FG} />
+              <path d="M6.5 7h11v2.6h-4.2V18h-2.6V9.6H6.5Z" fill={BG} />
+            </svg>
+            <span style={{ fontSize: "26px" }}>Titosy Manankasina</span>
+          </div>
+          <span
+            style={{ fontFamily: "Geist Mono", fontSize: "20px", color: MUTED }}
           >
+            titosy.dev
+          </span>
+        </div>
+
+        <div
+          style={{
+            marginTop: "auto",
+            display: "flex",
+            flexDirection: "column",
+            fontSize: "76px",
+            lineHeight: 1.05,
+            letterSpacing: "-0.045em",
+          }}
+        >
+          <span>Des produits web & mobile,</span>
+          <span style={{ color: MUTED }}>du pixel à la prod.</span>
+        </div>
+
+        <div
+          style={{
+            marginTop: "44px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            fontFamily: "Geist Mono",
+            fontSize: "20px",
+            color: MUTED,
+          }}
+        >
+          <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
             <span
               style={{
-                fontFamily: SANS,
-                fontWeight: 800,
-                fontSize: "30px",
-                color: "#fff",
-                lineHeight: 1,
-              }}
-            >
-              T
-            </span>
-            <div
-              style={{
-                position: "absolute",
-                right: "8px",
-                bottom: "8px",
-                width: "9px",
-                height: "9px",
+                width: "10px",
+                height: "10px",
                 borderRadius: "50%",
-                background: ACCENT,
+                background: "#1fd978",
                 display: "flex",
               }}
             />
-          </div>
-          <span
-            style={{
-              fontFamily: SANS,
-              fontWeight: 700,
-              fontSize: "24px",
-              color: "#1c1c1c",
-            }}
-          >
-            Titosy Manankasina
+            Disponible — remote ou hybride
           </span>
+          <span>React · Next.js · Flutter · Node.js</span>
         </div>
-        <span
-          style={{
-            fontFamily: MONO,
-            fontSize: "20px",
-            letterSpacing: "0.06em",
-            color: "#9a978d",
-          }}
-        >
-          ANTANANARIVO, MG
-        </span>
-      </div>
-
-      {/* Headline */}
-      <div
-        style={{
-          marginTop: "auto",
-          display: "flex",
-          flexDirection: "column",
-          fontFamily: SANS,
-          fontWeight: 800,
-          fontSize: "76px",
-          lineHeight: 1.04,
-          letterSpacing: "-0.025em",
-        }}
-      >
-        <div style={{ display: "flex", color: "#1c1c1c" }}>
-          Salut, moi c&apos;est Titosy.
-        </div>
-        <div style={{ display: "flex" }}>
-          <span style={{ color: "#bdbab1" }}>Je crée des apps</span>
-          <span style={{ color: "#1c1c1c" }}>&nbsp;web &amp; mobile</span>
-        </div>
-        <div style={{ display: "flex", color: ACCENT }}>
-          JavaScript &amp; Flutter.
-        </div>
-      </div>
-
-      {/* Bottom row */}
-      <div
-        style={{
-          marginTop: "auto",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          fontFamily: MONO,
-          fontSize: "20px",
-          letterSpacing: "0.04em",
-          color: "#6b6860",
-        }}
-      >
-        <span style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-          <span
-            style={{
-              width: "12px",
-              height: "12px",
-              borderRadius: "50%",
-              background: "#2bcc63",
-              display: "flex",
-            }}
-          />
-          Disponible — remote ou hybride
-        </span>
-        <span style={{ display: "flex" }}>
-          React · Next.js · TypeScript · Flutter
-        </span>
       </div>
     </div>,
     {
       ...size,
       fonts: [
-        { name: SANS, data: schibsted, style: "normal", weight: 800 },
-        { name: MONO, data: spaceMono, style: "normal", weight: 400 },
+        { name: "Geist", data: geist, style: "normal", weight: 600 },
+        { name: "Geist Mono", data: geistMono, style: "normal", weight: 400 },
       ],
     },
   );

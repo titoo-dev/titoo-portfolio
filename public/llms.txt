@@ -4,7 +4,9 @@
 
 ## À propos
 
-Titosy Manankasina est un développeur Fullstack JavaScript & Flutter avec plus de 4 ans d'expérience dans le développement d'applications web et mobiles. Il est capable de gérer la chaîne de production complète : analyse, conception, développement et mise en production.
+Titosy Manankasina est un développeur Fullstack JavaScript / Flutter avec plus de 4 ans d'expérience dans le développement d'applications web et mobiles. Spécialisé dans le développement logiciel, il intervient à toutes les étapes d'un projet, de l'analyse des besoins à la réalisation des solutions, et accompagne les clients dans le cadrage de leurs projets pour proposer des solutions adaptées, simples et efficaces.
+
+- **Principales compétences** : SQL, Développement full-stack, DevOps
 
 - **Localisation** : Antananarivo, Madagascar
 - **Disponibilité** : Remote / Freelance
@@ -24,8 +26,11 @@ Titosy Manankasina est un développeur Fullstack JavaScript & Flutter avec plus 
 ### Backend
 - Node.js, Nest.js, MySQL, AWS Lambda, Cloudflare Workers
 
-### Outils & DevOps
-- Git, GitHub, GitLab, Figma, n8n, Firebase
+### DevOps
+- Terraform, Kubernetes, ArgoCD, Prometheus, Grafana, Docker
+
+### IA & Outils
+- Convex AI, Mastra AI, Inngest, Git, GitHub, GitLab, Figma, n8n, Firebase
 
 ## Services
 
@@ -36,10 +41,10 @@ Titosy Manankasina est un développeur Fullstack JavaScript & Flutter avec plus 
 
 ## Expérience professionnelle
 
-- **Fluentech** (Oct 2025 – Présent) — Développeur Javascript / Flutter / Kotlin
-- **PUSH-IT** (Juil 2025 – Oct 2025) — Développeur Fullstack Javascript
-- **Bocasay** (Juil 2022 – Juil 2025) — Développeur Javascript
-- **Flit Soft** (Mar 2022 – Juin 2022) — Stage Développeur Javascript & Flutter
+- **Fluentech** (Oct 2025 – Présent) — Développeur confirmé JavaScript / Flutter / Kotlin. SaaS tout-en-un pour l'accompagnement des professionnels (gestion de projet, business plans, prévisionnel, facturation) : micro-frontends Next.js Multi-Zones, livraison déclarative (Terraform, Kubernetes, ArgoCD, Prometheus, Grafana), solutions agentic (Convex AI, Mastra AI), workflows Inngest.
+- **PUSH-IT** (Juil 2025 – Oct 2025) — Développeur Fullstack JavaScript. Application de gestion de licences logicielles (Next.js, Express, PostgreSQL, TypeORM, GraphQL, Cryptolens, Mender.io, Zoho Book).
+- **Bocasay** (Juil 2022 – Juil 2025) — Développeur JavaScript. Application de conformité réglementaire (produits chimiques, cosmétiques, biocides, dispositifs médicaux) avec React, ExtJS et GraphQL.
+- **Flit Soft** (Mar 2022 – Juil 2022) — Stage Développeur JavaScript & Flutter. Intégration du paiement Mvola, générateur de code en Dart.
 
 ## Projets notables
 
@@ -53,9 +58,9 @@ Titosy Manankasina est un développeur Fullstack JavaScript & Flutter avec plus 
 
 ## Formation
 
-- **Licence en Ingénierie Logicielle** — Institut Supérieur Polytechnique de Madagascar (ISPM), 2018–2022
+- **Licence en Ingénierie Logicielle** — Institut Supérieur Polytechnique de Madagascar (ISPM), oct. 2018 – oct. 2022
 
 ## Langues
 
-- Français (conversationnel)
-- Anglais (technique)
+- Français (professionnel complet)
+- Anglais (professionnel limité)
