@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { Globe } from "@/components/motion/globe";
 import { HeroBeams } from "@/components/motion/hero-beams";
+import { ProjectPipeline } from "@/components/motion/project-pipeline";
 import { SERVICE_ICONS } from "@/components/motion/service-icons";
 import { Timeline } from "@/components/motion/timeline";
 import { CopyEmail } from "@/components/site/copy-email";
@@ -22,18 +22,10 @@ import {
   stack,
 } from "@/lib/portfolio-data";
 
-const STATS = [
-  { value: "4+", label: "ans d'expérience" },
-  { value: "4", label: "entreprises" },
-  { value: "15 000+", label: "chansons indexées sur Tononkira" },
-  { value: "Licence", label: "ingénierie logicielle · ISPM" },
-];
-
 export default function Home() {
   return (
     <main className="mx-auto max-w-[1080px] border-line border-x">
       <Hero />
-      <Stats />
       <Projects />
       <Services />
       <Experience />
@@ -49,7 +41,7 @@ function Hero() {
       <div className="flex flex-col justify-center px-6 py-16 md:px-10 md:py-24">
         <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line px-3 py-1 font-mono text-muted text-xs">
           <StatusDot />
-          Disponible — remote ou hybride
+          Disponible en remote ou hybride
         </p>
         <h1 className="mt-6 text-balance font-semibold text-[40px] leading-[1.04] tracking-[-0.045em] md:text-[58px]">
           Des produits web & mobile, du pixel à la prod.
@@ -75,10 +67,6 @@ function Hero() {
             Me contacter
           </Link>
         </div>
-        <p className="mt-10 font-mono text-faint text-xs">
-          <span className="text-muted">Actuellement</span> — {PROFILE.now.title}{" "}
-          {PROFILE.now.company}
-        </p>
       </div>
 
       <div className="relative flex items-center justify-center overflow-hidden border-line border-t px-8 py-12 md:border-t-0 md:border-l">
@@ -88,29 +76,6 @@ function Hero() {
         </div>
       </div>
     </section>
-  );
-}
-
-function Stats() {
-  return (
-    <div className="grid grid-cols-2 border-line border-t md:grid-cols-4">
-      {STATS.map((s, i) => (
-        <div
-          key={s.label}
-          className={[
-            "px-6 py-8 md:px-10",
-            i % 2 === 0 ? "border-line border-r" : "",
-            i < 2 ? "border-line border-b md:border-b-0" : "",
-            i === 1 ? "md:border-r" : "",
-          ].join(" ")}
-        >
-          <p className="font-semibold text-3xl tabular-nums tracking-[-0.04em]">
-            {s.value}
-          </p>
-          <p className="mt-1 text-muted text-sm">{s.label}</p>
-        </div>
-      ))}
-    </div>
   );
 }
 
@@ -295,10 +260,6 @@ function Contact() {
             </a>
           </div>
           <p className="mt-10 font-mono text-faint text-xs">
-            {PROFILE.location.city}, {PROFILE.location.country} ·{" "}
-            {PROFILE.location.coords}
-          </p>
-          <p className="mt-2 font-mono text-faint text-xs">
             {PROFILE.languages
               .map((l) => `${l.name} (${l.level.toLowerCase()})`)
               .join(" · ")}
@@ -307,7 +268,7 @@ function Contact() {
         <div className="relative flex items-center justify-center overflow-hidden border-line border-t px-8 py-12 md:border-t-0 md:border-l">
           <div className="dot-grid absolute inset-0" aria-hidden />
           <div className="relative w-full max-w-[360px]">
-            <Globe />
+            <ProjectPipeline />
           </div>
         </div>
       </div>

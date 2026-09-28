@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------------------
-   Design tokens — minimal monochrome, Geist Sans + Geist Mono.
+   Design tokens: minimal monochrome, Geist Sans + Geist Mono.
    Light by default, dark follows the system unless the visitor picks a theme
    (stored as `data-theme` on <html>).
 --------------------------------------------------------------------------- */
@@ -225,11 +225,6 @@ body {
   }
 }
 
-.spin-slow {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: spin 24s linear infinite;
-}
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -280,22 +275,6 @@ body {
   }
 }
 
-/* Globe arcs: a comet runs along each great-circle arc. */
-.arc-beam {
-  stroke-dasharray: 18 100;
-  stroke-dashoffset: 18;
-  animation: arc-beam 3.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-}
-@keyframes arc-beam {
-  0% {
-    stroke-dashoffset: 18;
-  }
-  70%,
-  100% {
-    stroke-dashoffset: -100;
-  }
-}
-
 /* Copy-to-clipboard confirmation tick. */
 .check-draw {
   stroke-dasharray: 1;
@@ -334,8 +313,7 @@ body {
   .check-draw {
     stroke-dashoffset: 0;
   }
-  .beam,
-  .arc-beam {
+  .beam {
     display: none;
   }
   .reveal {

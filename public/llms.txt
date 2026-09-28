@@ -1,4 +1,4 @@
-# Titosy Manankasina — Développeur Fullstack JavaScript & Flutter
+# Titosy Manankasina, développeur Fullstack JavaScript & Flutter
 
 > Portfolio professionnel de Titosy Manankasina, développeur Fullstack spécialisé en JavaScript et Flutter, basé à Antananarivo, Madagascar.
 
@@ -41,24 +41,24 @@ Titosy Manankasina est un développeur Fullstack JavaScript / Flutter avec plus 
 
 ## Expérience professionnelle
 
-- **Fluentech** (Oct 2025 – Présent) — Développeur confirmé JavaScript / Flutter / Kotlin. SaaS tout-en-un pour l'accompagnement des professionnels (gestion de projet, business plans, prévisionnel, facturation) : micro-frontends Next.js Multi-Zones, livraison déclarative (Terraform, Kubernetes, ArgoCD, Prometheus, Grafana), solutions agentic (Convex AI, Mastra AI), workflows Inngest.
-- **PUSH-IT** (Juil 2025 – Oct 2025) — Développeur Fullstack JavaScript. Application de gestion de licences logicielles (Next.js, Express, PostgreSQL, TypeORM, GraphQL, Cryptolens, Mender.io, Zoho Book).
-- **Bocasay** (Juil 2022 – Juil 2025) — Développeur JavaScript. Application de conformité réglementaire (produits chimiques, cosmétiques, biocides, dispositifs médicaux) avec React, ExtJS et GraphQL.
-- **Flit Soft** (Mar 2022 – Juil 2022) — Stage Développeur JavaScript & Flutter. Intégration du paiement Mvola, générateur de code en Dart.
+- **Fluentech** (depuis oct. 2025) : Développeur confirmé JavaScript / Flutter / Kotlin. SaaS tout-en-un pour l'accompagnement des professionnels (gestion de projet, business plans, prévisionnel, facturation) : micro-frontends Next.js Multi-Zones, livraison déclarative (Terraform, Kubernetes, ArgoCD, Prometheus, Grafana), solutions agentic (Convex AI, Mastra AI), workflows Inngest.
+- **PUSH-IT** (Juil 2025 à Oct 2025) : Développeur Fullstack JavaScript. Application de gestion de licences logicielles (Next.js, Express, PostgreSQL, TypeORM, GraphQL, Cryptolens, Mender.io, Zoho Book).
+- **Bocasay** (Juil 2022 à Juil 2025) : Développeur JavaScript. Application de conformité réglementaire (produits chimiques, cosmétiques, biocides, dispositifs médicaux) avec React, ExtJS et GraphQL.
+- **Flit Soft** (Mar 2022 à Juil 2022) : Stage Développeur JavaScript & Flutter. Intégration du paiement Mvola, générateur de code en Dart.
 
 ## Projets notables
 
-- [Tononkira](https://tononkira.titosy.dev/) — Application web/mobile de découverte de paroles de chansons malgaches (15 000+ chansons, 2 300+ artistes)
-- [Chantastik](https://chantastik.titosy.dev/) — Application de création de vidéos lyrics (Remotion, Web Audio API)
-- [MAGAPE](https://megape.vercel.app/) — Plateforme communautaire chrétienne (gestion podcast, boutique en ligne)
-- [Okani Survey](https://okani-survey.vercel.app/) — Plateforme d'enquête gouvernementale pour le Gabon (web & mobile)
-- **Phototech** — Plateforme de suivi de documents terrain avec synchronisation offline
-- **MID** — Application de gestion d'ordres de trading de devises (web & mobile)
-- **TMvola** — CLI de récupération de transactions Mvola
+- [Tononkira](https://tononkira.titosy.dev/) : Application web/mobile de découverte de paroles de chansons malgaches (15 000+ chansons, 2 300+ artistes)
+- [Chantastik](https://chantastik.titosy.dev/) : Application de création de vidéos lyrics (Remotion, Web Audio API)
+- [MAGAPE](https://megape.vercel.app/) : Plateforme communautaire chrétienne (gestion podcast, boutique en ligne)
+- [Okani Survey](https://okani-survey.vercel.app/) : Plateforme d'enquête gouvernementale pour le Gabon (web & mobile)
+- **Phototech** : Plateforme de suivi de documents terrain avec synchronisation offline
+- **MID** : Application de gestion d'ordres de trading de devises (web & mobile)
+- **TMvola** : CLI de récupération de transactions Mvola
 
 ## Formation
 
-- **Licence en Ingénierie Logicielle** — Institut Supérieur Polytechnique de Madagascar (ISPM), oct. 2018 – oct. 2022
+- **Licence en Ingénierie Logicielle** : Institut Supérieur Polytechnique de Madagascar (ISPM), oct. 2018 à oct. 2022
 
 ## Langues
 

@@ -1,5 +1,4 @@
 import { PROFILE } from "@/lib/portfolio-data";
-import { LocalTime } from "./local-time";
 import { Logo } from "./logo";
 import { ThemeSwitcher } from "./theme-switcher";
 
@@ -16,9 +15,6 @@ export function Footer() {
           <span className="flex items-center gap-2">
             <StatusDot />
             Disponible
-          </span>
-          <span>
-            Antananarivo · <LocalTime />
           </span>
           <a
             href={PROFILE.linkedin}
@@ -43,7 +39,7 @@ export function Footer() {
   );
 }
 
-/** Green dot with an expanding ring — "online" indicator. */
+/** Green dot with an expanding ring, used as an "online" indicator. */
 export function StatusDot() {
   return (
     <svg

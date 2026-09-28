@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const alt =
-  "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter";
+  "Titosy Manankasina | Développeur Fullstack JavaScript & Flutter";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -111,7 +111,7 @@ export default async function OgImage() {
                 display: "flex",
               }}
             />
-            Disponible — remote ou hybride
+            Disponible en remote ou hybride
           </span>
           <span>React · Next.js · Flutter · Node.js</span>
         </div>

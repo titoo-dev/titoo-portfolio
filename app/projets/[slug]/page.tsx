@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: project.desc,
     alternates: { canonical: `/projets/${project.slug}` },
     openGraph: {
-      title: `${project.name} — Titosy Manankasina`,
+      title: `${project.name} | Titosy Manankasina`,
       description: project.desc,
       images: [project.img],
     },
@@ -154,7 +154,7 @@ export default async function ProjectPage({ params }: Props) {
             >
               <Image
                 src={src}
-                alt={`${project.name} — capture ${i + 2}`}
+                alt={`${project.name}, capture ${i + 2}`}
                 fill
                 sizes="(min-width: 768px) 500px, 100vw"
                 className="object-cover object-top"

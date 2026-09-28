@@ -99,7 +99,7 @@ export function Timeline({ items }: { items: Career[] }) {
                   {c.period} · {c.type}
                 </p>
                 <h3 className="mt-2 font-medium text-lg tracking-tight">
-                  {c.role} <span className="text-muted">— {c.company}</span>
+                  {c.role} <span className="text-muted">· {c.company}</span>
                 </h3>
                 <p className="mt-2 max-w-2xl text-muted text-sm leading-relaxed">
                   {c.summary}

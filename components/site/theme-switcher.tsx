@@ -32,7 +32,7 @@ export function ThemeSwitcher() {
         localStorage.setItem("theme", next);
       }
     } catch {
-      // Storage can be unavailable (private mode) — the theme still applies.
+      // Storage can be unavailable (private mode); the theme still applies.
     }
   }
 

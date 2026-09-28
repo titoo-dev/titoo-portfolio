@@ -1,5 +1,5 @@
 // ---------------------------------------------------------------------------
-// Portfolio data — single source of truth for every page of the site.
+// Portfolio data: single source of truth for every page of the site.
 // ---------------------------------------------------------------------------
 
 export type Career = {
@@ -57,16 +57,6 @@ export const PROFILE = {
     { name: "Français", level: "Professionnel complet" },
     { name: "Anglais", level: "Professionnel limité" },
   ],
-  location: {
-    city: "ANTANANARIVO",
-    country: "MADAGASCAR",
-    coords: "18.8792° S, 47.5079° E",
-  },
-  now: {
-    title: "SaaS tout-en-un pour les professionnels",
-    company: "@ Fluentech",
-    desc: "Micro-frontends Next.js Multi-Zones, GitOps sur Kubernetes & solutions agentic avec Convex AI et Mastra AI.",
-  },
 } as const;
 
 export const careers: Career[] = [
@@ -74,7 +64,7 @@ export const careers: Career[] = [
     company: "Fluentech",
     role: "Développeur confirmé JavaScript / Flutter / Kotlin",
     initial: "F",
-    period: "Oct. 2025 — Aujourd'hui",
+    period: "Depuis oct. 2025",
     type: "Hybride",
     location: "Antananarivo, Madagascar",
     current: true,
@@ -105,7 +95,7 @@ export const careers: Career[] = [
     company: "PUSH-IT",
     role: "Développeur Fullstack JavaScript",
     initial: "P",
-    period: "Juil. 2025 — Oct. 2025",
+    period: "Juil. 2025 à oct. 2025",
     type: "Hybride",
     location: "Antananarivo, Madagascar",
     current: false,
@@ -136,7 +126,7 @@ export const careers: Career[] = [
     company: "Bocasay",
     role: "Développeur JavaScript",
     initial: "B",
-    period: "Juil. 2022 — Juil. 2025",
+    period: "Juil. 2022 à juil. 2025",
     type: "Hybride",
     location: "Antananarivo, Madagascar",
     current: false,
@@ -152,9 +142,9 @@ export const careers: Career[] = [
   },
   {
     company: "Flit Soft",
-    role: "Stage — Développeur JavaScript & Flutter",
+    role: "Stagiaire développeur JavaScript & Flutter",
     initial: "FS",
-    period: "Mars 2022 — Juil. 2022",
+    period: "Mars 2022 à juil. 2022",
     type: "À distance",
     location: "Antananarivo, Madagascar",
     current: false,
@@ -170,9 +160,9 @@ export const careers: Career[] = [
   },
   {
     company: "ISPM",
-    role: "Licence — Ingénierie logicielle",
+    role: "Licence en ingénierie logicielle",
     initial: "🎓",
-    period: "Oct. 2018 — Oct. 2022",
+    period: "Oct. 2018 à oct. 2022",
     type: "Formation",
     location: "Antananarivo, Madagascar",
     current: false,
@@ -195,7 +185,7 @@ export const projects: Project[] = [
     github: null,
     year: "2024",
     type: "Application Web & Mobile",
-    desc: "Découverte des paroles de chansons malgaches — 15 000+ titres, 2 300 artistes, recherche intelligente & accès hors-ligne.",
+    desc: "Découverte des paroles de chansons malgaches : 15 000+ titres, 2 300 artistes, recherche intelligente & accès hors-ligne.",
     overview:
       "Plateforme complète dédiée à la découverte et l'exploration des paroles de chansons malgaches, offrant un accès à plus de 15 000 chansons de 2 300 artistes avec recherche intelligente, personnalisation et accès hors ligne.",
     gallery: [
@@ -260,7 +250,7 @@ export const projects: Project[] = [
     github: null,
     year: "2024",
     type: "Plateforme communautaire",
-    desc: "Plateforme communautaire chrétienne francophone — podcasts, enseignements bibliques & boutique en ligne.",
+    desc: "Plateforme communautaire chrétienne francophone avec podcasts, enseignements bibliques & boutique en ligne.",
     overview:
       "Plateforme dédiée à rassembler la communauté chrétienne francophone à travers des ressources enrichissantes, des contenus audiovisuels et des produits inspirants, créant des ponts d'unité entre les chrétiens.",
     gallery: [

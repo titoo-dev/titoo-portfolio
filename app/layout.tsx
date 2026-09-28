@@ -32,7 +32,7 @@ const siteUrl = "https://titosy.dev";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
+    default: "Titosy Manankasina | Développeur Fullstack JavaScript & Flutter",
     template: "%s | Titosy Manankasina",
   },
   description:
@@ -78,14 +78,14 @@ export const metadata: Metadata = {
     locale: "fr_FR",
     alternateLocale: "en_US",
     url: siteUrl,
-    siteName: "Titosy Manankasina — Portfolio",
-    title: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
+    siteName: "Titosy Manankasina | Portfolio",
+    title: "Titosy Manankasina | Développeur Fullstack JavaScript & Flutter",
     description:
       "Développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience. React, Next.js, TypeScript, Flutter, Node.js. Disponible en remote.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
+    title: "Titosy Manankasina | Développeur Fullstack JavaScript & Flutter",
     description:
       "Développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience. React, Next.js, TypeScript, Flutter. Disponible en remote.",
   },
@@ -136,7 +136,7 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "Titosy Manankasina — Portfolio",
+      name: "Titosy Manankasina | Portfolio",
       description:
         "Portfolio de Titosy Manankasina, Développeur Fullstack JavaScript & Flutter",
       author: { "@id": `${siteUrl}/#person` },
@@ -146,12 +146,12 @@ const jsonLd = {
       "@type": "ProfilePage",
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: "Titosy Manankasina — Développeur Fullstack JavaScript & Flutter",
+      name: "Titosy Manankasina | Développeur Fullstack JavaScript & Flutter",
       isPartOf: { "@id": `${siteUrl}/#website` },
       about: { "@id": `${siteUrl}/#person` },
       mainEntity: { "@id": `${siteUrl}/#person` },
       description:
-        "Portfolio professionnel de Titosy Manankasina — Développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience.",
+        "Portfolio professionnel de Titosy Manankasina, développeur Fullstack JavaScript & Flutter avec 4+ ans d'expérience.",
       inLanguage: "fr",
     },
   ],
@@ -166,7 +166,7 @@ export default function RootLayout({
     <html lang="fr" className="scroll-smooth" suppressHydrationWarning>
       <head>
         <script
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before paint — restores the saved theme and disables reload scroll restoration (which jumped the page ~100px down)
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: runs before paint: restores the saved theme and disables reload scroll restoration (which jumped the page ~100px down)
           dangerouslySetInnerHTML={{ __html: themeScript }}
         />
         <script
