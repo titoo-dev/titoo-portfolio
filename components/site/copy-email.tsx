@@ -3,7 +3,9 @@
 import { useState } from "react";
 import { CheckIcon, CopyIcon } from "./icons";
 
-export function CopyEmail({ email }: { email: string }) {
+type Props = { email: string; copyLabel: string; copiedLabel: string };
+
+export function CopyEmail({ email, copyLabel, copiedLabel }: Props) {
   const [copied, setCopied] = useState(false);
 
   async function copy() {
@@ -20,6 +22,7 @@ export function CopyEmail({ email }: { email: string }) {
     <button
       type="button"
       onClick={copy}
+      title={copyLabel}
       className="group inline-flex h-11 items-center gap-3 rounded-full border border-line bg-bg pr-2 pl-5 font-mono text-sm transition-colors hover:border-line-strong"
     >
       {email}
@@ -31,7 +34,7 @@ export function CopyEmail({ email }: { email: string }) {
         )}
       </span>
       <span className="sr-only" aria-live="polite">
-        {copied ? "Adresse copiée" : ""}
+        {copied ? copiedLabel : ""}
       </span>
     </button>
   );

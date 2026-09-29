@@ -8,7 +8,9 @@ import { cn } from "@/lib/utils";
  * Career timeline whose SVG rail draws itself as the page scrolls; each node
  * switches on once the rail reaches it.
  */
-export function Timeline({ items }: { items: Career[] }) {
+type Props = { items: Career[]; detailsLabel: string };
+
+export function Timeline({ items, detailsLabel }: Props) {
   const rootRef = useRef<HTMLDivElement>(null);
   const railRef = useRef<SVGLineElement>(null);
   const itemRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -133,7 +135,7 @@ export function Timeline({ items }: { items: Career[] }) {
                           strokeWidth="1.3"
                         />
                       </svg>
-                      Détails
+                      {detailsLabel}
                     </summary>
                     <ul className="mt-3 space-y-1.5 text-muted leading-relaxed">
                       {[...c.responsibilities, ...c.achievements].map((r) => (

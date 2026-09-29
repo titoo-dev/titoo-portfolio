@@ -10,24 +10,42 @@ import {
 } from "@/components/site/icons";
 import { InView } from "@/components/site/in-view";
 import { Section } from "@/components/site/section";
-import { getProject, projects } from "@/lib/portfolio-data";
+import { format, getDictionary } from "@/lib/dictionaries";
+import { isLocale, languageAlternates, locales, projectPath } from "@/lib/i18n";
+import { getContent, getProject, projectSlugs } from "@/lib/portfolio-data";
 
-type Props = { params: Promise<{ slug: string }> };
+type Props = PageProps<"/[lang]/projects/[slug]">;
 
 export function generateStaticParams() {
-  return projects.map((p) => ({ slug: p.slug }));
+  return locales.flatMap((lang) =>
+    projectSlugs.map((slug) => ({ lang, slug })),
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const project = getProject(slug);
-  if (!project) return {};
+  const { lang, slug } = await params;
+  const project = isLocale(lang) ? getProject(lang, slug) : undefined;
+  if (!isLocale(lang) || !project) return {};
+  const title = `${project.name} | Titosy Manankasina`;
   return {
     title: project.name,
     description: project.desc,
-    alternates: { canonical: `/projets/${project.slug}` },
+    alternates: {
+      canonical: projectPath(lang, project.slug),
+      languages: languageAlternates(`projects/${project.slug}`),
+    },
     openGraph: {
-      title: `${project.name} | Titosy Manankasina`,
+      type: "article",
+      locale: getDictionary(lang).meta.ogLocale,
+      siteName: getDictionary(lang).meta.siteName,
+      title,
+      description: project.desc,
+      url: projectPath(lang, project.slug),
+      images: [project.img],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
       description: project.desc,
       images: [project.img],
     },
@@ -35,22 +53,25 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const { slug } = await params;
-  const project = getProject(slug);
+  const { lang, slug } = await params;
+  if (!isLocale(lang)) notFound();
+  const project = getProject(lang, slug);
   if (!project) notFound();
+  const t = getDictionary(lang);
+  const { projects } = getContent(lang);
 
-  const index = projects.indexOf(project);
+  const index = projects.findIndex((p) => p.slug === project.slug);
   const next = projects[(index + 1) % projects.length];
 
   return (
     <main className="mx-auto max-w-[1080px] border-line border-x">
       <section className="px-6 pt-10 pb-14 md:px-10 md:pt-14">
         <Link
-          href="/#projets"
+          href={`/${lang}#${t.ids.projects}`}
           className="inline-flex items-center gap-1.5 font-mono text-muted text-xs transition-colors hover:text-fg"
         >
           <ArrowLeft width={13} height={13} />
-          Tous les projets
+          {t.project.back}
         </Link>
         <p className="mt-10 font-mono text-muted text-xs">
           {project.type} · {project.year}
@@ -69,7 +90,7 @@ export default async function ProjectPage({ params }: Props) {
               rel="noreferrer"
               className="inline-flex h-10 items-center gap-2 rounded-full bg-fg px-4 font-medium text-bg text-sm transition-opacity hover:opacity-85"
             >
-              Voir le site
+              {t.project.visit}
               <ArrowUpRight width={14} height={14} />
             </a>
           )}
@@ -81,7 +102,7 @@ export default async function ProjectPage({ params }: Props) {
               className="inline-flex h-10 items-center gap-2 rounded-full border border-line px-4 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
             >
               <GithubIcon width={14} height={14} />
-              Code source
+              {t.project.source}
             </a>
           )}
         </div>
@@ -105,7 +126,7 @@ export default async function ProjectPage({ params }: Props) {
         <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-bg">
           <Image
             src={project.img}
-            alt={`Capture principale de ${project.name}`}
+            alt={format(t.project.mainAlt, { name: project.name })}
             fill
             priority
             sizes="(min-width: 1080px) 1000px, 100vw"
@@ -114,7 +135,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </div>
 
-      <Section label="Points clés">
+      <Section label={t.project.highlights}>
         <div className="grid gap-10 px-6 pb-14 md:grid-cols-[1fr_240px] md:px-10">
           <ol className="space-y-5">
             {project.highlights.map((h, i) => (
@@ -128,7 +149,7 @@ export default async function ProjectPage({ params }: Props) {
           </ol>
           <div>
             <p className="font-mono text-muted text-xs uppercase tracking-wider">
-              Technologies
+              {t.project.tech}
             </p>
             <ul className="mt-4 flex flex-wrap gap-2">
               {project.tech.map((t) => (
@@ -144,7 +165,7 @@ export default async function ProjectPage({ params }: Props) {
         </div>
       </Section>
 
-      <Section label="Galerie">
+      <Section label={t.project.gallery}>
         <div className="grid gap-4 px-6 pb-14 sm:grid-cols-2 md:px-10">
           {project.gallery.slice(1).map((src, i) => (
             <InView
@@ -154,7 +175,10 @@ export default async function ProjectPage({ params }: Props) {
             >
               <Image
                 src={src}
-                alt={`${project.name}, capture ${i + 2}`}
+                alt={format(t.project.shotAlt, {
+                  name: project.name,
+                  n: i + 2,
+                })}
                 fill
                 sizes="(min-width: 768px) 500px, 100vw"
                 className="object-cover object-top"
@@ -165,11 +189,11 @@ export default async function ProjectPage({ params }: Props) {
       </Section>
 
       <Link
-        href={`/projets/${next.slug}`}
+        href={projectPath(lang, next.slug)}
         className="group relative flex items-center justify-between border-line border-t px-6 py-10 md:px-10"
       >
         <div>
-          <p className="font-mono text-muted text-xs">Projet suivant</p>
+          <p className="font-mono text-muted text-xs">{t.project.next}</p>
           <p className="mt-2 font-semibold text-2xl tracking-[-0.035em]">
             {next.name}
           </p>

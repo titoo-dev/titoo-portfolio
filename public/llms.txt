@@ -11,10 +11,10 @@ Titosy Manankasina est un développeur Fullstack JavaScript / Flutter avec plus 
 - **Localisation** : Antananarivo, Madagascar
 - **Disponibilité** : Remote / Freelance
 - **Email** : dev.titosy@gmail.com
-- **Site web** : [titosy.dev](https://titosy.dev)
+- **Site web** : [titosy.dev](https://titosy.dev) (français : [titosy.dev/fr](https://titosy.dev/fr), English: [titosy.dev/en](https://titosy.dev/en))
 - **LinkedIn** : [linkedin.com/in/titosy-manankasina](https://www.linkedin.com/in/titosy-manankasina)
 - **GitHub** : [github.com/titoo-dev](https://github.com/titoo-dev)
-- **CV (PDF)** : [titosy.dev/cv-titosy-manankasina.pdf](https://titosy.dev/cv-titosy-manankasina.pdf)
+- **CV (PDF)** : [titosy.dev/cv-titosy-manankasina.pdf](https://titosy.dev/cv-titosy-manankasina.pdf) (English: [titosy.dev/cv-titosy-manankasina-en.pdf](https://titosy.dev/cv-titosy-manankasina-en.pdf))
 
 ## Compétences techniques
 

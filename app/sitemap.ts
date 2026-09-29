@@ -1,21 +1,28 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/lib/portfolio-data";
+import { locales, localizePath, siteUrl } from "@/lib/i18n";
+import { projectSlugs } from "@/lib/portfolio-data";
 
-const siteUrl = "https://titosy.dev";
+/** One entry per page and locale, each listing its translations. */
+function entries(
+  path: string,
+  options: Pick<MetadataRoute.Sitemap[number], "changeFrequency" | "priority">,
+): MetadataRoute.Sitemap {
+  const languages = Object.fromEntries(
+    locales.map((l) => [l, `${siteUrl}${localizePath(path, l)}`]),
+  );
+  return locales.map((l) => ({
+    url: languages[l],
+    lastModified: new Date(),
+    alternates: { languages },
+    ...options,
+  }));
+}
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: siteUrl,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    ...projects.map((p) => ({
-      url: `${siteUrl}/projets/${p.slug}`,
-      lastModified: new Date(),
-      changeFrequency: "yearly" as const,
-      priority: 0.7,
-    })),
+    ...entries("", { changeFrequency: "monthly", priority: 1 }),
+    ...projectSlugs.flatMap((slug) =>
+      entries(`projects/${slug}`, { changeFrequency: "yearly", priority: 0.7 }),
+    ),
   ];
 }

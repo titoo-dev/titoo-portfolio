@@ -1,4 +1,5 @@
-// Generates public/cv-titosy-manankasina.pdf from lib/portfolio-data.ts.
+// Generates the CV PDFs (one per locale, paths from PROFILE.cv) from
+// lib/portfolio-data.ts.
 //
 // The CV is built to be ATS-friendly: one column, real selectable text in
 // reading order, standard section headings, no tables, icons or images.
@@ -13,9 +14,9 @@ import { existsSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { pathToFileURL } from "node:url";
-import { careers, PROFILE, projects, stack } from "../lib/portfolio-data.ts";
+import { getContent } from "../lib/portfolio-data.ts";
 
-const OUTPUT = resolve("public/cv-titosy-manankasina.pdf");
+const LOCALES = ["fr", "en"];
 
 // Contact details only printed on the CV (not shown on the site).
 const CONTACT = {
@@ -24,18 +25,48 @@ const CONTACT = {
   site: "https://titosy.dev",
 };
 
-// Keywords ATS match against, grouped for a human reader.
-const SKILLS = [
-  {
-    label: "Langages",
-    items: ["JavaScript", "TypeScript", "Dart", "Kotlin", "SQL"],
+const years = new Date().getFullYear() - 2022;
+
+const LABELS = {
+  fr: {
+    // French puts a space before ":".
+    colon: " :",
+    languages: "Langages",
+    methods: "Méthodes",
+    codeReview: "Revue de code",
+    profile: "Profil",
+    skills: "Compétences techniques",
+    experience: "Expérience professionnelle",
+    projects: "Projets",
+    education: "Formation",
+    spokenLanguages: "Langues",
+    environment: "Environnement",
+    technologies: "Technologies",
+    /** "Depuis oct. 2025" -> "Oct. 2025 à aujourd'hui"; other ranges unchanged. */
+    period: (p) =>
+      p.startsWith("Depuis ")
+        ? `${p[7].toUpperCase()}${p.slice(8)} à aujourd'hui`
+        : p,
+    summary: `Développeur fullstack JavaScript / Flutter avec plus de ${years} ans d'expérience dans la conception et la livraison d'applications web et mobiles (React, Next.js, Node.js, Flutter). J'interviens à toutes les étapes d'un projet, de l'analyse des besoins à la mise en production, avec une pratique DevOps (Kubernetes, Terraform, ArgoCD) et des solutions d'IA agentic. J'accompagne les clients dans le cadrage de leurs projets pour proposer des solutions adaptées, simples et efficaces.`,
   },
-  ...stack,
-  {
-    label: "Méthodes",
-    items: ["Scrum", "Micro-frontends", "Monorepo", "Revue de code"],
+  en: {
+    colon: ":",
+    languages: "Programming languages",
+    methods: "Methods",
+    codeReview: "Code review",
+    profile: "Profile",
+    skills: "Technical skills",
+    experience: "Professional experience",
+    projects: "Projects",
+    education: "Education",
+    spokenLanguages: "Languages",
+    environment: "Environment",
+    technologies: "Technologies",
+    /** "Since Oct. 2025" -> "Oct. 2025 to present"; other ranges unchanged. */
+    period: (p) => (p.startsWith("Since ") ? `${p.slice(6)} to present` : p),
+    summary: `Fullstack JavaScript / Flutter developer with more than ${years} years of experience designing and shipping web and mobile applications (React, Next.js, Node.js, Flutter). I work at every stage of a project, from requirements analysis to production, with hands-on DevOps practice (Kubernetes, Terraform, ArgoCD) and agentic AI solutions. I help clients scope their projects to offer tailored, simple and effective solutions.`,
   },
-];
+};
 
 const esc = (s) =>
   String(s)
@@ -48,21 +79,27 @@ const bare = (url) =>
   url.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "");
 const link = (url) => `<a href="${esc(url)}">${esc(bare(url))}</a>`;
 
-/** "Depuis oct. 2025" -> "Oct. 2025 à aujourd'hui"; other ranges unchanged. */
-const period = (p) =>
-  p.startsWith("Depuis ")
-    ? `${p[7].toUpperCase()}${p.slice(8)} à aujourd'hui`
-    : p;
+function render(locale) {
+  const L = LABELS[locale];
+  const { careers, PROFILE, projects, stack } = getContent(locale);
+  const jobs = careers.filter((c) => !c.isEdu);
+  const education = careers.filter((c) => c.isEdu);
 
-const jobs = careers.filter((c) => !c.isEdu);
-const education = careers.filter((c) => c.isEdu);
+  // Keywords ATS match against, grouped for a human reader.
+  const skills = [
+    {
+      label: L.languages,
+      items: ["JavaScript", "TypeScript", "Dart", "Kotlin", "SQL"],
+    },
+    ...stack,
+    {
+      label: L.methods,
+      items: ["Scrum", "Micro-frontends", "Monorepo", L.codeReview],
+    },
+  ];
 
-const years = new Date().getFullYear() - 2022;
-
-const profile = `Développeur fullstack JavaScript / Flutter avec plus de ${years} ans d'expérience dans la conception et la livraison d'applications web et mobiles (React, Next.js, Node.js, Flutter). J'interviens à toutes les étapes d'un projet, de l'analyse des besoins à la mise en production, avec une pratique DevOps (Kubernetes, Terraform, ArgoCD) et des solutions d'IA agentic. J'accompagne les clients dans le cadrage de leurs projets pour proposer des solutions adaptées, simples et efficaces.`;
-
-const html = `<!doctype html>
-<html lang="fr">
+  const html = `<!doctype html>
+<html lang="${locale}">
 <head>
 <meta charset="utf-8">
 <title>CV ${esc(PROFILE.name)} | ${esc(PROFILE.headline)}</title>
@@ -122,49 +159,49 @@ const html = `<!doctype html>
 </header>
 
 <section>
-  <h2>Profil</h2>
-  <p>${esc(profile)}</p>
+  <h2>${L.profile}</h2>
+  <p>${esc(L.summary)}</p>
 </section>
 
 <section>
-  <h2>Compétences techniques</h2>
+  <h2>${L.skills}</h2>
   <ul class="skills">
-    ${SKILLS.map((g) => `<li><b>${esc(g.label)} :</b> ${g.items.map(esc).join(", ")}</li>`).join("\n    ")}
+    ${skills.map((g) => `<li><b>${esc(g.label)}${L.colon}</b> ${g.items.map(esc).join(", ")}</li>`).join("\n    ")}
   </ul>
 </section>
 
 <section>
-  <h2>Expérience professionnelle</h2>
+  <h2>${L.experience}</h2>
   ${jobs
     .map(
       (j) => `<div class="entry">
-    <div class="head"><h3>${esc(j.role)}</h3><span class="date">${esc(period(j.period))}</span></div>
+    <div class="head"><h3>${esc(j.role)}</h3><span class="date">${esc(L.period(j.period))}</span></div>
     <p class="org">${esc(j.company)}, ${esc(j.location)} (${esc(j.type.toLowerCase())})</p>
     <p class="summary">${esc(j.summary)}</p>
     <ul>
       ${[...j.responsibilities, ...j.achievements].map((r) => `<li>${esc(r)}</li>`).join("\n      ")}
     </ul>
-    ${j.skills.length ? `<p class="tech"><b>Environnement :</b> ${j.skills.map(esc).join(", ")}</p>` : ""}
+    ${j.skills.length ? `<p class="tech"><b>${L.environment}${L.colon}</b> ${j.skills.map(esc).join(", ")}</p>` : ""}
   </div>`,
     )
     .join("\n  ")}
 </section>
 
 <section>
-  <h2>Projets</h2>
+  <h2>${L.projects}</h2>
   ${projects
     .map(
       (p) => `<div class="entry">
     <div class="head"><h3>${esc(p.name)}${p.url ? `, ${link(p.url)}` : ""}</h3><span class="date">${esc(p.year)}</span></div>
     <p class="summary">${esc(p.desc)}</p>
-    <p class="tech"><b>Technologies :</b> ${p.tech.map(esc).join(", ")}</p>
+    <p class="tech"><b>${L.technologies}${L.colon}</b> ${p.tech.map(esc).join(", ")}</p>
   </div>`,
     )
     .join("\n  ")}
 </section>
 
 <section>
-  <h2>Formation</h2>
+  <h2>${L.education}</h2>
   ${education
     .map(
       (e) => `<div class="entry">
@@ -176,12 +213,14 @@ const html = `<!doctype html>
 </section>
 
 <section>
-  <h2>Langues</h2>
-  <p>${PROFILE.languages.map((l) => `${esc(l.name)} : ${esc(l.level.toLowerCase())}`).join(" | ")}</p>
+  <h2>${L.spokenLanguages}</h2>
+  <p>${PROFILE.languages.map((l) => `${esc(l.name)}${L.colon} ${esc(l.level.toLowerCase())}`).join(" | ")}</p>
 </section>
 </body>
 </html>
 `;
+  return { html, output: resolve(`public${PROFILE.cv}`) };
+}
 
 function findChrome() {
   const candidates = [
@@ -197,23 +236,27 @@ function findChrome() {
   return found;
 }
 
+const chrome = findChrome();
 const dir = mkdtempSync(join(tmpdir(), "cv-"));
 try {
-  const file = join(dir, "cv.html");
-  writeFileSync(file, html);
-  execFileSync(
-    findChrome(),
-    [
-      "--headless=new",
-      "--disable-gpu",
-      "--no-pdf-header-footer",
-      `--user-data-dir=${join(dir, "profile")}`,
-      `--print-to-pdf=${OUTPUT}`,
-      pathToFileURL(file).href,
-    ],
-    { stdio: "ignore" },
-  );
-  console.log(`CV généré : ${OUTPUT}`);
+  for (const locale of LOCALES) {
+    const { html, output } = render(locale);
+    const file = join(dir, `cv-${locale}.html`);
+    writeFileSync(file, html);
+    execFileSync(
+      chrome,
+      [
+        "--headless=new",
+        "--disable-gpu",
+        "--no-pdf-header-footer",
+        `--user-data-dir=${join(dir, "profile")}`,
+        `--print-to-pdf=${output}`,
+        pathToFileURL(file).href,
+      ],
+      { stdio: "ignore" },
+    );
+    console.log(`CV généré (${locale}) : ${output}`);
+  }
 } finally {
   rmSync(dir, { recursive: true, force: true });
 }

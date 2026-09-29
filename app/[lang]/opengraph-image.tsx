@@ -1,9 +1,28 @@
 import { ImageResponse } from "next/og";
+import { getDictionary } from "@/lib/dictionaries";
+import { defaultLocale, isLocale } from "@/lib/i18n";
 
-export const alt =
-  "Titosy Manankasina | Développeur Fullstack JavaScript & Flutter";
-export const size = { width: 1200, height: 630 };
-export const contentType = "image/png";
+const size = { width: 1200, height: 630 };
+
+function dictionaryFor(lang: string) {
+  return getDictionary(isLocale(lang) ? lang : defaultLocale);
+}
+
+// One image per locale; generateImageMetadata is what lets `alt` be localized.
+export function generateImageMetadata({
+  params,
+}: {
+  params: { lang: string };
+}) {
+  return [
+    {
+      id: "card",
+      alt: dictionaryFor(params.lang).og.alt,
+      size,
+      contentType: "image/png",
+    },
+  ];
+}
 
 // Fetch a Google font as TTF/WOFF (satori can't parse woff2) by requesting the
 // CSS with a UA that doesn't advertise woff2 support.
@@ -26,7 +45,12 @@ const FG = "#ededed";
 const MUTED = "#a1a1a1";
 const LINE = "#262626";
 
-export default async function OgImage() {
+export default async function OgImage({
+  params,
+}: {
+  params: Promise<{ lang: string }>;
+}) {
+  const t = dictionaryFor((await params).lang);
   const [geist, geistMono] = await Promise.all([
     loadGoogleFont("Geist", 600),
     loadGoogleFont("Geist+Mono", 400),
@@ -86,8 +110,8 @@ export default async function OgImage() {
             letterSpacing: "-0.045em",
           }}
         >
-          <span>Des produits web & mobile,</span>
-          <span style={{ color: MUTED }}>du pixel à la prod.</span>
+          <span>{t.og.line1}</span>
+          <span style={{ color: MUTED }}>{t.og.line2}</span>
         </div>
 
         <div
@@ -111,7 +135,7 @@ export default async function OgImage() {
                 display: "flex",
               }}
             />
-            Disponible en remote ou hybride
+            {t.status.remote}
           </span>
           <span>React · Next.js · Flutter · Node.js</span>
         </div>

@@ -1,8 +1,13 @@
-import { PROFILE } from "@/lib/portfolio-data";
+import { getDictionary } from "@/lib/dictionaries";
+import type { Locale } from "@/lib/i18n";
+import { getContent } from "@/lib/portfolio-data";
 import { Logo } from "./logo";
 import { ThemeSwitcher } from "./theme-switcher";
 
-export function Footer() {
+export function Footer({ lang }: { lang: Locale }) {
+  const t = getDictionary(lang);
+  const { PROFILE } = getContent(lang);
+
   return (
     <footer className="border-line border-t">
       <div className="mx-auto flex max-w-[1080px] flex-col gap-6 px-6 py-8 text-muted text-sm md:flex-row md:items-center md:justify-between">
@@ -14,7 +19,7 @@ export function Footer() {
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3 font-mono text-xs">
           <span className="flex items-center gap-2">
             <StatusDot />
-            Disponible
+            {t.status.available}
           </span>
           <a
             href={PROFILE.linkedin}
@@ -32,7 +37,7 @@ export function Footer() {
           >
             GitHub
           </a>
-          <ThemeSwitcher />
+          <ThemeSwitcher labels={t.theme} />
         </div>
       </div>
     </footer>

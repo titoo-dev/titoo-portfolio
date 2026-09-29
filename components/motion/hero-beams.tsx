@@ -44,13 +44,13 @@ function Pill({ x, y, label }: { x: number; y: number; label: string }) {
   );
 }
 
-export function HeroBeams() {
+export function HeroBeams({ label }: { label: string }) {
   return (
     <svg
       viewBox="0 0 400 480"
       className="h-auto w-full max-w-[420px]"
       role="img"
-      aria-label="Schéma : Next.js, Flutter, Nest.js et LLM convergent vers un noyau qui livre du Web, du Mobile et des API."
+      aria-label={label}
     >
       <defs>
         <linearGradient

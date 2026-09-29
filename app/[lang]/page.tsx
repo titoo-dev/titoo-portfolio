@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { HeroBeams } from "@/components/motion/hero-beams";
 import { ProjectPipeline } from "@/components/motion/project-pipeline";
 import { SERVICE_ICONS } from "@/components/motion/service-icons";
@@ -15,78 +16,77 @@ import {
 } from "@/components/site/icons";
 import { InView } from "@/components/site/in-view";
 import { Section } from "@/components/site/section";
-import {
-  careers,
-  PROFILE,
-  projects,
-  services,
-  stack,
-} from "@/lib/portfolio-data";
+import { type Dictionary, format, getDictionary } from "@/lib/dictionaries";
+import { isLocale, type Locale, projectPath } from "@/lib/i18n";
+import { type Content, getContent } from "@/lib/portfolio-data";
 
-export default function Home() {
+type Ctx = { lang: Locale; t: Dictionary; content: Content };
+
+export default async function Home({ params }: PageProps<"/[lang]">) {
+  const { lang } = await params;
+  if (!isLocale(lang)) notFound();
+  const ctx: Ctx = { lang, t: getDictionary(lang), content: getContent(lang) };
+
   return (
     <main className="mx-auto max-w-[1080px] border-line border-x">
-      <Hero />
-      <Projects />
-      <Services />
-      <Experience />
-      <Stack />
-      <Contact />
+      <Hero {...ctx} />
+      <Projects {...ctx} />
+      <Services {...ctx} />
+      <Experience {...ctx} />
+      <Stack {...ctx} />
+      <Contact {...ctx} />
     </main>
   );
 }
 
-function Hero() {
+function Hero({ t, content }: Ctx) {
   return (
     <section className="grid md:grid-cols-[1.15fr_1fr]">
       <div className="flex flex-col justify-center px-6 py-16 md:px-10 md:py-24">
         <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line px-3 py-1 font-mono text-muted text-xs">
           <StatusDot />
-          Disponible en remote ou hybride
+          {t.status.remote}
         </p>
         <h1 className="mt-6 text-balance font-semibold text-[40px] leading-[1.04] tracking-[-0.045em] md:text-[58px]">
-          Des produits web & mobile, du pixel à la prod.
+          {t.hero.title}
         </h1>
         <p className="mt-6 max-w-md text-lg text-muted leading-relaxed">
-          Je suis Titosy, développeur fullstack JavaScript & Flutter à
-          Antananarivo. J'interviens à chaque étape d'un projet, du cadrage des
-          besoins à la mise en production, pour livrer des solutions simples et
-          efficaces.
+          {t.hero.intro}
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
-            href="#projets"
+            href={`#${t.ids.projects}`}
             className="inline-flex h-11 items-center gap-2 rounded-full bg-fg px-5 font-medium text-bg text-sm transition-opacity hover:opacity-85"
           >
-            Voir les projets
+            {t.hero.projects}
             <ArrowRight width={15} height={15} />
           </Link>
           <Link
-            href="#contact"
+            href={`#${t.ids.contact}`}
             className="inline-flex h-11 items-center rounded-full border border-line px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
           >
-            Me contacter
+            {t.hero.contact}
           </Link>
-          <CvButton />
+          <CvButton href={content.PROFILE.cv} label={t.cv.download} />
         </div>
       </div>
 
       <div className="relative flex items-center justify-center overflow-hidden border-line border-t px-8 py-12 md:border-t-0 md:border-l">
         <div className="dot-grid absolute inset-0" aria-hidden />
         <div className="relative w-full max-w-[380px]">
-          <HeroBeams />
+          <HeroBeams label={t.hero.diagram} />
         </div>
       </div>
     </section>
   );
 }
 
-function Projects() {
+function Projects({ lang, t, content: { projects } }: Ctx) {
   return (
     <Section
-      id="projets"
-      label="Projets"
-      title="Des produits en ligne, utilisés pour de vrai."
+      id={t.ids.projects}
+      label={t.projects.label}
+      title={t.projects.title}
     >
       <div className="grid border-line border-t md:grid-cols-2">
         {projects.map((p, i) => (
@@ -101,13 +101,13 @@ function Projects() {
             style={{ transitionDelay: `${(i % 2) * 90}ms` }}
           >
             <Link
-              href={`/projets/${p.slug}`}
+              href={projectPath(lang, p.slug)}
               className="group block p-6 md:p-8"
             >
               <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-subtle">
                 <Image
                   src={p.img}
-                  alt={`Aperçu de ${p.name}`}
+                  alt={format(t.projects.previewAlt, { name: p.name })}
                   fill
                   sizes="(min-width: 768px) 480px, 100vw"
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
@@ -123,7 +123,7 @@ function Projects() {
               <div className="mt-5 flex items-center justify-between font-mono text-faint text-xs">
                 <span>{p.tag}</span>
                 <span className="flex items-center gap-1 text-muted transition-colors group-hover:text-fg">
-                  Étude de cas
+                  {t.projects.caseStudy}
                   <ArrowUpRight
                     width={13}
                     height={13}
@@ -139,9 +139,9 @@ function Projects() {
   );
 }
 
-function Services() {
+function Services({ t, content: { services } }: Ctx) {
   return (
-    <Section label="Services" title="Ce que je peux faire pour vous.">
+    <Section label={t.services.label} title={t.services.title}>
       <div className="grid border-line border-t sm:grid-cols-2 lg:grid-cols-4">
         {services.map((s, i) => {
           const Icon = SERVICE_ICONS[i];
@@ -175,25 +175,21 @@ function Services() {
   );
 }
 
-function Experience() {
+function Experience({ t, content: { careers } }: Ctx) {
   return (
     <Section
-      id="experience"
-      label="Expérience"
-      title="Quatre ans à livrer, de l'agence au SaaS."
+      id={t.ids.experience}
+      label={t.experience.label}
+      title={t.experience.title}
     >
-      <Timeline items={careers} />
+      <Timeline items={careers} detailsLabel={t.experience.details} />
     </Section>
   );
 }
 
-function Stack() {
+function Stack({ t, content: { stack } }: Ctx) {
   return (
-    <Section
-      id="stack"
-      label="Stack"
-      title="Les outils que j'utilise au quotidien."
-    >
+    <Section id={t.ids.stack} label={t.stack.label} title={t.stack.title}>
       <dl className="border-line border-t">
         {stack.map((g, i) => (
           <InView
@@ -224,24 +220,26 @@ function Stack() {
   );
 }
 
-function Contact() {
+function Contact({ t, content: { PROFILE } }: Ctx) {
   return (
-    <Section id="contact">
+    <Section id={t.ids.contact}>
       <div className="grid md:grid-cols-[1.15fr_1fr]">
         <div className="flex flex-col justify-center px-6 py-16 md:px-10 md:py-24">
           <p className="font-mono text-muted text-xs uppercase tracking-wider">
-            Contact
+            {t.contact.label}
           </p>
           <h2 className="mt-3 text-balance font-semibold text-4xl tracking-[-0.045em] md:text-5xl">
-            Construisons quelque chose ensemble.
+            {t.contact.title}
           </h2>
           <p className="mt-5 max-w-md text-muted leading-relaxed">
-            Un produit à lancer, une app à reprendre ou une équipe à renforcer ?
-            Je travaille en remote depuis Madagascar avec des équipes et des
-            clients à l'international.
+            {t.contact.body}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <CopyEmail email={PROFILE.email} />
+            <CopyEmail
+              email={PROFILE.email}
+              copyLabel={t.contact.copy}
+              copiedLabel={t.contact.copied}
+            />
             <a
               href={PROFILE.linkedin}
               target="_blank"
@@ -260,7 +258,7 @@ function Contact() {
             >
               <GithubIcon />
             </a>
-            <CvButton />
+            <CvButton href={PROFILE.cv} label={t.cv.download} />
           </div>
           <p className="mt-10 font-mono text-faint text-xs">
             {PROFILE.languages
@@ -271,7 +269,7 @@ function Contact() {
         <div className="relative flex items-center justify-center overflow-hidden border-line border-t px-8 py-12 md:border-t-0 md:border-l">
           <div className="dot-grid absolute inset-0" aria-hidden />
           <div className="relative w-full max-w-[360px]">
-            <ProjectPipeline />
+            <ProjectPipeline t={t.pipeline} />
           </div>
         </div>
       </div>
@@ -279,10 +277,10 @@ function Contact() {
   );
 }
 
-function CvButton() {
+function CvButton({ href, label }: { href: string; label: string }) {
   return (
     <a
-      href={PROFILE.cv}
+      href={href}
       download
       className="group inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
     >
@@ -291,7 +289,7 @@ function CvButton() {
         height={15}
         className="transition-transform group-hover:translate-y-0.5"
       />
-      Télécharger le CV
+      {label}
     </a>
   );
 }

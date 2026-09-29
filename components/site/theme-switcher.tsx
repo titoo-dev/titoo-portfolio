@@ -7,12 +7,14 @@ import { MonitorIcon, MoonIcon, SunIcon } from "./icons";
 type Theme = "system" | "light" | "dark";
 
 const OPTIONS = [
-  { value: "system", label: "Thème système", Icon: MonitorIcon },
-  { value: "light", label: "Thème clair", Icon: SunIcon },
-  { value: "dark", label: "Thème sombre", Icon: MoonIcon },
+  { value: "system", Icon: MonitorIcon },
+  { value: "light", Icon: SunIcon },
+  { value: "dark", Icon: MoonIcon },
 ] as const;
 
-export function ThemeSwitcher() {
+type Labels = Record<Theme, string> & { label: string };
+
+export function ThemeSwitcher({ labels }: { labels: Labels }) {
   const [theme, setTheme] = useState<Theme>("system");
 
   useEffect(() => {
@@ -38,12 +40,12 @@ export function ThemeSwitcher() {
 
   return (
     <fieldset className="flex items-center gap-0.5 rounded-full border border-line p-0.5">
-      <legend className="sr-only">Thème</legend>
-      {OPTIONS.map(({ value, label, Icon }) => (
+      <legend className="sr-only">{labels.label}</legend>
+      {OPTIONS.map(({ value, Icon }) => (
         <button
           key={value}
           type="button"
-          aria-label={label}
+          aria-label={labels[value]}
           aria-pressed={theme === value}
           onClick={() => apply(value)}
           className={cn(

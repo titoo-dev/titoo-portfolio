@@ -9,12 +9,8 @@
 const CYCLE = 9; // seconds
 const FADE = "93% { opacity: 1 } 97%, 100% { opacity: 0 }";
 
-const STEPS = [
-  "Cadrage des besoins",
-  "Conception UI/UX",
-  "Développement",
-  "Mise en production",
-];
+// Keyframes are per step index, so every locale must have this many steps.
+const STEP_COUNT = 4;
 
 const stepAt = (i: number) => 10 + i * 12; // % of the cycle
 const STATUS_AT = 60;
@@ -27,14 +23,14 @@ const css = [
   appear("pp-cmd", 1),
   `@keyframes pp-type { 0%, 2% { transform: scaleX(0) } 9%, 100% { transform: scaleX(1) } }`,
   `@keyframes pp-rail { 0%, 8% { stroke-dashoffset: 1; opacity: 1 } 57% { stroke-dashoffset: 0 } ${FADE} }`,
-  ...STEPS.flatMap((_, i) => {
+  ...Array.from({ length: STEP_COUNT }, (_, i) => {
     const at = stepAt(i);
     return [
       appear(`pp-step-${i}`, at),
       `@keyframes pp-spin-${i} { 0%, ${at}% { opacity: 0 } ${at + 1}%, ${at + 8}% { opacity: 1 } ${at + 9}%, 100% { opacity: 0 } }`,
       `@keyframes pp-check-${i} { 0%, ${at + 8}% { stroke-dashoffset: 1; opacity: 1 } ${at + 11}% { stroke-dashoffset: 0 } ${FADE} }`,
     ];
-  }),
+  }).flat(),
   appear("pp-status", STATUS_AT),
   appear("pp-url", STATUS_AT + 2),
   `.pp { animation-duration: ${CYCLE}s; animation-iteration-count: infinite; animation-timing-function: ease-out; transform-box: fill-box; }`,
@@ -45,13 +41,22 @@ const css = [
 
 const anim = (name: string) => ({ animationName: name });
 
-export function ProjectPipeline() {
+type Labels = {
+  aria: string;
+  folder: string;
+  command: string;
+  steps: string[];
+  live: string;
+  url: string;
+};
+
+export function ProjectPipeline({ t }: { t: Labels }) {
   return (
     <svg
       viewBox="0 0 400 400"
       className="h-auto w-full max-w-[400px]"
       role="img"
-      aria-label="Animation : un nouveau projet passe du cadrage des besoins à la mise en production, puis passe en ligne."
+      aria-label={t.aria}
     >
       <style>{css}</style>
       <defs>
@@ -99,7 +104,7 @@ export function ProjectPipeline() {
         textAnchor="middle"
         className="fill-faint font-mono text-[11px]"
       >
-        ~/nouveau-projet
+        {t.folder}
       </text>
       <line x1="20" y1="76.5" x2="380" y2="76.5" className="stroke-line" />
       <line
@@ -122,12 +127,12 @@ export function ProjectPipeline() {
           $
         </text>
         <text x="60" y="111" mask="url(#pp-type-mask)" className="fill-fg">
-          npx lancer --ensemble
+          {t.command}
         </text>
       </g>
 
       {/* Steps */}
-      {STEPS.map((label, i) => {
+      {t.steps.slice(0, STEP_COUNT).map((label, i) => {
         const y = 150 + i * 34;
         const cy = y - 4.5;
         return (
@@ -175,7 +180,7 @@ export function ProjectPipeline() {
         <circle cx="46" cy="317" r="4" className="pulse-ring fill-success" />
         <circle cx="46" cy="317" r="4" className="fill-success" />
         <text x="60" y="321.5" className="fill-fg font-medium text-[13px]">
-          En ligne
+          {t.live}
         </text>
       </g>
       <text
@@ -185,7 +190,7 @@ export function ProjectPipeline() {
         className="pp fill-muted font-mono text-[11.5px]"
         style={anim("pp-url")}
       >
-        votre-projet.app ↗
+        {t.url} ↗
       </text>
     </svg>
   );
