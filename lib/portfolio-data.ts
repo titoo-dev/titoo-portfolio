@@ -377,6 +377,83 @@ const projects: Localizable<Project>[] = [
     ],
   },
   {
+    slug: "wasiasup",
+    name: "WASIA SUP'",
+    tag: "Next.js · Mastra AI · Convex · Inngest",
+    img: "/images/wasiasup/wasiasup_1.webp",
+    thumb: "/images/wasiasup/wasiasup_2.webp",
+    video: {
+      src: "/videos/wasiasup/wasiasup-promo.mp4",
+      poster: "/videos/wasiasup/poster.jpg",
+      captions: {
+        fr: "/videos/wasiasup/wasiasup-promo.fr.vtt",
+        en: "/videos/wasiasup/wasiasup-promo.en.vtt",
+      },
+    },
+    url: "https://wasiasup.com",
+    github: null,
+    year: "2026",
+    type: {
+      fr: "Plateforme SaaS & copilote IA",
+      en: "SaaS platform & AI copilot",
+    },
+    desc: {
+      fr: "Plateforme tout-en-un d'accompagnement des entreprises de Mayotte : projets, financements, facturation, business plan, pilotée par un copilote IA agentique.",
+      en: "All-in-one business support platform for Mayotte: projects, funding, invoicing, business plans, driven by an agentic AI copilot.",
+    },
+    overview: {
+      fr: "WASIA SUP' réunit entrepreneurs, accompagnateurs et financeurs de Mayotte sur une seule plateforme : un ERP complet (projets, demandes de financement, facturation, trésorerie, rendez-vous, contacts, suivi des dossiers, messagerie) et un business plan généré depuis les données du dossier. Un copilote IA, ouvert avec Ctrl + Espace, ne se contente pas de répondre : il navigue, crée contacts et rendez-vous en un clic, pré-remplit les formulaires et connaît les dispositifs d'aide locaux pour vérifier l'éligibilité.",
+      en: "WASIA SUP' brings Mayotte's entrepreneurs, advisors and funders together on a single platform: a complete ERP (projects, funding requests, invoicing, treasury, appointments, contacts, case tracking, messaging) and a business plan generated from the case data. An AI copilot, opened with Ctrl + Space, does more than answer: it navigates, creates contacts and appointments in one click, pre-fills forms and knows the local funding schemes to check eligibility.",
+    },
+    gallery: [
+      "/images/wasiasup/wasiasup_1.webp",
+      "/images/wasiasup/wasiasup_2.webp",
+      "/images/wasiasup/wasiasup_3.webp",
+      "/images/wasiasup/wasiasup_4.webp",
+    ],
+    tech: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Mastra AI",
+      "Convex",
+      "Inngest",
+      "Prisma",
+      "PostgreSQL",
+      "Better Auth",
+      "Turborepo",
+      "Kubernetes",
+      "Argo CD",
+    ],
+    highlights: [
+      {
+        fr: "Copilote IA agentique (Mastra, mémoire et RAG sur Convex) : navigation, création en 1 clic, formulaires pré-remplis, actions d'interface et tutoriels, chaque outil filtré par rôle et soumis à confirmation.",
+        en: "Agentic AI copilot (Mastra, memory and RAG on Convex): navigation, one-click creation, pre-filled forms, UI actions and tutorials, each tool filtered by role and gated behind a confirmation.",
+      },
+      {
+        fr: "ERP connecté : demandes de financement, facturation et balance âgée, trésorerie, rendez-vous synchronisés Google / Outlook, contacts, suivi des dossiers et messagerie temps réel.",
+        en: "Connected ERP: funding requests, invoicing and aged balance, treasury, appointments synced with Google / Outlook, contacts, case tracking and real-time messaging.",
+      },
+      {
+        fr: "Business plan du dossier : prévisionnel type expert-comptable (compte de résultat, SIG, BFR, trésorerie, bilan prévisionnel) calculé depuis un questionnaire guidé, retouchable et exporté en PDF.",
+        en: "Case business plan: accountant-grade forecast (P&L, intermediate balances, working capital, cash flow, projected balance sheet) computed from a guided questionnaire, editable and exported to PDF.",
+      },
+      {
+        fr: "Monorepo Turborepo en couches (domaine, services, accès aux données) et workflows asynchrones avec Inngest.",
+        en: "Layered Turborepo monorepo (domain, services, data access) and asynchronous workflows with Inngest.",
+      },
+      {
+        fr: "Livraison GitOps : images Docker publiées par GitHub Actions, déployées sur Kubernetes par Argo CD, exploitées via un CLI maison.",
+        en: "GitOps delivery: Docker images published by GitHub Actions, deployed to Kubernetes by Argo CD, run through an in-house CLI.",
+      },
+    ],
+    stats: [
+      { k: "1", v: { fr: "Plateforme unique", en: "Single platform" } },
+      { k: "IA", v: { fr: "Copilote agentique", en: "Agentic copilot" } },
+      { k: "4×", v: { fr: "Plus rapide", en: "Faster" } },
+    ],
+  },
+  {
     slug: "chantastik",
     name: "Chantastik",
     tag: "Remotion · Web Audio API",
@@ -423,59 +500,6 @@ const projects: Localizable<Project>[] = [
       { k: "Frame", v: { fr: "Sync parfaite", en: "Perfect sync" } },
       { k: "LRC", v: "Export" },
       { k: "OSS", v: "Open source" },
-    ],
-  },
-  {
-    slug: "magape",
-    name: "MAGAPE",
-    tag: "Next.js · TypeScript · Tailwind",
-    img: "/images/magape/magape_1.webp",
-    thumb: "/images/magape/magape_2.webp",
-    url: "https://megape.vercel.app/",
-    github: null,
-    year: "2024",
-    type: { fr: "Plateforme communautaire", en: "Community platform" },
-    desc: {
-      fr: "Plateforme communautaire chrétienne francophone avec podcasts, enseignements bibliques & boutique en ligne.",
-      en: "French-speaking Christian community platform with podcasts, Bible teachings & an online store.",
-    },
-    overview: {
-      fr: "Plateforme dédiée à rassembler la communauté chrétienne francophone à travers des ressources enrichissantes, des contenus audiovisuels et des produits inspirants, créant des ponts d'unité entre les chrétiens.",
-      en: "A platform that brings the French-speaking Christian community together through enriching resources, audiovisual content and inspiring products, building bridges of unity between Christians.",
-    },
-    gallery: [
-      "/images/magape/magape_1.webp",
-      "/images/magape/magape_2.webp",
-      "/images/magape/magape_3.webp",
-      "/images/magape/magape_4.webp",
-    ],
-    tech: ["Next.js", "TypeScript", "Tailwind CSS", "CMS", "E-commerce"],
-    highlights: [
-      {
-        fr: "Plateforme complète avec Next.js et TypeScript pour la francophonie chrétienne.",
-        en: "Complete platform built with Next.js and TypeScript for French-speaking Christians.",
-      },
-      {
-        fr: "Système de gestion de contenu pour podcasts, émissions et enseignements bibliques.",
-        en: "Content management system for podcasts, shows and Bible teachings.",
-      },
-      {
-        fr: "Boutique en ligne intégrée pour les produits MAGAPE (maillots, ebooks, cahiers).",
-        en: "Built-in online store for MAGAPE products (jerseys, ebooks, notebooks).",
-      },
-      {
-        fr: "Interface moderne et responsive avec Tailwind CSS.",
-        en: "Modern, responsive interface with Tailwind CSS.",
-      },
-      {
-        fr: "Cahier Magape Kids, un outil éducatif centré sur la Bible pour les enfants.",
-        en: "Magape Kids notebook, a Bible-centered learning tool for children.",
-      },
-    ],
-    stats: [
-      { k: "CMS", v: { fr: "Contenus", en: "Content" } },
-      { k: "Shop", v: { fr: "Boutique", en: "Store" } },
-      { k: "FR", v: { fr: "Francophone", en: "French-speaking" } },
     ],
   },
   {

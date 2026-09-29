@@ -412,6 +412,26 @@
       ]
     },
     {
+      "name": "WASIA SUP'",
+      "isActive": true,
+      "description": "Plateforme SaaS tout-en-un d'accompagnement des entreprises de Mayotte, réunissant entrepreneurs, accompagnateurs et financeurs : ERP complet et business plan, pilotés par un copilote IA agentique. (2026)",
+      "highlights": [
+        "Copilote IA agentique avec Mastra AI (mémoire et RAG sur Convex) : navigation, création en 1 clic de contacts et rendez-vous, formulaires pré-remplis, outils filtrés par rôle et soumis à confirmation.",
+        "ERP connecté : demandes de financement, facturation, trésorerie, rendez-vous synchronisés Google / Outlook, contacts, suivi des dossiers et messagerie temps réel.",
+        "Business plan prévisionnel type expert-comptable calculé depuis un questionnaire guidé et exporté en PDF.",
+        "Monorepo Turborepo (Next.js 16, Prisma, PostgreSQL, Inngest) livré en GitOps sur Kubernetes avec Argo CD."
+      ],
+      "url": "https://wasiasup.com",
+      "github": null,
+      "image": null,
+      "images": [
+        "/images/wasiasup/wasiasup_1.webp",
+        "/images/wasiasup/wasiasup_2.webp",
+        "/images/wasiasup/wasiasup_3.webp",
+        "/images/wasiasup/wasiasup_4.webp"
+      ]
+    },
+    {
       "name": "Chantastik",
       "isActive": false,
       "description": "Une application qui permet aux utilisateurs de créer de superbes vidéos de paroles à partir de fichiers audio, avec de magnifiques animations et des effets visuels personnalisables.",
@@ -429,27 +449,6 @@
         "/images/chantastik/chantastik_2.webp",
         "/images/chantastik/chantastik_3.webp",
         "/images/chantastik/chantastik_4.webp"
-      ]
-    },
-    {
-      "name": "MAGAPE",
-      "isActive": false,
-      "description": "Plateforme web dédiée à rassembler la communauté chrétienne francophone. Mission Agapè (M pour Mission, Agapè pour l'amour inconditionnel de Dieu) crée des ponts d'unité entre les chrétiens à travers des ressources enrichissantes, des contenus audiovisuels et des produits inspirants.",
-      "highlights": [
-        "Développement d'une plateforme complète avec Next.js et TypeScript pour rassembler la francophonie chrétienne.",
-        "Création d'un système de gestion de contenu pour les podcasts, émissions et enseignements bibliques.",
-        "Intégration d'une boutique en ligne pour les produits MAGAPE (maillots, cahiers ECODIM, ebooks).",
-        "Mise en place d'une interface moderne et responsive avec Tailwind CSS pour une expérience utilisateur optimale.",
-        "Développement de fonctionnalités pour le Cahier Magape Kids, un outil éducatif centré sur la Bible pour les enfants."
-      ],
-      "url": "https://megape.vercel.app/",
-      "github": null,
-      "image": null,
-      "images": [
-        "/images/magape/magape_1.webp",
-        "/images/magape/magape_2.webp",
-        "/images/magape/magape_3.webp",
-        "/images/magape/magape_4.webp"
       ]
     },
     {
