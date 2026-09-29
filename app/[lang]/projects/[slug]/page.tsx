@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import { ProjectVideo } from "@/components/site/project-video";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -124,14 +125,30 @@ export default async function ProjectPage({ params }: Props) {
 
       <div className="border-line border-t bg-subtle p-4 md:p-10">
         <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-bg">
-          <Image
-            src={project.img}
-            alt={format(t.project.mainAlt, { name: project.name })}
-            fill
-            priority
-            sizes="(min-width: 1080px) 1000px, 100vw"
-            className="object-cover object-top"
-          />
+          {project.video ? (
+            <ProjectVideo
+              src={project.video.src}
+              poster={project.video.poster}
+              captions={project.video.captions}
+              lang={lang}
+              title={project.name}
+              labels={{
+                video: format(t.project.mainAlt, { name: project.name }),
+                play: format(t.projects.playVideo, { name: project.name }),
+                close: t.projects.closeVideo,
+              }}
+              mode="full"
+            />
+          ) : (
+            <Image
+              src={project.img}
+              alt={format(t.project.mainAlt, { name: project.name })}
+              fill
+              priority
+              sizes="(min-width: 1080px) 1000px, 100vw"
+              className="object-cover object-top"
+            />
+          )}
         </div>
       </div>
 

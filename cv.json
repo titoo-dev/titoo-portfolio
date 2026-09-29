@@ -105,7 +105,12 @@
         "Participation aux réunions quotidiennes (Daily meeting) et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet."
       ],
       "achievements": [],
-      "skills": ["React", "ExtJS", "GraphQL", "Scrum"]
+      "skills": [
+        "React",
+        "ExtJS",
+        "GraphQL",
+        "Scrum"
+      ]
     },
     {
       "name": "Flit Soft",
@@ -123,7 +128,12 @@
         "Participation active dans des réunions régulières et la présentation de propositions à travers l'entreprise."
       ],
       "achievements": [],
-      "skills": ["JavaScript", "Flutter", "Dart", "Mvola"]
+      "skills": [
+        "JavaScript",
+        "Flutter",
+        "Dart",
+        "Mvola"
+      ]
     }
   ],
   "volunteer": [],
@@ -143,27 +153,46 @@
     {
       "name": "Figma",
       "level": "Expert",
-      "keywords": ["Design", "UI"]
+      "keywords": [
+        "Design",
+        "UI"
+      ]
     },
     {
       "name": "Gitlab",
       "level": "Intermediate",
-      "keywords": ["Version Control", "Collaboration", "Source Code"]
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
     },
     {
       "name": "HTML",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Frontend"]
+      "keywords": [
+        "Web Development",
+        "Frontend"
+      ]
     },
     {
       "name": "CSS",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Frontend", "Responsive Design"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "Responsive Design"
+      ]
     },
     {
       "name": "JavaScript",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Front-end", "Back-end", "Fullstack"]
+      "keywords": [
+        "Web Development",
+        "Front-end",
+        "Back-end",
+        "Fullstack"
+      ]
     },
     {
       "name": "Tailwind",
@@ -188,22 +217,41 @@
     {
       "name": "Node",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Backend", "JavaScript", "Server"]
+      "keywords": [
+        "Web Development",
+        "Backend",
+        "JavaScript",
+        "Server"
+      ]
     },
     {
       "name": "MySQL",
       "level": "Intermediate",
-      "keywords": ["Databases", "SQL", "Data Storage", "Backend"]
+      "keywords": [
+        "Databases",
+        "SQL",
+        "Data Storage",
+        "Backend"
+      ]
     },
     {
       "name": "Git",
       "level": "Intermediate",
-      "keywords": ["Version Control", "Collaboration", "Source Code"]
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code"
+      ]
     },
     {
       "name": "GitHub",
       "level": "Intermediate",
-      "keywords": ["Version Control", "Collaboration", "Source Code", "Git"]
+      "keywords": [
+        "Version Control",
+        "Collaboration",
+        "Source Code",
+        "Git"
+      ]
     },
     {
       "name": "Next.js",
@@ -219,52 +267,90 @@
     {
       "name": "React",
       "level": "Intermediate",
-      "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
+      "keywords": [
+        "Web Development",
+        "Frontend",
+        "JavaScript Library",
+        "UI"
+      ]
     },
     {
       "name": "Flutter",
       "level": "Intermediate",
-      "keywords": ["Mobile Development", "Cross-platform", "Dart"]
+      "keywords": [
+        "Mobile Development",
+        "Cross-platform",
+        "Dart"
+      ]
     },
     {
       "name": "Dart",
       "level": "Intermediate",
-      "keywords": ["Mobile Development", "Flutter"]
+      "keywords": [
+        "Mobile Development",
+        "Flutter"
+      ]
     },
     {
       "name": "React Native",
       "level": "Beginner",
-      "keywords": ["Mobile Development", "Cross-platform", "JavaScript"]
+      "keywords": [
+        "Mobile Development",
+        "Cross-platform",
+        "JavaScript"
+      ]
     },
     {
       "name": "Nest.js",
       "level": "Beginner",
-      "keywords": ["Backend", "Node.js", "TypeScript"]
+      "keywords": [
+        "Backend",
+        "Node.js",
+        "TypeScript"
+      ]
     },
     {
       "name": "Android Jetpack",
       "level": "Beginner",
-      "keywords": ["Android", "Mobile Development", "Kotlin"]
+      "keywords": [
+        "Android",
+        "Mobile Development",
+        "Kotlin"
+      ]
     },
     {
       "name": "Kotlin",
       "level": "Beginner",
-      "keywords": ["Android", "Mobile Development"]
+      "keywords": [
+        "Android",
+        "Mobile Development"
+      ]
     },
     {
       "name": "n8n",
       "level": "Beginner",
-      "keywords": ["Workflow Automation", "No-code"]
+      "keywords": [
+        "Workflow Automation",
+        "No-code"
+      ]
     },
     {
       "name": "AWS Lambda",
       "level": "Beginner",
-      "keywords": ["Cloud", "Serverless", "AWS"]
+      "keywords": [
+        "Cloud",
+        "Serverless",
+        "AWS"
+      ]
     },
     {
       "name": "Cloudflare Workers",
       "level": "Beginner",
-      "keywords": ["Cloud", "Serverless", "Edge Computing"]
+      "keywords": [
+        "Cloud",
+        "Serverless",
+        "Edge Computing"
+      ]
     }
   ],
   "languages": [
@@ -280,7 +366,10 @@
   "interests": [
     {
       "name": "Technology",
-      "keywords": ["AI", "Blockchain"]
+      "keywords": [
+        "AI",
+        "Blockchain"
+      ]
     },
     {
       "name": "Cuisine",
@@ -303,24 +392,23 @@
   ],
   "projects": [
     {
-      "name": "Tononkira",
-      "isActive": false,
-      "description": "Application web et mobile dédiée à la découverte et l'exploration des paroles de chansons malgaches. Plateforme complète offrant un accès à plus de 15 000 chansons de 2 300 artistes malgaches avec des fonctionnalités de recherche intelligente, personnalisation et accès hors ligne.",
+      "name": "Predict",
+      "isActive": true,
+      "description": "Méthode de saisie prédictive français / anglais pour Windows (text service TSF) et Linux (fcitx5), entièrement hors ligne : complétion, mot suivant, correction, accord grammatical, emojis. (Open source, 2026)",
       "highlights": [
-        "Développement d'une application mobile Android avec Flutter offrant un accès hors ligne aux paroles.",
-        "Implémentation d'un moteur de recherche performant permettant de trouver des chansons par paroles, artiste ou titre.",
-        "Création d'un système de favoris et de playlists personnalisées pour une expérience utilisateur optimale.",
-        "Optimisation des performances pour garantir une application légère et rapide sur tous les appareils Android.",
-        "Gestion d'une base de données de plus de 15 000 chansons et 2 300 artistes malgaches."
+        "Text service TSF en C++17 chargé dans chaque application Windows, barre de candidats Direct2D suivant l'accent, le thème et le DPI.",
+        "Démon n-gramme local interrogé par socket AF_UNIX : complétion en moins d'une milliseconde, accord genre/nombre via le lexique Lefff, apprentissage des mots de l'utilisateur.",
+        "Cœur portable partagé avec l'engine fcitx5, tests sur Linux et Windows, CI GitHub Actions sur quatre distributions et Windows.",
+        "Installeur Inno Setup autonome (modèle inclus) et panneau d'administration Win32 : réglages, clé API de reformulation, état du démon."
       ],
-      "url": "https://tononkira.titosy.dev/",
-      "github": null,
+      "url": "https://predictive.titosy.dev",
+      "github": "https://github.com/titoo-dev/predictive-ime",
       "image": null,
       "images": [
-        "/images/tononkira/tononkira_1.webp",
-        "/images/tononkira/tononkira_2.webp",
-        "/images/tononkira/tononkira_3.webp",
-        "/images/tononkira/tononkira_4.webp"
+        "/images/predict/predict_1.webp",
+        "/images/predict/predict_2.webp",
+        "/images/predict/predict_3.webp",
+        "/images/predict/predict_4.webp"
       ]
     },
     {

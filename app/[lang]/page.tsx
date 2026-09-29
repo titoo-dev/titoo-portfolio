@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ProjectVideo } from "@/components/site/project-video";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroBeams } from "@/components/motion/hero-beams";
@@ -100,38 +101,61 @@ function Projects({ lang, t, content: { projects } }: Ctx) {
             ].join(" ")}
             style={{ transitionDelay: `${(i % 2) * 90}ms` }}
           >
-            <Link
-              href={projectPath(lang, p.slug)}
-              className="group block p-6 md:p-8"
-            >
-              <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-subtle">
-                <Image
-                  src={p.img}
-                  alt={format(t.projects.previewAlt, { name: p.name })}
-                  fill
-                  sizes="(min-width: 768px) 480px, 100vw"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-                />
-              </div>
-              <div className="mt-5 flex items-baseline justify-between gap-4">
-                <h3 className="font-medium text-lg tracking-tight">{p.name}</h3>
-                <span className="font-mono text-faint text-xs">{p.year}</span>
-              </div>
-              <p className="mt-1.5 line-clamp-2 text-muted text-sm leading-relaxed">
-                {p.desc}
-              </p>
-              <div className="mt-5 flex items-center justify-between font-mono text-faint text-xs">
-                <span>{p.tag}</span>
-                <span className="flex items-center gap-1 text-muted transition-colors group-hover:text-fg">
-                  {t.projects.caseStudy}
-                  <ArrowUpRight
-                    width={13}
-                    height={13}
-                    className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+            <div className="group p-6 md:p-8">
+              {p.video ? (
+                <div className="relative aspect-[16/10] overflow-hidden rounded-lg border border-line bg-subtle">
+                  <ProjectVideo
+                    src={p.video.src}
+                    poster={p.video.poster}
+                    captions={p.video.captions}
+                    lang={lang}
+                    title={p.name}
+                    labels={{
+                      video: format(t.projects.previewAlt, { name: p.name }),
+                      play: format(t.projects.playVideo, { name: p.name }),
+                      close: t.projects.closeVideo,
+                    }}
                   />
-                </span>
-              </div>
-            </Link>
+                </div>
+              ) : (
+                <Link
+                  href={projectPath(lang, p.slug)}
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  className="relative block aspect-[16/10] overflow-hidden rounded-lg border border-line bg-subtle"
+                >
+                  <Image
+                    src={p.img}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 480px, 100vw"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  />
+                </Link>
+              )}
+              <Link href={projectPath(lang, p.slug)} className="block">
+                <div className="mt-5 flex items-baseline justify-between gap-4">
+                  <h3 className="font-medium text-lg tracking-tight">
+                    {p.name}
+                  </h3>
+                  <span className="font-mono text-faint text-xs">{p.year}</span>
+                </div>
+                <p className="mt-1.5 line-clamp-2 text-muted text-sm leading-relaxed">
+                  {p.desc}
+                </p>
+                <div className="mt-5 flex items-center justify-between font-mono text-faint text-xs">
+                  <span>{p.tag}</span>
+                  <span className="flex items-center gap-1 text-muted transition-colors group-hover:text-fg">
+                    {t.projects.caseStudy}
+                    <ArrowUpRight
+                      width={13}
+                      height={13}
+                      className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    />
+                  </span>
+                </div>
+              </Link>
+            </div>
           </InView>
         ))}
       </div>

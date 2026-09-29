@@ -42,12 +42,23 @@ export type Career = {
   skills: string[];
 };
 
+export type ProjectVideo = {
+  /** MP4 (H.264), short and muted-friendly: it autoplays on the card. */
+  src: string;
+  /** Still shown before playback and wherever motion is off. */
+  poster: string;
+  /** WebVTT captions (per locale): the text alternative for the video. */
+  captions: string;
+};
+
 export type Project = {
   slug: string;
   name: string;
   tag: string;
   img: string;
   thumb: string;
+  /** When set, cards and the case-study header play this instead of `img`. */
+  video?: ProjectVideo;
   url: string | null;
   github: string | null;
   year: string;
@@ -294,59 +305,75 @@ const careers: Localizable<Career>[] = [
 
 const projects: Localizable<Project>[] = [
   {
-    slug: "tononkira",
-    name: "Tononkira",
-    tag: "Flutter · Web · Search",
-    img: "/images/tononkira/tononkira_1.webp",
-    thumb: "/images/tononkira/tononkira_2.webp",
-    url: "https://tononkira.titosy.dev/",
-    github: null,
-    year: "2024",
-    type: { fr: "Application Web & Mobile", en: "Web & Mobile App" },
+    slug: "predict",
+    name: "Predict",
+    tag: "C++ · Windows TSF · fcitx5 · n-gram",
+    img: "/images/predict/predict_1.webp",
+    thumb: "/images/predict/predict_2.webp",
+    video: {
+      src: "/videos/predict/predict-motion.mp4",
+      poster: "/videos/predict/poster.jpg",
+      captions: {
+        fr: "/videos/predict/predict-motion.fr.vtt",
+        en: "/videos/predict/predict-motion.en.vtt",
+      },
+    },
+    url: "https://predictive.titosy.dev",
+    github: "https://github.com/titoo-dev/predictive-ime",
+    year: "2026",
+    type: {
+      fr: "Méthode de saisie Windows & Linux",
+      en: "Windows & Linux input method",
+    },
     desc: {
-      fr: "Découverte des paroles de chansons malgaches : 15 000+ titres, 2 300 artistes, recherche intelligente & accès hors-ligne.",
-      en: "Discover Malagasy song lyrics: 15,000+ songs, 2,300 artists, smart search & offline access.",
+      fr: "Saisie prédictive français / anglais, 100 % hors ligne : complétion, mot suivant, correction, accord grammatical et emojis, dans toutes les applications.",
+      en: "French / English predictive typing, 100% offline: completion, next word, autocorrect, grammatical agreement and emoji, in every application.",
     },
     overview: {
-      fr: "Plateforme complète dédiée à la découverte et l'exploration des paroles de chansons malgaches, offrant un accès à plus de 15 000 chansons de 2 300 artistes avec recherche intelligente, personnalisation et accès hors ligne.",
-      en: "A complete platform for discovering and exploring Malagasy song lyrics, giving access to more than 15,000 songs by 2,300 artists with smart search, personalization and offline access.",
+      fr: "Predict est une méthode de saisie native — un text service TSF sur Windows, un moteur fcitx5 sur Linux — qui interroge un démon n-gramme local pour compléter le mot en cours, proposer le suivant, corriger et accorder pendant la frappe. Aucune télémétrie : le modèle, les mots appris et les réglages restent sur la machine. Un installeur Windows livre le modèle et un panneau d'administration natif.",
+      en: "Predict is a native input method — a TSF text service on Windows, an fcitx5 engine on Linux — that queries a local n-gram daemon to complete the current word, suggest the next one, autocorrect and agree while you type. No telemetry: the model, learned words and settings never leave the machine. A Windows installer ships the model and a native administration panel.",
     },
     gallery: [
-      "/images/tononkira/tononkira_1.webp",
-      "/images/tononkira/tononkira_2.webp",
-      "/images/tononkira/tononkira_3.webp",
-      "/images/tononkira/tononkira_4.webp",
+      "/images/predict/predict_1.webp",
+      "/images/predict/predict_2.webp",
+      "/images/predict/predict_3.webp",
+      "/images/predict/predict_4.webp",
     ],
-    tech: ["Flutter", "Dart", "Next.js", "Search Engine", "Offline-first"],
+    tech: [
+      "C++17",
+      "Windows TSF",
+      "Direct2D",
+      "fcitx5",
+      "n-gram (Kneser-Ney)",
+      "Inno Setup",
+      "Next.js",
+    ],
     highlights: [
       {
-        fr: "Application mobile Android avec Flutter offrant un accès hors ligne complet aux paroles.",
-        en: "Android mobile app built with Flutter, with full offline access to lyrics.",
+        fr: "Text service TSF chargé dans chaque application Windows : préédition, barre de candidats Direct2D suivant l'accent, le thème et le DPI, disposition clavier déclarée par profil.",
+        en: "TSF text service loaded into every Windows application: pre-edit, a Direct2D candidate bar that follows the accent color, theme and DPI, keyboard layout declared per profile.",
       },
       {
-        fr: "Moteur de recherche performant permettant de trouver des chansons par paroles, artiste ou titre.",
-        en: "Fast search engine to find songs by lyrics, artist or title.",
+        fr: "Démon n-gramme local (AF_UNIX, une ligne JSON) : complétion en moins d'une milliseconde, mot suivant, restauration d'accents, accord genre/nombre via le lexique Lefff, mots appris reclassés sur l'échelle du modèle.",
+        en: "Local n-gram daemon (AF_UNIX, one JSON line): sub-millisecond completion, next word, accent restoration, gender/number agreement through the Lefff lexicon, learned words re-ranked on the model's own scale.",
       },
       {
-        fr: "Système de favoris et de playlists personnalisées pour une expérience optimale.",
-        en: "Favorites and custom playlists for the best possible experience.",
+        fr: "Un cœur portable partagé entre l'engine fcitx5 et le service TSF, couvert par des tests sur Linux (harnais headless) et Windows (CTest, CI GitHub Actions sur quatre distributions + Windows).",
+        en: "One portable core shared by the fcitx5 engine and the TSF service, covered by tests on Linux (headless harness) and Windows (CTest, GitHub Actions CI on four distros + Windows).",
       },
       {
-        fr: "Optimisation des performances pour une application légère et rapide sur tous les appareils.",
-        en: "Performance tuning for a light, fast app on every device.",
+        fr: "Installeur Inno Setup autonome (modèle inclus, droits AppContainer pour les applications du Store) et panneau d'administration Win32 : langue, réglages, clé API de reformulation, état du démon.",
+        en: "Self-contained Inno Setup installer (model included, AppContainer rights for Store apps) and a Win32 administration panel: language, settings, reformulation API key, daemon status.",
       },
       {
-        fr: "Base de données de plus de 15 000 chansons et 2 300 artistes malgaches.",
-        en: "A database of more than 15,000 songs and 2,300 Malagasy artists.",
+        fr: "Reformulation à la demande (Ctrl+Alt+R) via une API compatible OpenAI, seule fonction en ligne — la prédiction reste locale.",
+        en: "On-demand reformulation (Ctrl+Alt+R) through an OpenAI-compatible API, the only online feature — prediction stays local.",
       },
     ],
     stats: [
-      {
-        k: { fr: "15 000+", en: "15,000+" },
-        v: { fr: "Chansons", en: "Songs" },
-      },
-      { k: { fr: "2 300", en: "2,300" }, v: { fr: "Artistes", en: "Artists" } },
-      { k: "100%", v: { fr: "Hors-ligne", en: "Offline" } },
+      { k: "0", v: { fr: "Requête réseau", en: "Network request" } },
+      { k: "< 1 ms", v: { fr: "Complétion", en: "Completion" } },
+      { k: "2", v: { fr: "Systèmes, 2 langues", en: "OSes, 2 languages" } },
     ],
   },
   {

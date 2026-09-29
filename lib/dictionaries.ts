@@ -89,6 +89,8 @@ const fr = {
     title: "Des produits en ligne, utilisés pour de vrai.",
     caseStudy: "Étude de cas",
     previewAlt: "Aperçu de {name}",
+    playVideo: "Lire la vidéo de {name}",
+    closeVideo: "Fermer le lecteur",
   },
   services: {
     label: "Services",
@@ -226,6 +228,8 @@ const en: Dictionary = {
     title: "Products that are live and used for real.",
     caseStudy: "Case study",
     previewAlt: "Preview of {name}",
+    playVideo: "Play the {name} video",
+    closeVideo: "Close the player",
   },
   services: {
     label: "Services",
