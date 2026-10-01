@@ -105,12 +105,7 @@
         "Participation aux réunions quotidiennes (Daily meeting) et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet."
       ],
       "achievements": [],
-      "skills": [
-        "React",
-        "ExtJS",
-        "GraphQL",
-        "Scrum"
-      ]
+      "skills": ["React", "ExtJS", "GraphQL", "Scrum"]
     },
     {
       "name": "Flit Soft",
@@ -128,12 +123,7 @@
         "Participation active dans des réunions régulières et la présentation de propositions à travers l'entreprise."
       ],
       "achievements": [],
-      "skills": [
-        "JavaScript",
-        "Flutter",
-        "Dart",
-        "Mvola"
-      ]
+      "skills": ["JavaScript", "Flutter", "Dart", "Mvola"]
     }
   ],
   "volunteer": [],
@@ -153,46 +143,27 @@
     {
       "name": "Figma",
       "level": "Expert",
-      "keywords": [
-        "Design",
-        "UI"
-      ]
+      "keywords": ["Design", "UI"]
     },
     {
       "name": "Gitlab",
       "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code"]
     },
     {
       "name": "HTML",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend"
-      ]
+      "keywords": ["Web Development", "Frontend"]
     },
     {
       "name": "CSS",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "Responsive Design"
-      ]
+      "keywords": ["Web Development", "Frontend", "Responsive Design"]
     },
     {
       "name": "JavaScript",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Front-end",
-        "Back-end",
-        "Fullstack"
-      ]
+      "keywords": ["Web Development", "Front-end", "Back-end", "Fullstack"]
     },
     {
       "name": "Tailwind",
@@ -217,41 +188,22 @@
     {
       "name": "Node",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Backend",
-        "JavaScript",
-        "Server"
-      ]
+      "keywords": ["Web Development", "Backend", "JavaScript", "Server"]
     },
     {
       "name": "MySQL",
       "level": "Intermediate",
-      "keywords": [
-        "Databases",
-        "SQL",
-        "Data Storage",
-        "Backend"
-      ]
+      "keywords": ["Databases", "SQL", "Data Storage", "Backend"]
     },
     {
       "name": "Git",
       "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code"]
     },
     {
       "name": "GitHub",
       "level": "Intermediate",
-      "keywords": [
-        "Version Control",
-        "Collaboration",
-        "Source Code",
-        "Git"
-      ]
+      "keywords": ["Version Control", "Collaboration", "Source Code", "Git"]
     },
     {
       "name": "Next.js",
@@ -267,90 +219,52 @@
     {
       "name": "React",
       "level": "Intermediate",
-      "keywords": [
-        "Web Development",
-        "Frontend",
-        "JavaScript Library",
-        "UI"
-      ]
+      "keywords": ["Web Development", "Frontend", "JavaScript Library", "UI"]
     },
     {
       "name": "Flutter",
       "level": "Intermediate",
-      "keywords": [
-        "Mobile Development",
-        "Cross-platform",
-        "Dart"
-      ]
+      "keywords": ["Mobile Development", "Cross-platform", "Dart"]
     },
     {
       "name": "Dart",
       "level": "Intermediate",
-      "keywords": [
-        "Mobile Development",
-        "Flutter"
-      ]
+      "keywords": ["Mobile Development", "Flutter"]
     },
     {
       "name": "React Native",
       "level": "Beginner",
-      "keywords": [
-        "Mobile Development",
-        "Cross-platform",
-        "JavaScript"
-      ]
+      "keywords": ["Mobile Development", "Cross-platform", "JavaScript"]
     },
     {
       "name": "Nest.js",
       "level": "Beginner",
-      "keywords": [
-        "Backend",
-        "Node.js",
-        "TypeScript"
-      ]
+      "keywords": ["Backend", "Node.js", "TypeScript"]
     },
     {
       "name": "Android Jetpack",
       "level": "Beginner",
-      "keywords": [
-        "Android",
-        "Mobile Development",
-        "Kotlin"
-      ]
+      "keywords": ["Android", "Mobile Development", "Kotlin"]
     },
     {
       "name": "Kotlin",
       "level": "Beginner",
-      "keywords": [
-        "Android",
-        "Mobile Development"
-      ]
+      "keywords": ["Android", "Mobile Development"]
     },
     {
       "name": "n8n",
       "level": "Beginner",
-      "keywords": [
-        "Workflow Automation",
-        "No-code"
-      ]
+      "keywords": ["Workflow Automation", "No-code"]
     },
     {
       "name": "AWS Lambda",
       "level": "Beginner",
-      "keywords": [
-        "Cloud",
-        "Serverless",
-        "AWS"
-      ]
+      "keywords": ["Cloud", "Serverless", "AWS"]
     },
     {
       "name": "Cloudflare Workers",
       "level": "Beginner",
-      "keywords": [
-        "Cloud",
-        "Serverless",
-        "Edge Computing"
-      ]
+      "keywords": ["Cloud", "Serverless", "Edge Computing"]
     }
   ],
   "languages": [
@@ -366,10 +280,7 @@
   "interests": [
     {
       "name": "Technology",
-      "keywords": [
-        "AI",
-        "Blockchain"
-      ]
+      "keywords": ["AI", "Blockchain"]
     },
     {
       "name": "Cuisine",

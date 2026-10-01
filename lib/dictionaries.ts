@@ -81,7 +81,7 @@ const fr = {
     projects: "Voir les projets",
     contact: "Me contacter",
     diagram:
-      "Schéma : Next.js, Flutter, Nest.js et LLM convergent vers un noyau qui livre du Web, du Mobile et des API.",
+      "Schéma : des problèmes transitent avec Next.js, Flutter, Nest.js et les LLM jusqu’à un portrait de Titosy en train de coder, qui les transforme en solutions Web, Mobile et API.",
   },
   cv: { download: "Télécharger le CV" },
   projects: {
@@ -220,7 +220,7 @@ const en: Dictionary = {
     projects: "View projects",
     contact: "Get in touch",
     diagram:
-      "Diagram: Next.js, Flutter, Nest.js and LLMs flow into a core that ships Web, Mobile and APIs.",
+      "Diagram: problems travel with Next.js, Flutter, Nest.js and LLMs to a portrait of Titosy coding, who turns them into Web, Mobile and API solutions.",
   },
   cv: { download: "Download CV" },
   projects: {

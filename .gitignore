@@ -43,3 +43,6 @@ Titosy_developpeur_frontend.pdf
 
 # design artifacts (large prototype assets, not part of the app)
 /design/
+
+# rive cli builds (public/avatar.riv is the shipped copy)
+/rive/*/build

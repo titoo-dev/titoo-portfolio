@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import { ProjectVideo } from "@/components/site/project-video";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -10,6 +9,7 @@ import {
   GithubIcon,
 } from "@/components/site/icons";
 import { InView } from "@/components/site/in-view";
+import { ProjectVideo } from "@/components/site/project-video";
 import { Section } from "@/components/site/section";
 import { format, getDictionary } from "@/lib/dictionaries";
 import { isLocale, languageAlternates, locales, projectPath } from "@/lib/i18n";

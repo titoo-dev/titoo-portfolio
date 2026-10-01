@@ -8,9 +8,11 @@
     "start": "next start",
     "lint": "biome check",
     "format": "biome format --write",
-    "cv": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-cv.mjs"
+    "cv": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-cv.mjs",
+    "avatar": "node scripts/avatar-rive.mjs"
   },
   "dependencies": {
+    "@rive-app/react-canvas": "^4.35.0",
     "@vercel/analytics": "^1.5.0",
     "clsx": "^2.1.1",
     "next": "16.1.6",

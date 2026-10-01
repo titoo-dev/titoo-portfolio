@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { ProjectVideo } from "@/components/site/project-video";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroBeams } from "@/components/motion/hero-beams";
@@ -16,6 +15,7 @@ import {
   LinkedinIcon,
 } from "@/components/site/icons";
 import { InView } from "@/components/site/in-view";
+import { ProjectVideo } from "@/components/site/project-video";
 import { Section } from "@/components/site/section";
 import { type Dictionary, format, getDictionary } from "@/lib/dictionaries";
 import { isLocale, type Locale, projectPath } from "@/lib/i18n";
@@ -57,6 +57,7 @@ function Hero({ t, content }: Ctx) {
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
             href={`#${t.ids.projects}`}
+            data-avatar-mood="focused"
             className="inline-flex h-11 items-center gap-2 rounded-full bg-fg px-5 font-medium text-bg text-sm transition-opacity hover:opacity-85"
           >
             {t.hero.projects}
@@ -64,6 +65,8 @@ function Hero({ t, content }: Ctx) {
           </Link>
           <Link
             href={`#${t.ids.contact}`}
+            data-avatar-mood="happy"
+            data-avatar-fire="wave"
             className="inline-flex h-11 items-center rounded-full border border-line px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
           >
             {t.hero.contact}
@@ -306,6 +309,8 @@ function CvButton({ href, label }: { href: string; label: string }) {
     <a
       href={href}
       download
+      data-avatar-mood="surprised"
+      data-avatar-fire="celebrate"
       className="group inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
     >
       <DownloadIcon
