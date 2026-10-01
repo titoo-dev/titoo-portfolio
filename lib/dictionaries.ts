@@ -82,6 +82,46 @@ const fr = {
     contact: "Me contacter",
     diagram:
       "Schéma : des problèmes transitent avec Next.js, Flutter, Nest.js et les LLM jusqu’à un portrait de Titosy en train de coder, qui les transforme en solutions Web, Mobile et API.",
+    // What the avatar muses about in its thought bubble: up to 3 lines of
+    // ~28 characters; `code` ones are left-aligned.
+    thoughts: [
+      { text: "Clean Architecture :\nle domaine au centre." },
+      { text: "Les dépendances pointent\nvers l’intérieur.\n- Oncle Bob" },
+      { text: "class CreateInvoice {\n  execute(input) {}\n}", code: true },
+      { text: "SOLID… surtout le S." },
+      { text: "if (bug) {\n  fix(bug);\n}", code: true },
+      { text: "Un test qui échoue,\npuis le code qui passe." },
+      { text: 'git commit -m "wip"', code: true },
+      { text: "Nommer, c’est concevoir." },
+      { text: "const café = await brew();", code: true },
+      { text: "Et si on extrayait\nun use case ?" },
+      {
+        text: "interface Repository<T> {\n  save(item: T): void\n}",
+        code: true,
+      },
+      { text: "La base de données\nest un détail.\n- Oncle Bob" },
+    ],
+    // What he answers in the bubble when the visitor plays with him.
+    replies: {
+      poke: ["Hé, ça chatouille !", "Haha, encore !", "Chut, je debugge !"],
+      pokeTired: [
+        "Ok, ça suffit...",
+        "Je vais ouvrir un ticket.",
+        "Sérieusement ?",
+      ],
+      double: [
+        "Double-clic ?\nJe ne suis pas un fichier.",
+        "Un seul clic suffit !",
+      ],
+      drag: [
+        "Hé, ne me déplace pas !",
+        "Je suis bien ici, merci.",
+        "Ça glisse !",
+      ],
+      chip: ["Bug corrigé !", "Et un ticket de moins.", "Problème résolu."],
+      laptop: ["Déployé en prod !", "Ça compile !", "git push, c'est parti !"],
+      other: ["Salut ! Un projet en tête ?", "Je peux t'aider ?", "Bonjour !"],
+    },
   },
   cv: { download: "Télécharger le CV" },
   projects: {
@@ -221,6 +261,32 @@ const en: Dictionary = {
     contact: "Get in touch",
     diagram:
       "Diagram: problems travel with Next.js, Flutter, Nest.js and LLMs to a portrait of Titosy coding, who turns them into Web, Mobile and API solutions.",
+    thoughts: [
+      { text: "Clean Architecture:\nthe domain at the center." },
+      { text: "Dependencies point\ninward.\n- Uncle Bob" },
+      { text: "class CreateInvoice {\n  execute(input) {}\n}", code: true },
+      { text: "SOLID… especially the S." },
+      { text: "if (bug) {\n  fix(bug);\n}", code: true },
+      { text: "A failing test first,\nthen the code that passes." },
+      { text: 'git commit -m "wip"', code: true },
+      { text: "Naming is designing." },
+      { text: "const coffee = await brew();", code: true },
+      { text: "What if we extracted\na use case?" },
+      {
+        text: "interface Repository<T> {\n  save(item: T): void\n}",
+        code: true,
+      },
+      { text: "The database\nis a detail.\n- Uncle Bob" },
+    ],
+    replies: {
+      poke: ["Hey, that tickles!", "Haha, again!", "Shh, I'm debugging!"],
+      pokeTired: ["Ok, that's enough...", "I'm filing a ticket.", "Seriously?"],
+      double: ["Double-click?\nI'm not a file.", "One click is enough!"],
+      drag: ["Hey, don't move me!", "I'm fine right here.", "Whee, slippery!"],
+      chip: ["Bug fixed!", "One ticket down.", "Problem solved."],
+      laptop: ["Shipped to prod!", "It compiles!", "git push, here we go!"],
+      other: ["Hi! Got a project?", "Can I help you?", "Hello!"],
+    },
   },
   cv: { download: "Download CV" },
   projects: {

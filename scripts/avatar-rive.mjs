@@ -256,6 +256,7 @@ const PROPS = [
   ["hover", "boolean", false],
   ["isTyping", "boolean", true],
   ["isTalking", "boolean", false],
+  ["isMusing", "boolean", false],
   ["wave", "trigger"],
   ["poke", "trigger"],
   ["solve", "trigger"],
@@ -266,7 +267,7 @@ const PROPS = [
   ["paper", "color", "FFFFFFFF"],
 ];
 for (const [name] of PROPS) VM.props[name] = id();
-const path = (prop) => `${VM.id}-${VM.props[prop]}`;
+const path = (prop, vm = VM) => `${vm.id}-${vm.props[prop]}`;
 
 function viewModelXml() {
   const cap = (s) => s[0].toUpperCase() + s.slice(1);
@@ -333,21 +334,25 @@ const INK = {
   paper: "FFFFFFFF",
 };
 
-function paint(kind, color, extra = {}, children = []) {
+function paint(kind, color, extra = {}, children = [], vm = VM) {
   return el(kind, { name: kind, ...extra }, [
     el("SolidColor", { colorValue: INK[color], name: "Color" }, [
-      el("DataBindContext", { sourcePathIds: path(color), propertyKey: 37 }),
+      el("DataBindContext", {
+        sourcePathIds: path(color, vm),
+        propertyKey: 37,
+      }),
     ]),
     ...children,
   ]);
 }
 
-const stroke = (color = "ink", w = 1.4, children = []) =>
+const stroke = (color = "ink", w = 1.4, children = [], vm = VM) =>
   paint(
     "Stroke",
     color,
     { thickness: w, cap: "round", join: "round" },
     children,
+    vm,
   );
 
 /** A stroked path shape. `opts.name` registers it for keying. */
@@ -394,7 +399,7 @@ function computeRest(node, parentPivot) {
   };
   for (const c of node.children) {
     if (c.kind === "node") computeRest(c, node.pivot);
-    else if (c.kind === "path") c.rest = { x: 0, y: 0 };
+    else if (c.kind === "path" || c.kind === "raw") c.rest = { x: 0, y: 0 };
     else {
       const cx = c.kind === "ellipse" ? c.cx : c.x + c.wd / 2;
       const cy = c.kind === "ellipse" ? c.cy : c.y + c.ht / 2;
@@ -405,8 +410,8 @@ function computeRest(node, parentPivot) {
 
 function shapeXml(s, parentPivot) {
   const paints = [];
-  if (s.fill) paints.push(paint("Fill", s.fill));
-  if (s.w > 0) paints.push(stroke(s.color, s.w, s.effects ?? []));
+  if (s.fill) paints.push(paint("Fill", s.fill, {}, [], s.vm));
+  if (s.w > 0) paints.push(stroke(s.color, s.w, s.effects ?? [], s.vm));
   // Fill first, crisp stroke last: later paints draw on top within a shape.
   if (s.kind === "path") {
     return el(
@@ -442,7 +447,11 @@ function nodeXml(node, parentPivot) {
   const kids = [...node.children]
     .reverse()
     .map((c) =>
-      c.kind === "node" ? nodeXml(c, node.pivot) : shapeXml(c, node.pivot),
+      c.kind === "node"
+        ? nodeXml(c, node.pivot)
+        : c.kind === "raw"
+          ? c.xml(node.pivot)
+          : shapeXml(c, node.pivot),
     );
   return el(
     "Node",
@@ -779,15 +788,22 @@ const extras = group(
         ),
       ],
     ),
+    // The gate hides them while the thought bubble (another artboard) is up.
     group(
-      "ThinkDots",
+      "ThinkDotsGate",
       [88, 30],
       [
-        ellipse(83.5, 35, 0.6, 0.6, soft),
-        ellipse(87.5, 30.5, 0.9, 0.9, soft),
-        ellipse(92.5, 25.5, 1.3, 1.3, soft),
+        group(
+          "ThinkDots",
+          [88, 30],
+          [
+            ellipse(83.5, 35, 0.6, 0.6, soft),
+            ellipse(87.5, 30.5, 0.9, 0.9, soft),
+            ellipse(92.5, 25.5, 1.3, 1.3, soft),
+          ],
+          { opacity: 0 },
+        ),
       ],
-      { opacity: 0 },
     ),
     group(
       "QMarks",
@@ -1420,6 +1436,9 @@ const typingOn = anim(
   },
 );
 
+const musingOff = pose("Musing off", { "ThinkDotsGate.opacity": 1 });
+const musingOn = pose("Musing on", { "ThinkDotsGate.opacity": 0 });
+
 const talkQuiet = pose("Talk quiet", {
   "MouthsTalkGate.opacity": 1,
   "MouthTalk.opacity": 0,
@@ -1493,7 +1512,7 @@ const bindable = (type, prop, extra = {}) => {
     extra.value !== undefined ? { propertyValue: extra.value } : {},
     [
       el("DataBindContext", {
-        sourcePathIds: path(prop),
+        sourcePathIds: path(prop, extra.vm),
         propertyKey: key,
         direction: extra.write ? "true" : undefined,
       }),
@@ -1502,10 +1521,10 @@ const bindable = (type, prop, extra = {}) => {
 };
 
 const cond = {
-  bool: (prop, value) =>
+  bool: (prop, value, vm) =>
     el("TransitionViewModelCondition", {}, [
       el("TransitionPropertyViewModelComparator", {}, [
-        bindable("Boolean", prop),
+        bindable("Boolean", prop, { vm }),
       ]),
       el("TransitionValueBooleanComparator", { value: String(value) }),
     ]),
@@ -1565,7 +1584,7 @@ const st = (animationId, x, y, transitions = [], extra = {}) => {
 };
 
 // Simple two-state toggle on a boolean.
-function toggleLayer(name, prop, offAnim, onAnim, ms = [200, 200]) {
+function toggleLayer(name, prop, offAnim, onAnim, ms = [200, 200], vm = VM) {
   return layer(name, () => {
     const offId = id();
     const onId = id();
@@ -1576,14 +1595,14 @@ function toggleLayer(name, prop, offAnim, onAnim, ms = [200, 200]) {
           offAnim,
           160,
           100,
-          [to(onId, { duration: ms[0] }, [cond.bool(prop, true)])],
+          [to(onId, { duration: ms[0] }, [cond.bool(prop, true, vm)])],
           { id: offId },
         ).xml,
         st(
           onAnim,
           360,
           100,
-          [to(offId, { duration: ms[1] }, [cond.bool(prop, false)])],
+          [to(offId, { duration: ms[1] }, [cond.bool(prop, false, vm)])],
           { id: onId },
         ).xml,
       ],
@@ -1723,9 +1742,356 @@ const stateMachine = el("StateMachine", { name: "Avatar", id: SM }, [
   toggleLayer("Hover", "hover", hoverOff, hoverOn),
   typingLayer,
   toggleLayer("Talk", "isTalking", talkQuiet, talkOn, [100, 160]),
+  toggleLayer("Musing", "isMusing", musingOff, musingOn),
   reactionLayer,
   chipLayer,
 ]);
+
+// ---------------------------------------------------------------------------
+// Thought bubble: a second artboard, drawn by the host above the avatar's box
+// (the box itself is too small for legible text). The host types a thought
+// into it: `typed` is what is shown so far, `rest` the remainder, drawn
+// transparent so the paragraph keeps its final layout while it is written.
+// ---------------------------------------------------------------------------
+
+const avatarAnims = ANIMS.splice(0);
+
+const TVM = { id: id(), inst: id(), props: {} };
+const TPROPS = [
+  ["open", "boolean", false],
+  ["isCode", "boolean", false],
+  ["typed", "string", ""],
+  ["rest", "string", ""],
+  ["ink", "color", INK.ink],
+  ["inkSoft", "color", INK.inkSoft],
+  ["inkFaint", "color", INK.inkFaint],
+  ["paper", "color", INK.paper],
+];
+for (const [name] of TPROPS) TVM.props[name] = id();
+
+function thoughtViewModelXml() {
+  const cap = (s) => s[0].toUpperCase() + s.slice(1);
+  return el(
+    "ViewModel",
+    { defaultInstanceId: TVM.inst, name: "Thought", id: TVM.id },
+    [
+      ...TPROPS.map(([name, type]) =>
+        el(`ViewModelProperty${cap(type)}`, { name, id: TVM.props[name] }),
+      ),
+      el(
+        "ViewModelInstance",
+        { exports: "true", name: "Default", id: TVM.inst },
+        TPROPS.map(([name, type, value]) =>
+          el(`ViewModelInstance${cap(type)}`, {
+            propertyValue: typeof value === "boolean" ? String(value) : value,
+            viewModelPropertyId: TVM.props[name],
+          }),
+        ),
+      ),
+    ],
+  );
+}
+
+const THOUGHT = { w: 240, h: 120 };
+const FONT = id();
+
+/** Scalloped outline around a rounded rect, clockwise, bumps outward. */
+function cloudD(x, y, w, h, r, step) {
+  const straightW = w - 2 * r;
+  const straightH = h - 2 * r;
+  const arc = (Math.PI / 2) * r;
+  const segs = [
+    { len: straightW, at: (t) => [x + r + t, y] },
+    { len: arc, at: (t) => corner(x + w - r, y + r, -Math.PI / 2, t) },
+    { len: straightH, at: (t) => [x + w, y + r + t] },
+    { len: arc, at: (t) => corner(x + w - r, y + h - r, 0, t) },
+    { len: straightW, at: (t) => [x + w - r - t, y + h] },
+    { len: arc, at: (t) => corner(x + r, y + h - r, Math.PI / 2, t) },
+    { len: straightH, at: (t) => [x, y + h - r - t] },
+    { len: arc, at: (t) => corner(x + r, y + r, Math.PI, t) },
+  ];
+  function corner(cx, cy, from, t) {
+    const a = from + t / r;
+    return [cx + r * Math.cos(a), cy + r * Math.sin(a)];
+  }
+  const total = segs.reduce((sum, s) => sum + s.len, 0);
+  const count = Math.round(total / step);
+  const pointAt = (d) => {
+    for (const s of segs) {
+      if (d <= s.len) return s.at(d);
+      d -= s.len;
+    }
+    return segs[0].at(0);
+  };
+  const pts = Array.from({ length: count }, (_, i) =>
+    pointAt((i * total) / count),
+  );
+  const ring = [...pts, pts[0]];
+  const d = ring.map(([px, py], i) => {
+    if (i === 0) return `M${n(px)} ${n(py)}`;
+    const [qx, qy] = ring[i - 1];
+    const br = n(Math.hypot(px - qx, py - qy) / 1.7);
+    return `A${br} ${br} 0 0 1 ${n(px)} ${n(py)}`;
+  });
+  return `${d.join("")}Z`;
+}
+
+const tv = { vm: TVM };
+const bubbleLine = { ...tv, color: "inkFaint", w: 1.2, fill: "paper" };
+
+// The paragraph, centred in the cloud and shrink-wrapped to its longest line
+// (thoughts carry their own line breaks). Two runs share one layout. Ideas
+// are centred, code is left-aligned: two texts, one shown at a time.
+const TEXT_AT = [120, 44];
+const textXml = (align) => (pivot) => {
+  const typedStyle = id();
+  const ghostStyle = id();
+  const style = (name, sid, fill) =>
+    el(
+      "TextStylePaint",
+      {
+        fontSize: 12,
+        lineHeight: 15,
+        fontAssetId: FONT,
+        name,
+        id: sid,
+      },
+      [fill],
+    );
+  const run = (name, sid, prop, text) =>
+    el("TextValueRun", { styleId: sid, text, name }, [
+      el("DataBindContext", {
+        sourcePathIds: path(prop, TVM),
+        propertyKey: 268,
+      }),
+    ]);
+  return el(
+    "Text",
+    {
+      x: TEXT_AT[0] - pivot[0],
+      y: TEXT_AT[1] - pivot[1],
+      originX: 0.5,
+      originY: 0.5,
+      sizingValue: "autoWidth",
+      alignValue: align,
+      wrapValue: "noWrap",
+      name: "Thought",
+      id: id(),
+    },
+    [
+      style("Typed", typedStyle, paint("Fill", "ink", {}, [], TVM)),
+      style(
+        "Ghost",
+        ghostStyle,
+        el("Fill", { name: "Fill" }, [
+          el("SolidColor", { colorValue: "00000000", name: "Color" }),
+        ]),
+      ),
+      run("Typed", typedStyle, "typed", ""),
+      run("Rest", ghostStyle, "rest", "Clean Architecture"),
+    ],
+  );
+};
+
+// Back-to-front, like the avatar.
+const BUBBLE_PIVOT = [131, 80];
+const puff = (i, cx, cy, r) =>
+  group(`Puff${i}`, [cx, cy], [ellipse(cx, cy, r, r, bubbleLine)], {
+    opacity: 0,
+  });
+const thoughtScene = group(
+  "ThoughtScene",
+  [0, 0],
+  [
+    puff(1, 122, 113, 2.2),
+    puff(2, 126, 102.5, 3.2),
+    puff(3, 131, 90.5, 4.4),
+    group(
+      "Bubble",
+      BUBBLE_PIVOT,
+      [
+        group("BubbleBob", BUBBLE_PIVOT, [
+          line(cloudD(14, 12, 212, 64, 26, 16), bubbleLine),
+          group("IdeaText", TEXT_AT, [{ kind: "raw", xml: textXml("center") }]),
+          group("CodeText", TEXT_AT, [{ kind: "raw", xml: textXml("left") }], {
+            opacity: 0,
+          }),
+        ]),
+      ],
+      { opacity: 0 },
+    ),
+  ],
+);
+computeRest(thoughtScene, [0, 0]);
+
+const PUFFS = ["Puff1", "Puff2", "Puff3"];
+const thoughtClosed = pose("Thought closed", {
+  "Bubble.opacity": 0,
+  "Bubble.scale": 0.7,
+  "BubbleBob.y": 0,
+  ...Object.fromEntries(PUFFS.flatMap((p) => [[`${p}.opacity`, 0]])),
+  ...Object.fromEntries(PUFFS.map((p) => [`${p}.scale`, 0.3])),
+});
+const thoughtOpen = anim(
+  "Thought open",
+  { duration: 40 },
+  {
+    ...Object.fromEntries(
+      PUFFS.flatMap((p, i) => [
+        [
+          `${p}.opacity`,
+          [
+            [0, 0, "hold"],
+            [i * 6 + 2, 0],
+            [i * 6 + 2 + 5, 1, "hold"],
+          ],
+        ],
+        [
+          `${p}.scale`,
+          [
+            [0, 0.3, "hold"],
+            [i * 6 + 2, 0.3],
+            [i * 6 + 2 + 6, 1.15],
+            [i * 6 + 2 + 10, 1, "hold"],
+          ],
+        ],
+      ]),
+    ),
+    "Bubble.opacity": [
+      [0, 0, "hold"],
+      [14, 0],
+      [22, 1, "hold"],
+    ],
+    "Bubble.scale": [
+      [0, 0.7, "hold"],
+      [14, 0.7],
+      [30, 1.05],
+      [40, 1, "hold"],
+    ],
+    "BubbleBob.y": [[0, 0, "hold"]],
+  },
+);
+const thoughtFloat = anim(
+  "Thought float",
+  { duration: 150, loop: "pingPong" },
+  {
+    "BubbleBob.y": [
+      [0, 0],
+      [150, -1.6],
+    ],
+    "Bubble.opacity": [[0, 1, "hold"]],
+    "Bubble.scale": [[0, 1, "hold"]],
+    ...Object.fromEntries(
+      PUFFS.flatMap((p) => [
+        [`${p}.opacity`, [[0, 1, "hold"]]],
+        [`${p}.scale`, [[0, 1, "hold"]]],
+      ]),
+    ),
+  },
+);
+const thoughtClose = anim(
+  "Thought close",
+  { duration: 20 },
+  {
+    "Bubble.opacity": [
+      [0, 1],
+      [14, 0, "hold"],
+    ],
+    "Bubble.scale": [
+      [0, 1],
+      [14, 0.92, "hold"],
+    ],
+    ...Object.fromEntries(
+      PUFFS.flatMap((p, i) => [
+        [
+          `${p}.opacity`,
+          [
+            [0, 1, "hold"],
+            [8 - i * 3, 1],
+            [14 - i * 3, 0, "hold"],
+          ],
+        ],
+        [`${p}.scale`, [[0, 1, "hold"]]],
+      ]),
+    ),
+  },
+);
+
+const thoughtLayer = layer("Bubble", () => {
+  const closed = id();
+  const opening = id();
+  const floating = id();
+  const closing = id();
+  const isOpen = (v) => [cond.bool("open", v, TVM)];
+  return {
+    first: closed,
+    xml: [
+      st(thoughtClosed, 160, 100, [to(opening, {}, isOpen(true))], {
+        id: closed,
+      }).xml,
+      st(
+        thoughtOpen,
+        360,
+        100,
+        [done(floating), to(closing, { duration: 80 }, isOpen(false))],
+        { id: opening },
+      ).xml,
+      st(
+        thoughtFloat,
+        560,
+        100,
+        [to(closing, { duration: 80 }, isOpen(false))],
+        { id: floating },
+      ).xml,
+      st(
+        thoughtClose,
+        360,
+        260,
+        [done(closed), to(opening, { duration: 80 }, isOpen(true))],
+        { id: closing },
+      ).xml,
+    ],
+  };
+});
+
+const ideaShown = pose("Idea text", {
+  "IdeaText.opacity": 1,
+  "CodeText.opacity": 0,
+});
+const codeShown = pose("Code text", {
+  "IdeaText.opacity": 0,
+  "CodeText.opacity": 1,
+});
+
+const TSM = id();
+const thoughtStateMachine = el("StateMachine", { name: "Thought", id: TSM }, [
+  thoughtLayer,
+  toggleLayer("Kind", "isCode", ideaShown, codeShown, [0, 0], TVM),
+]);
+const thoughtAnims = ANIMS.splice(0);
+const THOUGHT_STYLE = id();
+
+const thoughtArtboard = el(
+  "Artboard",
+  {
+    defaultStateMachineId: TSM,
+    viewModelId: TVM.id,
+    viewModelInstanceId: TVM.inst,
+    x: 200,
+    y: 0,
+    width: THOUGHT.w,
+    height: THOUGHT.h,
+    name: "Thought",
+    styleId: THOUGHT_STYLE,
+    id: id(),
+  },
+  [
+    el("LayoutComponentStyle", { name: "Artboard Style", id: THOUGHT_STYLE }),
+    nodeXml(thoughtScene, [0, 0]),
+    thoughtStateMachine,
+    ...thoughtAnims,
+  ],
+);
 
 // ---------------------------------------------------------------------------
 // Document
@@ -1776,10 +2142,17 @@ const doc = el("Rive", { version: 1, kind: "fragment" }, [
         ],
       ),
       stateMachine,
-      ...ANIMS,
+      ...avatarAnims,
     ],
   ),
+  thoughtArtboard,
   ...viewModelXml(),
+  thoughtViewModelXml(),
+  el("FontAsset", {
+    file: "fonts/NotoSans-Regular.ttf",
+    name: "Noto Sans",
+    id: FONT,
+  }),
 ]);
 
 // ---------------------------------------------------------------------------

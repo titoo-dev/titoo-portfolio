@@ -78,7 +78,11 @@ function Hero({ t, content }: Ctx) {
       <div className="relative flex items-center justify-center overflow-hidden border-line border-t px-8 py-12 md:border-t-0 md:border-l">
         <div className="dot-grid absolute inset-0" aria-hidden />
         <div className="relative w-full max-w-[380px]">
-          <HeroBeams label={t.hero.diagram} />
+          <HeroBeams
+            label={t.hero.diagram}
+            thoughts={t.hero.thoughts}
+            replies={t.hero.replies}
+          />
         </div>
       </div>
     </section>

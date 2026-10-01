@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { CoderAvatar } from "./coder-avatar";
 import { HeroAvatar } from "./hero-avatar";
+import type { Replies, Thought } from "./rive-avatar";
 
 /**
  * Hero diagram: problems and the stack flow into a core node (an illustrated
@@ -39,6 +40,15 @@ const AVATAR_BOX = {
   width: `calc(${pct(CORE.size, VIEW.w)} - 3px)`,
   height: `calc(${pct(CORE.size, VIEW.h)} - 3px)`,
   borderRadius: pct(CORE.rx, CORE.size),
+};
+// The thought bubble (a 240x120 artboard) floats over the inbound beams,
+// its last puff just above the core box.
+const THOUGHT = { x: 80, y: CORE.y - 120, w: 240, h: 120 };
+const THOUGHT_BOX = {
+  left: pct(THOUGHT.x, VIEW.w),
+  top: pct(THOUGHT.y, VIEW.h),
+  width: pct(THOUGHT.w, VIEW.w),
+  height: pct(THOUGHT.h, VIEW.h),
 };
 
 const inPath = (x: number) => `M${x} 50 C${x} 115, 200 115, 200 172`;
@@ -131,7 +141,15 @@ function Glyph({ kind }: { kind: string }) {
   );
 }
 
-export function HeroBeams({ label }: { label: string }) {
+export function HeroBeams({
+  label,
+  thoughts,
+  replies,
+}: {
+  label: string;
+  thoughts: Thought[];
+  replies: Replies;
+}) {
   return (
     <div className="relative w-full max-w-[420px]">
       <svg
@@ -273,7 +291,12 @@ export function HeroBeams({ label }: { label: string }) {
           className="core-ring stroke-accent"
         />
       </svg>
-      <HeroAvatar style={AVATAR_BOX} />
+      <HeroAvatar
+        style={AVATAR_BOX}
+        thoughtStyle={THOUGHT_BOX}
+        thoughts={thoughts}
+        replies={replies}
+      />
     </div>
   );
 }
