@@ -395,6 +395,20 @@
       "url": null,
       "github": null,
       "image": null
+    },
+    {
+      "name": "Phototech",
+      "isActive": false,
+      "description": "Développement d'une plateforme pour le suivi des documents pour les agents de terrain. (Freelance, 2025)",
+      "highlights": [
+        "Mise en place d'un système de gestion des rôles (agent, rédacteur, admin, owner).",
+        "Création d'une version mobile qui fonctionne en offline et synchronise automatiquement les données lorsque l'agent est connecté à internet.",
+        "Mise en place du frontend et le backoffice avec Next.js et Next API.",
+        "Gestion des photos prises par l'agent de terrain en utilisant Vercel Blob."
+      ],
+      "url": null,
+      "github": null,
+      "image": null
     }
   ]
 }

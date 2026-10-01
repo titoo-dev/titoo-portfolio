@@ -35,6 +35,13 @@ const CV_PROJECTS = {
       desc: "Interfaces web et mobile d'une application de gestion des ordres d'achat et de vente de devises (freelance) : saisie, validation et suivi des ordres selon le profil utilisateur, notifications push en temps réel, intégration des API d'un backend Laravel.",
       tech: ["Flutter", "Dart", "Firebase Cloud Messaging", "Laravel (API)"],
     },
+    {
+      name: "Phototech",
+      url: null,
+      year: "2025",
+      desc: "Plateforme de suivi des documents pour les agents de terrain (freelance) : gestion des rôles (agent, rédacteur, admin, owner), version mobile utilisable hors ligne avec synchronisation automatique au retour du réseau, frontend et back-office avec Next.js, photos terrain stockées sur Vercel Blob.",
+      tech: ["Next.js", "Next.js API Routes", "Vercel Blob", "Offline sync"],
+    },
   ],
   en: [
     {
@@ -43,6 +50,13 @@ const CV_PROJECTS = {
       year: "2023 - 2024",
       desc: "Web and mobile interfaces for a currency buy and sell order management app (freelance): order entry, validation and tracking by user profile, real-time push notifications, integration with a Laravel backend's APIs.",
       tech: ["Flutter", "Dart", "Firebase Cloud Messaging", "Laravel (API)"],
+    },
+    {
+      name: "Phototech",
+      url: null,
+      year: "2025",
+      desc: "Document tracking platform for field agents (freelance): role management (agent, editor, admin, owner), a mobile version that works offline and syncs automatically once back online, frontend and back office with Next.js, field photos stored on Vercel Blob.",
+      tech: ["Next.js", "Next.js API Routes", "Vercel Blob", "Offline sync"],
     },
   ],
 };
