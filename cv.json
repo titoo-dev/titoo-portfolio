@@ -381,6 +381,20 @@
         "/images/okani-survey/okani_2.webp",
         "/images/okani-survey/okani_3.webp"
       ]
+    },
+    {
+      "name": "MID",
+      "isActive": false,
+      "description": "Développement de l'interface web et mobile d'une application de gestion des ordres d'achat et de vente de devises. (Freelance, 2023 - 2024)",
+      "highlights": [
+        "Développement de l'interface mobile avec Flutter pour permettre aux clients de passer et gérer leurs ordres en toute mobilité.",
+        "Intégration des fonctionnalités de saisie, validation et suivi des ordres en fonction des profils utilisateurs définis.",
+        "Collaboration avec l'équipe backend utilisant Laravel pour l'intégration des API.",
+        "Mise en place de notifications push via Firebase pour informer les utilisateurs en temps réel des mises à jour sur leurs ordres."
+      ],
+      "url": null,
+      "github": null,
+      "image": null
     }
   ]
 }

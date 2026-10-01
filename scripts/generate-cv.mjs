@@ -25,6 +25,31 @@ const CONTACT = {
   site: "https://titosy.dev",
 };
 
+// Projects only listed on the CV (no case study or images on the site).
+const CV_PROJECTS = {
+  fr: [
+    {
+      name: "MID",
+      url: null,
+      year: "2023 - 2024",
+      desc: "Interfaces web et mobile d'une application de gestion des ordres d'achat et de vente de devises (freelance) : saisie, validation et suivi des ordres selon le profil utilisateur, notifications push en temps réel, intégration des API d'un backend Laravel.",
+      tech: ["Flutter", "Dart", "Firebase Cloud Messaging", "Laravel (API)"],
+    },
+  ],
+  en: [
+    {
+      name: "MID",
+      url: null,
+      year: "2023 - 2024",
+      desc: "Web and mobile interfaces for a currency buy and sell order management app (freelance): order entry, validation and tracking by user profile, real-time push notifications, integration with a Laravel backend's APIs.",
+      tech: ["Flutter", "Dart", "Firebase Cloud Messaging", "Laravel (API)"],
+    },
+  ],
+};
+
+/** Sort key: the last year of "2024" or "2023 - 2024". */
+const endYear = (year) => Number(String(year).slice(-4));
+
 const years = new Date().getFullYear() - 2022;
 
 const LABELS = {
@@ -83,7 +108,9 @@ function render(locale) {
   const L = LABELS[locale];
   const { careers, PROFILE, stack, ...content } = getContent(locale);
   // Most recent first, as recruiters read a CV (the site keeps its own order).
-  const projects = content.projects.toSorted((a, b) => b.year - a.year);
+  const projects = [...content.projects, ...CV_PROJECTS[locale]].toSorted(
+    (a, b) => endYear(b.year) - endYear(a.year),
+  );
   const jobs = careers.filter((c) => !c.isEdu);
   const education = careers.filter((c) => c.isEdu);
 
