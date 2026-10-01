@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { HeroBeams } from "@/components/motion/hero-beams";
 import { ProjectPipeline } from "@/components/motion/project-pipeline";
+import { SectionGuide } from "@/components/motion/section-guide";
 import { SERVICE_ICONS } from "@/components/motion/service-icons";
 import { Timeline } from "@/components/motion/timeline";
 import { CopyEmail } from "@/components/site/copy-email";
@@ -96,10 +97,12 @@ function Projects({ lang, t, content: { projects } }: Ctx) {
       label={t.projects.label}
       title={t.projects.title}
     >
+      <SectionGuide sectionId={t.ids.projects} lines={t.projects.guide} />
       <div className="grid border-line border-t md:grid-cols-2">
         {projects.map((p, i) => (
           <InView
             key={p.slug}
+            data-guide={p.slug}
             className={[
               "reveal border-line",
               i < projects.length - 1 ? "border-b" : "",

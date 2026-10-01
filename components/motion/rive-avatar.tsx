@@ -50,14 +50,17 @@ export type Replies = Record<Reply, string[]>;
 
 // Each canvas loads it on its own (the browser caches it): a RiveFile shared
 // through useRiveFile gets destroyed under React strict mode remounts.
-const SRC = "/avatar.riv";
-const LAYOUT = new Layout({ fit: Fit.Contain, alignment: Alignment.Center });
+export const SRC = "/avatar.riv";
+export const LAYOUT = new Layout({
+  fit: Fit.Contain,
+  alignment: Alignment.Center,
+});
 const BEAM_CYCLE = 4000; // `.beam` / `.core-ring` in globals.css
 const BEAM_LAND = 0.4; // inbound beams reach the core
 const IDLE_AFTER = 30_000;
 const FIRST_THOUGHT = 5000; // after the wave
 const THOUGHT_GAP = [8000, 14_000];
-const TYPE_MS = { idea: 32, code: 42, reply: 24 };
+export const TYPE_MS = { idea: 32, code: 42, reply: 24 };
 const ARTBOARD = 120; // the avatar artboard's size, for pointer hit zones
 const DOUBLE_CLICK_MS = 280;
 const DRAG_PX = 24;
@@ -70,7 +73,7 @@ const THEME: [prop: string, cssVar: string][] = [
 ];
 
 /** Keeps an artboard's ink colours on the site theme; returns a cleanup. */
-function watchTheme(vmi: ViewModelInstance) {
+export function watchTheme(vmi: ViewModelInstance) {
   syncTheme(vmi);
   const observer = new MutationObserver(() => syncTheme(vmi));
   observer.observe(document.documentElement, {
@@ -150,15 +153,89 @@ export default function RiveScene({
   );
 }
 
-function Bubble({
+type PopOptions = {
+  code?: boolean;
+  typeMs?: number;
+  /** Called once the last character is written. */
+  onTyped?: () => void;
+  /** How long the whole line stays up once written, in ms. */
+  linger?: (text: string) => number;
+  after?: () => void;
+};
+
+/**
+ * Types lines into a Thought artboard instance. One timer chain drives it, so
+ * a new line (or `cancel`) cuts the current one short; `later` schedules on
+ * the same chain.
+ */
+export function bubbleWriter(bubble: RefObject<ViewModelInstance | null>) {
+  let timer: ReturnType<typeof setTimeout>;
+  const later = (ms: number, fn: () => void) => {
+    timer = setTimeout(fn, ms);
+  };
+  const cancel = () => clearTimeout(timer);
+  /** Opens the bubble (if needed), types `text`, lingers, closes, then `after`. */
+  const pop = (
+    text: string,
+    {
+      code = false,
+      typeMs = TYPE_MS.idea,
+      onTyped,
+      linger = (t) => 1800 + t.length * 30,
+      after = () => {},
+    }: PopOptions = {},
+  ) => {
+    const b = bubble.current;
+    if (!b) return after();
+    // `rest` is drawn transparent, so the paragraph keeps its final layout.
+    const write = (count: number) => {
+      const typed = b.string("typed");
+      const rest = b.string("rest");
+      if (typed) typed.value = text.slice(0, count);
+      if (rest) rest.value = text.slice(count);
+    };
+    const open = b.boolean("open");
+    const wasOpen = open?.value ?? false;
+    const isCode = b.boolean("isCode");
+    if (isCode) isCode.value = code;
+    write(0);
+    if (open) open.value = true;
+    let count = 0;
+    const type = () => {
+      count += 1;
+      write(count);
+      if (count < text.length) return later(typeMs, type);
+      onTyped?.();
+      later(linger(text), () => {
+        if (open) open.value = false;
+        later(350, after);
+      });
+    };
+    later(wasOpen ? 0 : 550, type);
+  };
+  const close = () => {
+    cancel();
+    const open = bubble.current?.boolean("open");
+    if (open) open.value = false;
+  };
+  return { later, pop, cancel, close };
+}
+
+/** A bubble artboard (scripts/rive/bubble.mjs), themed, handed to `onBind`. */
+export function Bubble({
   onBind,
+  src = SRC,
+  artboard = "Thought",
 }: {
   onBind: (vmi: ViewModelInstance | null) => void;
+  src?: string;
+  /** The artboard; its state machine bears the same name. */
+  artboard?: string;
 }) {
   const { rive, RiveComponent } = useRive({
-    src: SRC,
-    artboard: "Thought",
-    stateMachine: "Thought",
+    src,
+    artboard,
+    stateMachine: artboard,
     autoplay: true,
     autoBind: true,
     layout: LAYOUT,
@@ -376,11 +453,9 @@ function Avatar({
 
     // --- the bubble: thoughts now and then, replies to the visitor ---------
     // One timer chain drives it, so a reply simply cuts a thought short.
-    let bubbleTimer: ReturnType<typeof setTimeout>;
+    const writer = bubbleWriter(bubble);
+    const { later, pop } = writer;
     let queue: Thought[] = [];
-    const later = (ms: number, fn: () => void) => {
-      bubbleTimer = setTimeout(fn, ms);
-    };
     // Thoughts only come when he is free: not dozing, not reacting to the
     // page, not hovered or talking.
     const free = () =>
@@ -396,38 +471,6 @@ function Avatar({
       applyTyping();
       if (on) show("thinking");
       else if (shown === "thinking") show(base);
-    };
-    /** Opens the bubble (if needed), types `text`, lingers, closes, then `after`. */
-    const pop = (
-      text: string,
-      { code = false, typeMs = TYPE_MS.idea, after = () => {} } = {},
-    ) => {
-      const b = bubble.current;
-      if (!b) return after();
-      // `rest` is drawn transparent, so the paragraph keeps its final layout.
-      const write = (count: number) => {
-        const typed = b.string("typed");
-        const rest = b.string("rest");
-        if (typed) typed.value = text.slice(0, count);
-        if (rest) rest.value = text.slice(count);
-      };
-      const open = b.boolean("open");
-      const wasOpen = open?.value ?? false;
-      const isCode = b.boolean("isCode");
-      if (isCode) isCode.value = code;
-      write(0);
-      if (open) open.value = true;
-      let count = 0;
-      const type = () => {
-        count += 1;
-        write(count);
-        if (count < text.length) return later(typeMs, type);
-        later(1800 + text.length * 30, () => {
-          if (open) open.value = false;
-          later(350, after);
-        });
-      };
-      later(wasOpen ? 0 : 550, type);
     };
     const nextThought = () => later(between(THOUGHT_GAP), think);
     const think = () => {
@@ -455,16 +498,12 @@ function Avatar({
         Math.floor(Math.random() * (choices.length || lines.length))
       ];
       lastReply[kind] = text;
-      clearTimeout(bubbleTimer);
+      writer.cancel();
       if (musing) muse(false);
       pop(text, { typeMs: TYPE_MS.reply, after: nextThought });
     };
     later(FIRST_THOUGHT, think);
-    cleanups.push(() => {
-      clearTimeout(bubbleTimer);
-      const open = bubble.current?.boolean("open");
-      if (open) open.value = false;
-    });
+    cleanups.push(writer.close);
 
     // --- the visitor plays with him -----------------------------------------
     // Head clicks arrive as the .riv's `poke` (humor sets the tone); the

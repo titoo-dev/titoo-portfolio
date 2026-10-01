@@ -9,7 +9,8 @@
     "lint": "biome check",
     "format": "biome format --write",
     "cv": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/generate-cv.mjs",
-    "avatar": "node scripts/avatar-rive.mjs"
+    "avatar": "node scripts/avatar-rive.mjs",
+    "guide": "node scripts/guide-rive.mjs"
   },
   "dependencies": {
     "@rive-app/react-canvas": "^4.35.0",

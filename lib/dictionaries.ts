@@ -127,6 +127,28 @@ const fr = {
   projects: {
     label: "Projets",
     title: "Des produits en ligne, utilisés pour de vrai.",
+    // The avatar guiding the section, in a speech balloon: up to 3 lines of
+    // ~25 characters (scripts/guide-rive.mjs). `hints` are keyed by project slug.
+    guide: {
+      enter: [
+        "Coucou ! Voici mes projets.",
+        "Salut ! Viens voir\nce que j'ai construit.",
+        "Hé ! Les projets,\nc'est par ici.",
+      ],
+      back: ["Te revoilà !", "Tu as oublié\nun projet ?", "Re-coucou !"],
+      leave: [
+        "Où tu vas ?\nNe me laisse pas !",
+        "Hé, on n'a pas fini !",
+        "Déjà ? Reviens vite !",
+      ],
+      fast: ["Ne scroll pas si vite !", "Doucement, tu as raté\ndes projets !"],
+      hints: {
+        predict: "Predict : du C++,\n100 % hors ligne.",
+        wasiasup: "WASIA SUP' : mon\ncopilote IA en prod.",
+        chantastik: "Chantastik transforme\nun son en vidéo lyrique.",
+        "okani-survey": "Okani : un sondage\npour le service public.",
+      },
+    },
     caseStudy: "Étude de cas",
     previewAlt: "Aperçu de {name}",
     playVideo: "Lire la vidéo de {name}",
@@ -292,6 +314,26 @@ const en: Dictionary = {
   projects: {
     label: "Projects",
     title: "Products that are live and used for real.",
+    guide: {
+      enter: [
+        "Hi! Here are my projects.",
+        "Hey! Come see\nwhat I've built.",
+        "Psst! Projects are\nright this way.",
+      ],
+      back: ["There you are!", "Forgot a project?", "Hi again!"],
+      leave: [
+        "Where are you going?\nDon't leave me!",
+        "Hey, we're not done!",
+        "Already? Come back soon!",
+      ],
+      fast: ["Don't scroll so fast!", "Easy, you skipped\nsome projects!"],
+      hints: {
+        predict: "Predict: C++,\n100% offline.",
+        wasiasup: "WASIA SUP': my AI\ncopilot in production.",
+        chantastik: "Chantastik turns a song\ninto a lyric video.",
+        "okani-survey": "Okani: a survey\nfor a public service.",
+      },
+    },
     caseStudy: "Case study",
     previewAlt: "Preview of {name}",
     playVideo: "Play the {name} video",
