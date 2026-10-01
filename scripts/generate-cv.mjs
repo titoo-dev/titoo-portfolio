@@ -47,7 +47,7 @@ const LABELS = {
       p.startsWith("Depuis ")
         ? `${p[7].toUpperCase()}${p.slice(8)} à aujourd'hui`
         : p,
-    summary: `Développeur fullstack JavaScript / Flutter avec plus de ${years} ans d'expérience dans la conception et la livraison d'applications web et mobiles (React, Next.js, Node.js, Flutter). J'interviens à toutes les étapes d'un projet, de l'analyse des besoins à la mise en production, avec une pratique DevOps (Kubernetes, Terraform, ArgoCD) et des solutions d'IA agentic. J'accompagne les clients dans le cadrage de leurs projets pour proposer des solutions adaptées, simples et efficaces.`,
+    summary: `Développeur fullstack JavaScript / Flutter avec plus de ${years} ans d'expérience dans la conception et la livraison d'applications web et mobiles (React, Next.js, Node.js, Flutter). J'interviens à toutes les étapes d'un projet, de l'analyse des besoins à la mise en production, avec une pratique DevOps (Kubernetes, Terraform, Argo CD) et des solutions d'IA agentic. J'accompagne les clients dans le cadrage de leurs projets pour proposer des solutions adaptées, simples et efficaces.`,
   },
   en: {
     colon: ":",
@@ -64,7 +64,7 @@ const LABELS = {
     technologies: "Technologies",
     /** "Since Oct. 2025" -> "Oct. 2025 to present"; other ranges unchanged. */
     period: (p) => (p.startsWith("Since ") ? `${p.slice(6)} to present` : p),
-    summary: `Fullstack JavaScript / Flutter developer with more than ${years} years of experience designing and shipping web and mobile applications (React, Next.js, Node.js, Flutter). I work at every stage of a project, from requirements analysis to production, with hands-on DevOps practice (Kubernetes, Terraform, ArgoCD) and agentic AI solutions. I help clients scope their projects to offer tailored, simple and effective solutions.`,
+    summary: `Fullstack JavaScript / Flutter developer with more than ${years} years of experience designing and shipping web and mobile applications (React, Next.js, Node.js, Flutter). I work at every stage of a project, from requirements analysis to production, with hands-on DevOps practice (Kubernetes, Terraform, Argo CD) and agentic AI solutions. I help clients scope their projects to offer tailored, simple and effective solutions.`,
   },
 };
 
@@ -81,7 +81,9 @@ const link = (url) => `<a href="${esc(url)}">${esc(bare(url))}</a>`;
 
 function render(locale) {
   const L = LABELS[locale];
-  const { careers, PROFILE, projects, stack } = getContent(locale);
+  const { careers, PROFILE, stack, ...content } = getContent(locale);
+  // Most recent first, as recruiters read a CV (the site keeps its own order).
+  const projects = content.projects.toSorted((a, b) => b.year - a.year);
   const jobs = careers.filter((c) => !c.isEdu);
   const education = careers.filter((c) => c.isEdu);
 
@@ -89,12 +91,18 @@ function render(locale) {
   const skills = [
     {
       label: L.languages,
-      items: ["JavaScript", "TypeScript", "Dart", "Kotlin", "SQL"],
+      items: ["JavaScript", "TypeScript", "Dart", "Kotlin", "C++", "SQL"],
     },
     ...stack,
     {
       label: L.methods,
-      items: ["Scrum", "Micro-frontends", "Monorepo", L.codeReview],
+      items: [
+        "Scrum",
+        "Micro-frontends",
+        "Monorepo (Turborepo)",
+        "GitOps",
+        L.codeReview,
+      ],
     },
   ];
 

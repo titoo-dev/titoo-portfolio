@@ -36,27 +36,31 @@
       "location": "Antananarivo, Madagascar",
       "startDate": "2025-10-01",
       "endDate": null,
-      "summary": "Mise en place d'une solution SaaS tout-en-un pour l'accompagnement des professionnels, incluant plusieurs fonctionnalités métier : gestion de projet, automatisation de la création de business plans, analyse prévisionnelle et bilan, gestion de la facturation, etc.",
+      "summary": "Conception et développement de WASIA SUP' (wasiasup.com), plateforme SaaS tout-en-un d'accompagnement des entreprises de Mayotte : gestion de projet, demandes de financement, facturation, automatisation de la création de business plans, analyse prévisionnelle et bilan, le tout piloté par un copilote IA agentique.",
       "highlights": [],
       "responsibilities": [
-        "Mise en place d'une architecture micro-frontend avec Next.js Multi-Zones pour accélérer la livraison et améliorer l'expérience de développement.",
-        "Pilotage du workflow complet, du développement à la livraison, avec des méthodes déclaratives (Terraform, Kubernetes, ArgoCD, Prometheus, Grafana).",
-        "Mise en place de solutions agentic avec Convex AI et Mastra AI.",
-        "Mise en place des workflows avec Inngest."
+        "Développement d'un copilote IA agentique avec Mastra AI (mémoire et RAG sur Convex) : navigation, création en un clic, formulaires pré-remplis, outils filtrés par rôle et soumis à confirmation.",
+        "Génération du business plan prévisionnel (compte de résultat, SIG, BFR, trésorerie, bilan) depuis un questionnaire guidé, avec export PDF.",
+        "Mise en place d'une architecture micro-frontend avec Next.js Multi-Zones dans un monorepo Turborepo en couches (domaine, services, accès aux données).",
+        "Mise en place des workflows asynchrones avec Inngest.",
+        "Pilotage du workflow complet, du développement à la livraison, en GitOps (GitHub Actions, Terraform, Kubernetes, Argo CD) avec supervision Prometheus et Grafana."
       ],
       "achievements": [],
       "skills": [
         "Next.js Multi-Zones",
-        "Flutter",
-        "Kotlin",
+        "Turborepo",
+        "Mastra AI",
+        "Convex",
+        "Inngest",
+        "Prisma",
+        "PostgreSQL",
         "Terraform",
         "Kubernetes",
-        "ArgoCD",
+        "Argo CD",
         "Prometheus",
         "Grafana",
-        "Convex AI",
-        "Mastra AI",
-        "Inngest"
+        "Flutter",
+        "Kotlin"
       ]
     },
     {
@@ -66,15 +70,15 @@
       "location": "Antananarivo, Madagascar",
       "startDate": "2025-07-01",
       "endDate": "2025-10-01",
-      "summary": "Développement d'une application de gestion de licences logicielles",
+      "summary": "Développement d'une application de gestion de licences logicielles.",
       "highlights": [],
       "responsibilities": [
-        "Intégration de Cryptolens pour la gestion et la sécurisation des licences",
-        "Mise en place de la gestion des mises à jour logicielles avec Mender.io",
+        "Intégration de Cryptolens pour la gestion et la sécurisation des licences.",
+        "Mise en place de la gestion des mises à jour logicielles avec Mender.io.",
         "Intégration de la facturation et des paiements via Zoho Book.",
-        "Développement du frontend avec Next.js",
-        "Conception du backend avec Express, PostgreSQL TypeORM et GraphQL",
-        "Organisation du projet en monorepo pour faciliter la maintenance et la collaboration"
+        "Développement du frontend avec Next.js.",
+        "Conception du backend avec Express, PostgreSQL, TypeORM et GraphQL.",
+        "Organisation du projet en monorepo pour faciliter la maintenance et la collaboration."
       ],
       "achievements": [],
       "skills": [
@@ -100,16 +104,16 @@
       "summary": "Participation au développement et à la maintenance d'une application de gestion de la conformité réglementaire des produits chimiques, cosmétiques, biocides et dispositifs médicaux. Collaboration avec des équipes interfonctionnelles pour assurer la qualité, la performance et la livraison rapide des solutions.",
       "highlights": [],
       "responsibilities": [
-        "Développement et maintenance des interfaces utilisateurs en utilisant React et ExtJS.",
+        "Développement et maintenance des interfaces utilisateurs avec React et ExtJS.",
         "Intégration des fonctionnalités front-end avec les données du serveur via GraphQL.",
-        "Participation aux réunions quotidiennes (Daily meeting) et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet."
+        "Participation aux daily meetings et aux plannings de sprint pour assurer l'alignement avec les objectifs du projet."
       ],
       "achievements": [],
       "skills": ["React", "ExtJS", "GraphQL", "Scrum"]
     },
     {
       "name": "Flit Soft",
-      "position": "Stage Développeur JavaScript & Flutter",
+      "position": "Stagiaire développeur JavaScript & Flutter",
       "location_type": "À distance",
       "location": "Antananarivo, Madagascar",
       "url": "https://www.flitsoft.com/",
@@ -118,9 +122,9 @@
       "summary": "Membre d'une équipe chargée des intégrations et des outils pour développeurs. Mission principale : améliorer et simplifier l'expérience des développeurs en optimisant les outils et les processus, en assurant leur accessibilité et en répondant aux besoins spécifiques des équipes techniques.",
       "highlights": [],
       "responsibilities": [
-        "Intégration d’un paiement Mvola dans une application de partage de voiture et chauffeur de taxi.",
-        "Création d’un générateur de code en Dart pour faciliter le développement",
-        "Participation active dans des réunions régulières et la présentation de propositions à travers l'entreprise."
+        "Intégration d'un paiement Mvola dans une application de partage de voiture et de chauffeurs de taxi.",
+        "Création d'un générateur de code en Dart pour faciliter le développement.",
+        "Participation active aux réunions régulières et présentation de propositions à travers l'entreprise."
       ],
       "achievements": [],
       "skills": ["JavaScript", "Flutter", "Dart", "Mvola"]
@@ -295,12 +299,7 @@
       "keywords": []
     }
   ],
-  "references": [
-    {
-      "name": "Jane Smith",
-      "reference": "Reference…"
-    }
-  ],
+  "references": [],
   "projects": [
     {
       "name": "Predict",
@@ -382,46 +381,6 @@
         "/images/okani-survey/okani_2.webp",
         "/images/okani-survey/okani_3.webp"
       ]
-    },
-    {
-      "name": "TMvola",
-      "isActive": false,
-      "description": "Conception d'une application en ligne de commande avec Node.js pour récupérer les transactions depuis Mvola Selfcare.",
-      "highlights": [
-        "Exploitation des techniques de Reverse Engineering et utilisation d'outils comme Chrome DevTools et Charles Proxy pour analyser et déboguer les requêtes.",
-        "Automatisation des tâches via un workflow GitHub Actions.",
-        "Conversion et structuration des données CSV en JSON pour une meilleure exploitation."
-      ],
-      "url": null,
-      "image": null
-    },
-    {
-      "name": "MID",
-      "isActive": false,
-      "description": "Développement de l'interface web et mobile d'une application de gestion des ordres d'achat et de vente de devises. (Freelance, 2023 - 2024)",
-      "highlights": [
-        "Développement de l'interface mobile avec Flutter pour permettre aux clients de passer et gérer leurs ordres en toute mobilité.",
-        "Intégration des fonctionnalités de saisie, validation et suivi des ordres en fonction des profils utilisateurs définis.",
-        "Collaboration avec l'équipe backend utilisant Laravel pour l'intégration des API.",
-        "Mise en place de notifications push via Firebase pour informer les utilisateurs en temps réel des mises à jour sur leurs ordres."
-      ],
-      "url": null,
-      "github": null,
-      "image": null
-    },
-    {
-      "name": "Phototech",
-      "isActive": false,
-      "description": "Développement d'une plateforme pour le suivi des documents pour les agents de terrain. (Freelance, 2025)",
-      "highlights": [
-        "Mise en place d'un système de gestion des rôles (agent, rédacteur, admin, owner).",
-        "Création d'une version mobile qui fonctionne en offline et synchronise automatiquement les données lorsque l'agent est connecté à internet.",
-        "Mise en place du frontend et le backoffice avec Next.js et Next API.",
-        "Gestion des photos prises par l'agent de terrain en utilisant Vercel Blob."
-      ],
-      "url": null,
-      "github": null,
-      "image": null
     }
   ]
 }
