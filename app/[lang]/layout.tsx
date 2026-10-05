@@ -42,7 +42,9 @@ export function generateStaticParams() {
 // Applies the stored theme before first paint so there is no flash, and
 // whether the sun is up (`data-sky`), which the "auto" theme follows: from
 // the last sunrise/sunset <Sky> saved, else 6:00-18:00 on the visitor's clock.
-const themeScript = `history.scrollRestoration="manual";(function(){var d=document.documentElement.dataset,n=Date.now(),D=864e5,s=null,x=new Date();x.setHours(6,0,0,0);var r=x.getTime(),e=r+D/2;try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.theme=t;if(localStorage.getItem("sky")==="off")d.skyOff="";s=JSON.parse(localStorage.getItem("sky-sun")||"null")}catch(_){}if(s&&s.r&&s.s){var k=Math.round((n-(s.r+s.s)/2)/D)*D;r=s.r+k;e=s.s+k}d.sky=n>r&&n<e?"day":"night";d.skyPhase=d.sky==="day"?"day":"night"})()`;
+// The last live scene's weather and season (`sky-attrs`, under 6 hours old)
+// are restored too, so the first frame already has the right colors.
+const themeScript = `history.scrollRestoration="manual";(function(){var h=document.documentElement,d=h.dataset,n=Date.now(),D=864e5,s=null,a=null,x=new Date();x.setHours(6,0,0,0);var r=x.getTime(),e=r+D/2;try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.theme=t;if(localStorage.getItem("sky")==="off")d.skyOff="";s=JSON.parse(localStorage.getItem("sky-sun")||"null");a=JSON.parse(localStorage.getItem("sky-attrs")||"null")}catch(_){}if(s&&s.r&&s.s){var k=Math.round((n-(s.r+s.s)/2)/D)*D;r=s.r+k;e=s.s+k}if(a&&a.attrs&&n-a.at<2.16e7)for(var m in a.attrs)h.setAttribute(m,a.attrs[m]);d.sky=n>r&&n<e?"day":"night";if(!a||d.skyPhase==="day"!==(d.sky==="day"))d.skyPhase=d.sky})()`;
 
 type Props = { params: Promise<{ lang: string }> };
 

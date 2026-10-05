@@ -15,7 +15,7 @@ export function Header({ lang }: { lang: Locale }) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-line border-b">
+    <header className="relative z-50">
       <div className="mx-auto flex h-16 max-w-[1080px] items-center justify-between gap-3 px-6">
         <Link
           href={`/${lang}`}

@@ -95,10 +95,20 @@ const place = (d, wx, wy, scale, thumb) =>
   );
 
 // The neck runs down from the jaw to behind the frame.
-const lean = group("Lean", NECK, [line("M54 73V104M66 73V104"), buildHead()], {
-  at: NECK_AT,
-  rotation: TILT,
-});
+const lean = group(
+  "Lean",
+  NECK,
+  [
+    // Paper inside the neck, like the sleeve, so the sky stays behind him.
+    line("M54 73H66V104H54Z", { fill: "paper", w: 0 }),
+    line("M54 73V104M66 73V104"),
+    buildHead(),
+  ],
+  {
+    at: NECK_AT,
+    rotation: TILT,
+  },
+);
 
 // The waving arm comes out from behind the frame below his chin and rises
 // beside his face: a sleeve drawn as an ink tube with a paper core, no elbow.

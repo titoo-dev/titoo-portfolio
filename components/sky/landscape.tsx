@@ -185,7 +185,7 @@ export function Landscape({ hoot }: { hoot: string }) {
     <div aria-hidden="true" className="landscape">
       <svg
         aria-hidden="true"
-        viewBox="0 0 1440 280"
+        viewBox="0 20 1440 260"
         preserveAspectRatio="xMidYMax slice"
         className="block size-full"
       >

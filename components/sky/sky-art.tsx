@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { type CSSProperties, useId } from "react";
 import type { Condition, Scene } from "@/lib/sky";
 
 /**
@@ -138,6 +138,8 @@ export function Moon({
   opacity: number;
 }) {
   const r = 40;
+  // Unique ids: two moons share the screen while the sky turns.
+  const uid = `moon${useId().replace(/[^a-zA-Z0-9]/g, "")}`;
   const illumination = (1 - Math.cos(age * 2 * Math.PI)) / 2;
   return (
     <div className="sky-body sky-moon" style={{ ...arc(progress), opacity }}>
@@ -151,13 +153,13 @@ export function Moon({
         className="relative size-full"
       >
         <defs>
-          <radialGradient id="sky-moon-face" cx="0.42" cy="0.38" r="0.7">
+          <radialGradient id={`${uid}-face`} cx="0.42" cy="0.38" r="0.7">
             <stop offset="0" stopColor="#fbfaf3" />
             <stop offset="0.7" stopColor="#e4e1d6" />
             <stop offset="1" stopColor="#c9c5b8" />
           </radialGradient>
           <filter
-            id="sky-moon-soft"
+            id={`${uid}-soft`}
             x="-20%"
             y="-20%"
             width="140%"
@@ -166,7 +168,7 @@ export function Moon({
             <feGaussianBlur stdDeviation="1.4" />
           </filter>
           <filter
-            id="sky-moon-seas"
+            id={`${uid}-seas`}
             x="-20%"
             y="-20%"
             width="140%"
@@ -174,7 +176,7 @@ export function Moon({
           >
             <feGaussianBlur stdDeviation="2.2" />
           </filter>
-          <filter id="sky-moon-grain">
+          <filter id={`${uid}-grain`}>
             <feTurbulence
               type="fractalNoise"
               baseFrequency="0.35"
@@ -185,25 +187,25 @@ export function Moon({
             <feComposite in2="SourceGraphic" operator="in" />
           </filter>
           {/* A blurred lit shape softens the terminator, like the real one. */}
-          <mask id="sky-moon-lit">
+          <mask id={`${uid}-lit`}>
             <path
               d={moonPath(age, r)}
               fill="#fff"
-              filter="url(#sky-moon-soft)"
+              filter={`url(#${uid}-soft)`}
             />
           </mask>
         </defs>
         {/* The south sees the moon upside down. */}
         <g transform={southern ? "rotate(180)" : undefined}>
           <circle r={r} fill="var(--moon-dark)" />
-          <g mask="url(#sky-moon-lit)">
-            <circle r={r} fill="url(#sky-moon-face)" />
-            <g fill="#7d7f86" opacity="0.55" filter="url(#sky-moon-seas)">
+          <g mask={`url(#${uid}-lit)`}>
+            <circle r={r} fill={`url(#${uid}-face)`} />
+            <g fill="#7d7f86" opacity="0.55" filter={`url(#${uid}-seas)`}>
               {MARIA.map(([cx, cy, rx, ry]) => (
                 <ellipse key={`${cx}${cy}`} cx={cx} cy={cy} rx={rx} ry={ry} />
               ))}
             </g>
-            <circle r={r} fill="#fff" filter="url(#sky-moon-grain)" />
+            <circle r={r} fill="#fff" filter={`url(#${uid}-grain)`} />
             <circle cx="-5" cy="30" r="1.6" fill="#fff" opacity="0.8" />
           </g>
         </g>

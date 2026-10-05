@@ -27,6 +27,9 @@ const hairD = HAIR_PTS.map(([x, y], i) => {
   return `A${r} ${r} 0 0 1 ${x} ${y}`;
 }).join("");
 
+/** Jaw line, from the left temple down to the chin and up to the right. */
+const FACE = "M44.5 47C44.5 62 50 73.5 60 75.5C70 73.5 75.5 62 75.5 47";
+
 export const GRIN =
   "M56 66.6Q60 67 64 66.4Q63.2 70.6 60 70.7Q56.8 70.6 56 66.6Z";
 export const HAPPY_EYES =
@@ -182,15 +185,26 @@ export function buildHead() {
                     "HeadLook",
                     [60, 76],
                     [
+                      // Paper behind the face and ears, so the head stays
+                      // solid over whatever is behind the canvas (the sky).
+                      line(
+                        `${FACE}C72.5 40.5 67 38.5 60 38.5C53 38.5 47.5 40.5 44.5 47Z`,
+                        {
+                          fill: "paper",
+                          w: 0,
+                        },
+                      ),
+                      line(
+                        "M44.2 51C41 50 39.6 52 39.9 55.2C40.2 58.4 42 60 44.6 59.4ZM75.8 51C79 50 80.4 52 80.1 55.2C79.8 58.4 78 60 75.4 59.4Z",
+                        { fill: "paper", w: 0 },
+                      ),
                       line(
                         "M44.2 51C41 50 39.6 52 39.9 55.2C40.2 58.4 42 60 44.6 59.4",
                       ),
                       line(
                         "M75.8 51C79 50 80.4 52 80.1 55.2C79.8 58.4 78 60 75.4 59.4",
                       ),
-                      line(
-                        "M44.5 47C44.5 62 50 73.5 60 75.5C70 73.5 75.5 62 75.5 47",
-                      ),
+                      line(FACE),
                       line(
                         "M46.5 60C48 67.5 53 72 60 72.8C67 72 72 67.5 73.5 60",
                         {
@@ -208,6 +222,10 @@ export function buildHead() {
                         "Hair",
                         [60, 38],
                         [
+                          line(
+                            `${hairD}L75.5 47C72.5 40.5 67 38.5 60 38.5C53 38.5 47.5 40.5 44.5 47Z`,
+                            { fill: "paper", w: 0 },
+                          ),
                           line(hairD),
                           line(
                             "M44.5 47C47.5 40.5 53 38.5 60 38.5C67 38.5 72.5 40.5 75.5 47",

@@ -78,7 +78,8 @@ export function watchTheme(vmi: ViewModelInstance) {
   const observer = new MutationObserver(() => syncTheme(vmi));
   observer.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ["data-theme", "class"],
+    // data-sky: the "auto" theme turns dark when the sun sets.
+    attributeFilter: ["data-theme", "data-sky", "class"],
   });
   const scheme = matchMedia("(prefers-color-scheme: dark)");
   const onScheme = () => syncTheme(vmi);
@@ -89,15 +90,39 @@ export function watchTheme(vmi: ViewModelInstance) {
   };
 }
 
-function syncTheme(vmi: ViewModelInstance) {
-  const style = getComputedStyle(document.documentElement);
-  for (const [prop, cssVar] of THEME) {
-    const hex = style.getPropertyValue(cssVar).trim().replace("#", "");
+/** `#rgb`, `#rrggbb` or `rgb(r g b / a)` as [r, g, b, a]. */
+function parseColor(value: string): number[] | null {
+  const v = value.trim();
+  if (v.startsWith("#")) {
+    const hex = v.slice(1);
     const full =
       hex.length === 3 ? [...hex].map((c) => c + c).join("") : hex.slice(0, 6);
     const rgb = Number.parseInt(full, 16);
-    if (Number.isNaN(rgb)) continue;
-    vmi.color(prop)?.argb(255, (rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255);
+    if (Number.isNaN(rgb)) return null;
+    return [(rgb >> 16) & 255, (rgb >> 8) & 255, rgb & 255, 1];
+  }
+  const parts = v.match(/[\d.]+%?/g);
+  if (!v.startsWith("rgb") || !parts || parts.length < 3) return null;
+  const [r, g, b] = parts.map(Number.parseFloat);
+  const a = parts[3]?.endsWith("%")
+    ? Number.parseFloat(parts[3]) / 100
+    : Number.parseFloat(parts[3] ?? "1");
+  return [r, g, b, a];
+}
+
+function syncTheme(vmi: ViewModelInstance) {
+  const style = getComputedStyle(document.documentElement);
+  const paper = parseColor(style.getPropertyValue("--bg")) ?? [
+    255, 255, 255, 1,
+  ];
+  for (const [prop, cssVar] of THEME) {
+    const color = parseColor(style.getPropertyValue(cssVar));
+    if (!color) continue;
+    // Translucent tokens (--muted, --line-strong) are flattened onto paper.
+    const [r, g, b] = color.map((c, i) =>
+      i < 3 ? Math.round(c * color[3] + paper[i] * (1 - color[3])) : c,
+    );
+    vmi.color(prop)?.argb(255, r, g, b);
   }
 }
 

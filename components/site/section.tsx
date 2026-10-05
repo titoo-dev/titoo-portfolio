@@ -35,10 +35,7 @@ export function Section({
   className,
 }: SectionProps) {
   return (
-    <section
-      id={id}
-      className={cn("relative scroll-mt-16 border-t border-line", className)}
-    >
+    <section id={id} className={cn("relative border-t border-line", className)}>
       <Cross className="-top-[7px] -left-[7px]" />
       <Cross className="-top-[7px] -right-[7px]" />
       {(label || title) && (

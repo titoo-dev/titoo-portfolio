@@ -63,7 +63,90 @@ const BODY_OPACITY: Record<Condition, number> = {
 const STORAGE_KEY = "sky";
 /** Last known sunrise/sunset, read by the pre-paint script in the layout. */
 const SUN_KEY = "sky-sun";
+/** Last live scene attributes, also read by the pre-paint script. */
+const ATTRS_KEY = "sky-attrs";
+/** Last weather, so a reload starts on the right sky instead of a guess. */
+const WEATHER_KEY = "sky-weather";
+const WEATHER_FRESH = 3 * 3_600_000;
 const WEATHER_REFRESH = 30 * 60_000;
+/** Without a cached weather, how long to wait for it before drawing. */
+const FIRST_WAIT = 2500;
+/** Length of the sky's turn between two scenes (see .sky[data-turn]). */
+const TURN_MS = 1800;
+
+function store(key: string, value: unknown) {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Storage unavailable: the next visit starts from a guess.
+  }
+}
+
+function read<T>(key: string): T | null {
+  try {
+    return JSON.parse(localStorage.getItem(key) ?? "null") as T | null;
+  } catch {
+    return null;
+  }
+}
+
+/** The scene as data attributes: on <html> for the page and the landscape,
+ *  and on each sky layer so one turning away keeps its own colors. */
+function sceneAttrs(scene: Scene) {
+  return {
+    "data-sky-phase": scene.phase,
+    "data-sky-mood": moodOf(scene),
+    "data-sky-season": scene.season,
+    "data-sky-fair": String(fairWeather(scene)),
+    "data-sky-tropical": String(scene.tropical),
+    "data-sky-snow": String(
+      scene.condition === "snow" ||
+        (scene.season === "winter" && scene.temp !== null && scene.temp < 2),
+    ),
+  };
+}
+
+/** What makes two skies different enough to turn from one to the other. */
+const sceneKey = (s: Scene) =>
+  `${s.phase}|${s.condition}|${s.season}|${s.tropical}`;
+
+type Turn = { id: number; scene: Scene; turn: "first" | "in" | "out" };
+
+/** The sky layers on screen: one, or two while the sky turns. */
+function useTurns(scene: Scene | null) {
+  const [layers, setLayers] = useState<Turn[]>([]);
+
+  useEffect(() => {
+    if (!scene) return;
+    setLayers((prev) => {
+      const current = prev.at(-1);
+      if (!current) return [{ id: 0, scene, turn: "first" }];
+      if (sceneKey(current.scene) === sceneKey(scene)) {
+        return [...prev.slice(0, -1), { ...current, scene }];
+      }
+      const id = current.id + 1;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        return [{ id, scene, turn: "first" }];
+      }
+      return [
+        { ...current, turn: "out" },
+        { id, scene, turn: "in" },
+      ];
+    });
+  }, [scene]);
+
+  const outId = layers.find((l) => l.turn === "out")?.id;
+  useEffect(() => {
+    if (outId === undefined) return;
+    const timer = setTimeout(
+      () => setLayers((prev) => prev.filter((l) => l.id !== outId)),
+      TURN_MS,
+    );
+    return () => clearTimeout(timer);
+  }, [outId]);
+
+  return layers;
+}
 
 /** Dark when the visitor picked dark, or picked "auto" and the sun is down. */
 function useDarkTheme() {
@@ -95,23 +178,33 @@ function useDarkTheme() {
 
 /** Mirrors the scene on <html>: drives the automatic theme and the colors of
  *  the sky and the landscape. */
-function useSceneAttributes(scene: Scene | null, off: boolean) {
+function useSceneAttributes(scene: Scene | null, off: boolean, live: boolean) {
+  const switching = useRef<ReturnType<typeof setTimeout>>(undefined);
+
   useEffect(() => {
     if (!scene) return;
-    const d = document.documentElement.dataset;
-    d.sky = sunUp(scene) ? "day" : "night";
-    d.skyPhase = scene.phase;
-    d.skyMood = moodOf(scene);
-    d.skySeason = scene.season;
-    d.skyFair = String(fairWeather(scene));
-    d.skyTropical = String(scene.tropical);
-    d.skySnow = String(
-      scene.condition === "snow" ||
-        (scene.season === "winter" && scene.temp !== null && scene.temp < 2),
-    );
-    if (off) d.skyOff = "";
-    else delete d.skyOff;
-  }, [scene, off]);
+    const root = document.documentElement;
+    const attrs = sceneAttrs(scene);
+    for (const [name, value] of Object.entries(attrs)) {
+      root.setAttribute(name, value);
+    }
+    if (live) store(ATTRS_KEY, { attrs, at: Date.now() });
+
+    // Day <-> night flips the automatic theme: fade the page's colors.
+    const sky = sunUp(scene) ? "day" : "night";
+    if (root.dataset.sky !== sky) {
+      root.dataset.skySwitching = "";
+      clearTimeout(switching.current);
+      switching.current = setTimeout(
+        () => delete root.dataset.skySwitching,
+        1500,
+      );
+    }
+    root.dataset.sky = sky;
+
+    if (off) root.dataset.skyOff = "";
+    else delete root.dataset.skyOff;
+  }, [scene, off, live]);
 }
 
 /**
@@ -127,6 +220,9 @@ export function Sky({ labels }: { labels: SkyLabels }) {
   const [preset, setPreset] = useState<Preset>("live");
   const [off, setOff] = useState(false);
   const [small, setSmall] = useState(false);
+  // Nothing is drawn until the weather is known (cached or fetched), so a
+  // reload never shows a guessed sky that then changes.
+  const [ready, setReady] = useState(false);
   const dark = useDarkTheme();
 
   useEffect(() => {
@@ -137,6 +233,12 @@ export function Sky({ labels }: { labels: SkyLabels }) {
     } catch {
       // Storage unavailable: keep the sky on.
     }
+    const cached = read<{ w: Weather; at: number }>(WEATHER_KEY);
+    if (cached?.w && Date.now() - cached.at < WEATHER_FRESH) {
+      setWeather(cached.w);
+      setReady(true);
+    }
+    const wait = setTimeout(() => setReady(true), FIRST_WAIT);
     const tick = setInterval(() => setNow(Date.now()), 60_000);
 
     let alive = true;
@@ -146,34 +248,31 @@ export function Sky({ labels }: { labels: SkyLabels }) {
         .then((w) => {
           if (!alive || !w) return;
           setWeather(w);
-          try {
-            localStorage.setItem(
-              SUN_KEY,
-              JSON.stringify({ r: w.sunrise, s: w.sunset }),
-            );
-          } catch {
-            // Storage unavailable: the next visit guesses from the clock.
-          }
+          store(WEATHER_KEY, { w, at: Date.now() });
+          store(SUN_KEY, { r: w.sunrise, s: w.sunset });
         })
-        .catch(() => {});
+        .catch(() => {})
+        .finally(() => alive && setReady(true));
     load();
     const refresh = setInterval(load, WEATHER_REFRESH);
     return () => {
       alive = false;
+      clearTimeout(wait);
       clearInterval(tick);
       clearInterval(refresh);
     };
   }, []);
 
   const live = useMemo(
-    () => (now === null ? null : sceneOf(weather, now)),
-    [weather, now],
+    () => (now === null || !ready ? null : sceneOf(weather, now)),
+    [weather, now, ready],
   );
   const scene = useMemo(
     () => live && applyPreset(live, preset),
     [live, preset],
   );
-  useSceneAttributes(scene, off);
+  useSceneAttributes(scene, off, preset === "live");
+  const layers = useTurns(scene);
 
   // Layers drift slightly against the pointer for a sense of depth (--px and
   // --py on <html>, read by .sky-layer).
@@ -201,7 +300,8 @@ export function Sky({ labels }: { labels: SkyLabels }) {
     };
   }, [off]);
 
-  if (!live || !scene) return null;
+  if (!live || !scene)
+    return off ? null : <div aria-hidden className="sky-backdrop" />;
 
   function toggle() {
     const next = !off;
@@ -216,7 +316,21 @@ export function Sky({ labels }: { labels: SkyLabels }) {
 
   return (
     <>
-      {!off && <SkyLayers scene={scene} dark={dark} small={small} />}
+      {!off && (
+        <>
+          <div aria-hidden className="sky-backdrop" />
+          <SkyFilters />
+          {layers.map((l) => (
+            <SkyLayers
+              key={l.id}
+              scene={l.scene}
+              turn={l.turn}
+              dark={dark}
+              small={small}
+            />
+          ))}
+        </>
+      )}
       <SkyChip
         live={live}
         scene={scene}
@@ -234,10 +348,12 @@ const depth = (px: number) => ({ "--depth": `${px}px` }) as React.CSSProperties;
 
 function SkyLayers({
   scene,
+  turn,
   dark,
   small,
 }: {
   scene: Scene;
+  turn: Turn["turn"];
   dark: boolean;
   small: boolean;
 }) {
@@ -271,8 +387,7 @@ function SkyLayers({
       : 0;
 
   return (
-    <div aria-hidden className="sky">
-      <SkyFilters />
+    <div aria-hidden className="sky" data-turn={turn} {...sceneAttrs(scene)}>
       {starOpacity > 0 && (
         <div className="sky-layer" style={depth(6)}>
           <Stars
