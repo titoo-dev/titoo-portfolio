@@ -45,7 +45,7 @@ function Hero({ t, content }: Ctx) {
   return (
     <section className="grid md:grid-cols-[1.15fr_1fr]">
       <div className="flex flex-col justify-center px-6 py-16 md:px-10 md:py-24">
-        <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line px-3 py-1 font-mono text-muted text-xs">
+        <p className="inline-flex w-fit items-center gap-2 rounded-full border border-line bg-bg/70 px-3 py-1 font-mono text-muted text-xs backdrop-blur-sm">
           <StatusDot />
           {t.status.remote}
         </p>
@@ -68,7 +68,7 @@ function Hero({ t, content }: Ctx) {
             href={`#${t.ids.contact}`}
             data-avatar-mood="happy"
             data-avatar-fire="wave"
-            className="inline-flex h-11 items-center rounded-full border border-line px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
+            className="inline-flex h-11 items-center rounded-full border border-line bg-bg/60 px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
           >
             {t.hero.contact}
           </Link>
@@ -318,7 +318,7 @@ function CvButton({ href, label }: { href: string; label: string }) {
       download
       data-avatar-mood="surprised"
       data-avatar-fire="celebrate"
-      className="group inline-flex h-11 items-center gap-2 rounded-full border border-line px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
+      className="group inline-flex h-11 items-center gap-2 rounded-full border border-line bg-bg/60 px-5 font-medium text-sm transition-colors hover:border-line-strong hover:bg-subtle"
     >
       <DownloadIcon
         width={15}

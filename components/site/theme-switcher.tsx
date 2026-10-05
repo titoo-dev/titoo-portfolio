@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
-import { MonitorIcon, MoonIcon, SunIcon } from "./icons";
+import { DayNightIcon, MoonIcon, SunIcon } from "./icons";
 
 type Theme = "system" | "light" | "dark";
 
 const OPTIONS = [
-  { value: "system", Icon: MonitorIcon },
+  { value: "system", Icon: DayNightIcon },
   { value: "light", Icon: SunIcon },
   { value: "dark", Icon: MoonIcon },
 ] as const;

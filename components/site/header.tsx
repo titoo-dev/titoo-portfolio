@@ -15,7 +15,7 @@ export function Header({ lang }: { lang: Locale }) {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-line border-b bg-bg/80 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-line border-b">
       <div className="mx-auto flex h-16 max-w-[1080px] items-center justify-between gap-3 px-6">
         <Link
           href={`/${lang}`}
@@ -33,7 +33,7 @@ export function Header({ lang }: { lang: Locale }) {
             <Link
               key={item.id}
               href={`/${lang}#${item.id}`}
-              className="hidden rounded-md px-3 py-1.5 text-muted transition-colors hover:bg-subtle hover:text-fg md:block"
+              className="hidden rounded-md px-3 py-1.5 text-fg/80 transition-colors hover:bg-subtle hover:text-fg md:block"
             >
               {item.label}
             </Link>
@@ -48,7 +48,7 @@ export function Header({ lang }: { lang: Locale }) {
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"
-            className="rounded-md p-2 text-muted transition-colors hover:bg-subtle hover:text-fg"
+            className="rounded-md p-2 text-fg/80 transition-colors hover:bg-subtle hover:text-fg"
           >
             <GithubIcon />
           </a>

@@ -26,7 +26,7 @@ export function LocaleSwitcher({ lang, label, names }: Props) {
   }
 
   return (
-    <fieldset className="flex items-center gap-0.5 rounded-full border border-line p-0.5 font-mono text-[11px] uppercase">
+    <fieldset className="flex items-center gap-0.5 rounded-full border border-line bg-bg/60 p-0.5 font-mono text-[11px] uppercase">
       <legend className="sr-only">{label}</legend>
       {locales.map((locale) => (
         <Link

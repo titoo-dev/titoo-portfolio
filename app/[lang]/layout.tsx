@@ -4,6 +4,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
+import { Landscape } from "@/components/sky/landscape";
+import { Sky } from "@/components/sky/sky";
 import { getDictionary } from "@/lib/dictionaries";
 import {
   isLocale,
@@ -37,8 +39,10 @@ export function generateStaticParams() {
   return locales.map((lang) => ({ lang }));
 }
 
-// Applies the stored theme before first paint so there is no flash.
-const themeScript = `history.scrollRestoration="manual";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.dataset.theme=t}catch(e){}`;
+// Applies the stored theme before first paint so there is no flash, and
+// whether the sun is up (`data-sky`), which the "auto" theme follows: from
+// the last sunrise/sunset <Sky> saved, else 6:00-18:00 on the visitor's clock.
+const themeScript = `history.scrollRestoration="manual";(function(){var d=document.documentElement.dataset,n=Date.now(),D=864e5,s=null,x=new Date();x.setHours(6,0,0,0);var r=x.getTime(),e=r+D/2;try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.theme=t;if(localStorage.getItem("sky")==="off")d.skyOff="";s=JSON.parse(localStorage.getItem("sky-sun")||"null")}catch(_){}if(s&&s.r&&s.s){var k=Math.round((n-(s.r+s.s)/2)/D)*D;r=s.r+k;e=s.s+k}d.sky=n>r&&n<e?"day":"night";d.skyPhase=d.sky==="day"?"day":"night"})()`;
 
 type Props = { params: Promise<{ lang: string }> };
 
@@ -192,9 +196,11 @@ export default async function RootLayout({
       <body
         className={`${geist.variable} ${geistMono.variable} antialiased overflow-x-hidden`}
       >
+        <Sky labels={getDictionary(lang).sky} />
         <Header lang={lang} />
         {children}
         <Footer lang={lang} />
+        <Landscape hoot={getDictionary(lang).sky.hoot} />
         <Analytics />
       </body>
     </html>

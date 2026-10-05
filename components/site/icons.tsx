@@ -79,11 +79,13 @@ export function MoonIcon(props: IconProps) {
   );
 }
 
-export function MonitorIcon(props: IconProps) {
+/** Half sun, half moon: the theme that follows the time of day. */
+export function DayNightIcon(props: IconProps) {
   return (
     <svg aria-hidden="true" {...base} {...props}>
-      <rect x="3" y="4" width="18" height="12" rx="2" />
-      <path d="M8 20h8M12 16v4" />
+      <path d="M12 7a5 5 0 0 0 0 10Z" fill="currentColor" />
+      <circle cx="12" cy="12" r="5" />
+      <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M4.9 19.1l1.4-1.4M2 12h2" />
     </svg>
   );
 }
