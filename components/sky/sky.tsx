@@ -71,8 +71,8 @@ const WEATHER_FRESH = 3 * 3_600_000;
 const WEATHER_REFRESH = 30 * 60_000;
 /** Without a cached weather, how long to wait for it before drawing. */
 const FIRST_WAIT = 2500;
-/** Length of the sky's turn between two scenes (see .sky[data-turn]). */
-const TURN_MS = 1800;
+/** Length of the crossfade between two skies (see .sky[data-fade]). */
+const FADE_MS = 2000;
 
 function store(key: string, value: unknown) {
   try {
@@ -91,7 +91,7 @@ function read<T>(key: string): T | null {
 }
 
 /** The scene as data attributes: on <html> for the page and the landscape,
- *  and on each sky layer so one turning away keeps its own colors. */
+ *  and on each sky layer so one fading out keeps its own colors. */
 function sceneAttrs(scene: Scene) {
   return {
     "data-sky-phase": scene.phase,
@@ -106,41 +106,41 @@ function sceneAttrs(scene: Scene) {
   };
 }
 
-/** What makes two skies different enough to turn from one to the other. */
+/** What makes two skies different enough to fade from one to the other. */
 const sceneKey = (s: Scene) =>
   `${s.phase}|${s.condition}|${s.season}|${s.tropical}`;
 
-type Turn = { id: number; scene: Scene; turn: "first" | "in" | "out" };
+type SkyFade = { id: number; scene: Scene; fade: "first" | "in" | "out" };
 
-/** The sky layers on screen: one, or two while the sky turns. */
-function useTurns(scene: Scene | null) {
-  const [layers, setLayers] = useState<Turn[]>([]);
+/** The sky layers on screen: one, or two while they crossfade. */
+function useSkyFades(scene: Scene | null) {
+  const [layers, setLayers] = useState<SkyFade[]>([]);
 
   useEffect(() => {
     if (!scene) return;
     setLayers((prev) => {
       const current = prev.at(-1);
-      if (!current) return [{ id: 0, scene, turn: "first" }];
+      if (!current) return [{ id: 0, scene, fade: "first" }];
       if (sceneKey(current.scene) === sceneKey(scene)) {
         return [...prev.slice(0, -1), { ...current, scene }];
       }
       const id = current.id + 1;
       if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        return [{ id, scene, turn: "first" }];
+        return [{ id, scene, fade: "first" }];
       }
       return [
-        { ...current, turn: "out" },
-        { id, scene, turn: "in" },
+        { ...current, fade: "out" },
+        { id, scene, fade: "in" },
       ];
     });
   }, [scene]);
 
-  const outId = layers.find((l) => l.turn === "out")?.id;
+  const outId = layers.find((l) => l.fade === "out")?.id;
   useEffect(() => {
     if (outId === undefined) return;
     const timer = setTimeout(
       () => setLayers((prev) => prev.filter((l) => l.id !== outId)),
-      TURN_MS,
+      FADE_MS,
     );
     return () => clearTimeout(timer);
   }, [outId]);
@@ -197,7 +197,7 @@ function useSceneAttributes(scene: Scene | null, off: boolean, live: boolean) {
       clearTimeout(switching.current);
       switching.current = setTimeout(
         () => delete root.dataset.skySwitching,
-        1500,
+        FADE_MS + 100,
       );
     }
     root.dataset.sky = sky;
@@ -272,7 +272,7 @@ export function Sky({ labels }: { labels: SkyLabels }) {
     [live, preset],
   );
   useSceneAttributes(scene, off, preset === "live");
-  const layers = useTurns(scene);
+  const layers = useSkyFades(scene);
 
   // Layers drift slightly against the pointer for a sense of depth (--px and
   // --py on <html>, read by .sky-layer).
@@ -324,7 +324,7 @@ export function Sky({ labels }: { labels: SkyLabels }) {
             <SkyLayers
               key={l.id}
               scene={l.scene}
-              turn={l.turn}
+              fade={l.fade}
               dark={dark}
               small={small}
             />
@@ -348,12 +348,12 @@ const depth = (px: number) => ({ "--depth": `${px}px` }) as React.CSSProperties;
 
 function SkyLayers({
   scene,
-  turn,
+  fade,
   dark,
   small,
 }: {
   scene: Scene;
-  turn: Turn["turn"];
+  fade: SkyFade["fade"];
   dark: boolean;
   small: boolean;
 }) {
@@ -387,7 +387,7 @@ function SkyLayers({
       : 0;
 
   return (
-    <div aria-hidden className="sky" data-turn={turn} {...sceneAttrs(scene)}>
+    <div aria-hidden className="sky" data-fade={fade} {...sceneAttrs(scene)}>
       {starOpacity > 0 && (
         <div className="sky-layer" style={depth(6)}>
           <Stars

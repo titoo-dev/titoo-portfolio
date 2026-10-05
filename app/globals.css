@@ -481,13 +481,13 @@ body {
 
 :root {
   transition:
-    background-color 1.4s ease,
-    --sky-top 1.8s ease,
-    --sky-mid 1.8s ease,
-    --sky-low 1.8s ease;
+    background-color 2s ease-in-out,
+    --sky-top 2s ease-in-out,
+    --sky-mid 2s ease-in-out,
+    --sky-low 2s ease-in-out;
 }
 
-/* Each .sky layer carries its own scene attributes, so a sky turning away
+/* Each .sky layer carries its own scene attributes, so a sky fading out
    keeps its colors while the next one (and <html>) already has new ones. */
 :root,
 .sky {
@@ -695,35 +695,25 @@ body {
   pointer-events: none;
   contain: strict;
 }
-.sky[data-turn="first"] {
+.sky[data-fade="first"] {
   animation: sky-in 1.2s ease-out;
 }
 
-/* Changing scene turns the sky like the Earth does, around a pivot far
-   below the horizon: the old sky sets to the right, the next one rises
-   from the left, the way the sun crosses the screen. */
-.sky:is([data-turn="in"], [data-turn="out"]) {
-  transform-origin: 50% 260%;
-  animation: sky-turn-in 1.8s cubic-bezier(0.45, 0, 0.2, 1) both;
+/* Changing scene crossfades the two skies, in step with the sky color
+   (--sky-* on :root) and the page colors below: 2s each. */
+.sky[data-fade="in"] {
+  animation: sky-fade-in 2s ease-in-out both;
 }
-.sky[data-turn="out"] {
-  animation-name: sky-turn-out;
+.sky[data-fade="out"] {
+  animation: sky-fade-out 2s ease-in-out both;
 }
-@keyframes sky-turn-in {
+@keyframes sky-fade-in {
   from {
-    rotate: -24deg;
     opacity: 0;
   }
-  35% {
-    opacity: 1;
-  }
 }
-@keyframes sky-turn-out {
-  65% {
-    opacity: 1;
-  }
+@keyframes sky-fade-out {
   to {
-    rotate: 24deg;
     opacity: 0;
   }
 }
@@ -731,11 +721,11 @@ body {
 /* While the automatic theme flips, the page's colors fade too. */
 :root[data-sky-switching] :where(body *):not(.sky, .sky *) {
   transition:
-    color 1.4s ease,
-    background-color 1.4s ease,
-    border-color 1.4s ease,
-    fill 1.4s ease,
-    stroke 1.4s ease;
+    color 2s ease-in-out,
+    background-color 2s ease-in-out,
+    border-color 2s ease-in-out,
+    fill 2s ease-in-out,
+    stroke 2s ease-in-out;
 }
 
 /* Parallax: the pointer sets --px/--py (-0.5..0.5) on <html>. */
