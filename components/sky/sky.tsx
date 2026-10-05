@@ -72,7 +72,7 @@ const WEATHER_REFRESH = 30 * 60_000;
 /** Without a cached weather, how long to wait for it before drawing. */
 const FIRST_WAIT = 2500;
 /** Length of the crossfade between two skies (see .sky[data-fade]). */
-const FADE_MS = 2000;
+const FADE_MS = 1200;
 
 function store(key: string, value: unknown) {
   try {
@@ -179,31 +179,37 @@ function useDarkTheme() {
 /** Mirrors the scene on <html>: drives the automatic theme and the colors of
  *  the sky and the landscape. */
 function useSceneAttributes(scene: Scene | null, off: boolean, live: boolean) {
-  const switching = useRef<ReturnType<typeof setTimeout>>(undefined);
-
   useEffect(() => {
     if (!scene) return;
     const root = document.documentElement;
     const attrs = sceneAttrs(scene);
-    for (const [name, value] of Object.entries(attrs)) {
-      root.setAttribute(name, value);
-    }
+    const sky = sunUp(scene) ? "day" : "night";
     if (live) store(ATTRS_KEY, { attrs, at: Date.now() });
 
-    // Day <-> night flips the automatic theme: fade the page's colors.
-    const sky = sunUp(scene) ? "day" : "night";
-    if (root.dataset.sky !== sky) {
-      root.dataset.skySwitching = "";
-      clearTimeout(switching.current);
-      switching.current = setTimeout(
-        () => delete root.dataset.skySwitching,
-        FADE_MS + 100,
-      );
-    }
-    root.dataset.sky = sky;
+    const apply = () => {
+      for (const [name, value] of Object.entries(attrs)) {
+        root.setAttribute(name, value);
+      }
+      root.dataset.sky = sky;
+      if (off) root.dataset.skyOff = "";
+      else delete root.dataset.skyOff;
+    };
 
-    if (off) root.dataset.skyOff = "";
-    else delete root.dataset.skyOff;
+    // Day <-> night flips the automatic theme. Rather than transitioning
+    // every color on the page, crossfade two snapshots of it (one GPU fade).
+    const flips =
+      root.dataset.sky !== undefined &&
+      root.dataset.sky !== sky &&
+      !root.dataset.theme;
+    if (
+      flips &&
+      document.startViewTransition &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      document.startViewTransition(apply);
+    } else {
+      apply();
+    }
   }, [scene, off, live]);
 }
 

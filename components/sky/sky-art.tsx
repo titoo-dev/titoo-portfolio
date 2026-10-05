@@ -43,7 +43,7 @@ function CloudFilter({
       <feTurbulence
         type="fractalNoise"
         baseFrequency={frequency}
-        numOctaves="5"
+        numOctaves="3"
         seed={seed}
       />
       <feDisplacementMap in="SourceGraphic" scale={scale} />
@@ -74,7 +74,7 @@ export function SkyFilters() {
         <feTurbulence
           type="fractalNoise"
           baseFrequency="0.008 0.02"
-          numOctaves="4"
+          numOctaves="3"
           seed="2"
         />
         <feDisplacementMap in="SourceGraphic" scale="120" />

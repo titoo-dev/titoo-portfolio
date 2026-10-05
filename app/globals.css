@@ -459,33 +459,10 @@ body {
    Sky: the animated background and the landscape (components/sky). <Sky>
    mirrors the scene on <html> (data-sky-phase, -mood, -season, -snow...);
    every color below is a token keyed on those attributes, written with
-   light-dark() so it also follows the theme. The gradient stops are
-   registered properties so a change of time or weather fades in.
+   light-dark() so it also follows the theme. Nothing here transitions
+   colors: a change of scene is an opacity crossfade of whole layers (cheap,
+   on the compositor), and a theme flip is a view transition.
 --------------------------------------------------------------------------- */
-
-@property --sky-top {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: transparent;
-}
-@property --sky-mid {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: transparent;
-}
-@property --sky-low {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: transparent;
-}
-
-:root {
-  transition:
-    background-color 2s ease-in-out,
-    --sky-top 2s ease-in-out,
-    --sky-mid 2s ease-in-out,
-    --sky-low 2s ease-in-out;
-}
 
 /* Each .sky layer carries its own scene attributes, so a sky fading out
    keeps its colors while the next one (and <html>) already has new ones. */
@@ -673,11 +650,13 @@ body {
   }
 }
 
-/* The sky color, one for the page: its stops fade on <html>. */
+/* Each layer paints its own sky color; the backdrop alone (from <html>'s
+   attributes) shows while the weather loads. */
+.sky,
 .sky-backdrop {
   position: fixed;
   inset: 0;
-  z-index: -11;
+  z-index: -10;
   pointer-events: none;
   background: linear-gradient(
     180deg,
@@ -686,46 +665,32 @@ body {
     var(--sky-low) 78%
   );
 }
-
 .sky {
-  position: fixed;
-  inset: 0;
-  z-index: -10;
   overflow: hidden;
-  pointer-events: none;
   contain: strict;
 }
 .sky[data-fade="first"] {
   animation: sky-in 1.2s ease-out;
 }
 
-/* Changing scene crossfades the two skies, in step with the sky color
-   (--sky-* on :root) and the page colors below: 2s each. */
+/* Changing scene: the new sky fades in over the old one, which stays put
+   underneath and is dropped afterwards. One opacity animation, run by the
+   compositor. */
 .sky[data-fade="in"] {
-  animation: sky-fade-in 2s ease-in-out both;
-}
-.sky[data-fade="out"] {
-  animation: sky-fade-out 2s ease-in-out both;
+  will-change: opacity;
+  animation: sky-fade-in 1.2s ease-in-out both;
 }
 @keyframes sky-fade-in {
   from {
     opacity: 0;
   }
 }
-@keyframes sky-fade-out {
-  to {
-    opacity: 0;
-  }
-}
 
-/* While the automatic theme flips, the page's colors fade too. */
-:root[data-sky-switching] :where(body *):not(.sky, .sky *) {
-  transition:
-    color 2s ease-in-out,
-    background-color 2s ease-in-out,
-    border-color 2s ease-in-out,
-    fill 2s ease-in-out,
-    stroke 2s ease-in-out;
+/* The theme flip (day <-> night) crossfades two snapshots of the page;
+   the old and new snapshots inherit the group's timing. */
+::view-transition-group(*) {
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in-out;
 }
 
 /* Parallax: the pointer sets --px/--py (-0.5..0.5) on <html>. */
@@ -1061,9 +1026,6 @@ body {
   min-height: 170px;
   pointer-events: none;
 }
-.landscape svg {
-  transition: filter 2s ease;
-}
 :root[data-sky-off] .landscape {
   display: none;
 }
@@ -1072,9 +1034,6 @@ body {
 }
 :root[data-sky-mood="storm"] .landscape svg {
   filter: saturate(0.5) brightness(0.88);
-}
-.landscape :is(path, circle, rect, ellipse) {
-  transition: fill 2s ease;
 }
 .land-far {
   fill: var(--hill-far);
