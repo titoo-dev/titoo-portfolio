@@ -461,6 +461,83 @@ const projects: Localizable<Project>[] = [
     ],
   },
   {
+    slug: "wavelet",
+    name: "Wavelet",
+    tag: "Next.js · Flutter · Prisma · Cloudflare R2",
+    img: "/images/wavelet/wavelet_1.webp",
+    thumb: "/images/wavelet/wavelet_2.webp",
+    video: {
+      src: "/videos/wavelet/wavelet-film.mp4",
+      poster: "/videos/wavelet/poster.jpg",
+      captions: {
+        fr: "/videos/wavelet/wavelet-film.fr.vtt",
+        en: "/videos/wavelet/wavelet-film.en.vtt",
+      },
+    },
+    url: "https://wavelet.titosy.dev/launch",
+    github: "https://github.com/titoo-dev/music",
+    year: "2026",
+    type: {
+      fr: "Streaming musical web & Android",
+      en: "Web & Android music streaming",
+    },
+    desc: {
+      fr: "Client musical pour son propre serveur : recherche dans tout le catalogue Deezer, titres complets, paroles synchronisées et albums hors ligne, sur le web et Android.",
+      en: "A music client for your own server: search the whole Deezer catalog, full tracks, synced lyrics and offline albums, on the web and Android.",
+    },
+    overview: {
+      fr: "Wavelet est un serveur de streaming musical et ses deux clients. Le serveur Next.js 16, entièrement sur Vercel, cherche dans le catalogue Deezer, diffuse les titres en flux progressif dès le premier octet puis les garde sur Cloudflare R2 pour les lectures suivantes. Le client web (palette ⌘K, paroles synchronisées, lecture gapless) et l'application Flutter Material 3 (préchargement, téléchargements hors ligne, notification média) partagent la même API, décrite en OpenAPI.",
+      en: "Wavelet is a music streaming server and its two clients. The Next.js 16 server, running entirely on Vercel, searches the Deezer catalog, streams tracks progressively from the first byte, then keeps them on Cloudflare R2 for later plays. The web client (⌘K palette, synced lyrics, gapless playback) and the Material 3 Flutter app (preloading, offline downloads, media notification) share the same API, described in OpenAPI.",
+    },
+    gallery: [
+      "/images/wavelet/wavelet_1.webp",
+      "/images/wavelet/wavelet_2.webp",
+      "/images/wavelet/wavelet_3.webp",
+      "/images/wavelet/wavelet_4.webp",
+    ],
+    tech: [
+      "Next.js 16",
+      "React 19",
+      "TypeScript",
+      "Zustand",
+      "Prisma",
+      "PostgreSQL",
+      "Cloudflare R2",
+      "Better Auth",
+      "Flutter",
+      "Riverpod",
+      "Vitest",
+      "Vercel",
+    ],
+    highlights: [
+      {
+        fr: "Moteur de streaming sur Vercel Functions : flux progressif avec requêtes Range, mis en tampon sur disque et partagé entre lectures simultanées, puis copié sur Cloudflare R2 et servi par URL présignée.",
+        en: "Streaming engine on Vercel Functions: progressive streams with Range requests, spooled to disk and shared by concurrent plays, then copied to Cloudflare R2 and served through presigned URLs.",
+      },
+      {
+        fr: "Client web : recherche et téléchargements dans une palette ⌘K, paroles synchronisées, lecture gapless (Media Source Extensions, à l'échantillon près), partage public de titres avec image OG.",
+        en: "Web client: search and downloads in a ⌘K palette, synced lyrics, gapless playback (Media Source Extensions, sample-accurate), public track sharing with an OG image.",
+      },
+      {
+        fr: "Application Flutter Material 3 Expressive (Riverpod 3, just_audio, audio_service) : même file d'attente que le web, préchargement des titres suivants (lecture en ~130 ms au lieu de ~1,4 s), Wi-Fi uniquement par défaut.",
+        en: "Material 3 Expressive Flutter app (Riverpod 3, just_audio, audio_service): the same queue as the web, preloading of the next tracks (playback in ~130 ms instead of ~1.4 s), Wi-Fi only by default.",
+      },
+      {
+        fr: "Mode hors ligne (v1.5) : albums et playlists téléchargés avec reprise par Range, contrôle d'intégrité SHA-256, session gardée dans le trousseau de la plateforme (Keystore, Keychain, DPAPI).",
+        en: "Offline mode (v1.5): albums and playlists downloaded with Range resume, SHA-256 integrity checks, the session kept in the platform keystore (Keystore, Keychain, DPAPI).",
+      },
+      {
+        fr: "Import de playlists Spotify jusqu'à 1 000 titres, secrets chiffrés en AES-256-GCM, seuils de couverture Vitest en CI GitHub Actions et tests e2e navigateur des parcours critiques.",
+        en: "Spotify playlist import up to 1,000 tracks, secrets encrypted with AES-256-GCM, Vitest coverage thresholds in GitHub Actions CI and browser e2e tests of the critical flows.",
+      },
+    ],
+    stats: [
+      { k: "~130 ms", v: { fr: "Titre suivant", en: "Next track" } },
+      { k: "2", v: { fr: "Clients, une API", en: "Clients, one API" } },
+      { k: "v1.5", v: { fr: "Hors ligne", en: "Offline" } },
+    ],
+  },
+  {
     slug: "chantastik",
     name: "Chantastik",
     tag: "Remotion · Web Audio API",
@@ -641,7 +718,7 @@ const stack: Localizable<StackGroup>[] = [
   },
   {
     label: "Mobile",
-    items: ["Flutter", "Dart", "Kotlin", "Firebase"],
+    items: ["Flutter", "Dart", "Riverpod", "Kotlin", "Firebase"],
   },
   {
     label: "DevOps",

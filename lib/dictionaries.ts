@@ -145,6 +145,7 @@ const fr = {
       hints: {
         predict: "Predict : du C++,\n100 % hors ligne.",
         wasiasup: "WASIA SUP' : mon\ncopilote IA en prod.",
+        wavelet: "Wavelet : ma musique,\nsur le web et Android.",
         chantastik: "Chantastik transforme\nun son en vidéo lyrique.",
         "okani-survey": "Okani : un sondage\npour le service public.",
       },
@@ -330,6 +331,7 @@ const en: Dictionary = {
       hints: {
         predict: "Predict: C++,\n100% offline.",
         wasiasup: "WASIA SUP': my AI\ncopilot in production.",
+        wavelet: "Wavelet: my music,\non the web and Android.",
         chantastik: "Chantastik turns a song\ninto a lyric video.",
         "okani-survey": "Okani: a survey\nfor a public service.",
       },

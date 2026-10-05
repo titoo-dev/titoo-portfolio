@@ -50,6 +50,7 @@ Titosy Manankasina est un développeur Fullstack JavaScript / Flutter avec plus 
 ## Projets notables
 
 - [Tononkira](https://tononkira.titosy.dev/) : Application web/mobile de découverte de paroles de chansons malgaches (15 000+ chansons, 2 300+ artistes)
+- [Wavelet](https://wavelet.titosy.dev/launch) : Streaming musical web & Android pour son propre serveur (Next.js 16, Flutter, Cloudflare R2, mode hors ligne)
 - [Chantastik](https://chantastik.titosy.dev/) : Application de création de vidéos lyrics (Remotion, Web Audio API)
 - [MAGAPE](https://megape.vercel.app/) : Plateforme communautaire chrétienne (gestion podcast, boutique en ligne)
 - [Okani Survey](https://okani-survey.vercel.app/) : Plateforme d'enquête gouvernementale pour le Gabon (web & mobile)

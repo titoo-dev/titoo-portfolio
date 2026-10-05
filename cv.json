@@ -342,6 +342,26 @@
       ]
     },
     {
+      "name": "Wavelet",
+      "isActive": true,
+      "description": "Serveur de streaming musical et ses clients web et Android : recherche dans le catalogue Deezer, titres complets, paroles synchronisées et albums hors ligne. (Projet personnel, 2026)",
+      "highlights": [
+        "Moteur de streaming Next.js 16 sur Vercel Functions : flux progressif avec requêtes Range, tampon disque partagé entre lectures simultanées, copie sur Cloudflare R2 servie par URL présignée.",
+        "Client web : palette ⌘K, paroles synchronisées, lecture gapless (Media Source Extensions), partage public de titres.",
+        "Application Flutter Material 3 (Riverpod 3, just_audio) : préchargement des titres suivants (~130 ms au lieu de ~1,4 s) et mode hors ligne avec reprise par Range et contrôle d'intégrité SHA-256.",
+        "API décrite en OpenAPI, auth Better Auth, Prisma et PostgreSQL, CI GitHub Actions avec seuils de couverture Vitest et tests e2e navigateur."
+      ],
+      "url": "https://wavelet.titosy.dev/launch",
+      "github": "https://github.com/titoo-dev/music",
+      "image": null,
+      "images": [
+        "/images/wavelet/wavelet_1.webp",
+        "/images/wavelet/wavelet_2.webp",
+        "/images/wavelet/wavelet_3.webp",
+        "/images/wavelet/wavelet_4.webp"
+      ]
+    },
+    {
       "name": "Chantastik",
       "isActive": false,
       "description": "Une application qui permet aux utilisateurs de créer de superbes vidéos de paroles à partir de fichiers audio, avec de magnifiques animations et des effets visuels personnalisables.",
