@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useBlobSrc } from "@/lib/use-blob-src";
 
 type Labels = {
   /** Accessible description of the video (no captions, so this is the text alternative). */
@@ -32,7 +33,9 @@ type ProjectVideoProps = {
  * in view and only when the user allows motion, so a list of cards never turns
  * into a wall of autoplaying video; the poster shows everywhere else. The play
  * button opens the full player in a native <dialog>: top layer, Escape, focus
- * trapping and backdrop come for free.
+ * trapping and backdrop come for free. The film is served as a `blob:` URL
+ * (see useBlobSrc), fetched once the card nears the viewport or the player
+ * opens.
  */
 export function ProjectVideo({
   src,
@@ -44,11 +47,15 @@ export function ProjectVideo({
   mode = "preview",
   className = "",
 }: ProjectVideoProps) {
-  const preview = useRef<HTMLVideoElement>(null);
+  const inline = useRef<HTMLVideoElement>(null);
   const player = useRef<HTMLVideoElement>(null);
   const dialog = useRef<HTMLDialogElement>(null);
   const [motion, setMotion] = useState(true);
   const [open, setOpen] = useState(false);
+  const [near, setNear] = useState(false);
+  const [visible, setVisible] = useState(false);
+  // A still preview (reduced motion) has no use for the film until the player opens.
+  const blob = useBlobSrc(src, open || (near && (mode === "full" || motion)));
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -58,39 +65,59 @@ export function ProjectVideo({
     return () => mq.removeEventListener("change", apply);
   }, []);
 
-  // Autoplay the muted preview only while the card is on screen.
+  // `near` starts the download a little ahead; `visible` drives playback.
   useEffect(() => {
-    const el = preview.current;
-    if (!el || mode !== "preview" || !motion) return;
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !open) {
-          el.play().catch(() => {
-            /* autoplay refused: the poster stays, nothing to do */
-          });
-        } else {
-          el.pause();
-        }
-      },
+    const el = inline.current;
+    if (!el) return;
+    const nearIo = new IntersectionObserver(
+      ([entry]) => setNear(entry.isIntersecting),
+      { rootMargin: "300px 0px" },
+    );
+    const viewIo = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
       { threshold: 0.4 },
     );
-    io.observe(el);
-    return () => io.disconnect();
-  }, [mode, motion, open]);
+    nearIo.observe(el);
+    viewIo.observe(el);
+    return () => {
+      nearIo.disconnect();
+      viewIo.disconnect();
+    };
+  }, []);
+
+  // Autoplay the muted preview only while the card is on screen and the
+  // player is closed; it resumes on its own when the player closes.
+  useEffect(() => {
+    const el = inline.current;
+    if (!el || mode !== "preview" || !blob) return;
+    if (motion && visible && !open) {
+      el.play().catch(() => {
+        /* autoplay refused: the poster stays, nothing to do */
+      });
+    } else {
+      el.pause();
+    }
+  }, [mode, motion, visible, open, blob]);
+
+  // Start the player once it is open and the film is there (it may still be
+  // downloading when the play button is pressed).
+  useEffect(() => {
+    const v = player.current;
+    if (!v || !open || !blob) return;
+    v.play().catch(() => {
+      /* the user can press play on the controls */
+    });
+  }, [open, blob]);
 
   const openPlayer = useCallback(() => {
     const d = dialog.current;
     if (!d) return;
-    preview.current?.pause();
     setOpen(true);
     if (!d.open) d.showModal();
     const v = player.current;
     if (v) {
       v.currentTime = 0;
       v.muted = false;
-      v.play().catch(() => {
-        /* the user can press play on the controls */
-      });
     }
   }, []);
 
@@ -99,13 +126,7 @@ export function ProjectVideo({
     player.current?.pause();
     if (d?.open) d.close();
     setOpen(false);
-    // Resume the silent preview if it is still on screen.
-    if (motion) {
-      preview.current?.play().catch(() => {
-        /* fine */
-      });
-    }
-  }, [motion]);
+  }, []);
 
   // Escape closes the dialog natively; keep React state in sync.
   useEffect(() => {
@@ -114,15 +135,10 @@ export function ProjectVideo({
     const onClose = () => {
       player.current?.pause();
       setOpen(false);
-      if (motion) {
-        preview.current?.play().catch(() => {
-          /* fine */
-        });
-      }
     };
     d.addEventListener("close", onClose);
     return () => d.removeEventListener("close", onClose);
-  }, [motion]);
+  }, []);
 
   // Freeze page scroll while the player is open.
   useEffect(() => {
@@ -137,11 +153,14 @@ export function ProjectVideo({
   if (mode === "full") {
     return (
       <video
-        src={src}
+        ref={inline}
+        src={blob}
         poster={poster}
         aria-label={labels.video}
         playsInline
         controls
+        controlsList="nodownload"
+        onContextMenu={(e) => e.preventDefault()}
         preload="metadata"
         className={`h-full w-full object-cover object-top ${className}`}
       >
@@ -153,14 +172,15 @@ export function ProjectVideo({
   return (
     <>
       <video
-        ref={preview}
-        src={src}
+        ref={inline}
+        src={blob}
         poster={poster}
         aria-label={labels.video}
         muted
         loop
         playsInline
-        preload={motion ? "metadata" : "none"}
+        onContextMenu={(e) => e.preventDefault()}
+        preload="metadata"
         className={`h-full w-full object-cover object-top ${className}`}
       >
         {/* Captions describe on-screen text (no speech): available in the controls, off by default. */}
@@ -226,14 +246,16 @@ export function ProjectVideo({
             </button>
           </div>
           <div className="overflow-hidden rounded-xl bg-black shadow-[0_40px_120px_rgba(0,0,0,0.6)] ring-1 ring-white/10">
-            {/* preload=none: nothing is fetched until the player opens. */}
+            {/* Same blob as the preview: opening the player downloads nothing new. */}
             <video
               ref={player}
-              src={src}
+              src={blob}
               poster={poster}
               aria-label={labels.video}
               playsInline
               controls
+              controlsList="nodownload"
+              onContextMenu={(e) => e.preventDefault()}
               preload="none"
               className="aspect-video w-full"
             >

@@ -318,7 +318,7 @@ const projects: Localizable<Project>[] = [
     img: "/images/predict/predict_1.webp",
     thumb: "/images/predict/predict_2.webp",
     video: {
-      src: "/videos/predict/predict-motion.mp4",
+      src: "/videos/predict/predict-motion.dat",
       poster: "/videos/predict/poster.jpg",
       captions: {
         fr: "/videos/predict/predict-motion.fr.vtt",
@@ -390,7 +390,7 @@ const projects: Localizable<Project>[] = [
     img: "/images/wasiasup/wasiasup_1.webp",
     thumb: "/images/wasiasup/wasiasup_2.webp",
     video: {
-      src: "/videos/wasiasup/wasiasup-promo.mp4",
+      src: "/videos/wasiasup/wasiasup-promo.dat",
       poster: "/videos/wasiasup/poster.jpg",
       captions: {
         fr: "/videos/wasiasup/wasiasup-promo.fr.vtt",
@@ -467,7 +467,7 @@ const projects: Localizable<Project>[] = [
     img: "/images/wavelet/wavelet_1.webp",
     thumb: "/images/wavelet/wavelet_2.webp",
     video: {
-      src: "/videos/wavelet/wavelet-film.mp4",
+      src: "/videos/wavelet/wavelet-film.dat",
       poster: "/videos/wavelet/poster.jpg",
       captions: {
         fr: "/videos/wavelet/wavelet-film.fr.vtt",

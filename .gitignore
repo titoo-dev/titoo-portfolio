@@ -46,3 +46,6 @@ Titosy_developpeur_frontend.pdf
 
 # rive cli builds (public/avatar.riv is the shipped copy)
 /rive/*/build
+
+# original project films (watermarked + scrambled copies live in public/videos)
+/videos/
